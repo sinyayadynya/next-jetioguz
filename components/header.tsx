@@ -31,16 +31,16 @@ const thingsToDo = [
   { name: 'Transportation', description: 'Getting around Jeti-Oguz made easy', href: '#', icon: ArrowPathIcon },
 ]
 const destinations = [
-    { name: 'Villages', description: 'Get active in Jeti-Oguz’s great outdoors', href: '#', icon: ChartPieIcon },
-    { name: 'Nature sites', description: 'Explore Kyrgyzstan’s rich history and heritage', href: '#', icon: CursorArrowRaysIcon },
-    { name: 'Lakes', description: 'Stay up to date on Jeti-Oguz’s latest happenings', href: '#', icon: FingerPrintIcon },
-    { name: 'Beach', description: 'Savor the flavors of Jeti-Oguz’s local cuisine', href: '#', icon: SquaresPlusIcon },
-    { name: 'Sanatorium', description: 'Getting around Jeti-Oguz made easy', href: '#', icon: ArrowPathIcon },
+    { name: 'Villages', description: 'Experience Kyrgyz hospitality in Jeti-Oguz’s charming villages', href: '#', icon: ChartPieIcon },
+    { name: 'Nature sites', description: 'Discover Jeti-Oguz’s breathtaking natural wonders', href: '#', icon: CursorArrowRaysIcon },
+    { name: 'Lakes', description: 'Take in the serene beauty of Jeti-Oguz’s stunning lakes', href: '#', icon: FingerPrintIcon },
+    { name: 'Beach', description: 'Relax and recharge on Issyk-Kul’s beautiful beaches', href: '#', icon: SquaresPlusIcon },
+    { name: 'Sanatorium', description: 'Rejuvenate mind and body in Jeti-Oguz’s tranquil sanatoriums', href: '#', icon: ArrowPathIcon },
 ]
 const planning = [
-    { name: 'How to go there', description: 'Get active in Jeti-Oguz’s great outdoors', href: '#', icon: ChartPieIcon },
-    { name: 'Contact', description: 'Explore Kyrgyzstan’s rich history and heritage', href: '#', icon: CursorArrowRaysIcon },
-    { name: 'Office & Team', description: 'Stay up to date on Jeti-Oguz’s latest happenings', href: '#', icon: FingerPrintIcon },
+    { name: 'How to go there', description: 'Getting to Jeti-Oguz made easy - plan your trip now', href: '#', icon: ChartPieIcon },
+    { name: 'Contact', description: 'Get in touch with our friendly team for all your Jeti-Oguz inquiries', href: '#', icon: CursorArrowRaysIcon },
+    { name: 'Office & Team', description: 'Meet the people behind your Jeti-Oguz adventure', href: '#', icon: FingerPrintIcon },
 ]
 const callsToAction = [
   { name: 'Watch video', href: '#', icon: PlayCircleIcon },
