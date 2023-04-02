@@ -4,6 +4,7 @@ import {
 } from "next-drupal"
 import { useTranslation } from "next-i18next"
 
+import { ParagraphProps } from "components/paragraph"
 import { MediaImage } from "components/media--image"
 import { FormattedText } from "components/formatted-text"
 

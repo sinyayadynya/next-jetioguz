@@ -133,28 +133,19 @@ export function Footer({ menus, blocks }: FooterProps) {
           ) : null}
 
           <BlockIncentives />
-          {/* <section>
-        {blocks?.blockIncentives && (
-            <div className="mx-auto max-w-2xl py-24 px-4 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
-                <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 lg:gap-x-8">
-                    {blocks.blockIncentives}
-                </div>
-            </div>
-        )}
-      </section> */}
 
           {/* <section className="py-8 text-white bg-gray-600">
-        <div className="container justify-between lg:grid lg:grid-cols-[6fr_1.5fr_2.5fr]">
-          {menus?.footer?.length ? (
-            <div className="pt-10 text-center lg:text-left lg:col-start-3">
-              <h2 className="mb-4 font-serif text-2xl">
-                {t("tell-us-what-you-think")}
-              </h2>
-              <MenuFooter items={menus.footer} />
-            </div>
-          ) : null}
-        </div>
-      </section> */}
+                <div className="container justify-between lg:grid lg:grid-cols-[6fr_1.5fr_2.5fr]">
+                {menus?.footer?.length ? (
+                    <div className="pt-10 text-center lg:text-left lg:col-start-3">
+                    <h2 className="mb-4 font-serif text-2xl">
+                        {t("tell-us-what-you-think")}
+                    </h2>
+                    <MenuFooter items={menus.footer} />
+                    </div>
+                ) : null}
+                </div>
+            </section> */}
 
           <section className="bg-gray-50" aria-labelledby="footer-heading">
               <h2 id="footer-heading" className="sr-only">
