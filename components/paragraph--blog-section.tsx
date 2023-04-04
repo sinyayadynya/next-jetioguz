@@ -1,6 +1,10 @@
-import { ParagraphProps } from "components/paragraph"
 import { FormattedText } from "components/formatted-text"
 import { Section } from "components/section"
+import { DrupalParagraph } from "next-drupal"
+
+export interface ParagraphProps {
+  paragraph: DrupalParagraph;
+}
 
 export function ParagraphBlogSection({ paragraph, ...props }: ParagraphProps) {
 
