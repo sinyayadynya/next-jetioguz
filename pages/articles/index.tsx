@@ -20,6 +20,8 @@ export default function ArticlesPage({
 }: ArticlePageProps) {
   const { t } = useTranslation()
 
+
+
   return (
     <Layout
       menus={menus}
@@ -48,12 +50,12 @@ export default function ArticlesPage({
 }
 
 export async function getStaticProps(
-  context: GetStaticPropsContext
-): Promise<GetStaticPropsResult<ArticlePageProps>> {
+  // context: GetStaticPropsContext
+) {
   // Fetch all published articles sorted by date.
   const articles = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
     "node--article",
-    context,
+    // context,
     {
       params: getParams("node--article", "card")
         .addSort("created", "DESC")
@@ -61,10 +63,18 @@ export async function getStaticProps(
     }
   )
 
+  const incentiveBlock = await drupal.getResourceCollection("block_content--incentives_block", {
+    params: {
+      "fields[field_incentive_items]": "field_text_title, field_text_formatted", // Fetch the title and created fields only.
+      // Sort the articles by created date in descending order.
+    },
+  })
+
   return {
     props: {
-      ...(await getGlobalElements(context)),
+      // ...(await getGlobalElements(context)),
       articles,
+      incentiveBlock,
     },
   }
 }

@@ -1,6 +1,6 @@
 import { GetServerSidePropsContext, GetStaticPropsContext } from "next"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
-import { DrupalBlock, DrupalTaxonomyTerm } from "next-drupal"
+import { DrupalBlock, DrupalTaxonomyTerm, JsonApiResource } from "next-drupal"
 
 import { drupal } from "lib/drupal"
 import { getParams } from "lib/get-params"
@@ -75,10 +75,24 @@ export async function getGlobalElements(
       footer: footerMenu.items,
     },
     blocks: {
-        // placesCategories,
-        destinationActivities,
-        blockIncentives,
-        disclaimer,
+      // placesCategories,
+      destinationActivities,
+      blockIncentives,
+      disclaimer,
     },
   }
 }
+
+// async function getBlocksProps(): Promise<DrupalBlock[]> {
+//   const blocks = await drupal.getResourceCollection("block_content--incentives_block")
+//   const field_incentive_items = blocks[0].field_incentive_items
+//   const blocksAdditionalContent = await Promise.all(field_incentive_items.map(async (item: JsonApiResource) => {
+//     return await drupal.getResource(
+//       item.type,
+//       item.id
+//     )
+//   }))
+//   return blocksAdditionalContent
+// }
+
+

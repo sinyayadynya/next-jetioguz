@@ -5,7 +5,10 @@ export function getParams(
     name: string,
     mode: string = null
 ): DrupalJsonApiParams {
-    const params = new DrupalJsonApiParams();
+    const params = new DrupalJsonApiParams().addFilter(
+        "field_site.meta.drupal_internal__target_id",
+        process.env.DRUPAL_SITE_ID
+    )
 
     name = mode ? `${name}--${mode}` : name;
 
@@ -21,12 +24,14 @@ export function getParams(
             .addInclude([
                 'field_media_image.field_media_image',
                 'uid.user_picture',
+                'field_blog_media_header'
             ])
             .addFields('node--article', [
                 'title',
                 'path',
                 'field_media_image',
                 'created',
+                'intro'
             ])
             .addFields('media--image', ['field_media_image'])
             .addFields('file--file', ['uri', 'resourceIdObjMeta']);
@@ -36,6 +41,8 @@ export function getParams(
         return params
             .addInclude([
                 'field_paragraphs',
+                'field_paragraphs.field_media_image.field_media_image',
+                'field_paragraphs.field_media_video',
                 'field_media_image.field_media_image',
                 'uid.user_picture',
                 'field_country',
@@ -50,12 +57,19 @@ export function getParams(
                 'uid',
                 'field_country',
                 'field_paragraphs',
+                "paragraph--image_full_width"
             ])
-            .addFields('user--user', ['display_name', 'user_picture'])
-            .addFields('media--image', ['field_media_image'])
-            .addFields('file--file', ['uri', 'resourceIdObjMeta'])
-            .addFields('taxonomy_term--countries', ['name', 'path']);
+            .addFields('paragraph--image_full_width', [
+                'field_media_image',
+            ])
+            .addFields('paragraph--video', [
+                'field_media_video',
+            ])
+            .addFields('media--image', ['field_media_image', 'uri'])
+            .addFields('media--remote_video', ['field_media_video', 'field_media_oembed_video', 'uri', 'resourceIdObjMeta'])
     }
+
+
 
     if (name === 'node--place--card') {
         return params
@@ -78,6 +92,7 @@ export function getParams(
         return params
             .addInclude([
                 'field_media_images.field_media_image',
+                'field_media_images.field_media_author',
                 'field_content_category',
                 'field_area',
             ])
@@ -89,12 +104,14 @@ export function getParams(
                 'field_area',
                 'field_place_altitude',
                 'body',
+                'field_place_geofield',
                 'field_media_images',
             ])
             .addFields('media--images', ['field_media_images'])
             .addFields('file--file', ['uri', 'resourceIdObjMeta'])
             .addFields('taxonomy_term--categories', ['name', 'path'])
-            .addFields('taxonomy_term--places', ['name', 'path']);
+            .addFields('taxonomy_term--places', ['name', 'path'])
+            .addFields('taxonomy_term--media_authors', ['name', 'description', 'resourceIdObjMeta']);
     }
 
     if (name === 'block_content--promo_block_overlapping_images') {
@@ -136,10 +153,26 @@ export function getParams(
     }
 
     if (name === 'block_content--incentives_block') {
-        return params;
-        //   .addFields("block_content--incentives_block", [
-        //     "field_incentive_items",
-        //   ])
+        return params
+            .addInclude([
+                'field_incentive_items.field_image.uid',
+            ])
+            .addFields("block_content--incentives_block", [
+                "field_incentive_items",
+                'field_media_image',
+                'field_image'
+            ])
+            .addFields("paragraph--incentive_with_illustration", [
+                'field_media_image',
+                "field_text_title",
+                "field_text_formatted",
+                'image',
+                'link',
+                'field_image',
+                "field_link"
+            ])
+            .addFields('field_image', ['field_link', 'image', 'Image', 'field_image'])
+            .addFields('file--file', ['uri', 'resourceIdObjMeta'])
     }
 
     if (name === 'block_content--disclaimer_block') {
@@ -170,4 +203,5 @@ export function getParams(
     if (name === 'taxonomy_term--activities') {
         return params.addFields('taxonomy_term--activities', ['name', 'path']);
     }
+
 }

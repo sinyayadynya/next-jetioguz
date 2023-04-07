@@ -7,7 +7,7 @@ interface SectionProps extends React.HTMLAttributes<HTMLElement> {
 export function Section({ children, ...props }: SectionProps) {
   return (
     <section
-      className={classNames("py-8 md:py-12 lg:py-20")}
+      className={classNames("py-2 md:py-2 lg:py-4")}
       {...props}
     >
       {children}

@@ -8,9 +8,8 @@ import { useTranslation } from 'next-i18next';
 import { absoluteURL, formatDate } from 'lib/utils';
 import { FormattedText } from 'components/formatted-text';
 import { Breadcrumbs } from 'components/breadcrumbs';
-import { Paragraph } from "components/paragraph";
 import { NodeArticleCard } from 'components/node--article--card';
-import { ParagraphBlogSection } from './paragraph--blog-section';
+import { Paragraph } from './paragraph';
 
 export interface NodeArticleProps {
     node: DrupalNode;
@@ -22,8 +21,6 @@ export interface NodeArticleProps {
 export function NodeArticle({ node, additionalContent }: NodeArticleProps) {
     const { t } = useTranslation();
     const field_paragraphs: DrupalParagraph[] = node.field_paragraphs
-    console.log(field_paragraphs)
-    const paragraph: DrupalParagraph = field_paragraphs.filter(paragraph => paragraph.type === "paragraph--blog_section")[0]
     return (
         <div className="container">
             <Breadcrumbs
@@ -61,22 +58,11 @@ export function NodeArticle({ node, additionalContent }: NodeArticleProps) {
                                 fill="currentColor"
                             />
                         </svg>
-                        <span className="text-gray-500">
+                        {node.created && <span className="text-gray-500">
                             {formatDate(node.created)}
-                        </span>
+                        </span>}
                     </div>
-                    {/* {node.field_country?.length ? (
-                        <div className="flex mb-6 space-x-2">
-                        <span className="font-semibold">{t("tags")}: </span>
-                        {node.field_country.map((country) => (
-                            <Link key={country.id} href={country.path.alias} passHref>
-                            <a className="underline transition-colors text-green-700 hover:text-primary-500 hover:bg-gray-50">
-                                {country.name}
-                            </a>
-                            </Link>
-                        ))}
-                        </div>
-                    ) : null} */}
+
                     {node.field_media_image && (
                         <figure className="mb-10">
                             <Image
@@ -102,7 +88,7 @@ export function NodeArticle({ node, additionalContent }: NodeArticleProps) {
                             <FormattedText text={node.body.processed} />
                         </div>
                     )}
-                    <ParagraphBlogSection paragraph={paragraph} />
+                    <Paragraph paragraph={field_paragraphs} />
                 </div>
 
                 <section className="bg-white pt-24 sm:pt-32">
@@ -116,13 +102,12 @@ export function NodeArticle({ node, additionalContent }: NodeArticleProps) {
                             </p>
                         </div>
                         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-y-20 gap-x-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-                            {additionalContent.featuredArticles.map((nodeArticles) => (
-                                <NodeArticleCard key={node.id} nodeArticles={nodeArticles} node={node} />
+                            {additionalContent.featuredArticles.map((nodeArticles, index) => (
+                                <NodeArticleCard key={node.id + index} nodeArticles={nodeArticles} />
                             ))}
                         </div>
                     </div>
                 </section>
-
             </article>
         </div>
     );

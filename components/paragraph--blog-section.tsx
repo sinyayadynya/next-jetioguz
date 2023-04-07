@@ -3,22 +3,23 @@ import { Section } from "components/section"
 import { DrupalParagraph } from "next-drupal"
 
 export interface ParagraphProps {
-  paragraph: DrupalParagraph;
+  paragraphType: DrupalParagraph;
 }
 
-export function ParagraphBlogSection({ paragraph, ...props }: ParagraphProps) {
+export function ParagraphBlogSection({ paragraphType }: ParagraphProps) {
+
 
   return (
     <Section
-      {...props}
+
     >
-      <div key={paragraph.id} className="prose max-w-sm lg:max-w-none">
+      <div key={paragraphType.id} className="prose max-w-sm lg:max-w-none">
         <h3 className="text-2xl font-bold">
-          {paragraph.field_section_title}
+          {paragraphType.field_section_title}
         </h3>
-        {paragraph.field_section_text?.processed && (
+        {paragraphType.field_section_text?.processed && (
           <FormattedText
-            text={paragraph.field_section_text?.processed}
+            text={paragraphType.field_section_text?.processed}
           />
         )}
       </div>

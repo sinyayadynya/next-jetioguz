@@ -3,12 +3,16 @@ import { PreviewAlert } from "components/preview-alert"
 import { Header, HeaderProps } from "components/header"
 import { Footer, FooterProps } from "components/footer"
 import { TailwindIndicator } from "components/tailwind-indicator"
+import { GetStaticPropsContext, GetStaticPropsResult } from "next"
+import { drupal } from "lib/drupal"
+import { JsonApiResource } from "next-drupal"
 
 export interface LayoutProps extends HeaderProps, FooterProps {
   meta?: MetaProps
   menus: HeaderProps["menus"] & FooterProps["menus"]
   children?: React.ReactNode
 }
+
 
 export function Layout({ meta, menus, blocks, children }: LayoutProps) {
   return (
@@ -24,3 +28,6 @@ export function Layout({ meta, menus, blocks, children }: LayoutProps) {
     </>
   )
 }
+
+
+

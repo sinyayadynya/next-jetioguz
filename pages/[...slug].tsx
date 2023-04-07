@@ -1,5 +1,5 @@
 import { GetStaticPathsResult, GetStaticPropsResult } from "next"
-import { DrupalNode, DrupalTaxonomyTerm } from "next-drupal"
+import { DrupalNode, DrupalTaxonomyTerm, JsonApiResource } from "next-drupal"
 
 import { PageProps } from "types"
 import { drupal } from "lib/drupal"
@@ -18,8 +18,8 @@ import {
   TaxonomyTermCountriesProps,
 } from "components/taxonomy-term--countries"
 import {
-    TaxonomyTermPlaces,
-    TaxonomyTermPlacesProps,
+  TaxonomyTermPlaces,
+  TaxonomyTermPlacesProps,
 } from "components/taxonomy-term--places"
 
 const RESOURCE_TYPES = [
@@ -54,6 +54,7 @@ export default function ResourcePage({
       {resource.type === "node--page" && (
         <NodePage node={resource as DrupalNode} />
       )}
+
       {resource.type === "node--article" && (
         <NodeArticle
           node={resource as DrupalNode}
@@ -133,11 +134,13 @@ export async function getStaticProps(
   // Fetch additional content for pages.
   let additionalContent: PageProps["additionalContent"] = {}
 
+
   if (resource.type === "node--article") {
     // Fetch featured articles.
     additionalContent["featuredArticles"] =
       await drupal.getResourceCollectionFromContext("node--article", context, {
         params: getParams("node--article", "card")
+          .addFields("node--article", ['body', 'field_media_image', 'created', 'path', 'title'])
           .addFilter("id", resource.id, "<>")
           .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
           .addPageLimit(3)
@@ -194,6 +197,7 @@ export async function getStaticProps(
       )),
     ]
   }
+
 
   return {
     props: {

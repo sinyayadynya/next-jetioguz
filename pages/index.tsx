@@ -53,10 +53,10 @@ export default function IndexPage({
                                 <NodePlaceCard
                                     node={node}
                                     key={node.id}
-                                    className={classNames({
-                                        "group aspect-w-2 aspect-h-1 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2": index === 0,
-                                        "group aspect-w-2 aspect-h-1 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full": index !== 0,
-                                    })}
+                                // className={classNames({
+                                //     "group aspect-w-2 aspect-h-1 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2": index === 0,
+                                //     "group aspect-w-2 aspect-h-1 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full": index !== 0,
+                                // })}
                                 />
                             ))}
                         </div>
