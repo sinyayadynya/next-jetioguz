@@ -78,7 +78,7 @@ export default function IndexPage({
                         {promotedArticles?.length
                             ? promotedArticles.map((node) => (
                                 <NodeArticleCard
-                                    node={node}
+                                    nodeArticles={node}
                                     key={node.id}
                                 />
                             ))

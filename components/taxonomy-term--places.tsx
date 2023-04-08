@@ -34,7 +34,7 @@ export function TaxonomyTermPlaces({
         {additionalContent?.termContent.map((node) => (
           <React.Fragment key={node.id}>
             {node.type === "node--place" && <NodePlaceTeaser node={node} />}
-            {node.type === "node--article" && <NodeArticleCard node={node} />}
+            {node.type === "node--article" && <NodeArticleCard nodeArticles={node} />}
           </React.Fragment>
         ))}
       </div>

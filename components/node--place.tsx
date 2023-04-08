@@ -15,31 +15,34 @@ interface NodePlaceProps {
 
 export function NodePlace({ node, ...props }: NodePlaceProps) {
     const { t } = useTranslation();
-    const imgUrl = node.field_media_images[0].field_media_image.uri.url
-    const imgAuthor = node.field_media_images[0].field_media_author.name
-
+    let firstImage = null
     const multipleImg = node.field_media_images.map((image: DrupalNode, index: number) => {
-        if (index > 0) {
-            const url = image.field_media_image.uri.url
-            const author = image.field_media_author.name
-            return (
-                <div key={"div" + author + index}>
-                    <img
-                        key={"img" + author + index}
-                        src={absoluteURL(url)}
-                        alt={`${image.field_media_image.resourceIdObjMeta.alt}`}
-                        className="object-cover h-48 w-auto rounded-3xl"
-                    />
-                    <p
-                        key={"p" + author + index}
-                        className="font-semibold"
-                    >
-                        {author}
-                    </p>
-                </div>
-            )
+        const url = image.field_media_image.uri.url
+        const author = image.field_media_author.name
+        const item = (
+            <div key={"div" + author + index}>
+                <img
+                    key={"img" + author + index}
+                    src={absoluteURL(url)}
+                    alt={`${image.field_media_image.resourceIdObjMeta.alt}`}
+                    className="object-cover h-48 w-auto rounded-3xl"
+                />
+                <p
+                    key={"p" + author + index}
+                    className="font-semibold"
+                >
+                    {author}
+                </p>
+            </div>
+        )
+        if (index === 0) {
+            firstImage = item
+            return
         }
+        return item
+
     })
+
     return (
         <div className="container" {...props}>
             <Breadcrumbs
@@ -101,12 +104,7 @@ export function NodePlace({ node, ...props }: NodePlaceProps) {
                         )}
                     </div>
                     <div >
-                        <img
-                            src={absoluteURL(imgUrl)}
-                            alt={`${node.field_media_images[0].field_media_image.resourceIdObjMeta.alt}`}
-                            className="object-cover h-96 w-auto rounded-3xl"
-                        />
-                        <p className="font-semibold">{imgAuthor}</p>
+                        {firstImage}
                     </div>
                 </div>
                 <div className='w-full h-96'>

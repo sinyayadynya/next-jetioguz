@@ -8,13 +8,13 @@ interface NodePlaceCardProps {
   node: DrupalNode
 }
 
-export function NodePlaceCard({ node, ...props }: NodePlaceCardProps) {
+export function NodePlaceCard({ node }: NodePlaceCardProps) {
   const { t } = useTranslation()
 
   return (
     <article
       className="relative flex flex-col p-4 space-y-4 overflow-hidden bg-white border border-gray-50 group"
-      {...props}
+
     >
       <h2 className="flex-1 font-serif text-[22px]">{node.title}</h2>
       <Link href={node.path.alias} passHref>

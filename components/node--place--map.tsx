@@ -25,13 +25,12 @@ const MapComponent = dynamic(() => import('leaflet').then((L) => {
             useEffect(() => {
                 const newIcon = new L.Icon({
                     iconUrl: 'https://nomadsland.travel/modules/contrib/leaflet/js/leaflet/dist/images/marker-icon-2x.png',
-                    iconSize: [30, 40],
-                    iconAnchor: [20, 40],
+                    iconSize: [25, 40],
+                    iconAnchor: [12, 40],
                 });
                 setMarkerIcon(newIcon);
                 setPosition({ latitude, longitude });
             }, []);
-            console.log("coordinates: ", position)
             return (
                 markerIcon && <MapContainer center={[position.latitude, position.longitude]} zoom={13} className={className}>
                     <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />

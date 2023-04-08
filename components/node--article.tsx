@@ -21,6 +21,7 @@ export interface NodeArticleProps {
 export function NodeArticle({ node, additionalContent }: NodeArticleProps) {
     const { t } = useTranslation();
     const field_paragraphs: DrupalParagraph[] = node.field_paragraphs
+
     return (
         <div className="container">
             <Breadcrumbs
