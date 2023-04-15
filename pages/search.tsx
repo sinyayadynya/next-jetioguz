@@ -52,14 +52,17 @@ export default function SearchPage({ menus, blocks }: SearchPageProps) {
                 key={result.id}
                 className="grid gap-2 p-4 bg-white border border-gray-50"
               >
-                <Link href={result.path.alias} passHref>
-                  <a className="font-serif text-2xl underline text-green-700">
-                    <Highlighter
-                      textToHighlight={result.title}
-                      searchWords={[keys]}
-                      highlightClassName="font-semibold bg-transparent"
-                    />
-                  </a>
+                <Link
+                  href={result.path.alias}
+                  passHref
+                  className="font-serif text-2xl underline text-green-700">
+
+                  <Highlighter
+                    textToHighlight={result.title}
+                    searchWords={[keys]}
+                    highlightClassName="font-semibold bg-transparent"
+                  />
+
                 </Link>
                 <p className="text-text">
                   <span className="capitalize">
@@ -78,7 +81,7 @@ export default function SearchPage({ menus, blocks }: SearchPageProps) {
         ) : null}
       </div>
     </Layout>
-  )
+  );
 }
 
 export async function getStaticProps(

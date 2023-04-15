@@ -38,10 +38,13 @@ export default function AccountsPage({
           },
         ]}
       >
-        <Link href="/articles/new" passHref>
-          <a className="px-3 py-1 font-serif text-lg text-white transition-colors border-2 rounded-md lg:text-xl lg:px-4 lg:py-2 bg-primary-600 hover:bg-white hover:text-black border-primary-600">
+        <Link
+          href="/articles/new"
+          passHref
+          className="px-3 py-1 font-serif text-lg text-white transition-colors border-2 rounded-md lg:text-xl lg:px-4 lg:py-2 bg-primary-600 hover:bg-white hover:text-black border-primary-600">
+          
             New Article
-          </a>
+          
         </Link>
       </PageHeader>
       <div className="container">
@@ -58,7 +61,7 @@ export default function AccountsPage({
         )}
       </div>
     </Layout>
-  )
+  );
 }
 
 export async function getServerSideProps(
