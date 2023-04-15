@@ -14,9 +14,7 @@ export function ParagraphImageFullWidth({ paragraphType }: ParagraphProps) {
   const imageUrl = paragraphType.field_media_image.field_media_image.uri.url
 
   return (
-    <Section
-
-    >
+    <Section>
       <div key={paragraphType.id} className="prose max-w-sm lg:max-w-none">
         <Image
           src={absoluteURL(imageUrl)}

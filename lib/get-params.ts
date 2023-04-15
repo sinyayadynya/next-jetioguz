@@ -75,14 +75,13 @@ export function getParams(
         return params
             .addFilter('status', '1')
             .addInclude([
-                'field_media_images.field_media_image',
-                'uid.user_picture',
+                'field_media_images.field_media_image.uid',
+                'field_media_images.field_media_author',
             ])
             .addFields('node--place', [
                 'title',
                 'path',
                 'field_media_images',
-                'field_difficulty',
             ])
             .addFields('media--images', ['field_media_images'])
             .addFields('file--file', ['uri', 'resourceIdObjMeta']);

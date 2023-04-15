@@ -49,16 +49,29 @@ export default function IndexPage({
                         </div>
 
                         <div className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:grid-rows-2 sm:gap-x-6 lg:gap-8">
-                            {promotedPlaces.map((node, index) => (
+                            {/* {promotedPlaces.map((node, index) => (
                                 <NodePlaceCard
                                     node={node}
                                     key={node.id}
-                                // className={classNames({
-                                //     "group aspect-w-2 aspect-h-1 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2": index === 0,
-                                //     "group aspect-w-2 aspect-h-1 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full": index !== 0,
-                                // })}
+                                    className={classNames({
+                                        "group aspect-w-2 aspect-h-1 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2": index === 0,
+                                        "group aspect-w-2 aspect-h-1 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full": index !== 0,
+                                    })}
                                 />
-                            ))}
+                            ))} */}
+
+                            {promotedPlaces?.length
+                                ? promotedPlaces.map((node, index) => (
+                                    <NodePlaceCard
+                                        node={node}
+                                        key={node.id}
+                                        className={classNames({
+                                            "group aspect-w-2 aspect-h-1 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2": index === 0,
+                                            "group aspect-w-2 aspect-h-1 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full": index !== 0,
+                                        })}
+                                    />
+                                ))
+                            : null}
                         </div>
                     </div>
                 </section>

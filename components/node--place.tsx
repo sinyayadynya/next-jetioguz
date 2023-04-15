@@ -40,7 +40,6 @@ export function NodePlace({ node, ...props }: NodePlaceProps) {
             return
         }
         return item
-
     })
 
     return (
@@ -61,7 +60,7 @@ export function NodePlace({ node, ...props }: NodePlaceProps) {
                 <div className="flex flex-col space-y-4">
 
                     <MediaImages
-                        media={node.field_media_images}
+                        media={node.field_media_images.field_media_image}
                         width={770}
                         height={512}
                     />

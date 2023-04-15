@@ -28,6 +28,3 @@ export function Layout({ meta, menus, blocks, children }: LayoutProps) {
     </>
   )
 }
-
-
-

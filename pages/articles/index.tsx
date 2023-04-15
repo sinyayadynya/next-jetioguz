@@ -24,7 +24,7 @@ export default function ArticlesPage({
 
   return (
     <Layout
-      menus={menus}
+    //   menus={menus}
       blocks={blocks}
       meta={{
         title: t("articles"),

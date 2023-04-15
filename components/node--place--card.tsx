@@ -1,39 +1,59 @@
-import { DrupalNode } from "next-drupal"
-import { useTranslation } from "next-i18next"
-import Link from "next/link"
+import { DrupalNode } from 'next-drupal';
+import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
 
-import { MediaImages } from "components/media--images"
+import { MediaImages } from 'components/media--images';
+import { absoluteURL } from 'lib/utils';
 
 interface NodePlaceCardProps {
-  node: DrupalNode
+    node: DrupalNode;
 }
 
 export function NodePlaceCard({ node }: NodePlaceCardProps) {
-  const { t } = useTranslation()
+    const { t } = useTranslation();
 
-  return (
-    <article
-      className="relative flex flex-col p-4 space-y-4 overflow-hidden bg-white border border-gray-50 group"
+    let firstImage = null;
+    // const firstImg =node.field_media_images[0].field_media_image.uri.url
+    const multipleImg = node.field_media_images.map(
+        (image: DrupalNode, index: number) => {
+            const url = image.field_media_image.uri.url;
+            const item = (
+                <div key={'div' + index}>
+                    <img
+                        key={'img' + index}
+                        src={absoluteURL(url)}
+                        alt={`${image.field_media_image.resourceIdObjMeta.alt}`}
+                        className="object-cover object-center h-full w-full group-hover:opacity-75"
+                    />
+                </div>
+            );
+            if (index === 0) {
+                firstImage = item;
+                return;
+            }
+            return item;
+        }
+    );
 
-    >
-      <h2 className="flex-1 font-serif text-[22px]">{node.title}</h2>
-      <Link href={node.path.alias} passHref>
-        <a className="inline-flex items-center uppercase hover:underline text-green-700">
-          {t("view-place")}
-          <svg
-            className="w-5 h-5 ml-1"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="m9 18 6-6-6-6" />
-          </svg>
-        </a>
-      </Link>
-      <MediaImages media={node.field_media_images} width={335} height={225} />
-    </article>
-  )
+    return (
+        <article className="group aspect-w-2 aspect-h-1 overflow-hidden rounded-lg [&:not(:first)]:sm:aspect-none [&:not(:first)]:sm:relative [&:not(:first)]:sm:h-full first:sm:aspect-h-1 first:sm:aspect-w-1 first:sm:row-span-2">
+            {firstImage}
+            <div aria-hidden="true" className="bg-gradient-to-b from-transparent to-black opacity-50" />
+            <div className="flex items-end p-6">
+                <div>
+                    <h3 className="font-semibold text-white">
+                        <Link href={node.path.alias} passHref>
+                            <a>
+                                <span className="absolute inset-0" />
+                                {node.title}
+                            </a>
+                        </Link>
+                    </h3>
+                    <p aria-hidden="true" className="mt-1 text-sm text-white">
+                        {t('view-place')}
+                    </p>
+                </div>
+            </div>
+        </article>
+    );
 }
