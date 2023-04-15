@@ -3,7 +3,7 @@ import { Section } from "components/section"
 import { drupal } from "lib/drupal";
 import { absoluteURL } from "lib/utils";
 import { DrupalParagraph } from "next-drupal"
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 export interface ParagraphProps {
   paragraphType: DrupalParagraph;
