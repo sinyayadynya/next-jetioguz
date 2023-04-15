@@ -8,7 +8,7 @@ import { getParams } from "lib/get-params"
 import { Layout, LayoutProps } from "components/layout"
 import { NodePlaceTeaser } from "components/node--place--teaser"
 import { PageHeader } from "components/page-header"
-import { BlockBanner } from "components/block--banner"
+import { BlockPromoImageTiles } from "components/block--promo-image-tiles"
 
 interface PlacePageProps extends LayoutProps {
   banner: DrupalBlock
@@ -16,7 +16,7 @@ interface PlacePageProps extends LayoutProps {
 }
 
 export default function PlacesPage({
-  banner,
+  promo,
   places,
   menus,
   blocks,
@@ -31,7 +31,7 @@ export default function PlacesPage({
         title: t("places"),
       }}
     >
-      <BlockBanner block={banner} />
+      <BlockPromoImageTiles block={promo} />
       <PageHeader
         heading="Villages in Jeti-Oguz"
         breadcrumbs={[
@@ -71,7 +71,7 @@ export async function getStaticProps(
     }
   )
 
-  const [banner] = await drupal.getResourceCollectionFromContext<DrupalBlock[]>(
+  const [promo] = await drupal.getResourceCollectionFromContext<DrupalBlock[]>(
     "block_content--banner_block",
     context,
     {
@@ -85,7 +85,7 @@ export async function getStaticProps(
   return {
     props: {
       ...(await getGlobalElements(context)),
-      banner,
+      promo,
       places,
     },
   }
