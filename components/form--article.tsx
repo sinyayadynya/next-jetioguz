@@ -72,7 +72,7 @@ export function FormArticle({ className, ...props }: FormArticleProps) {
           name="title"
           maxLength={255}
           required
-          className="px-2 py-3 border-2 border-gray-500focus:outline-dotted focus:outline-offset-2 focus:ring-0 focus:outline-green-700 focus:border-gray-500
+          className="px-2 py-3 border-2 border-gray-500focus:outline-dotted focus:outline-offset-2 focus:ring-0 focus:outline-green-700 focus:border-gray-500"
         />
       </div>
       <div className="grid gap-2">
@@ -84,7 +84,7 @@ export function FormArticle({ className, ...props }: FormArticleProps) {
           id="image"
           name="image"
           required
-          className="px-2 py-3 bg-white border-2 border-gray-500 focus:outline-dotted focus:outline-offset-2 focus:outline-green-700 focus:ring-0 focus:border-gray-500
+          className="px-2 py-3 bg-white border-2 border-gray-500 focus:outline-dotted focus:outline-offset-2 focus:outline-green-700 focus:ring-0 focus:border-gray-500"
         />
       </div>
       <div className="grid gap-2">

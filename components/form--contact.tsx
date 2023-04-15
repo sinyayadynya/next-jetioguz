@@ -73,7 +73,7 @@ export function FormContact({ className, ...props }: FormContactProps) {
             name="name"
             maxLength={255}
             required
-            className="px-2 py-3 border-2 border-gray-500focus:outline-dotted focus:outline-offset-2 focus:ring-0 focus:outline-green-700 focus:border-gray-500
+            className="px-2 py-3 border-2 border-gray-500focus:outline-dotted focus:outline-offset-2 focus:ring-0 focus:outline-green-700 focus:border-gray-500"
           />
         )}
       </div>
@@ -94,7 +94,7 @@ export function FormContact({ className, ...props }: FormContactProps) {
             name="mail"
             maxLength={255}
             required
-            className="px-2 py-3 border-2 border-gray-500focus:outline-dotted focus:outline-offset-2 focus:outline-green-700 focus:ring-0 focus:border-gray-500
+            className="px-2 py-3 border-2 border-gray-500focus:outline-dotted focus:outline-offset-2 focus:outline-green-700 focus:ring-0 focus:border-gray-500"
           />
         )}
       </div>
@@ -107,7 +107,7 @@ export function FormContact({ className, ...props }: FormContactProps) {
           name="subject"
           maxLength={255}
           required
-          className="px-2 py-3 border-2 border-gray-500focus:outline-dotted focus:outline-offset-2 focus:outline-green-700 focus:border-gray-500
+          className="px-2 py-3 border-2 border-gray-500focus:outline-dotted focus:outline-offset-2 focus:outline-green-700 focus:border-gray-500"
         />
       </div>
       <div className="grid gap-2">

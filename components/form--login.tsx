@@ -70,7 +70,7 @@ export function FormLogin({ className, ...props }: FormLoginProps) {
           name="username"
           maxLength={255}
           required
-          className="px-2 py-3 border-2 border-gray-500focus:outline-dotted focus:outline-offset-2 focus:ring-0 focus:outline-green-700 focus:border-gray-500
+          className="px-2 py-3 border-2 border-gray-500focus:outline-dotted focus:outline-offset-2 focus:ring-0 focus:outline-green-700 focus:border-gray-500"
         />
         <p className="text-sm text-text">{t("enter-your-drupal-username")}</p>
       </div>
@@ -83,7 +83,7 @@ export function FormLogin({ className, ...props }: FormLoginProps) {
           id="password"
           name="password"
           required
-          className="px-2 py-3 border-2 border-gray-500focus:outline-dotted focus:outline-offset-2 focus:ring-0 focus:outline-green-700 focus:border-gray-500
+          className="px-2 py-3 border-2 border-gray-500focus:outline-dotted focus:outline-offset-2 focus:ring-0 focus:outline-green-700 focus:border-gray-500"
         />
         <p className="text-sm text-text">
           {t("enter-the-password-that-accompanies-your-username")}
