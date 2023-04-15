@@ -107,15 +107,15 @@ export function Footer({ menus, blocks }: FooterProps) {
             </h2>
             <div className="pt-12 grid max-w-4xl mx-auto mt-4 text-sm text-center md:text-left md:grid-cols-4 gap-y-3 gap-x-4">
               {blocks.destinationActivities.map((term) => (
-                <Link
+                (<Link
                   key={term.id}
                   href={term.path.alias}
                   passHref
-                >
-                  <a className="font-semibold hover:underline">
-                    {term.name}
-                  </a>
-                </Link>
+                  className="font-semibold hover:underline">
+
+                  {term.name}
+
+                </Link>)
               ))}
             </div>
           </div>
@@ -131,11 +131,11 @@ export function Footer({ menus, blocks }: FooterProps) {
         <div className="border-t border-gray-900/10 mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
           <div className="xl:grid xl:grid-cols-3 xl:gap-8">
             <div className="space-y-8">
-              <Link href="/" passHref>
-                <a className="flex justify-start">
-                  <Logo className="h-7 text-primary-600" />
-                  <span className="sr-only">{siteConfig.name}</span>
-                </a>
+              <Link href="/" passHref className="flex justify-start">
+
+                <Logo className="h-7 text-primary-600" />
+                <span className="sr-only">{siteConfig.name}</span>
+
               </Link>
               <p className="text-sm leading-6 text-gray-600">
                 Explore the other side of Issyk-Kul lake.

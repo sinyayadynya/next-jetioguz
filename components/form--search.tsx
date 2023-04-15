@@ -18,45 +18,43 @@ export function FormSearch({ className, ...props }: FormSearchProps) {
     window.location.href = `/${router.locale}/search?keys=${data.get("keys")}`
   }
 
-  return (
-    <>
-      <Link href="/search" passHref>
-        <a className="md:hidden">
+  return <>
+    <Link href="/search" passHref className="md:hidden">
+
+      <span className="sr-only">{t("search")}</span>
+      <SearchIcon />
+
+    </Link>
+    <form
+      className={classNames("text-sm hidden md:flex items-center", className)}
+      onSubmit={onSubmit}
+      {...props}
+    >
+      <div className="relative flex-1">
+        <label
+          htmlFor="keys"
+          className="absolute inset-y-0 flex items-center px-2"
+        >
           <span className="sr-only">{t("search")}</span>
           <SearchIcon />
-        </a>
-      </Link>
-      <form
-        className={classNames("text-sm hidden md:flex items-center", className)}
-        onSubmit={onSubmit}
-        {...props}
-      >
-        <div className="relative flex-1">
-          <label
-            htmlFor="keys"
-            className="absolute inset-y-0 flex items-center px-2"
-          >
-            <span className="sr-only">{t("search")}</span>
-            <SearchIcon />
-          </label>
-          <input
-            id="keys"
-            name="keys"
-            required
-            className="py-2 pl-10 pr-4 border border-r-0 rounded-l-sm w-60 lg:w-80 border-gray-300 focus:outline-dotted focus:outline-offset-2 focus:ring-0 focus:outline-green-700 focus:border-gray-500"
-            placeholder={t("search-by-keyword-place-activity")}
-          />
-        </div>
-        <div>
-          <input
-            type="submit"
-            className="flex items-center px-3 py-2 font-serif transition-colors bg-white border rounded-sm rounded-r-sm cursor-pointer border-gray-300 hover:bg-green-700/10 hover:border-green-700"
-            value={t("search")}
-          />
-        </div>
-      </form>
-    </>
-  )
+        </label>
+        <input
+          id="keys"
+          name="keys"
+          required
+          className="py-2 pl-10 pr-4 border border-r-0 rounded-l-sm w-60 lg:w-80 border-gray-300 focus:outline-dotted focus:outline-offset-2 focus:ring-0 focus:outline-green-700 focus:border-gray-500"
+          placeholder={t("search-by-keyword-place-activity")}
+        />
+      </div>
+      <div>
+        <input
+          type="submit"
+          className="flex items-center px-3 py-2 font-serif transition-colors bg-white border rounded-sm rounded-r-sm cursor-pointer border-gray-300 hover:bg-green-700/10 hover:border-green-700"
+          value={t("search")}
+        />
+      </div>
+    </form>
+  </>;
 }
 
 interface SearchIconProps extends React.SVGProps<SVGSVGElement> {}

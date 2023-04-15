@@ -58,14 +58,14 @@ const collections = [
             </h1>
             <div className="mt-4 sm:mt-6">
               {block.field_content_link && (
-                <Link
-                    href={block.field_content_link.uri.replace("internal:", "")}
-                    passHref
-                >
-                    <a className="inline-block rounded-md border border-transparent bg-primary-600 py-3 px-8 font-medium text-white hover:bg-primary-700">
-                        {block.field_content_link.title}
-                    </a>
-                </Link>
+                (<Link
+                  href={block.field_content_link.uri.replace("internal:", "")}
+                  passHref
+                  className="inline-block rounded-md border border-transparent bg-primary-600 py-3 px-8 font-medium text-white hover:bg-primary-700">
+
+                  {block.field_content_link.title}
+
+                </Link>)
                 )}
             </div>
           </div>
@@ -111,5 +111,5 @@ const collections = [
           </div>
         </section>
       </div>
-    )
+    );
   }

@@ -43,10 +43,10 @@ export function NodePlaceCard({ node }: NodePlaceCardProps) {
                 <div>
                     <h3 className="font-semibold text-white">
                         <Link href={node.path.alias} passHref>
-                            <a>
-                                <span className="absolute inset-0" />
-                                {node.title}
-                            </a>
+
+                            <span className="absolute inset-0" />
+                            {node.title}
+
                         </Link>
                     </h3>
                     <p aria-hidden="true" className="mt-1 text-sm text-white">

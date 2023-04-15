@@ -19,17 +19,17 @@ export function BlockBanner({ block }: BlockBannerProps) {
             <p className="text-[19px] leading-snug">{block.field_summary}</p>
           )}
           {block.field_content_link && (
-            <Link
+            (<Link
               href={block.field_content_link.uri.replace("internal:", "")}
               passHref
-            >
-              <a className="px-6 py-3 font-serif text-xl text-white transition-colors border-2 rounded-md bg-secondary hover:bg-white hover:text-black border-secondary">
-                {block.field_content_link.title}
-              </a>
-            </Link>
+              className="px-6 py-3 font-serif text-xl text-white transition-colors border-2 rounded-md bg-secondary hover:bg-white hover:text-black border-secondary">
+
+              {block.field_content_link.title}
+
+            </Link>)
           )}
         </div>
       </div>
     </div>
-  )
+  );
 }

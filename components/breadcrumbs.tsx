@@ -25,8 +25,8 @@ export function Breadcrumbs({ items, ...props }: BreadcrumbsProps) {
         {items.map((item, index) => (
           <li key={index} className="flex items-center leading-none truncate">
             {item.url ? (
-              <Link href={item.url} passHref>
-                <a className="underline text-green-700">{item.title}</a>
+              <Link href={item.url} passHref className="underline text-green-700">
+                {item.title}
               </Link>
             ) : (
               item.title
@@ -48,5 +48,5 @@ export function Breadcrumbs({ items, ...props }: BreadcrumbsProps) {
         ))}
       </ol>
     </nav>
-  )
+  );
 }

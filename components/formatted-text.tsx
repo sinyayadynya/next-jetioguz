@@ -39,10 +39,10 @@ const options: HTMLReactParserOptions = {
 
         if (href && isRelative(href)) {
           return (
-            <Link href={href} passHref>
-              <a className={className}>{domToReact(domNode.children)}</a>
+            <Link href={href} passHref className={className}>
+              {domToReact(domNode.children)}
             </Link>
-          )
+          );
         }
       }
     }

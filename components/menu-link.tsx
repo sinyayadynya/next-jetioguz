@@ -10,12 +10,12 @@ export type MenuLinkProps = Omit<
 function CustomLink(props, ref) {
   let { href, children, ...rest } = props
   return (
-    <NextLink href={href} passHref>
-      <a ref={ref} {...rest}>
-        {children}
-      </a>
-    </NextLink>
-  )
+    (<NextLink href={href} passHref ref={ref} {...rest}>
+
+      {children}
+
+    </NextLink>)
+  );
 }
 
 export const MenuLink = React.forwardRef<HTMLAnchorElement, MenuLinkProps>(

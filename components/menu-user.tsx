@@ -16,10 +16,10 @@ export function MenuUser() {
 
   if (status === "unauthenticated") {
     return (
-      <Link href="/login" passHref>
-        <a className="text-grey-700 hover:underline">{t("login")}</a>
+      <Link href="/login" passHref className="text-grey-700 hover:underline">
+        {t("login")}
       </Link>
-    )
+    );
   }
 
   if (status === "authenticated") {
