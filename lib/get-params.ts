@@ -69,8 +69,6 @@ export function getParams(
             .addFields('media--remote_video', ['field_media_video', 'field_media_oembed_video', 'uri', 'resourceIdObjMeta'])
     }
 
-
-
     if (name === 'node--place--card') {
         return params
             .addFilter('status', '1')
@@ -80,6 +78,23 @@ export function getParams(
             ])
             .addFields('node--place', [
                 'title',
+                'path',
+                'field_media_images',
+            ])
+            .addFields('media--images', ['field_media_images'])
+            .addFields('file--file', ['uri', 'resourceIdObjMeta']);
+    }
+
+    if (name === 'node--place--teaser') {
+        return params
+            .addFilter('status', '1')
+            .addInclude([
+                'field_media_images.field_media_image.uid',
+                'field_media_images.field_media_author',
+            ])
+            .addFields('node--place', [
+                'title',
+                'body',
                 'path',
                 'field_media_images',
             ])

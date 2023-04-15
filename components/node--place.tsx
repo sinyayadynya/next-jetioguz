@@ -1,6 +1,5 @@
 import { DrupalNode } from 'next-drupal';
 import { useTranslation } from 'next-i18next';
-import Link from 'next/link';
 
 import { MediaImages } from 'components/media--images';
 import { Breadcrumbs } from 'components/breadcrumbs';

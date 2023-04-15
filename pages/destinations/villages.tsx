@@ -32,23 +32,27 @@ export default function PlacesPage({
       }}
     >
       <BlockPromoImageTiles block={promo} />
-      <PageHeader
-        heading="Villages in Jeti-Oguz"
-        breadcrumbs={[
-            {
-                title: t('destinations'),
-                url: '/destinations',
-            },
-            {
-                title: "Villages",
-            },
-        ]}
-      />
-      <div className="container">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {places.map((place) => (
-            <NodePlaceTeaser key={place.id} node={place} />
-          ))}
+      <div className="bg-gray-50">
+        <div className="mx-auto max-w-2xl px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
+            {/* Details section */}
+            <section aria-labelledby="details-heading">
+                <div className="flex flex-col items-center text-center">
+                    <h2 id="details-heading" className="text-3xl font-serif font-bold tracking-tight text-gray-900 sm:text-4xl">
+                        The villages
+                    </h2>
+                    <p className="mt-3 max-w-3xl text-lg text-gray-600">
+                        Discover the authentic Kyrgyz culture and warm hospitality in Jeti-Oguz's picturesque villages. Explore the hidden gems of our charming rural communities and experience the unspoiled beauty of rural Kyrgyzstan.
+                    </p>
+                </div>
+
+                <div className="mt-16 grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:gap-x-8">
+
+                    {places.map((place) => (
+                        <NodePlaceTeaser key={place.id} node={place} />
+                    ))}
+
+                </div>
+            </section>
         </div>
       </div>
     </Layout>
