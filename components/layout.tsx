@@ -6,6 +6,19 @@ import { TailwindIndicator } from "components/tailwind-indicator"
 import { GetStaticPropsContext, GetStaticPropsResult } from "next"
 import { drupal } from "lib/drupal"
 import { JsonApiResource } from "next-drupal"
+import localFont from "next/font/local"
+
+const hubot = localFont({
+    src: './fonts/Hubot-Sans.woff2',
+    variable: '--font-hubot',
+    display: 'swap',
+})
+
+const inter = localFont({
+    src: './fonts/Inter.var.woff2',
+    variable: '--font-inter',
+    display: 'swap',
+});
 
 export interface LayoutProps extends HeaderProps, FooterProps {
   meta?: MetaProps
@@ -18,10 +31,10 @@ export function Layout({ meta, menus, blocks, children }: LayoutProps) {
   return (
     <>
       <Meta {...meta} />
-      <div className="flex flex-col min-h-screen">
+      <div className={`${inter.variable} ${hubot.variable}`}>
         <PreviewAlert />
         <Header menus={{ main: menus.main }} />
-        <main className="flex-1 bg-white">{children}</main>
+        <main className="flex-1 bg-white font-sans">{children}</main>
         <Footer menus={{ footer: menus.footer }} blocks={blocks} />
       </div>
       <TailwindIndicator />

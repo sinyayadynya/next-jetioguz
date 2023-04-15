@@ -98,7 +98,7 @@ export interface FooterProps extends FooterBlocksProps {
 export function Footer({ menus, blocks }: FooterProps) {
   const { t } = useTranslation("common")
   return (
-    <footer>
+    <footer className="font-sans">
       {blocks.destinationActivities?.length ? (
         <section className="py-16 sm:py-24 lg:py-32 text-gray-700 bg-gray-200">
           <div className="container">

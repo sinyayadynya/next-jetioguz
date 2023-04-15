@@ -53,7 +53,7 @@ const collections = [
             <div className="h-48 w-full bg-white" />
           </div>
           <div className="relative py-32">
-            <h1 className="text-4xl font-serif font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
+            <h1 className="text-4xl font-serif font-semibold tracking-tight text-white sm:text-5xl md:text-6xl">
                 {block.field_title}
             </h1>
             <div className="mt-4 sm:mt-6">

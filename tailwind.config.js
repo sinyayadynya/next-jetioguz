@@ -77,8 +77,10 @@ module.exports = {
                 },
             },
             fontFamily: {
-                sans: ['Inter', ...fontFamily.sans],
-                serif: ['Martian Mono', ...fontFamily.serif],
+                // sans: ['Inter', ...fontFamily.sans],
+                // mono: ['Martian Mono', ...fontFamily.serif],
+                sans: ['var(--font-inter)'],
+                serif: ['var(--font-hubot)'],
             },
         },
     },
