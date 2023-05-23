@@ -1,6 +1,6 @@
 # jeti-oguz-destination
 
-The Destination Jeti-Oguz site built as a headless Drupal with Next.js.
+The Destination Jeti Oguz site built as a headless Drupal with Next.js.
 
 See https://demo.next-drupal.org
 
