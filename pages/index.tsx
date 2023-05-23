@@ -49,17 +49,6 @@ export default function IndexPage({
                         </div>
 
                         <div className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:grid-rows-2 sm:gap-x-6 lg:gap-8">
-                            {/* {promotedPlaces.map((node, index) => (
-                                <NodePlaceCard
-                                    node={node}
-                                    key={node.id}
-                                    className={classNames({
-                                        "group aspect-w-2 aspect-h-1 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2": index === 0,
-                                        "group aspect-w-2 aspect-h-1 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full": index !== 0,
-                                    })}
-                                />
-                            ))} */}
-
                             {promotedPlaces?.length
                                 ? promotedPlaces.map((node, index) => (
                                     <NodePlaceCard
@@ -84,7 +73,7 @@ export default function IndexPage({
                     <div className="mx-auto max-w-2xl text-center">
                         <h2 className="font-serif text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">From the blog</h2>
                         <p className="mt-2 text-lg leading-8 text-gray-600">
-                            Read the last news about Jeti-Oguz.
+                            Read the last news about Jeti Oguz.
                         </p>
                     </div>
                     <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-y-20 gap-x-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
@@ -111,7 +100,7 @@ export async function getStaticProps(
         DrupalNode[]
     >('node--place', context, {
         params: getParams('node--place', 'card')
-            .addFilter('field_area.meta.drupal_internal__target_id', '3868')
+            .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
             .addSort('created', 'DESC')
             .addPageLimit(3)
             .getQueryObject(),
@@ -132,7 +121,7 @@ export async function getStaticProps(
         DrupalBlock[]
     >('block_content--promo_block_overlapping_images', context, {
         params: getParams('block_content--promo_block_overlapping_images')
-            .addFilter('info', 'Jeti-Oguz Home Promo')
+            .addFilter('info', 'Jeti Oguz Home Promo')
             .addPageLimit(1)
             .getQueryObject(),
     });
@@ -141,7 +130,7 @@ export async function getStaticProps(
         DrupalBlock[]
     >('block_content--promo_block', context, {
         params: getParams('block_content--promo_block')
-            .addFilter('info', 'Jeti-Oguz Promo')
+            .addFilter('info', 'Jeti Oguz Promo')
             .addPageLimit(1)
             .getQueryObject(),
     });

@@ -26,13 +26,13 @@ export async function getGlobalElements(
 
   // Fetch places categories view.
   // Unused: require to add URL alias on nomadsland.travel
-  const { results: placesCategories } = await drupal.getView<
-    DrupalTaxonomyTerm[]
-  >("places_categories--block", {
-    locale: context.locale,
-    defaultLocale: context.defaultLocale,
-    params: getParams("taxonomy_term--categories").addSort("name").getQueryObject(),
-  })
+//   const { results: placesCategories } = await drupal.getView<
+//     DrupalTaxonomyTerm[]
+//   >("places_categories--block", {
+//     locale: context.locale,
+//     defaultLocale: context.defaultLocale,
+//     params: getParams("taxonomy_term--categories").addSort("name").getQueryObject(),
+//   })
 
   // Fetch destination activities view.
   const { results: destinationActivities } = await drupal.getView<
@@ -51,7 +51,7 @@ export async function getGlobalElements(
     DrupalBlock[]
   >("block_content--incentives_block", context, {
     params: getParams("block_content--incentives_block")
-      .addFilter("info", "Jeti-Oguz incentive 4-column with illustrations")
+      .addFilter("info", "Jeti Oguz incentive 4-column with illustrations")
       .addPageLimit(1)
       .getQueryObject(),
   })
@@ -63,7 +63,7 @@ export async function getGlobalElements(
     DrupalBlock[]
   >("block_content--disclaimer_block", context, {
     params: getParams("block_content--disclaimer_block")
-      .addFilter("info", "Jeti-Oguz Disclaimer")
+      .addFilter("info", "Jeti Oguz Disclaimer")
       .addPageLimit(1)
       .getQueryObject(),
   })
@@ -94,5 +94,3 @@ export async function getGlobalElements(
 //   }))
 //   return blocksAdditionalContent
 // }
-
-

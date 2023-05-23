@@ -73,59 +73,102 @@ export function getParams(
         return params
             .addFilter('status', '1')
             .addInclude([
-                'field_media_images.field_media_image.uid',
-                'field_media_images.field_media_author',
+                'field_dmo_area',
+                'field_media_image.field_media_image',
             ])
             .addFields('node--place', [
                 'title',
                 'path',
-                'field_media_images',
+                'field_dmo_area',
+                'field_media_image',
             ])
-            .addFields('media--images', ['field_media_images'])
-            .addFields('file--file', ['uri', 'resourceIdObjMeta']);
+            .addFields('taxonomy_term--dmo_area', ['name', 'path'])
+            .addFields('media--image', ['field_media_image'])
     }
 
     if (name === 'node--place--teaser') {
         return params
             .addFilter('status', '1')
             .addInclude([
-                'field_media_images.field_media_image.uid',
-                'field_media_images.field_media_author',
+                'field_place_type',
+                'field_dmo_area',
+                'field_media_image.field_media_image',
             ])
             .addFields('node--place', [
                 'title',
                 'body',
                 'path',
-                'field_media_images',
+                'field_place_type',
+                'field_dmo_area',
+                'field_media_image',
             ])
-            .addFields('media--images', ['field_media_images'])
-            .addFields('file--file', ['uri', 'resourceIdObjMeta']);
+            .addFields('taxonomy_term--place_types', ['name', 'path'])
+            .addFields('taxonomy_term--dmo_area', ['name', 'path'])
+            .addFields('media--image', ['field_media_image'])
     }
 
     if (name === 'node--place') {
         return params
             .addInclude([
+                'field_media_image.field_media_image',
                 'field_media_images.field_media_image',
                 'field_media_images.field_media_author',
-                'field_content_category',
-                'field_area',
+                'field_place_type',
+                'field_dmo_area',
             ])
             .addFields('node--place', [
                 'title',
                 'status',
                 'path',
-                'field_content_category',
-                'field_area',
-                'field_place_altitude',
                 'body',
+                'field_place_type',
+                'field_dmo_area',
+                'field_place_altitude',
                 'field_place_geofield',
+                'field_media_image',
                 'field_media_images',
             ])
             .addFields('media--images', ['field_media_images'])
             .addFields('file--file', ['uri', 'resourceIdObjMeta'])
-            .addFields('taxonomy_term--categories', ['name', 'path'])
-            .addFields('taxonomy_term--places', ['name', 'path'])
+            .addFields('taxonomy_term--place_types', ['name', 'path'])
+            .addFields('taxonomy_term--dmo_area', ['name', 'path'])
             .addFields('taxonomy_term--media_authors', ['name', 'description', 'resourceIdObjMeta']);
+    }
+
+    if (name === 'product--accommodation') {
+        return params
+            .addInclude([
+                'field_media_image.field_media_image',
+                'field_accommodation_type',
+                'field_dmo_area',
+            ])
+            .addFields('product--accommodation', [
+                'title',
+                'path',
+                'body',
+                'field_media_image',
+                'field_accommodation_type',
+                'field_dmo_area',
+            ])
+            .addFields('taxonomy_term--accommodation_types', ['name', 'path'])
+            .addFields('taxonomy_term--dmo_places', ['name', 'path']);
+    }
+
+    if (name === 'product--accommodation--card') {
+        return params
+            .addInclude([
+                'field_media_image.field_media_image',
+                'field_accommodation_type',
+            ])
+            .addFields('product--accommodation', [
+                'title',
+                'path',
+                'field_media_image',
+                'field_accommodation_type',
+                'field_dmo_area',
+            ])
+            .addFields('taxonomy_term--accommodation_types', ['name', 'path'])
+            .addFields('taxonomy_term--dmo_places', ['name', 'path']);
     }
 
     if (name === 'block_content--promo_block_overlapping_images') {
@@ -210,12 +253,20 @@ export function getParams(
         return params.addFields('taxonomy_term--categories', ['name', 'path']);
     }
 
-    if (name === 'taxonomy_term--places') {
-        return params.addFields('taxonomy_term--places', ['name', 'path']);
+    if (name === 'taxonomy_term--place_type') {
+        return params.addFields('taxonomy_term--places_type', ['name', 'path']);
     }
 
     if (name === 'taxonomy_term--activities') {
         return params.addFields('taxonomy_term--activities', ['name', 'path']);
+    }
+
+    if (name === 'taxonomy_term--accommodation_types') {
+        return params.addFields('taxonomy_term--accommodation_types', ['name', 'path']);
+    }
+
+    if (name === 'taxonomy_term--dmo_places') {
+        return params.addFields('taxonomy_term--dmo_places', ['name', 'path']);
     }
 
 }

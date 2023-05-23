@@ -99,7 +99,7 @@ export function NodeArticle({ node, additionalContent }: NodeArticleProps) {
                                 {t('more-featured-articles')}
                             </h2>
                             <p className="mt-2 text-lg leading-8 text-gray-600">
-                                Read the last news about Jeti-Oguz.
+                                Read the last news about Jeti Oguz.
                             </p>
                         </div>
                         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-y-20 gap-x-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">

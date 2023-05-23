@@ -38,7 +38,7 @@ export default function PlacesPage({
             <section aria-labelledby="details-heading">
                 <div className="flex flex-col items-center text-center">
                     <h2 id="details-heading" className="text-3xl font-serif font-bold tracking-tight text-gray-900 sm:text-4xl">
-                        The villages
+                        On the beach
                     </h2>
                     <p className="mt-3 max-w-3xl text-lg text-gray-600">
                         Discover the authentic Kyrgyz culture and warm hospitality in Jeti-Oguz's picturesque villages. Explore the hidden gems of our charming rural communities and experience the unspoiled beauty of rural Kyrgyzstan.
@@ -69,7 +69,7 @@ export async function getStaticProps(
     {
       params: getParams("node--place", "card")
         .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
-        .addFilter('field_place_type.meta.drupal_internal__target_id', '4251')
+        .addFilter('field_place_type.meta.drupal_internal__target_id', '4269')
         .addSort("created", "DESC")
         .getQueryObject(),
     }

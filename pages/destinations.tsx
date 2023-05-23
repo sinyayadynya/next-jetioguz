@@ -28,7 +28,7 @@ export default function PlacesPage({
       menus={menus}
       blocks={blocks}
       meta={{
-        title: t("places"),
+        title: t("destinations"),
       }}
     >
       <BlockBanner block={banner} />
@@ -70,7 +70,7 @@ export async function getStaticProps(
     context,
     {
       params: getParams("block_content--banner_block")
-        .addFilter("info", "Jeti-Oguz Places Banner")
+        .addFilter("info", "Jeti Oguz Places Banner")
         .addPageLimit(1)
         .getQueryObject(),
     }

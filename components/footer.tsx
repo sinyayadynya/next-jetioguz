@@ -5,36 +5,36 @@ import {
 import { useTranslation } from "next-i18next"
 
 import siteConfig from "site.config"
-import { Logo } from "components/logo"
+import { LogoFooter } from "components/logo-footer"
 import { BlockIncentives, FooterBlocksProps } from "components/block--incentives"
 
 const navigation = {
   things_to_do: [
-    { name: 'Sport & Leisure', href: '#' },
-    { name: 'Culture & Museum', href: '#' },
-    { name: 'Events', href: '#' },
-    { name: 'Food & Drink', href: '#' },
-    { name: 'Transportation', href: '#' },
+    { name: 'Sport & Leisure', href: '/things-to-do/sport-leisure' },
+    { name: 'Culture & Museum', href: '/things-to-do/culture-museum' },
+    { name: 'Events', href: '/things-to-do/events' },
+    { name: 'Food & Drink', href: '/things-to-do/food-drink' },
+    { name: 'Transportation', href: '/things-to-do/transportation' },
   ],
   destinations: [
-    { name: 'Villages', href: '#' },
-    { name: 'Nature sites', href: '#' },
-    { name: 'Lakes', href: '#' },
-    { name: 'Beach', href: '#' },
-    { name: 'Sanatorium', href: '#' },
+    { name: 'Villages', href: '/destinations/villages' },
+    { name: 'Nature sites', href: '/destinations/nature-sites' },
+    { name: 'Lakes', href: '/destinations/lakes' },
+    { name: 'Beaches', href: '/destinations/beaches' },
+    { name: 'Wellness', href: '/destinations/welness' },
   ],
   planning: [
-    { name: 'How to go there', href: '#' },
-    { name: 'Contact', href: '#' },
-    { name: 'Office & Team', href: '#' },
-    { name: 'Tours', href: '#' },
-    { name: 'Offers', href: '#' },
-    { name: 'Accommodation', href: '#' },
+    { name: 'How to go there', href: '/planning/how-to-go-there' },
+    { name: 'Contact', href: '/planning/contact' },
+    { name: 'Office & Team', href: '/planning/office-team' },
+    { name: 'Tours', href: '/booking/tours' },
+    { name: 'Offers', href: '/booking/offers' },
+    { name: 'Accommodation', href: '/accommodation' },
   ],
   legal: [
-    { name: 'Claim', href: '#' },
-    { name: 'Privacy', href: '#' },
-    { name: 'Terms', href: '#' },
+    { name: 'Claim', href: '/legal/claim' },
+    { name: 'Privacy', href: '/legal/privacy' },
+    { name: 'Terms', href: '/legal/terms' },
   ],
   social: [
     {
@@ -133,7 +133,7 @@ export function Footer({ menus, blocks }: FooterProps) {
             <div className="space-y-8">
               <Link href="/" passHref className="flex justify-start">
 
-                <Logo className="h-7 text-primary-600" />
+                <LogoFooter className="h-24 text-primary-600" />
                 <span className="sr-only">{siteConfig.name}</span>
 
               </Link>
@@ -235,7 +235,7 @@ export function Footer({ menus, blocks }: FooterProps) {
           </div>
           <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
             <p className="text-xs leading-5 text-gray-500">
-              &copy; 2023 Destination Jeti-Oguz. A non-profit organization. All rights reserved.
+              &copy; 2023 Destination Jeti Oguz. A non-profit organization. All rights reserved.
             </p>
           </div>
         </div>

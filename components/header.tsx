@@ -15,36 +15,46 @@ import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
 import {
   ArrowPathIcon,
   Bars3Icon,
-  ChartPieIcon,
+  BuildingLibraryIcon,
+  CakeIcon,
+  CalendarDaysIcon,
+  ChatBubbleLeftIcon,
   CursorArrowRaysIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
+  FaceSmileIcon,
+  GlobeAsiaAustraliaIcon,
+  HomeIcon,
+  MapIcon,
+  SparklesIcon,
+  SunIcon,
+  TrophyIcon,
+  TruckIcon,
+  UserGroupIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 
 const thingsToDo = [
-  { name: 'Sport & Leisure', description: 'Get active in Jeti-Oguz’s great outdoors', href: '#', icon: ChartPieIcon },
-  { name: 'Culture & Museum', description: 'Explore Kyrgyzstan’s rich history and heritage', href: '#', icon: CursorArrowRaysIcon },
-  { name: 'Events', description: 'Stay up to date on Jeti-Oguz’s latest happenings', href: '#', icon: FingerPrintIcon },
-  { name: 'Food & Drink', description: 'Savor the flavors of Jeti-Oguz’s local cuisine', href: '#', icon: SquaresPlusIcon },
-  { name: 'Transportation', description: 'Getting around Jeti-Oguz made easy', href: '#', icon: ArrowPathIcon },
+  { name: 'Sport & Leisure', description: 'Get active in Jeti Oguz’s great outdoors', href: '/things-to-do/sport-leisure', icon: TrophyIcon },
+  { name: 'Culture & Museum', description: 'Explore Kyrgyzstan’s rich history and heritage', href: '/things-to-do/culture-museum', icon: BuildingLibraryIcon },
+  { name: 'Events', description: 'Stay up to date on Jeti Oguz’s latest happenings', href: '/things-to-do/events', icon: CalendarDaysIcon },
+  { name: 'Food & Drink', description: 'Savor the flavors of Jeti Oguz’s local cuisine', href: '/things-to-do/food-drink', icon: CakeIcon },
+  { name: 'Transportation', description: 'Getting around Jeti Oguz made easy', href: '/things-to-do/transportation', icon: TruckIcon },
 ]
 const destinations = [
-    { name: 'Villages', description: 'Experience Kyrgyz hospitality in Jeti-Oguz’s charming villages', href: '/destinations/villages', icon: ChartPieIcon },
-    { name: 'Nature sites', description: 'Discover Jeti-Oguz’s breathtaking natural wonders', href: '/destinations/nature-sites', icon: CursorArrowRaysIcon },
-    { name: 'Lakes', description: 'Take in the serene beauty of Jeti-Oguz’s stunning lakes', href: '/destinations/lakes', icon: FingerPrintIcon },
-    { name: 'Beach', description: 'Relax and recharge on Issyk-Kul’s beautiful beaches', href: '/destinations/beach', icon: SquaresPlusIcon },
-    { name: 'Sanatorium', description: 'Rejuvenate mind and body in Jeti-Oguz’s tranquil sanatoriums', href: '/destinations/sanatorium', icon: ArrowPathIcon },
+    { name: 'Villages', description: 'Experience Kyrgyz hospitality in Jeti Oguz’s charming villages', href: '/destinations/villages', icon: HomeIcon },
+    { name: 'Nature sites', description: 'Discover Jeti Oguz’s breathtaking natural wonders', href: '/destinations/nature-sites', icon: GlobeAsiaAustraliaIcon },
+    { name: 'Lakes', description: 'Take in the serene beauty of Jeti Oguz’s stunning lakes', href: '/destinations/lakes', icon: SparklesIcon },
+    { name: 'Beaches', description: 'Relax and recharge on Issyk-Kul’s beautiful beaches', href: '/destinations/beaches', icon: SunIcon },
+    { name: 'Wellness', description: 'Rejuvenate mind and body in Jeti Oguz’s tranquil sanatoriums', href: '/destinations/wellness', icon: FaceSmileIcon },
 ]
 const planning = [
-    { name: 'How to go there', description: 'Getting to Jeti-Oguz made easy - plan your trip now', href: '#', icon: ChartPieIcon },
-    { name: 'Contact', description: 'Get in touch with our friendly team for all your Jeti-Oguz inquiries', href: '#', icon: CursorArrowRaysIcon },
-    { name: 'Office & Team', description: 'Meet the people behind your Jeti-Oguz adventure', href: '#', icon: FingerPrintIcon },
+    { name: 'How to go there', description: 'Getting to Jeti Oguz made easy - plan your trip now', href: '/planning/how-to-go-there', icon: MapIcon },
+    { name: 'Contact', description: 'Get in touch with our friendly team for all your Jeti Oguz inquiries', href: '/planning/contact', icon: ChatBubbleLeftIcon },
+    { name: 'Office & Team', description: 'Meet the people behind your Jeti Oguz adventure', href: '/planning/office-team', icon: UserGroupIcon },
 ]
 const callsToAction = [
-  { name: 'Watch video', href: '#', icon: PlayCircleIcon },
-  { name: 'Contact us', href: '#', icon: PhoneIcon },
+  { name: 'Watch video', href: '/videos', icon: PlayCircleIcon },
+  { name: 'Contact us', href: '/planning/contact', icon: PhoneIcon },
 ]
 
 // function classNames(...classes) {
@@ -65,9 +75,9 @@ export function Header({ menus }: HeaderProps) {
 
 
   return (
-      <header className="bg-white font-sans">
+      <header className="absolute inset-x-0 top-0 z-50 bg-white bg-opacity-90 backdrop-blur-sm backdrop-filter font-sans">
           <nav
-              className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+              className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8"
               aria-label="Global"
           >
               <div className="flex lg:flex-1">
@@ -90,7 +100,7 @@ export function Header({ menus }: HeaderProps) {
               </div>
               <Popover.Group className="hidden lg:flex lg:gap-x-12">
                   <Popover className="relative">
-                      <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
+                      <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 focus:outline-none">
                           {t("things-to-do")}
                           <ChevronDownIcon
                               className="h-5 w-5 flex-none text-gray-400"
@@ -116,7 +126,7 @@ export function Header({ menus }: HeaderProps) {
                                       >
                                           <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                                               <item.icon
-                                                  className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
+                                                  className="h-6 w-6 text-gray-600 group-hover:text-primary-600"
                                                   aria-hidden="true"
                                               />
                                           </div>
@@ -155,7 +165,7 @@ export function Header({ menus }: HeaderProps) {
                   </Popover>
 
                   <Popover className="relative">
-                      <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
+                      <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 focus:outline-none">
                           {t("destinations")}
                           <ChevronDownIcon
                               className="h-5 w-5 flex-none text-gray-400"
@@ -181,7 +191,7 @@ export function Header({ menus }: HeaderProps) {
                                       >
                                           <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                                               <item.icon
-                                                  className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
+                                                  className="h-6 w-6 text-gray-600 group-hover:text-primary-600"
                                                   aria-hidden="true"
                                               />
                                           </div>
@@ -220,14 +230,14 @@ export function Header({ menus }: HeaderProps) {
                   </Popover>
 
                   <a
-                      href="#"
+                      href="/accommodation"
                       className="text-sm font-semibold leading-6 text-gray-900"
                   >
                       {t("accommodation")}
                   </a>
 
                   <Popover className="relative">
-                      <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
+                      <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 focus:outline-none">
                         {t("planning")}
                           <ChevronDownIcon
                               className="h-5 w-5 flex-none text-gray-400"
@@ -253,7 +263,7 @@ export function Header({ menus }: HeaderProps) {
                                       >
                                           <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                                               <item.icon
-                                                  className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
+                                                  className="h-6 w-6 text-gray-600 group-hover:text-primary-600"
                                                   aria-hidden="true"
                                               />
                                           </div>
@@ -292,7 +302,7 @@ export function Header({ menus }: HeaderProps) {
                   </Popover>
 
                   <a
-                      href="#"
+                      href="/booking"
                       className="text-sm font-semibold leading-6 text-gray-900"
                   >
                       {t("booking")}
