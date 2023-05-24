@@ -53,4 +53,3 @@ export function BlockIncentives({ blocks }: FooterBlocksProps) {
     </section>
   )
 }
-

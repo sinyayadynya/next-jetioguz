@@ -99,28 +99,6 @@ export function Footer({ menus, blocks }: FooterProps) {
   const { t } = useTranslation("common")
   return (
     <footer className="font-sans">
-      {blocks.destinationActivities?.length ? (
-        <section className="py-16 sm:py-24 lg:py-32 text-gray-700 bg-gray-200">
-          <div className="container">
-            <h2 className="font-serif text-3xl text-center">
-              {t('activities')}
-            </h2>
-            <div className="pt-12 grid max-w-4xl mx-auto mt-4 text-sm text-center md:text-left md:grid-cols-4 gap-y-3 gap-x-4">
-              {blocks.destinationActivities.map((term) => (
-                (<Link
-                  key={term.id}
-                  href={term.path.alias}
-                  passHref
-                  className="font-semibold hover:underline">
-
-                  {term.name}
-
-                </Link>)
-              ))}
-            </div>
-          </div>
-        </section>
-      ) : null}
 
       <BlockIncentives blocks={blocks} />
 

@@ -6,13 +6,12 @@ import { drupal } from 'lib/drupal';
 import { getGlobalElements } from 'lib/get-global-elements';
 import { getParams } from 'lib/get-params';
 import { Layout, LayoutProps } from 'components/layout';
-import { NodePlaceTeaser } from 'components/node--place--teaser';
 import { PageHeader } from 'components/page-header';
 import { BlockPromoBgImageLargeContent } from 'components/block--promo-bg-image-large-content';
 
 interface SportLeisurePageProps extends LayoutProps {
     banner: DrupalBlock;
-    places: DrupalNode[];
+    promo: DrupalBlock;
 }
 
 const features = [
@@ -285,40 +284,4 @@ export default function SportLeisurePage({
 
         </Layout>
     );
-}
-
-export async function getStaticProps(
-    context: GetStaticPropsContext
-): Promise<GetStaticPropsResult<PlacePageProps>> {
-    // Fetch all published places sorted by date.
-    const places = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
-        'node--place',
-        context,
-        {
-            params: getParams('node--place', 'card')
-                .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
-                .addFilter(
-                    'field_content_category.meta.drupal_internal__target_id',
-                    '191'
-                )
-                .addSort('created', 'DESC')
-                .getQueryObject(),
-        }
-    );
-
-    const [promo] = await drupal.getResourceCollectionFromContext<
-        DrupalBlock[]
-    >('block_content--banner_block', context, {
-        params: getParams('block_content--banner_block')
-            .addFilter('info', 'Jeti Oguz Places Banner')
-            .addPageLimit(1)
-            .getQueryObject(),
-    });
-
-    return {
-        props: {
-            ...(await getGlobalElements(context)),
-            promo,
-        },
-    };
 }

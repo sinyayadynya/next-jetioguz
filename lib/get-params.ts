@@ -21,6 +21,7 @@ export function getParams(
     if (name === 'node--article--card') {
         return params
             .addFilter('status', '1')
+            .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
             .addInclude([
                 'field_media_image.field_media_image',
                 'uid.user_picture',
@@ -39,6 +40,7 @@ export function getParams(
 
     if (name === 'node--article') {
         return params
+            .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
             .addInclude([
                 'field_paragraphs',
                 'field_paragraphs.field_media_image.field_media_image',
@@ -72,6 +74,7 @@ export function getParams(
     if (name === 'node--place--card') {
         return params
             .addFilter('status', '1')
+            .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
             .addInclude([
                 'field_dmo_area',
                 'field_media_image.field_media_image',
@@ -89,6 +92,7 @@ export function getParams(
     if (name === 'node--place--teaser') {
         return params
             .addFilter('status', '1')
+            .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
             .addInclude([
                 'field_place_type',
                 'field_dmo_area',
@@ -109,6 +113,7 @@ export function getParams(
 
     if (name === 'node--place') {
         return params
+            .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
             .addInclude([
                 'field_media_image.field_media_image',
                 'field_media_images.field_media_image',

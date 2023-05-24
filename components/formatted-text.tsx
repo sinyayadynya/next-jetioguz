@@ -16,15 +16,21 @@ const options: HTMLReactParserOptions = {
           class: className,
           width = "100px",
           height = "100px",
-        } = domNode.attribs
+        } = domNode.attribs as {
+          src: string;
+          alt: string;
+          class: string;
+          width?: string;
+          height?: string;
+        };
 
         if (isRelative(src)) {
           return (
             <div className={className}>
               <Image
                 src={`${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}/${src}`}
-                width={`${width}px`}
-                height={`${height}px`}
+
+
                 alt={alt}
                 layout="intrinsic"
                 objectFit="cover"
@@ -35,7 +41,10 @@ const options: HTMLReactParserOptions = {
       }
 
       if (domNode.name === "a") {
-        const { href, class: className } = domNode.attribs
+        const { href, class: className } = domNode.attribs as {
+          href: string;
+          class: string;
+        };
 
         if (href && isRelative(href)) {
           return (

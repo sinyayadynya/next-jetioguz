@@ -60,6 +60,7 @@ export async function getStaticProps(
     context,
     {
       params: getParams("node--place", "card")
+        .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
         .addSort("created", "DESC")
         .getQueryObject(),
     }

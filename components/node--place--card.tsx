@@ -5,6 +5,7 @@ import { MediaImage } from 'components/media--image';
 
 interface NodePlaceCardProps {
     node: DrupalNode;
+    className?: string
 }
 
 export function NodePlaceCard({ node }: NodePlaceCardProps) {

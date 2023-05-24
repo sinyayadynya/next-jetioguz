@@ -40,7 +40,10 @@ export default NextAuth({
         }
 
         return {
-          accessToken: await response.json(),
+            id: 'some-id',
+            name: 'some-name',
+            email: 'some-email',
+            accessToken: await response.json(),
         }
       },
     }),

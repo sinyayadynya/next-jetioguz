@@ -24,7 +24,7 @@ export default function ArticlesPage({
 
   return (
     <Layout
-    //   menus={menus}
+      menus={menus}
       blocks={blocks}
       meta={{
         title: t("articles"),
@@ -50,7 +50,7 @@ export default function ArticlesPage({
 }
 
 export async function getStaticProps(
-  // context: GetStaticPropsContext
+  context: GetStaticPropsContext
 ) {
   // Fetch all published articles sorted by date.
   const articles = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
