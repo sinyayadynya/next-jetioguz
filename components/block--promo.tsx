@@ -10,20 +10,20 @@ const testimonials = [
     {
       id: 1,
       quote:
-        'My order arrived super quickly. The product is even better than I hoped it would be. Very happy customer over here!',
-      attribution: 'Sarah Peters, New Orleans',
+        'A window into Kyrgyz life in its most vibrant form - the joy, hardships, and depth of human connection in a stunning landscape barely touched by time.',
+      attribution: 'Mirna S., Cairo',
     },
     {
       id: 2,
       quote:
-        'I had to return a purchase that didn’t fit. The whole process was so simple that I ended up ordering two new items!',
-      attribution: 'Kelly McPherson, Chicago',
+        'What an inspiration. Local vision and pride of place were my guides to an experience I’ll never forget.!',
+      attribution: 'Paul D., Berlin',
     },
     {
       id: 3,
       quote:
-        'Now that I’m on holiday for the summer, I’ll probably order a few more shirts. It’s just so convenient, and I know the quality will always be there.',
-      attribution: 'Chris Paul, Phoenix',
+        'Magic happens where the mountains meet the soul. I left hopeful for a world awakening to the wisdom and wonder within.',
+      attribution: 'Grace W., Melbourne',
     },
 ]
 
