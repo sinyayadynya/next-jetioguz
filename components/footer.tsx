@@ -100,7 +100,7 @@ export function Footer({ menus, blocks }: FooterProps) {
   return (
     <footer className="font-sans">
 
-      <BlockIncentives blocks={blocks} />
+      {/* <BlockIncentives blocks={blocks} /> */}
 
       <section className="bg-gray-50" aria-labelledby="footer-heading">
         <h2 id="footer-heading" className="sr-only">
