@@ -10,10 +10,8 @@ export interface FooterBlocksProps {
     destinationActivities: DrupalTaxonomyTerm[]
     footerPromo?: DrupalBlock
     blockIncentives: DrupalBlock
-    disclaimer: DrupalBlock
   }
 }
-
 
 export function BlockIncentives({ blocks }: FooterBlocksProps) {
   const { t } = useTranslation("common")

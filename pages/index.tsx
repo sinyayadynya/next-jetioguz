@@ -99,7 +99,7 @@ export async function getStaticProps(
     const promotedPlaces = await drupal.getResourceCollectionFromContext<
         DrupalNode[]
     >('node--place', context, {
-        params: getParams('node--place', 'card')
+        params: getParams('node--place--card')
             .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
             .addSort('created', 'DESC')
             .addPageLimit(3)
@@ -109,7 +109,7 @@ export async function getStaticProps(
     const promotedArticles = await drupal.getResourceCollectionFromContext<
         DrupalNode[]
     >('node--article', context, {
-        params: getParams('node--article', 'card')
+        params: getParams('node--article--card')
             //   .addFilter("promote", "1")
             .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
             .addPageLimit(3)
@@ -126,6 +126,12 @@ export async function getStaticProps(
             .getQueryObject(),
     });
 
+    // const promoOverlappingImages = await drupal.getResourceFromContext<DrupalBlock>(
+    //     'block_content--promo_block_overlapping_images',
+    //     '5d29a22e-c60b-4aec-a8fe-4c2dabe0e5c6',
+    //     context
+    // );
+
     const [promo] = await drupal.getResourceCollectionFromContext<
         DrupalBlock[]
     >('block_content--promo_block', context, {
@@ -134,6 +140,12 @@ export async function getStaticProps(
             .addPageLimit(1)
             .getQueryObject(),
     });
+
+    // const promo = await drupal.getResourceFromContext<DrupalBlock>(
+    //     'block_content--promo_block',
+    //     '6ed95441-e1a5-4ddc-ba48-40f6bf7114c5',
+    //     context
+    // );
 
     return {
         props: {

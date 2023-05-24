@@ -1,25 +1,22 @@
 import { DrupalJsonApiParams } from 'drupal-jsonapi-params';
 
-// A helper function to build params for a resource type.
+// A helper function to build apiParams for a resource type.
 export function getParams(
-    name: string,
-    mode: string = null
+    resourceType: string
 ): DrupalJsonApiParams {
-    const params = new DrupalJsonApiParams().addFilter(
+    const apiParams = new DrupalJsonApiParams().addFilter(
         "field_site.meta.drupal_internal__target_id",
         process.env.DRUPAL_SITE_ID
     )
 
-    name = mode ? `${name}--${mode}` : name;
-
-    if (name === 'node--page') {
-        return params
+    if (resourceType === 'node--page') {
+        return apiParams
             .addFilter('status', '1')
             .addFields('node--page', ['title', 'body', 'status']);
     }
 
-    if (name === 'node--article--card') {
-        return params
+    if (resourceType === 'node--article--card') {
+        return apiParams
             .addFilter('status', '1')
             .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
             .addInclude([
@@ -38,8 +35,8 @@ export function getParams(
             .addFields('file--file', ['uri', 'resourceIdObjMeta']);
     }
 
-    if (name === 'node--article') {
-        return params
+    if (resourceType === "node--article") {
+        return apiParams
             .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
             .addInclude([
                 'field_paragraphs',
@@ -71,8 +68,8 @@ export function getParams(
             .addFields('media--remote_video', ['field_media_video', 'field_media_oembed_video', 'uri', 'resourceIdObjMeta'])
     }
 
-    if (name === 'node--place--card') {
-        return params
+    if (resourceType === 'node--place--card') {
+        return apiParams
             .addFilter('status', '1')
             .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
             .addInclude([
@@ -89,8 +86,8 @@ export function getParams(
             .addFields('media--image', ['field_media_image'])
     }
 
-    if (name === 'node--place--teaser') {
-        return params
+    if (resourceType === 'node--place--teaser') {
+        return apiParams
             .addFilter('status', '1')
             .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
             .addInclude([
@@ -111,8 +108,8 @@ export function getParams(
             .addFields('media--image', ['field_media_image'])
     }
 
-    if (name === 'node--place') {
-        return params
+    if (resourceType === 'node--place') {
+        return apiParams
             .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
             .addInclude([
                 'field_media_image.field_media_image',
@@ -140,8 +137,8 @@ export function getParams(
             .addFields('taxonomy_term--media_authors', ['name', 'description', 'resourceIdObjMeta']);
     }
 
-    if (name === 'product--accommodation') {
-        return params
+    if (resourceType === 'product--accommodation') {
+        return apiParams
             .addInclude([
                 'field_media_image.field_media_image',
                 'field_accommodation_type',
@@ -159,8 +156,8 @@ export function getParams(
             .addFields('taxonomy_term--dmo_places', ['name', 'path']);
     }
 
-    if (name === 'product--accommodation--card') {
-        return params
+    if (resourceType === 'product--accommodation--card') {
+        return apiParams
             .addInclude([
                 'field_media_image.field_media_image',
                 'field_accommodation_type',
@@ -176,8 +173,8 @@ export function getParams(
             .addFields('taxonomy_term--dmo_places', ['name', 'path']);
     }
 
-    if (name === 'block_content--promo_block_overlapping_images') {
-        return params
+    if (resourceType === 'block_content--promo_block_overlapping_images') {
+        return apiParams
             .addInclude(['field_media_image.field_media_image'])
             .addFields('block_content--banner_block', [
                 'field_title',
@@ -188,8 +185,8 @@ export function getParams(
             .addFields('file--file', ['uri', 'resourceIdObjMeta']);
     }
 
-    if (name === 'block_content--banner_block') {
-        return params
+    if (resourceType === 'block_content--banner_block') {
+        return apiParams
             .addInclude(['field_media_image.field_media_image'])
             .addFields('block_content--banner_block', [
                 'field_title',
@@ -201,8 +198,8 @@ export function getParams(
             .addFields('file--file', ['uri', 'resourceIdObjMeta']);
     }
 
-    if (name === 'block_content--promo_block') {
-        return params
+    if (resourceType === 'block_content--promo_block') {
+        return apiParams
             .addInclude(['field_media_image.field_media_image'])
             .addFields('block_content--promo_block', [
                 'field_title',
@@ -214,8 +211,8 @@ export function getParams(
             .addFields('file--file', ['uri', 'resourceIdObjMeta']);
     }
 
-    if (name === 'block_content--incentives_block') {
-        return params
+    if (resourceType === 'block_content--incentives_block') {
+        return apiParams
             .addInclude([
                 'field_incentive_items.field_image.uid',
             ])
@@ -237,41 +234,34 @@ export function getParams(
             .addFields('file--file', ['uri', 'resourceIdObjMeta'])
     }
 
-    if (name === 'block_content--disclaimer_block') {
-        return params.addFields('block_content--disclaimer_block', [
-            'field_copyright',
-            'field_disclaimer',
-        ]);
-    }
+    // if (name === 'menu_link_content--menu_link_content') {
+    //     return apiParams.addFields('menu_link_content--menu_link_content', [
+    //         'title,url',
+    //     ]);
+    // }
 
-    if (name === 'menu_link_content--menu_link_content') {
-        return params.addFields('menu_link_content--menu_link_content', [
-            'title,url',
-        ]);
-    }
+    // if (name === 'taxonomy_term--tags') {
+    //     return apiParams.addFields('taxonomy_term--tags', ['name', 'path']);
+    // }
 
-    if (name === 'taxonomy_term--tags') {
-        return params.addFields('taxonomy_term--tags', ['name', 'path']);
-    }
+    // if (name === 'taxonomy_term--categories') {
+    //     return apiParams.addFields('taxonomy_term--categories', ['name', 'path']);
+    // }
 
-    if (name === 'taxonomy_term--categories') {
-        return params.addFields('taxonomy_term--categories', ['name', 'path']);
-    }
+    // if (name === 'taxonomy_term--place_type') {
+    //     return apiParams.addFields('taxonomy_term--places_type', ['name', 'path']);
+    // }
 
-    if (name === 'taxonomy_term--place_type') {
-        return params.addFields('taxonomy_term--places_type', ['name', 'path']);
-    }
+    // if (name === 'taxonomy_term--activities') {
+    //     return apiParams.addFields('taxonomy_term--activities', ['name', 'path']);
+    // }
 
-    if (name === 'taxonomy_term--activities') {
-        return params.addFields('taxonomy_term--activities', ['name', 'path']);
-    }
+    // if (name === 'taxonomy_term--accommodation_types') {
+    //     return apiParams.addFields('taxonomy_term--accommodation_types', ['name', 'path']);
+    // }
 
-    if (name === 'taxonomy_term--accommodation_types') {
-        return params.addFields('taxonomy_term--accommodation_types', ['name', 'path']);
-    }
-
-    if (name === 'taxonomy_term--dmo_places') {
-        return params.addFields('taxonomy_term--dmo_places', ['name', 'path']);
-    }
+    // if (name === 'taxonomy_term--dmo_places') {
+    //     return apiParams.addFields('taxonomy_term--dmo_places', ['name', 'path']);
+    // }
 
 }

@@ -1,6 +1,6 @@
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next';
 import { DrupalBlock, DrupalNode } from 'next-drupal';
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from "next-i18next"
 
 import { drupal } from 'lib/drupal';
 import { getGlobalElements } from 'lib/get-global-elements';

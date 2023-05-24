@@ -219,18 +219,6 @@ export function Footer({ menus, blocks }: FooterProps) {
         </div>
       </section>
 
-      {/* {blocks.disclaimer && (
-        <div className="container text-center flex flex-col space-y-4 lg:text-left lg:grid-cols-[4fr_3.5fr_2.5fr] lg:space-y-0 lg:grid justify-between py-8 text-sm text-text">
-          <div>
-            <FormattedText
-              text={blocks.disclaimer.field_disclaimer.processed}
-            />
-          </div>
-          <div className="col-start-3">
-            <FormattedText text={blocks.disclaimer.field_copyright.processed} />
-          </div>
-        </div>
-      )} */}
     </footer>
   );
 }
