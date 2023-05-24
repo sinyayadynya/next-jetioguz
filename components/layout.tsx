@@ -33,9 +33,9 @@ export function Layout({ meta, menus, blocks, children }: LayoutProps) {
       <Meta {...meta} />
       <div className={`${inter.variable} ${hubot.variable}`}>
         <PreviewAlert />
-        <Header menus={{ main: menus.main }} />
+        <Header />
         <main className="flex-1 bg-white font-sans">{children}</main>
-        <Footer menus={{ footer: menus.footer }} blocks={blocks} />
+        <Footer blocks={blocks} />
       </div>
       <TailwindIndicator />
     </>
