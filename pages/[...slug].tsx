@@ -5,7 +5,7 @@ import {
     GetStaticPropsResult,
 } from "next"
 import Head from "next/head"
-import { DrupalNode, DrupalTaxonomyTerm, JsonApiResource } from "next-drupal"
+import { DrupalNode, DrupalTaxonomyTerm, DrupalView, JsonApiResource } from "next-drupal"
 
 import { PageProps } from "types"
 import { drupal } from "lib/drupal"
@@ -14,7 +14,6 @@ import { getParams } from "lib/get-params"
 import { Layout, LayoutProps } from "components/layout"
 import { NodeArticle, NodeArticleProps } from "components/node--article"
 import { NodePlace } from "components/node--place"
-import { NodePage } from "components/node--page"
 import { ProductAccommodation } from "components/product--accommodation"
 import {
   TaxonomyTermContentCategory,
@@ -29,7 +28,7 @@ import {
   TaxonomyTermPlacesProps,
 } from "components/taxonomy-term--dmo-places"
 
-const RESOURCE_TYPES = [
+const ENTITY_TYPES = [
   "node--page",
   "node--article",
   "node--place",
@@ -40,56 +39,50 @@ const RESOURCE_TYPES = [
 ]
 
 interface NodePageProps extends LayoutProps, PageProps {
-  node: DrupalNode | DrupalTaxonomyTerm
+    entity: DrupalNode | DrupalTaxonomyTerm;
+    views?: Array<DrupalView>;
 }
 
-export default function ResourcePage({
-  node,
+export default function NodePage({
+  entity,
+  views,
   additionalContent,
   menus,
   blocks,
 }: NodePageProps) {
-  if (!node) return null
+  if (!entity) return null;
+  const productVariations = entity?.variations;
 
   return (
     <Layout
       menus={menus}
       blocks={blocks}
       meta={{
-        title: node.title || node.name,
+        title: entity.title || entity.name,
       }}
     >
-      {node.type === "node--page" && (
-        <NodePage node={node as DrupalNode} />
-      )}
-
-      {node.type === "node--article" && (
+      {entity.type === "node--article" && (
         <NodeArticle
-          node={node as DrupalNode}
+          node={entity as DrupalNode}
           additionalContent={
             additionalContent as NodeArticleProps["additionalContent"]
           }
         />
       )}
-      {node.type === "node--place" && (
-        <NodePlace node={node as DrupalNode} />
+      {entity.type === "node--place" && (
+        <NodePlace node={entity as DrupalNode} />
       )}
-      {node.type === "product--accommodation" && (
-        <ProductAccommodation node={node as DrupalNode} />
-      )}
-      {node.type === "taxonomy_term--categories" && (
-        <TaxonomyTermContentCategory
-          term={node as DrupalTaxonomyTerm}
-          additionalContent={
-            additionalContent as TaxonomyTermContentCategoryProps["additionalContent"]
-          }
+      {entity.type === "product--accommodation" && (
+        <ProductAccommodation
+            product={entity}
+            // productVariations={productVariations}
         />
       )}
-      {node.type === "taxonomy_term--countries" && (
-        <TaxonomyTermPlaces
-          term={node as DrupalTaxonomyTerm}
+      {entity.type === "taxonomy_term--categories" && (
+        <TaxonomyTermContentCategory
+          term={entity as DrupalTaxonomyTerm}
           additionalContent={
-            additionalContent as TaxonomyTermPlacesProps["additionalContent"]
+            additionalContent as TaxonomyTermContentCategoryProps["additionalContent"]
           }
         />
       )}
@@ -97,17 +90,26 @@ export default function ResourcePage({
   )
 }
 
-export async function getStaticPaths(context): Promise<GetStaticPathsResult> {
+export async function getStaticPaths(
+    context: GetStaticPathsContext
+  ): Promise<GetStaticPathsResult> {
     return {
-      paths: await drupal.getStaticPathsFromContext(RESOURCE_TYPES, context, {
-      params: {
-        'filter[field_site.meta.drupal_internal__target_id]': 'jetioguz',
-        'filter[field_stores.meta.drupal_internal__target_id]': '3',
-      },
-    }),
-    fallback: "blocking",
+      paths: await drupal.getStaticPathsFromContext(ENTITY_TYPES, context),
+      fallback: "blocking",
     }
 }
+
+// export async function getStaticPaths(context): Promise<GetStaticPathsResult> {
+//     return {
+//       paths: await drupal.getStaticPathsFromContext(ENTITY_TYPES, context, {
+//       params: {
+//         'filter[field_site.meta.drupal_internal__target_id]': 'jetioguz',
+//         'filter[field_stores.meta.drupal_internal__target_id]': '3',
+//       },
+//     }),
+//     fallback: "blocking",
+//     }
+// }
 
 export async function getStaticProps(
   context
@@ -116,14 +118,14 @@ export async function getStaticProps(
 
   // If path is not found or the node is not one we care about,
   // return a 404.
-  if (!path || !RESOURCE_TYPES.includes(path.jsonapi.resourceName)) {
+  if (!path || !ENTITY_TYPES.includes(path.jsonapi.resourceName)) {
     return {
       notFound: true,
     }
   }
 
   // Fetch the node from Drupal.
-  const node = await drupal.getResourceFromContext<DrupalNode>(
+  const entity = await drupal.getResourceFromContext<DrupalNode>(
     path,
     context,
     {
@@ -135,13 +137,13 @@ export async function getStaticProps(
   // If we receive an error, it means something went wrong on Drupal.
   // We throw an error to tell revalidation to skip this for now.
   // Revalidation can try again on next request.
-  if (!node) {
+  if (!entity) {
     throw new Error(`Failed to fetch node: ${path.jsonapi.individual}`)
   }
 
   // If we're not in preview mode and the node is not published,
   // Return page not found.
-  if (!context.preview && node?.status === false) {
+  if (!context.preview && entity?.status === false) {
     return {
       notFound: true,
     }
@@ -151,13 +153,13 @@ export async function getStaticProps(
   let additionalContent: PageProps["additionalContent"] = {}
 
 
-  if (node.type === "node--article") {
+  if (entity.type === "node--article") {
     // Fetch featured articles.
     additionalContent["featuredArticles"] =
       await drupal.getResourceCollectionFromContext("node--article", context, {
-        params: getParams("node--article", "card")
+        params: getParams("node--article--card")
           .addFields("node--article", ['body', 'field_media_image', 'created', 'path', 'title'])
-          .addFilter("id", node.id, "<>")
+          .addFilter("id", entity.id, "<>")
           .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
           .addPageLimit(3)
           .addSort("created", "DESC")
@@ -165,13 +167,13 @@ export async function getStaticProps(
       })
   }
 
-  if (node.type === "node--place") {
+  if (entity.type === "node--place") {
     // Fetch featured places.
     additionalContent["featuredPlaces"] =
       await drupal.getResourceCollectionFromContext("node--place", context, {
-        params: getParams("node--place", "card")
+        params: getParams("node--place--card")
           .addFields("node--place", ['body', 'field_media_image', 'created', 'path', 'title'])
-          .addFilter("id", node.id, "<>")
+          .addFilter("id", entity.id, "<>")
           .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
           .addPageLimit(3)
           .addSort("created", "DESC")
@@ -179,13 +181,13 @@ export async function getStaticProps(
       })
   }
 
-  if (node.type === "product--accommodation") {
-    // Fetch featured places.
+  if (entity.type === "product--accommodation") {
+    // Fetch featured accommodation.
     additionalContent["featuredAccommodations"] =
       await drupal.getResourceCollectionFromContext("product--accommodation", context, {
-        params: getParams("product--accommodation", "card")
+        params: getParams("product--accommodation--card")
           .addFields("product--accommodation", ['body', 'field_media_image', 'created', 'path', 'title'])
-          .addFilter("id", node.id, "<>")
+          .addFilter("id", entity.id, "<>")
           .addFilter('field_stores.meta.drupal_internal__target_id', '3')
           .addPageLimit(3)
           .addSort("created", "DESC")
@@ -193,40 +195,40 @@ export async function getStaticProps(
       })
   }
 
-  if (node.type === "taxonomy_term--place_types") {
+  if (entity.type === "taxonomy_term--place_types") {
     // Fetch the term content.
     additionalContent["termContent"] =
       await drupal.getResourceCollectionFromContext("node--place", context, {
-        params: getParams("node--place", "card")
+        params: getParams("node--place--card")
           .addSort("created", "DESC")
-          .addFilter("field_content_category.id", node.id, "IN")
+          .addFilter("field_content_category.id", entity.id, "IN")
           .getQueryObject(),
       })
   }
 
-  if (node.type === "taxonomy_term--place_types") {
+  if (entity.type === "taxonomy_term--place_types") {
     // Fetch the term content.
     additionalContent["termContent"] =
       await drupal.getResourceCollectionFromContext("node--place", context, {
-        params: getParams("node--place", "card")
+        params: getParams("node--place--card")
           .addSort("created", "DESC")
-          .addFilter("field_area.id", node.id, "IN")
+          .addFilter("field_area.id", entity.id, "IN")
           .getQueryObject(),
       })
   }
 
-  if (node.type === "taxonomy_term--dmo_places") {
+  if (entity.type === "taxonomy_term--dmo_places") {
     // Fetch the term content.
     additionalContent["termContent"] =
       await drupal.getResourceCollectionFromContext("node--place", context, {
-        params: getParams("node--place", "card")
+        params: getParams("node--place--card")
           .addSort("created", "DESC")
-          .addFilter("field_area.id", node.id, "IN")
+          .addFilter("field_area.id", entity.id, "IN")
           .getQueryObject(),
       })
   }
 
-  if (node.type === "taxonomy_term--countries") {
+  if (entity.type === "taxonomy_term--countries") {
     // Fetch the term content.
     // Tags can show both places and articles.
     additionalContent["termContent"] = [
@@ -234,9 +236,9 @@ export async function getStaticProps(
         "node--place",
         context,
         {
-          params: getParams("node--place", "card")
+          params: getParams("node--place--card")
             .addSort("created", "DESC")
-            .addFilter("field_countries.id", node.id, "IN")
+            .addFilter("field_countries.id", entity.id, "IN")
             .getQueryObject(),
         }
       )),
@@ -244,9 +246,9 @@ export async function getStaticProps(
         "node--article",
         context,
         {
-          params: getParams("node--article", "card")
+          params: getParams("node--article--card")
             .addSort("created", "DESC")
-            .addFilter("field_countries.id", node.id, "IN")
+            .addFilter("field_countries.id", entity.id, "IN")
             .getQueryObject(),
         }
       )),
@@ -256,7 +258,8 @@ export async function getStaticProps(
   return {
     props: {
       ...(await getGlobalElements(context)),
-      node,
+      entity,
+      views,
       additionalContent,
     },
   }

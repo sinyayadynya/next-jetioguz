@@ -2,20 +2,20 @@ import { DrupalJsonApiParams } from 'drupal-jsonapi-params';
 
 // A helper function to build apiParams for a resource type.
 export function getParams(
-    resourceType: string
+    type: string
 ): DrupalJsonApiParams {
     const apiParams = new DrupalJsonApiParams().addFilter(
         "field_site.meta.drupal_internal__target_id",
         process.env.DRUPAL_SITE_ID
     )
 
-    if (resourceType === 'node--page') {
+    if (type === 'node--page') {
         return apiParams
             .addFilter('status', '1')
             .addFields('node--page', ['title', 'body', 'status']);
     }
 
-    if (resourceType === 'node--article--card') {
+    if (type === 'node--article--card') {
         return apiParams
             .addFilter('status', '1')
             .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
@@ -35,7 +35,7 @@ export function getParams(
             .addFields('file--file', ['uri', 'resourceIdObjMeta']);
     }
 
-    if (resourceType === "node--article") {
+    if (type === "node--article") {
         return apiParams
             .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
             .addInclude([
@@ -68,7 +68,7 @@ export function getParams(
             .addFields('media--remote_video', ['field_media_video', 'field_media_oembed_video', 'uri', 'resourceIdObjMeta'])
     }
 
-    if (resourceType === 'node--place--card') {
+    if (type === 'node--place--card') {
         return apiParams
             .addFilter('status', '1')
             .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
@@ -86,7 +86,7 @@ export function getParams(
             .addFields('media--image', ['field_media_image'])
     }
 
-    if (resourceType === 'node--place--teaser') {
+    if (type === 'node--place--teaser') {
         return apiParams
             .addFilter('status', '1')
             .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
@@ -108,7 +108,7 @@ export function getParams(
             .addFields('media--image', ['field_media_image'])
     }
 
-    if (resourceType === 'node--place') {
+    if (type === 'node--place') {
         return apiParams
             .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
             .addInclude([
@@ -137,7 +137,7 @@ export function getParams(
             .addFields('taxonomy_term--media_authors', ['name', 'description', 'resourceIdObjMeta']);
     }
 
-    if (resourceType === 'product--accommodation') {
+    if (type === 'product--accommodation') {
         return apiParams
             .addInclude([
                 'field_media_image.field_media_image',
@@ -156,7 +156,7 @@ export function getParams(
             .addFields('taxonomy_term--dmo_places', ['name', 'path']);
     }
 
-    if (resourceType === 'product--accommodation--card') {
+    if (type === 'product--accommodation--card') {
         return apiParams
             .addInclude([
                 'field_media_image.field_media_image',
@@ -173,7 +173,7 @@ export function getParams(
             .addFields('taxonomy_term--dmo_places', ['name', 'path']);
     }
 
-    if (resourceType === 'block_content--promo_block_overlapping_images') {
+    if (type === 'block_content--promo_block_overlapping_images') {
         return apiParams
             .addInclude(['field_media_image.field_media_image'])
             .addFields('block_content--banner_block', [
@@ -185,7 +185,7 @@ export function getParams(
             .addFields('file--file', ['uri', 'resourceIdObjMeta']);
     }
 
-    if (resourceType === 'block_content--banner_block') {
+    if (type === 'block_content--banner_block') {
         return apiParams
             .addInclude(['field_media_image.field_media_image'])
             .addFields('block_content--banner_block', [
@@ -198,7 +198,7 @@ export function getParams(
             .addFields('file--file', ['uri', 'resourceIdObjMeta']);
     }
 
-    if (resourceType === 'block_content--promo_block') {
+    if (type === 'block_content--promo_block') {
         return apiParams
             .addInclude(['field_media_image.field_media_image'])
             .addFields('block_content--promo_block', [
@@ -211,7 +211,7 @@ export function getParams(
             .addFields('file--file', ['uri', 'resourceIdObjMeta']);
     }
 
-    if (resourceType === 'block_content--incentives_block') {
+    if (type === 'block_content--incentives_block') {
         return apiParams
             .addInclude([
                 'field_incentive_items.field_image.uid',
