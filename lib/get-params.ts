@@ -176,13 +176,45 @@ export function getParams(
     if (type === 'block_content--promo_block_overlapping_images') {
         return apiParams
             .addInclude(['field_media_image.field_media_image'])
-            .addFields('block_content--banner_block', [
+            .addInclude(['field_overlapping_image_tiles'])
+            .addInclude(['field_overlapping_image_tiles.field_media_image.field_media_image'])
+            .addFields('block_content--promo_block_overlapping_images', [
                 'field_title',
-                'field_content_link',
+                'field_tagline',
+                'field_cta_button',
+                'field_cta_link',
+                'field_media_image',
+                'field_overlapping_image_tiles',
+            ])
+            .addFields('media--image', ['field_media_image', 'field_media_image'])
+            .addFields('file--file', ['uri', 'resourceIdObjMeta'])
+            .addFields('paragraph--promo_overlapping_image_tile', ['field_text_title', 'field_text_cta', 'field_link', 'field_media_image']);
+    }
+
+    if (type === 'block_content--hero_block_offset_image') {
+        return apiParams
+            .addInclude(['field_media_image.field_media_image'])
+            .addFields('block_content--hero_block_offset_image', [
+                'field_heading',
+                'field_tagline',
+                'field_cta_button',
+                'field_cta_link',
                 'field_media_image',
             ])
-            .addFields('media--image', ['field_media_image'])
-            .addFields('file--file', ['uri', 'resourceIdObjMeta']);
+            .addFields('media--image', ['field_media_image', 'field_media_image'])
+            .addFields('file--file', ['uri', 'resourceIdObjMeta'])
+    }
+
+    if (type === 'block_content--feature_block_simple_three_col') {
+        return apiParams
+            .addInclude(['field_feature_items'])
+            .addFields('block_content--feature_block_simple_three_col', [
+                'field_label',
+                'field_heading',
+                'field_tagline',
+                'field_feature_items'
+            ])
+            .addFields('paragraph--feature_item_small_icon', ['field_herawicon', 'field_feature_item_label', 'field_feature_item_text_plain', 'field_link']);
     }
 
     if (type === 'block_content--banner_block') {
@@ -198,70 +230,63 @@ export function getParams(
             .addFields('file--file', ['uri', 'resourceIdObjMeta']);
     }
 
-    if (type === 'block_content--promo_block') {
+    if (type === 'block_content--promo_block_fading_testimonials') {
         return apiParams
             .addInclude(['field_media_image.field_media_image'])
-            .addFields('block_content--promo_block', [
-                'field_title',
-                'field_summary',
-                'field_content_link',
+            .addInclude(['field_promo_testimonials'])
+            .addFields('block_content--promo_block_fading_testimonials', [
+                'field_heading',
+                'field_tagline',
+                'field_cta_button',
                 'field_media_image',
+                'field_promo_testimonials',
             ])
             .addFields('media--image', ['field_media_image'])
+            .addFields('file--file', ['uri', 'resourceIdObjMeta'])
+            .addFields('paragraph--promo_testimonial', ['field_testimonial_text', 'field_testimonial_author']);
+    }
+
+    if (type === 'block_content--promo_block_image_tiles') {
+        return apiParams
+            .addInclude(['field_media_image_1.field_media_image'])
+            .addInclude(['field_media_image_2.field_media_image'])
+            .addInclude(['field_media_image_3.field_media_image'])
+            .addInclude(['field_media_image_4.field_media_image'])
+            .addInclude(['field_media_image_5.field_media_image'])
+            .addInclude(['field_media_image_6.field_media_image'])
+            .addInclude(['field_media_image_7.field_media_image'])
+            .addFields('block_content--promo_block_image_tiles', [
+                'field_heading',
+                'field_tagline',
+                'field_cta_button',
+                'field_media_image_1',
+                'field_media_image_2',
+                'field_media_image_3',
+                'field_media_image_4',
+                'field_media_image_5',
+                'field_media_image_6',
+                'field_media_image_7',
+            ])
+            .addFields('media--image_1', ['field_media_image'])
+            .addFields('media--image_2', ['field_media_image'])
+            .addFields('media--image_3', ['field_media_image'])
+            .addFields('media--image_4', ['field_media_image'])
+            .addFields('media--image_5', ['field_media_image'])
+            .addFields('media--image_6', ['field_media_image'])
+            .addFields('media--image_7', ['field_media_image'])
             .addFields('file--file', ['uri', 'resourceIdObjMeta']);
     }
 
     if (type === 'block_content--incentives_block') {
         return apiParams
-            .addInclude([
-                'field_incentive_items.field_image.uid',
-            ])
-            .addFields("block_content--incentives_block", [
-                "field_incentive_items",
-                'field_media_image',
-                'field_image'
-            ])
-            .addFields("paragraph--incentive_with_illustration", [
-                'field_media_image',
-                "field_text_title",
-                "field_text_formatted",
-                'image',
-                'link',
-                'field_image',
-                "field_link"
-            ])
-            .addFields('field_image', ['field_link', 'image', 'Image', 'field_image'])
-            .addFields('file--file', ['uri', 'resourceIdObjMeta'])
+        .addInclude(['field_incentive_items.field_media_image.field_media_image'])
+        .addInclude(['field_incentive_items'])
+        .addFields('block_content--incentives_block', [
+            'field_incentive_items',
+        ])
+        .addFields('media--image', ['field_media_image'])
+        .addFields('file--file', ['url', 'resourceIdObjMeta'])
+        .addFields('paragraph--incentive_with_illustration', ['field_text_title', 'field_text_tagline', 'field_link', 'field_media_image', 'field_image']);
     }
-
-    // if (name === 'menu_link_content--menu_link_content') {
-    //     return apiParams.addFields('menu_link_content--menu_link_content', [
-    //         'title,url',
-    //     ]);
-    // }
-
-    // if (name === 'taxonomy_term--tags') {
-    //     return apiParams.addFields('taxonomy_term--tags', ['name', 'path']);
-    // }
-
-    // if (name === 'taxonomy_term--categories') {
-    //     return apiParams.addFields('taxonomy_term--categories', ['name', 'path']);
-    // }
-
-    // if (name === 'taxonomy_term--place_type') {
-    //     return apiParams.addFields('taxonomy_term--places_type', ['name', 'path']);
-    // }
-
-    // if (name === 'taxonomy_term--activities') {
-    //     return apiParams.addFields('taxonomy_term--activities', ['name', 'path']);
-    // }
-
-    // if (name === 'taxonomy_term--accommodation_types') {
-    //     return apiParams.addFields('taxonomy_term--accommodation_types', ['name', 'path']);
-    // }
-
-    // if (name === 'taxonomy_term--dmo_places') {
-    //     return apiParams.addFields('taxonomy_term--dmo_places', ['name', 'path']);
-    // }
 
 }

@@ -1,12 +1,12 @@
 import Link from "next/link"
 import {
-  DrupalMenuLinkContent,
+  DrupalMenuLinkContent, DrupalBlock
 } from "next-drupal"
 import { useTranslation } from "next-i18next"
 
 import siteConfig from "site.config"
 import { LogoFooter } from "components/logo-footer"
-import { BlockIncentives, FooterBlocksProps } from "components/block--incentives"
+// import { BlockIncentives } from "components/block--incentives"
 
 const navigation = {
   things_to_do: [
@@ -92,7 +92,7 @@ export interface FooterProps extends FooterBlocksProps {
   menus: {
     footer: DrupalMenuLinkContent[]
   }
-
+  incentives: DrupalBlock
 }
 
 export function Footer({ menus, blocks }: FooterProps) {
@@ -100,7 +100,8 @@ export function Footer({ menus, blocks }: FooterProps) {
   return (
     <footer className="font-sans">
 
-      {/* <BlockIncentives blocks={blocks} /> */}
+
+      {/* <BlockIncentives block={incentives} /> */}
 
       <section className="bg-gray-50" aria-labelledby="footer-heading">
         <h2 id="footer-heading" className="sr-only">

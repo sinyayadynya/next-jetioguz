@@ -7,31 +7,29 @@ import { getGlobalElements } from "lib/get-global-elements"
 import { getParams } from "lib/get-params"
 import { Layout, LayoutProps } from "components/layout"
 import { NodePlaceTeaser } from "components/node--place--teaser"
-import { PageHeader } from "components/page-header"
 import { BlockPromoImageTiles } from "components/block--promo-image-tiles"
 
 interface PlacePageProps extends LayoutProps {
-  banner: DrupalBlock
+  promoImageTiles: DrupalBlock
   places: DrupalNode[]
 }
 
 export default function PlacesPage({
-  promo,
-  places,
-  menus,
-  blocks,
+    promoImageTiles,
+    places,
+    menus,
 }: PlacePageProps) {
   const { t } = useTranslation()
 
   return (
     <Layout
       menus={menus}
-      blocks={blocks}
       meta={{
         title: t("places"),
       }}
     >
-      <BlockPromoImageTiles block={promo} />
+      <BlockPromoImageTiles block={promoImageTiles} />
+
       <div className="bg-gray-50">
         <div className="mx-auto max-w-2xl px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
             {/* Details section */}
@@ -60,37 +58,41 @@ export default function PlacesPage({
 }
 
 export async function getStaticProps(
-  context: GetStaticPropsContext
-): Promise<GetStaticPropsResult<PlacePageProps>> {
-  // Fetch all published places sorted by date.
-  const places = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
-    "node--place",
-    context,
-    {
-      params: getParams("node--place", "card")
-        .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
-        .addFilter('field_place_type.meta.drupal_internal__target_id', '4251')
-        .addSort("created", "DESC")
-        .getQueryObject(),
-    }
-  )
+    context: GetStaticPropsContext
+  ): Promise<GetStaticPropsResult<PlacePageProps>> {
+    // Fetch all published places sorted by date.
+    const places = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
+      "node--place",
+      context,
+      {
+        params: getParams("node--place--card")
+          .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
+          .addFilter('field_place_type.meta.drupal_internal__target_id', '4251')
+          .addSort("created", "DESC")
+          .getQueryObject(),
+      }
+    )
 
-  const [promo] = await drupal.getResourceCollectionFromContext<DrupalBlock[]>(
-    "block_content--banner_block",
-    context,
-    {
-      params: getParams("block_content--banner_block")
-        .addFilter("info", "Jeti Oguz Places Banner")
-        .addPageLimit(1)
-        .getQueryObject(),
-    }
-  )
+    let [promoImageTiles] = await drupal.getResourceCollectionFromContext<DrupalBlock[]>(
+      "block_content--promo_block_image_tiles",
+      context,
+      {
+        params: getParams("block_content--promo_block_image_tiles")
+          .addFilter("info", "Jeti Oguz Promo Villages")
+          .addPageLimit(1)
+          .getQueryObject(),
+      }
+    )
 
-  return {
-    props: {
-      ...(await getGlobalElements(context)),
-      promo,
-      places,
-    },
-  }
+    if (promoImageTiles === undefined) {
+      promoImageTiles = null;
+    }
+
+    return {
+      props: {
+        ...(await getGlobalElements(context)),
+        promoImageTiles,
+        places,
+      },
+    }
 }

@@ -2,6 +2,7 @@ import { Meta, MetaProps } from "components/meta"
 import { PreviewAlert } from "components/preview-alert"
 import { Header, HeaderProps } from "components/header"
 import { Footer, FooterProps } from "components/footer"
+
 import { TailwindIndicator } from "components/tailwind-indicator"
 import { GetStaticPropsContext, GetStaticPropsResult } from "next"
 import { drupal } from "lib/drupal"

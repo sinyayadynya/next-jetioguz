@@ -8,30 +8,31 @@ import { getParams } from "lib/get-params"
 import { Layout, LayoutProps } from "components/layout"
 import { ProductAccommodationCard } from "components/product--accommodation--card"
 import { PageHeader } from "components/page-header"
-import { BlockBanner } from "components/block--banner"
+import { BlockHeroOffsetImage } from "components/block--hero-offset-image"
 
 interface PlacePageProps extends LayoutProps {
-  banner: DrupalBlock
-  accommodations: DrupalNode[]
+    heroOffsetImage: DrupalBlock
+    accommodations: DrupalNode[]
 }
 
 export default function PlacesPage({
-  banner,
-  accommodations,
-  menus,
-  blocks,
+    heroOffsetImage,
+    accommodations,
+    menus,
+    blocks,
 }: PlacePageProps) {
   const { t } = useTranslation()
 
   return (
     <Layout
+
       menus={menus}
       blocks={blocks}
       meta={{
         title: t("accommodation"),
       }}
     >
-      <BlockBanner block={banner} />
+      <BlockHeroOffsetImage block={heroOffsetImage} />
       <PageHeader
         heading="Accommodation"
         breadcrumbs={[
@@ -66,12 +67,12 @@ export async function getStaticProps(
     }
   )
 
-  const [banner] = await drupal.getResourceCollectionFromContext<DrupalBlock[]>(
-    "block_content--banner_block",
+  const [heroOffsetImage] = await drupal.getResourceCollectionFromContext<DrupalBlock[]>(
+    "block_content--hero_block_offset_image",
     context,
     {
-      params: getParams("block_content--banner_block")
-        .addFilter("info", "Jeti Oguz Places Banner")
+      params: getParams("block_content--hero_block_offset_image")
+        .addFilter("info", "Jeti Oguz Accommodation")
         .addPageLimit(1)
         .getQueryObject(),
     }
@@ -80,7 +81,7 @@ export async function getStaticProps(
   return {
     props: {
       ...(await getGlobalElements(context)),
-      banner,
+      heroOffsetImage,
       accommodations,
     },
   }
