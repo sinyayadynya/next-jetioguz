@@ -41,8 +41,10 @@ export function NodeArticle({ node, additionalContent }: NodeArticleProps) {
                     <p className="text-base font-semibold leading-7 text-primary-600">
                         Blog
                     </p>
-                    <h1 className="mt-2 text-3xl font-serif font-bold tracking-tight text-gray-900 sm:text-4xl">{node.title}</h1>
-                    <div className="flex items-center my-4 space-x-2 text-sm">
+                    <h1 className="mt-2 text-3xl font-serif font-bold tracking-tight text-gray-900 sm:text-4xl">
+                        {node.title}
+                    </h1>
+                    <div className="flex items-center mt-2 space-x-2 text-sm">
                         {node.uid?.display_name ? (
                             <span>
                                 {t('by')} {node.uid.display_name}
@@ -59,13 +61,15 @@ export function NodeArticle({ node, additionalContent }: NodeArticleProps) {
                                 fill="currentColor"
                             />
                         </svg>
-                        {node.created && <span className="text-gray-500">
-                            {formatDate(node.created)}
-                        </span>}
+                        {node.created && (
+                            <span className="text-gray-500">
+                                {formatDate(node.created)}
+                            </span>
+                        )}
                     </div>
 
                     {node.field_media_image && (
-                        <figure className="mb-10">
+                        <figure className="my-8">
                             <Image
                                 src={absoluteURL(
                                     node.field_media_image.field_media_image.uri
@@ -84,12 +88,16 @@ export function NodeArticle({ node, additionalContent }: NodeArticleProps) {
                         </figure>
                     )}
 
-                    {node.body && (
-                        <div className="mt-6 text-xl leading-8">
-                            <FormattedText text={node.body.processed} />
+                    <div className="mt-10">
+                        {node.body && (
+                            <div className="text-xl leading-8">
+                                <FormattedText text={node.body.processed} />
+                            </div>
+                        )}
+                        <div className='mt-6'>
+                            <Paragraph paragraph={field_paragraphs} />
                         </div>
-                    )}
-                    <Paragraph paragraph={field_paragraphs} />
+                    </div>
                 </div>
 
                 <section className="bg-white pt-24 sm:pt-32">
@@ -103,9 +111,14 @@ export function NodeArticle({ node, additionalContent }: NodeArticleProps) {
                             </p>
                         </div>
                         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-y-20 gap-x-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-                            {additionalContent.featuredArticles.map((nodeArticles, index) => (
-                                <NodeArticleCard key={node.id + index} nodeArticles={nodeArticles} />
-                            ))}
+                            {additionalContent.featuredArticles.map(
+                                (nodeArticles, index) => (
+                                    <NodeArticleCard
+                                        key={node.id + index}
+                                        nodeArticles={nodeArticles}
+                                    />
+                                )
+                            )}
                         </div>
                     </div>
                 </section>
