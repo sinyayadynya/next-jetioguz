@@ -16,7 +16,7 @@ interface PlacePageProps extends LayoutProps {
 }
 
 export default function PlacesPage({
-  banner,
+//   banner,
   places,
   menus,
   blocks,
@@ -31,7 +31,7 @@ export default function PlacesPage({
         title: t("destinations"),
       }}
     >
-      <BlockBanner block={banner} />
+      {/* <BlockBanner block={banner} /> */}
       <PageHeader
         heading="Destinations"
         breadcrumbs={[
@@ -66,21 +66,21 @@ export async function getStaticProps(
     }
   )
 
-  const [banner] = await drupal.getResourceCollectionFromContext<DrupalBlock[]>(
-    "block_content--banner_block",
-    context,
-    {
-      params: getParams("block_content--banner_block")
-        .addFilter("info", "Jeti Oguz Places Banner")
-        .addPageLimit(1)
-        .getQueryObject(),
-    }
-  )
+//   const [banner] = await drupal.getResourceCollectionFromContext<DrupalBlock[]>(
+//     "block_content--banner_block",
+//     context,
+//     {
+//       params: getParams("block_content--banner_block")
+//         .addFilter("info", "Jeti Oguz Places Banner")
+//         .addPageLimit(1)
+//         .getQueryObject(),
+//     }
+//   )
 
   return {
     props: {
       ...(await getGlobalElements(context)),
-      banner,
+    //   banner,
       places,
     },
   }

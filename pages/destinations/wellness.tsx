@@ -70,7 +70,7 @@ export async function getStaticProps(
       {
         params: getParams("node--place--card")
           .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
-          .addFilter('field_place_type.meta.drupal_internal__target_id', '4251')
+          .addFilter('field_place_type.meta.drupal_internal__target_id', '4266')
           .addSort("created", "DESC")
           .getQueryObject(),
       }
