@@ -13,7 +13,7 @@ export function ParagraphBlogSection({ paragraphType }: ParagraphProps) {
     <Section
 
     >
-      <div key={paragraphType.id} className="prose max-w-sm lg:max-w-none">
+      <div key={paragraphType.id} className="prose max-w-none">
         <h3 className="text-2xl font-bold">
           {paragraphType.field_section_title}
         </h3>
