@@ -3,7 +3,8 @@ import { Section } from "components/section"
 import { drupal } from "lib/drupal";
 import { absoluteURL } from "lib/utils";
 import { DrupalParagraph } from "next-drupal"
-import Image from "next/legacy/image";
+import Image from "next/image";
+import { MediaImage } from 'components/media--image';
 
 export interface ParagraphProps {
   paragraphType: DrupalParagraph;
@@ -15,8 +16,8 @@ export function ParagraphImageFullWidth({ paragraphType }: ParagraphProps) {
 
   return (
     <Section>
-      <div key={paragraphType.id} className="prose max-w-sm lg:max-w-none">
-        <Image
+      <div key={paragraphType.id} className="my-4 [&>div>span>img]:aspect-video [&>div>span>img]:rounded-xl [&>div>span>img]:bg-gray-50">
+        {/* <Image
           src={absoluteURL(imageUrl)}
           alt={
             paragraphType.field_media_image.field_media_image
@@ -27,7 +28,15 @@ export function ParagraphImageFullWidth({ paragraphType }: ParagraphProps) {
           layout="responsive"
           objectFit="cover"
           className="aspect-video rounded-xl bg-gray-50 object-cover"
-        />
+        /> */}
+        <MediaImage
+                media={paragraphType.field_media_image}
+                width={785}
+                height={525}
+                layout="responsive"
+                objectFit="cover"
+                // className="aspect-video rounded-xl bg-gray-50 object-cover"
+                />
       </div>
     </Section>
   )
