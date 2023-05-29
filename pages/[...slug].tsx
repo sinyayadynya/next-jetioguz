@@ -13,6 +13,7 @@ import { getGlobalElements } from "lib/get-global-elements"
 import { getParams } from "lib/get-params"
 import { Layout, LayoutProps } from "components/layout"
 import { NodeArticle, NodeArticleProps } from "components/node--article"
+import { NodeActivities } from "components/node--activities"
 import { NodePlace } from "components/node--place"
 import { ProductAccommodation } from "components/product--accommodation"
 import {
@@ -31,6 +32,7 @@ import {
 const ENTITY_TYPES = [
   "node--page",
   "node--article",
+  "node--activities",
   "node--place",
   "product--accommodation",
   "taxonomy_term--categories",
@@ -45,7 +47,7 @@ interface NodePageProps extends LayoutProps, PageProps {
 
 export default function NodePage({
   entity,
-  views,
+//   views,
   additionalContent,
   menus,
   blocks,
@@ -68,6 +70,9 @@ export default function NodePage({
             additionalContent as NodeArticleProps["additionalContent"]
           }
         />
+      )}
+      {entity.type === "node--activities" && (
+        <NodeActivities node={entity as DrupalNode} />
       )}
       {entity.type === "node--place" && (
         <NodePlace node={entity as DrupalNode} />
@@ -259,7 +264,7 @@ export async function getStaticProps(
     props: {
       ...(await getGlobalElements(context)),
       entity,
-      views,
+    //   views,
       additionalContent,
     },
   }
