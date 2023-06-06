@@ -57,7 +57,7 @@ const getFilterParams = (entityType: string) => {
     }
 
     return params;
-  }
+}
 
 
 export default function NodePage({
