@@ -26,7 +26,7 @@ export function ParagraphPromoBackgroundImage({
                     </div>
                     <div className="relative bg-gray-900 bg-opacity-75 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
                         <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
-                            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                            <h2 className="text-3xl font-heading font-bold tracking-tight text-white sm:text-4xl">
                                 {paragraphType.field_heading}
                             </h2>
                             <p className="mt-3 text-xl text-white">

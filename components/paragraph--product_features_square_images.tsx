@@ -66,7 +66,7 @@ export function ParagraphProductFeaturesSquareImages({ paragraphType }: Paragrap
                         >
                             {paragraphType.field_label}
                         </h2>
-                        <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                        <p className="mt-2 text-3xl font-heading font-bold tracking-tight text-gray-900 sm:text-4xl">
                             {paragraphType.field_heading}
                         </p>
                         <p className="mt-4 text-gray-500">
