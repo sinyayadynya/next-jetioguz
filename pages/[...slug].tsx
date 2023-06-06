@@ -45,6 +45,21 @@ interface NodePageProps extends LayoutProps, PageProps {
     views?: Array<DrupalView>;
 }
 
+const getFilterParams = (entityType: string) => {
+    let params = {};
+
+    if (entityType.startsWith("node")) {
+      params['filter[field_site.meta.drupal_internal__target_id]'] = 'jetioguz';
+    }
+
+    if (entityType.startsWith("product")) {
+      params['filter[stores.meta.drupal_internal__target_id]'] = '3';
+    }
+
+    return params;
+  }
+
+
 export default function NodePage({
   entity,
 //   views,
@@ -106,51 +121,34 @@ export default function NodePage({
   )
 }
 
-export async function getStaticPaths(
-    context: GetStaticPathsContext
-  ): Promise<GetStaticPathsResult> {
-    return {
-      paths: await drupal.getStaticPathsFromContext(ENTITY_TYPES, context),
-      fallback: "blocking",
-    }
-}
-
-
 // export async function getStaticPaths(
 //     context: GetStaticPathsContext
 //   ): Promise<GetStaticPathsResult> {
-
-//     // Call getStaticPathsFromContext with additional params for filtering
-//     const paths = await drupal.getStaticPathsFromContext(
-//       ENTITY_TYPES,
-//       context,
-//       {
-//         params: {
-//           'filter[field_site.meta.drupal_internal__target_id]': 'jetioguz',
-//           'filter[field_stores.meta.drupal_internal__target_id]': '3',
-//         }
-//       }
-//     )
-
 //     return {
-//       paths,
+//       paths: await drupal.getStaticPathsFromContext(ENTITY_TYPES, context),
 //       fallback: "blocking",
 //     }
 // }
 
-
-
-// export async function getStaticPaths(context): Promise<GetStaticPathsResult> {
-//     return {
-//       paths: await drupal.getStaticPathsFromContext(ENTITY_TYPES, context, {
-//       params: {
-//         'filter[field_site.meta.drupal_internal__target_id]': 'jetioguz',
-//         'filter[field_stores.meta.drupal_internal__target_id]': '3',
-//       },
-//     }),
-//     fallback: "blocking",
-//     }
-// }
+export async function getStaticPaths(
+    context: GetStaticPathsContext
+  ): Promise<GetStaticPathsResult> {
+  const paths = []
+  for(const entityType of ENTITY_TYPES){
+    const entityPaths = await drupal.getStaticPathsFromContext(
+      entityType,
+      context,
+      {
+        params: getFilterParams(entityType)
+      }
+    )
+    paths.push(...entityPaths)
+  }
+  return {
+    paths,
+    fallback: "blocking",
+  }
+}
 
 export async function getStaticProps(
   context
