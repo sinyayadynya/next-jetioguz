@@ -44,7 +44,7 @@ export function ParagraphPromoFullWidthTiles({
                             <div>
                                 <h2
                                     id="promo-heading"
-                                    className="text-4xl font-bold tracking-tight text-white md:text-5xl"
+                                    className="text-4xl font-heading font-bold tracking-tight text-white md:text-5xl"
                                 >
                                     {paragraphType.field_heading}
                                     <br />
