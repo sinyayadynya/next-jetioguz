@@ -42,7 +42,7 @@ export function Paragraph({ paragraph }: ParagraphProps) {
                         console.warn(`No component found for paragraph type ${singleParagraph.type}`);
                         return null;
                     }
-                    return <Component key={index} paragraphType={singleParagraph} />;
+                    return <Component key={singleParagraph.id || index} paragraphType={singleParagraph} />;
                 })}
             </>
         );

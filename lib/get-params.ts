@@ -75,6 +75,8 @@ export function getParams(type: string): DrupalJsonApiParams {
                 'field_sections.field_features',
                 'field_sections.field_features.field_media_image',
                 'field_sections.field_features.field_media_image.field_media_image',
+                'field_sections.field_media_images',
+                'field_sections.field_media_images.field_media_image',
             ])
             .addFields('node--activities', [
                 'title',
@@ -106,6 +108,8 @@ export function getParams(type: string): DrupalJsonApiParams {
                 'field_link',
                 'field_media_images',
                 'field_media_images.field_media_image',
+                'field_media_images.field_media_image.uri',
+                'field_media_images.field_media_image.resourceIdObjMeta',
             ])
             .addFields('paragraph--product_features_alternating', [
                 'field_heading',
@@ -361,21 +365,15 @@ export function getParams(type: string): DrupalJsonApiParams {
 
     if (type === 'block_content--incentives_block') {
         return apiParams
-            .addInclude([
-                'field_incentive_items.field_media_image.field_media_image',
-            ])
             .addInclude(['field_incentive_items'])
             .addFields('block_content--incentives_block', [
                 'field_incentive_items',
             ])
-            .addFields('media--image', ['field_media_image'])
-            .addFields('file--file', ['url', 'resourceIdObjMeta'])
             .addFields('paragraph--incentive_with_illustration', [
                 'field_text_title',
                 'field_text_tagline',
                 'field_link',
-                'field_media_image',
-                'field_image',
+                'field_feature_icon',
             ]);
     }
 }

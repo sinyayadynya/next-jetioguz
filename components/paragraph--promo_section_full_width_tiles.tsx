@@ -1,11 +1,36 @@
 import { Section } from 'components/section';
 import { DrupalParagraph } from 'next-drupal';
 import Link from 'next/link';
+import Image from 'next/image';
 import { MediaImage } from './media--image';
+import { absoluteURL } from 'lib/utils';
+
 
 interface ParagraphProps {
     paragraphType: DrupalParagraph;
 }
+
+interface ImageCardProps {
+    image: any;
+    alt: string;
+  }
+
+  const ImageCard: React.FC<ImageCardProps> = ({ image, alt }) => {
+    if (!image) return null;
+
+    return (
+      <div className="flex-shrink-0 [&>img]:h-64 [&>img]:w-64 [&>img]:rounded-lg [&>img]:object-cover [&>img]:md:h-72 [&>img]:md:w-72">
+        <Image
+          src={absoluteURL(image.uri.url)}
+          alt={alt}
+          width={688}
+          height={930}
+          objectFit="cover"
+        />
+      </div>
+    );
+};
+
 
 export function ParagraphPromoFullWidthTiles({
     paragraphType,
@@ -38,53 +63,47 @@ export function ParagraphPromoFullWidthTiles({
                             <div className="absolute -top-32 left-1/2 -translate-x-1/2 transform sm:top-6 sm:translate-x-0">
                                 <div className="ml-24 flex min-w-max space-x-6 sm:ml-3 lg:space-x-8">
                                     <div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
-                                        <div className="flex-shrink-0">
-                                            <img
-                                                className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                                                src="https://tailwindui.com/img/ecommerce-images/home-page-03-category-01.jpg"
-                                                alt=""
+                                        <div className="flex-shrink-0 [&>img]:h-64 [&>img]:w-64 [&>img]:rounded-lg [&>img]:object-cover [&>img]:md:h-72 [&>img]:md:w-72">
+                                            <ImageCard
+                                                image={paragraphType.field_media_images[0]?.field_media_image}
+                                                alt={paragraphType.field_media_images[0]?.alt}
                                             />
                                         </div>
 
-                                        <div className="mt-6 flex-shrink-0 sm:mt-0">
-                                            <img
-                                                className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                                                src="https://tailwindui.com/img/ecommerce-images/home-page-03-category-02.jpg"
-                                                alt=""
+                                        <div className="mt-6 flex-shrink-0 sm:mt-0 [&>img]:h-64 [&>img]:w-64 [&>img]:rounded-lg [&>img]:object-cover [&>img]:md:h-72 [&>img]:md:w-72">
+                                            <ImageCard
+                                                image={paragraphType.field_media_images[1]?.field_media_image}
+                                                alt={paragraphType.field_media_images[1]?.alt}
                                             />
                                         </div>
                                     </div>
                                     <div className="flex space-x-6 sm:-mt-20 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
-                                        <div className="flex-shrink-0">
-                                            <img
-                                                className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                                                src="https://tailwindui.com/img/ecommerce-images/home-page-03-favorite-01.jpg"
-                                                alt=""
+                                        <div className="flex-shrink-0 [&>img]:h-64 [&>img]:w-64 [&>img]:rounded-lg [&>img]:object-cover [&>img]:md:h-72 [&>img]:md:w-72">
+                                            <ImageCard
+                                                image={paragraphType.field_media_images[2]?.field_media_image}
+                                                alt={paragraphType.field_media_images[2]?.alt}
                                             />
                                         </div>
 
-                                        <div className="mt-6 flex-shrink-0 sm:mt-0">
-                                            <img
-                                                className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                                                src="https://tailwindui.com/img/ecommerce-images/home-page-03-favorite-02.jpg"
-                                                alt=""
+                                        <div className="mt-6 flex-shrink-0 sm:mt-0 [&>img]:h-64 [&>img]:w-64 [&>img]:rounded-lg [&>img]:object-cover [&>img]:md:h-72 [&>img]:md:w-72">
+                                            <ImageCard
+                                                image={paragraphType.field_media_images[3]?.field_media_image}
+                                                alt={paragraphType.field_media_images[3]?.alt}
                                             />
                                         </div>
                                     </div>
                                     <div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
-                                        <div className="flex-shrink-0">
-                                            <img
-                                                className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                                                src="https://tailwindui.com/img/ecommerce-images/home-page-03-category-01.jpg"
-                                                alt=""
+                                        <div className="flex-shrink-0 [&>img]:h-64 [&>img]:w-64 [&>img]:rounded-lg [&>img]:object-cover [&>img]:md:h-72 [&>img]:md:w-72">
+                                            <ImageCard
+                                                image={paragraphType.field_media_images[4]?.field_media_image}
+                                                alt={paragraphType.field_media_images[4]?.alt}
                                             />
                                         </div>
 
-                                        <div className="mt-6 flex-shrink-0 sm:mt-0">
-                                            <img
-                                                className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                                                src="https://tailwindui.com/img/ecommerce-images/home-page-03-category-02.jpg"
-                                                alt=""
+                                        <div className="mt-6 flex-shrink-0 sm:mt-0 [&>img]:h-64 [&>img]:w-64 [&>img]:rounded-lg [&>img]:object-cover [&>img]:md:h-72 [&>img]:md:w-72">
+                                            <ImageCard
+                                                image={paragraphType.field_media_images[5]?.field_media_image}
+                                                alt={paragraphType.field_media_images[5]?.alt}
                                             />
                                         </div>
                                     </div>
