@@ -22,21 +22,31 @@ const paragraphTypes = {
 
 export interface ParagraphProps {
 
-    paragraph: DrupalParagraph[];
+    paragraph: DrupalParagraph;
 }
 
+// export function Paragraph({ paragraph }: ParagraphProps) {
+//     if (!paragraph.length) {
+//         return null;
+//     }
+//     let result = []
+
+//     for (let i in paragraph) {
+//         const paragraphType = paragraph[i]
+//         const Component = paragraphTypes[paragraphType.type];
+//         result.push(<Component key={paragraphType.type + i} paragraphType={paragraphType} />)
+//     }
+//     return <>
+//         {result}
+//     </>
+// }
+
+
 export function Paragraph({ paragraph }: ParagraphProps) {
-    if (!paragraph.length) {
+    const Component = paragraphTypes[paragraph.type];
+    if (!Component) {
+        console.warn(`No component found for paragraph type ${paragraph.type}`);
         return null;
     }
-    let result = []
-
-    for (let i in paragraph) {
-        const paragraphType = paragraph[i]
-        const Component = paragraphTypes[paragraphType.type];
-        result.push(<Component key={paragraphType.type + i} paragraphType={paragraphType} />)
-    }
-    return <>
-        {result}
-    </>
+    return <Component key={paragraph.id} paragraphType={paragraph} />;
 }
