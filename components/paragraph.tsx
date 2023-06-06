@@ -25,6 +25,31 @@ export interface ParagraphProps {
     paragraph: DrupalParagraph;
 }
 
+export function Paragraph({ paragraph }: ParagraphProps) {
+    if (!Array.isArray(paragraph)) {
+        const Component = paragraphTypes[paragraph.type];
+        if (!Component) {
+            console.warn(`No component found for paragraph type ${paragraph.type}`);
+            return null;
+        }
+        return <Component key={paragraph.id} paragraphType={paragraph} />;
+    } else {
+        return (
+            <>
+                {paragraph.map((singleParagraph, index) => {
+                    const Component = paragraphTypes[singleParagraph.type];
+                    if (!Component) {
+                        console.warn(`No component found for paragraph type ${singleParagraph.type}`);
+                        return null;
+                    }
+                    return <Component key={index} paragraphType={singleParagraph} />;
+                })}
+            </>
+        );
+    }
+}
+
+
 // export function Paragraph({ paragraph }: ParagraphProps) {
 //     if (!paragraph.length) {
 //         return null;
@@ -42,11 +67,11 @@ export interface ParagraphProps {
 // }
 
 
-export function Paragraph({ paragraph }: ParagraphProps) {
-    const Component = paragraphTypes[paragraph.type];
-    if (!Component) {
-        console.warn(`No component found for paragraph type ${paragraph.type}`);
-        return null;
-    }
-    return <Component key={paragraph.id} paragraphType={paragraph} />;
-}
+// export function Paragraph({ paragraph }: ParagraphProps) {
+//     const Component = paragraphTypes[paragraph.type];
+//     if (!Component) {
+//         console.warn(`No component found for paragraph type ${paragraph.type}`);
+//         return null;
+//     }
+//     return <Component key={paragraph.id} paragraphType={paragraph} />;
+// }
