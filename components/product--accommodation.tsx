@@ -5,11 +5,11 @@ import { useTranslation } from "next-i18next"
 import { MediaImage } from "components/media--image"
 import { FormattedText } from "./formatted-text"
 
-interface NodePageProps {
-  node: DrupalNode
+interface ProductAccommodationProps {
+  product: DrupalNode // Change the "node" prop to a "product" prop
 }
 
-export function ProductAccommodation({ node }: NodePageProps) {
+export function ProductAccommodation({ product }: ProductAccommodationProps) {
   const { t } = useTranslation()
 
   return (
@@ -17,25 +17,25 @@ export function ProductAccommodation({ node }: NodePageProps) {
       {/* <Breadcrumbs
         items={[
           {
-            title: node.title,
+            title: product.title,
           },
         ]}
       /> */}
 
       <article className="bg-white border text-grey-700 p-9 border-gray-50">
         <MediaImage
-            media={node.field_media_image}
+            media={product.field_media_image}
             width={576}
             height={800}
             layout="responsive"
             objectFit="cover"
             className="h-full w-full object-cover object-center"
         />
-        <h1 className="font-serif text-2xl leading-tight lg:text-4xl">
-          {node.title}
+        <h1 className="text-2xl font-heading leading-tight lg:text-4xl">
+          {product.title}
         </h1>
         <div className="mt-4 prose prose-a:text-green-700 max-w-none text-text">
-          {node.body?.processed && <FormattedText text={node.body.processed} />}
+          {product.body?.processed && <FormattedText text={product.body.processed} />}
         </div>
       </article>
     </div>

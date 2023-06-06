@@ -67,15 +67,15 @@ function classNames(...classes) {
 
 export default function SportLeisurePage({
     promo,
-    menus,
-    blocks,
+    // menus,
+    // blocks,
 }: SportLeisurePageProps) {
     const { t } = useTranslation();
 
     return (
         <Layout
-            menus={menus}
-            blocks={blocks}
+            // menus={menus}
+            // blocks={blocks}
             meta={{
                 title: t('sport-leisure'),
             }}

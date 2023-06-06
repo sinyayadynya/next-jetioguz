@@ -17,13 +17,13 @@ interface PlacePageProps extends LayoutProps {
 export default function PlacesPage({
     promoImageTiles,
     places,
-    menus,
+    // menus,
 }: PlacePageProps) {
   const { t } = useTranslation()
 
   return (
     <Layout
-      menus={menus}
+    //   menus={menus}
       meta={{
         title: t("places"),
       }}

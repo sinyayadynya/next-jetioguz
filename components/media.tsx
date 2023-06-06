@@ -1,11 +1,9 @@
 import { DrupalMedia } from "next-drupal"
 
 import { MediaImage } from "components/media--image"
-import { MediaImages } from "components/media--images"
 
 const mediaTypes = {
   "media--image": MediaImage,
-  "media--images": MediaImages,
 }
 
 export interface MediaProps {

@@ -1,12 +1,12 @@
 import { Meta, MetaProps } from "components/meta"
 import { PreviewAlert } from "components/preview-alert"
 import { Header, HeaderProps } from "components/header"
-import { Footer, FooterProps } from "components/footer"
+import { Footer } from "components/footer"
 
 import { TailwindIndicator } from "components/tailwind-indicator"
 import { GetStaticPropsContext, GetStaticPropsResult } from "next"
 import { drupal } from "lib/drupal"
-import { JsonApiResource } from "next-drupal"
+import { DrupalBlock, JsonApiResource } from "next-drupal"
 import localFont from "next/font/local"
 
 const hubot = localFont({
@@ -21,14 +21,20 @@ const inter = localFont({
     display: 'swap',
 });
 
-export interface LayoutProps extends HeaderProps, FooterProps {
+// export interface LayoutProps extends FooterProps {
+//   meta?: MetaProps
+//   menus: HeaderProps["menus"] & FooterProps["menus"]
+//   incentives: DrupalBlock
+//   children?: React.ReactNode
+// }
+
+export interface LayoutProps {
   meta?: MetaProps
-  menus: HeaderProps["menus"] & FooterProps["menus"]
   children?: React.ReactNode
 }
 
 
-export function Layout({ meta, menus, blocks, children }: LayoutProps) {
+export function Layout({ meta, children }: LayoutProps) {
   return (
     <>
       <Meta {...meta} />
@@ -36,7 +42,9 @@ export function Layout({ meta, menus, blocks, children }: LayoutProps) {
         <PreviewAlert />
         <Header />
         <main className="flex-1 bg-white font-sans">{children}</main>
-        <Footer blocks={blocks} />
+        <Footer />
+        {/* <Footer incentives={incentives} /> */}
+
       </div>
       <TailwindIndicator />
     </>

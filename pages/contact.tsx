@@ -9,15 +9,17 @@ import { FormContact } from "components/form--contact"
 
 interface ContactPageProps extends LayoutProps {}
 
-export default function ContactPage({ menus, blocks }: ContactPageProps) {
+export default function ContactPage(
+    // { menus, blocks }: ContactPageProps
+) {
   const { t } = useTranslation()
   return (
     <Layout
       meta={{
         title: t("website-feedback"),
       }}
-      menus={menus}
-      blocks={blocks}
+    //   menus={menus}
+    //   blocks={blocks}
     >
       <PageHeader
         heading={t("website-feedback")}

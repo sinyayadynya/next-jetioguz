@@ -17,15 +17,15 @@ interface AccountPageProps extends LayoutProps {
 
 export default function AccountsPage({
   articles,
-  menus,
-  blocks,
+//   menus,
+//   blocks,
 }: AccountPageProps) {
   const { t } = useTranslation()
 
   return (
     <Layout
-      menus={menus}
-      blocks={blocks}
+    //   menus={menus}
+    //   blocks={blocks}
       meta={{
         title: t("my-account"),
       }}

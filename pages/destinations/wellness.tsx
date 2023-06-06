@@ -18,15 +18,15 @@ interface PlacePageProps extends LayoutProps {
 export default function PlacesPage({
     promoImageTiles,
     places,
-    menus,
-    blocks,
+    // menus,
+    // blocks,
 }: PlacePageProps) {
   const { t } = useTranslation()
 
   return (
     <Layout
-      menus={menus}
-      blocks={blocks}
+    //   menus={menus}
+    //   blocks={blocks}
       meta={{
         title: t("places"),
       }}

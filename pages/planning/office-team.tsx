@@ -80,13 +80,15 @@ const blogPosts = [
     // More posts...
 ];
 
-export default function OfficeTeamPage({ menus, blocks }: OfficeTeamPageProps) {
+export default function OfficeTeamPage(
+    // { menus, blocks }: OfficeTeamPageProps
+) {
     const { t } = useTranslation();
 
     return (
         <Layout
-            menus={menus}
-            blocks={blocks}
+            // menus={menus}
+            // blocks={blocks}
             meta={{
                 title: t('office-team'),
             }}

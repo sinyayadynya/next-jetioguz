@@ -31,7 +31,9 @@ export function ProductAccommodationCard({ node }: NodePageProps) {
             </Link>
         </h3>
         <p className="mt-1 text-sm text-gray-500">{node.field_accommodation_type.name}</p>
-        <p className="mt-1 text-sm font-medium text-gray-900">{node.field_dmo_area.name}</p>
+        {/* <p className="mt-1 text-sm font-medium text-gray-900">
+            {node.field_dmo_area.name}
+        </p> */}
     </div>
   )
 }

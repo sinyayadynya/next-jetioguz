@@ -67,7 +67,8 @@ export interface HeaderProps {
     }
 }
 
-export function Header({ menus }: HeaderProps) {
+// export function Header({ menus }: HeaderProps) {
+export function Header() {
     const { t } = useTranslation("common")
     // const [showMenu, setShowMenu] = React.useState<Boolean>(false)
 

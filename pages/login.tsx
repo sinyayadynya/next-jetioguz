@@ -10,7 +10,9 @@ import { PageHeader } from "components/page-header"
 
 interface LoginPageProps extends LayoutProps {}
 
-export default function LoginPage({ menus, blocks }: LoginPageProps) {
+export default function LoginPage(
+    // { menus, blocks }: LoginPageProps
+) {
   const { t } = useTranslation()
   const router = useRouter()
   const { status } = useSession()
@@ -21,7 +23,11 @@ export default function LoginPage({ menus, blocks }: LoginPageProps) {
   }
 
   return (
-    <Layout meta={{ title: t("login") }} menus={menus} blocks={blocks}>
+    <Layout
+        meta={{ title: t("login") }}
+        // menus={menus}
+        // blocks={blocks}
+    >
       <PageHeader
         heading={t("login")}
         breadcrumbs={[

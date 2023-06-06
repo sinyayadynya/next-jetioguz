@@ -88,18 +88,24 @@ const navigation = {
   ],
 }
 
-export interface FooterProps extends FooterBlocksProps {
-  menus: {
-    footer: DrupalMenuLinkContent[]
-  }
-  incentives: DrupalBlock
-}
+// export interface FooterProps extends FooterBlocksProps {
+//   menus: {
+//     footer: DrupalMenuLinkContent[]
+//   }
+//   incentives: DrupalBlock
+// }
 
-export function Footer({ menus, blocks }: FooterProps) {
+// export interface FooterProps {
+//     menus: {
+//       footer: DrupalMenuLinkContent[]
+//     }
+//   }
+
+// export function Footer({ menus, blocks, incentives }: FooterProps) {
+export function Footer() {
   const { t } = useTranslation("common")
   return (
     <footer className="font-sans">
-
 
       {/* <BlockIncentives block={incentives} /> */}
 

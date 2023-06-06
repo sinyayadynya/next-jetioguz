@@ -15,8 +15,8 @@ interface ArticlePageProps extends LayoutProps {
 
 export default function ArticlesPage({
   articles,
-  menus,
-  blocks,
+//   menus,
+//   blocks,
 }: ArticlePageProps) {
   const { t } = useTranslation()
 
@@ -24,8 +24,8 @@ export default function ArticlesPage({
 
   return (
     <Layout
-      menus={menus}
-      blocks={blocks}
+    //   menus={menus}
+    //   blocks={blocks}
       meta={{
         title: t("articles"),
       }}
@@ -57,7 +57,7 @@ export async function getStaticProps(
     "node--article",
     // context,
     {
-      params: getParams("node--article", "card")
+      params: getParams("node--article")
         .addSort("created", "DESC")
         .getQueryObject(),
     }
@@ -65,7 +65,7 @@ export async function getStaticProps(
 
   const incentiveBlock = await drupal.getResourceCollection("block_content--incentives_block", {
     params: {
-      "fields[field_incentive_items]": "field_text_title, field_text_formatted", // Fetch the title and created fields only.
+      "fields[field_incentive_items]": "field_text_title, field_text_formatted, field_feature_icon", // Fetch the title and created fields only.
       // Sort the articles by created date in descending order.
     },
   })

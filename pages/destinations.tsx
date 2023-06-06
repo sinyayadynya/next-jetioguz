@@ -8,30 +8,26 @@ import { getParams } from "lib/get-params"
 import { Layout, LayoutProps } from "components/layout"
 import { NodePlaceTeaser } from "components/node--place--teaser"
 import { PageHeader } from "components/page-header"
-import { BlockBanner } from "components/block--banner"
 
 interface PlacePageProps extends LayoutProps {
-  banner: DrupalBlock
   places: DrupalNode[]
 }
 
 export default function PlacesPage({
-//   banner,
   places,
-  menus,
-  blocks,
+//   menus,
+//   blocks,
 }: PlacePageProps) {
   const { t } = useTranslation()
 
   return (
     <Layout
-      menus={menus}
-      blocks={blocks}
+    //   menus={menus}
+    //   blocks={blocks}
       meta={{
         title: t("destinations"),
       }}
     >
-      {/* <BlockBanner block={banner} /> */}
       <PageHeader
         heading="Destinations"
         breadcrumbs={[
@@ -59,7 +55,7 @@ export async function getStaticProps(
     "node--place",
     context,
     {
-      params: getParams("node--place", "card")
+      params: getParams("node--place")
         .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
         .addSort("created", "DESC")
         .getQueryObject(),

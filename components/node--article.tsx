@@ -93,7 +93,9 @@ export function NodeArticle({ node, additionalContent }: NodeArticleProps) {
                             </div>
                         )}
                         <div className='mt-6'>
-                            <Paragraph paragraph={field_paragraphs} />
+                            {field_paragraphs.map((paragraph, index) =>
+                                <Paragraph key={index} paragraph={paragraph} />
+                            )}
                         </div>
                     </div>
                 </div>

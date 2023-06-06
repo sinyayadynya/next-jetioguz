@@ -9,13 +9,17 @@ import { FormArticle } from "components/form--article"
 interface NewArticlesPageProps extends LayoutProps {}
 
 export default function NewArticlesPage({
-  menus,
-  blocks,
+//   menus,
+//   blocks,
 }: NewArticlesPageProps) {
   const { t } = useTranslation()
 
   return (
-    <Layout meta={{ title: t("new-article") }} menus={menus} blocks={blocks}>
+    <Layout
+        meta={{ title: t("new-article") }}
+        // menus={menus}
+        // blocks={blocks}
+    >
       <PageHeader
         heading={t("new-article")}
         breadcrumbs={[

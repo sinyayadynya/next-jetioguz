@@ -49,16 +49,16 @@ export default function NodePage({
   entity,
 //   views,
   additionalContent,
-  menus,
-  blocks,
+//   menus,
+//   blocks,
 }: NodePageProps) {
   if (!entity) return null;
   const productVariations = entity?.variations;
 
   return (
     <Layout
-      menus={menus}
-      blocks={blocks}
+    //   menus={menus}
+    //   blocks={blocks}
       meta={{
         title: entity.title || entity.name,
       }}
@@ -114,6 +114,30 @@ export async function getStaticPaths(
       fallback: "blocking",
     }
 }
+
+
+// export async function getStaticPaths(
+//     context: GetStaticPathsContext
+//   ): Promise<GetStaticPathsResult> {
+
+//     // Call getStaticPathsFromContext with additional params for filtering
+//     const paths = await drupal.getStaticPathsFromContext(
+//       ENTITY_TYPES,
+//       context,
+//       {
+//         params: {
+//           'filter[field_site.meta.drupal_internal__target_id]': 'jetioguz',
+//           'filter[field_stores.meta.drupal_internal__target_id]': '3',
+//         }
+//       }
+//     )
+
+//     return {
+//       paths,
+//       fallback: "blocking",
+//     }
+// }
+
 
 
 // export async function getStaticPaths(context): Promise<GetStaticPathsResult> {

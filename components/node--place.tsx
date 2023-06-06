@@ -4,7 +4,6 @@ import { ChevronRightIcon } from '@heroicons/react/20/solid';
 
 import Image from 'next/image';
 import { MediaImage } from 'components/media--image';
-import { MediaImages } from 'components/media--images';
 import { Breadcrumbs } from 'components/breadcrumbs';
 import { FormattedText } from 'components/formatted-text';
 import Map from './node--place--map';

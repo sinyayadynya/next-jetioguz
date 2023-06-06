@@ -30,13 +30,17 @@ export default function IndexPage({
     incentives,
     promotedArticles,
     promotedPlaces,
-    menus,
-    blocks,
+    // menus,
+    // blocks,
 }: IndexPageProps) {
     const { t } = useTranslation();
 
     return (
-        <Layout meta={{ title: t('home') }} menus={menus} blocks={blocks}>
+        <Layout
+            meta={{ title: t('home') }}
+            // menus={menus}
+            // blocks={blocks}
+        >
             <BlockPromoOverlappingImages block={promoOverlappingImages} />
 
             <BlockFeatureSimpleThreeCol block={featureSimpleThreeCol} />
@@ -192,18 +196,21 @@ export async function getStaticProps(
     // );
 
     const [incentives] =
-        await drupal.getResourceCollectionFromContext<DrupalBlock[]>(
-            'block_content--incentives_block',
-            context,
-            {
-                params: getParams(
-                    'block_content--incentives_block'
-                )
-                    .addFilter('info', 'Jeti Oguz incentive 4-column with illustrations')
-                    .addPageLimit(1)
-                    .getQueryObject(),
-            }
-        );
+    await drupal.getResourceCollectionFromContext<DrupalBlock[]>(
+        'block_content--incentives_block',
+        context,
+        {
+            params: getParams(
+                'block_content--incentives_block'
+            )
+                .addFilter('info', 'Jeti Oguz incentive 4-column with illustrations')
+                .addPageLimit(1)
+                .getQueryObject(),
+        }
+    );
+
+console.log(incentives); // Log the fetched incentives block
+
 
     return {
         props: {

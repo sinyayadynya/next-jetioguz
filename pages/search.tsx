@@ -13,7 +13,9 @@ import { PageHeader } from "components/page-header"
 
 interface SearchPageProps extends LayoutProps {}
 
-export default function SearchPage({ menus, blocks }: SearchPageProps) {
+export default function SearchPage(
+    // { menus, blocks }: SearchPageProps
+) {
   const { t } = useTranslation()
   const router = useRouter()
   const [keys, setKeys] = React.useState<string>(null)
@@ -28,8 +30,8 @@ export default function SearchPage({ menus, blocks }: SearchPageProps) {
   return (
     <Layout
       meta={{ title: keys ? t("search-for-keys", { keys }) : t("search") }}
-      menus={menus}
-      blocks={blocks}
+    //   menus={menus}
+    //   blocks={blocks}
     >
       <PageHeader
         heading={keys ? t("search-for-keys", { keys }) : t("search")}
