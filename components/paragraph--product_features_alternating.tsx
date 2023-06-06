@@ -18,7 +18,7 @@ export function ParagraphProductFeaturesAlternating({
             <div className="bg-white">
                 <div className="mx-auto max-w-2xl px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
                     <div className="mx-auto max-w-3xl text-center">
-                        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                        <h2 className="text-3xl font-heading font-bold tracking-tight text-gray-900 sm:text-4xl">
                             {paragraphType.field_heading}
                         </h2>
                         <p className="mt-4 text-gray-500">
@@ -32,16 +32,8 @@ export function ParagraphProductFeaturesAlternating({
                                 key={feature.field_heading}
                                 className="flex flex-col-reverse lg:grid lg:grid-cols-12 lg:items-center lg:gap-x-8"
                             >
-                                <div
-                                    className={classNames(
-                                        featureIdx % 2 === 0
-                                            ? 'lg:col-start-1'
-                                            : 'lg:col-start-8 xl:col-start-9',
-                                        'mt-6 lg:col-span-5 lg:row-start-1 lg:mt-0 xl:col-span-4'
-                                    )}
-                                >
-                                    <ParagraphProductFeaturesItem paragraphType={feature} />
-                                </div>
+                                    <ParagraphProductFeaturesItem paragraphType={feature} featureIdx={featureIdx} />
+
                             </div>
                         ))}
                     </div>
