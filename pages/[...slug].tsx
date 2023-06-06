@@ -79,10 +79,21 @@ export default function NodePage({
       )}
       {entity.type === "product--accommodation" && (
         <ProductAccommodation
-            product={entity}
+            product={entity as DrupalNode}
             // productVariations={productVariations}
         />
       )}
+      {/* {entity.type === "product--accommodation" && (
+            <ProductAccommodation
+                product={entity as DrupalNode}
+            />
+        )} */}
+        {/*
+        {entity.type === "product--accommodation" && (
+            <ProductAccommodation
+                node={entity as DrupalNode}
+            />
+        )} */}
       {entity.type === "taxonomy_term--categories" && (
         <TaxonomyTermContentCategory
           term={entity as DrupalTaxonomyTerm}
@@ -103,6 +114,7 @@ export async function getStaticPaths(
       fallback: "blocking",
     }
 }
+
 
 // export async function getStaticPaths(context): Promise<GetStaticPathsResult> {
 //     return {

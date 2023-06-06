@@ -72,6 +72,9 @@ export function getParams(type: string): DrupalJsonApiParams {
             .addInclude([
                 'field_sections.field_media_image',
                 'field_sections.field_media_image.field_media_image',
+                'field_sections.field_features',
+                'field_sections.field_features.field_media_image',
+                'field_sections.field_features.field_media_image.field_media_image',
             ])
             .addFields('node--activities', [
                 'title',
@@ -107,6 +110,13 @@ export function getParams(type: string): DrupalJsonApiParams {
             .addFields('paragraph--product_features_alternating', [
                 'field_heading',
                 'field_tagline',
+                'field_features',
+            ])
+            .addFields('paragraph--product_features_item', [
+                'field_heading',
+                'field_tagline',
+                'field_media_image',
+                'field_media_image.field_media_image',
             ])
             .addFields('paragraph--product_features_square_images', [
                 'field_heading',

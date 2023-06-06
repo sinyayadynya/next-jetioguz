@@ -1,51 +1,60 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Section } from 'components/section';
 import { DrupalParagraph } from 'next-drupal';
 
-const features = [
-    {
-        name: 'Three card types',
-        description:
-            'Today, Next, and Someday cards allow you to defer your dreams into the future.',
-        imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/product-feature-08-detail-01.jpg',
-        imageAlt:
-            'Green cardstock box containing white, beige, and brown cards.',
-    },
-    {
-        name: 'The perfect mix',
-        description:
-            'Each refill pack contains plenty of cards to last you a month of procrastination.',
-        imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/product-feature-08-detail-02.jpg',
-        imageAlt: 'Green cardstock box open with 50 cards inside.',
-    },
-    {
-        name: 'Dot grid backs',
-        description:
-            'Flip a card over to doodle during meetings when you should be listening.',
-        imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/product-feature-08-detail-03.jpg',
-        imageAlt:
-            'Detail of white today card, beige next card, and brown someday card with dot grid.',
-    },
-    {
-        name: 'Refill packs',
-        description:
-            'Subscribe and save on routine refill packs to keep you productive all year long.',
-        imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/product-feature-08-detail-04.jpg',
-        imageAlt:
-            'Stack of three green cardstock boxes with 3 hole cutouts showing cards inside.',
-    },
-];
+import { ViewOffersListing } from 'components/view--offers_listing';
+
+interface Offer {
+    name: string;
+    area: string;
+    image: string;
+    type: string;
+    url: string;
+}
+
+interface View {
+    name: string;
+    offers: Offer[];
+}
 
 interface ParagraphProps {
     paragraphType: DrupalParagraph;
 }
 
-export function ParagraphProductFeaturesSquareImages({
-    paragraphType,
-}: ParagraphProps) {
+export function ParagraphProductFeaturesSquareImages({ paragraphType }: ParagraphProps) {
+    const [view, setView] = useState<View | null>(null);
+
+    useEffect(() => {
+        axios
+            .get("https://nomadsland.travel/en/api/dmo-offers/jetioguz/square-images")
+            .then((response) => {
+                const offers = response.data.map((offer) => {
+                    const parser = new DOMParser();
+                    const decodedType = parser.parseFromString(`<!doctype html><body>${offer.type}`, 'text/html').body.textContent;
+
+                    return {
+                        ...offer,
+                        image: 'https://nomadsland.travel' + new DOMParser().parseFromString(offer.image, "text/html").querySelector("img").getAttribute('src'),
+                        type: decodedType
+                    };
+                });
+
+
+                setView({
+                    name: "dmo_offers",
+                    offers: offers
+                });
+            })
+            .catch((error) => {
+                console.error("Error fetching API data: ", error);
+            });
+    }, []);
+
+    if (!view) {
+        return <p>Loading...</p>;
+    }
+
     return (
         <Section>
             <div className="bg-white">
@@ -66,29 +75,11 @@ export function ParagraphProductFeaturesSquareImages({
                     </div>
 
                     <div className="mt-11 grid grid-cols-1 items-start gap-x-6 gap-y-16 sm:mt-16 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-8">
-                        {features.map((feature) => (
-                            <div
-                                key={feature.name}
-                                className="flex flex-col-reverse"
-                            >
-                                <div className="mt-6">
-                                    <h3 className="text-sm font-medium text-gray-900">
-                                        {feature.name}
-                                    </h3>
-                                    <p className="mt-2 text-sm text-gray-500">
-                                        {feature.description}
-                                    </p>
-                                </div>
-                                <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100">
-                                    <img
-                                        src={feature.imageSrc}
-                                        alt={feature.imageAlt}
-                                        className="object-cover object-center"
-                                    />
-                                </div>
-                            </div>
-                        ))}
+                        <div className="flex flex-col-reverse">
+                            <ViewOffersListing offers={view.offers} />
+                        </div>
                     </div>
+
                 </div>
             </div>
         </Section>
