@@ -22,7 +22,7 @@ export function NodePlaceTeaser({ node, ...props }: NodePlaceTeaserProps) {
                         width={335} height={225}
                         className="h-full w-full object-cover object-center" />
                 </div>
-                <h3 className="mt-8 font-serif text-2xl text-gray-900">
+                <h3 className="mt-8 font-heading text-2xl text-gray-900">
                     {node.title}
                 </h3>
                 {node.body && (

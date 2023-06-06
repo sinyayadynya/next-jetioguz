@@ -41,10 +41,10 @@ export default function AccountsPage({
         <Link
           href="/articles/new"
           passHref
-          className="px-3 py-1 font-serif text-lg text-white transition-colors border-2 rounded-md lg:text-xl lg:px-4 lg:py-2 bg-primary-600 hover:bg-white hover:text-black border-primary-600">
-          
+          className="px-3 py-1 font-heading text-lg text-white transition-colors border-2 rounded-md lg:text-xl lg:px-4 lg:py-2 bg-primary-600 hover:bg-white hover:text-black border-primary-600">
+
             New Article
-          
+
         </Link>
       </PageHeader>
       <div className="container">
@@ -55,7 +55,7 @@ export default function AccountsPage({
             ))}
           </div>
         ) : (
-          <p className="font-serif text-2xl text-center text-text">
+          <p className="font-heading text-2xl text-center text-text">
             {t("you-have-no-articles")}
           </p>
         )}

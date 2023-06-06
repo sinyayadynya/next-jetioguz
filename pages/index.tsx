@@ -45,7 +45,7 @@ export default function IndexPage({
                 <section className="bg-gray-50">
                     <div className="mx-auto max-w-7xl py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
                         <div className="sm:flex sm:items-baseline sm:justify-between">
-                            <h2 className="font-serif text-2xl font-bold tracking-tight text-gray-900">
+                            <h2 className="font-heading text-2xl font-bold tracking-tight text-gray-900">
                                 {t('destinations')}
                             </h2>
                             <a
@@ -82,7 +82,7 @@ export default function IndexPage({
             <section className="bg-white py-24 sm:py-32">
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
                     <div className="mx-auto max-w-2xl text-center">
-                        <h2 className="font-serif text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                        <h2 className="font-heading text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                             From the blog
                         </h2>
                         <p className="mt-2 text-lg leading-8 text-gray-600">

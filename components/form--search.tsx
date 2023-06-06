@@ -49,7 +49,7 @@ export function FormSearch({ className, ...props }: FormSearchProps) {
       <div>
         <input
           type="submit"
-          className="flex items-center px-3 py-2 font-serif transition-colors bg-white border rounded-sm rounded-r-sm cursor-pointer border-gray-300 hover:bg-green-700/10 hover:border-green-700"
+          className="flex items-center px-3 py-2 font-heading transition-colors bg-white border rounded-sm rounded-r-sm cursor-pointer border-gray-300 hover:bg-green-700/10 hover:border-green-700"
           value={t("search")}
         />
       </div>

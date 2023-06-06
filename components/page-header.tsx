@@ -22,7 +22,7 @@ export function PageHeader({
           children ? "justify-between" : "justify-center"
         )}
       >
-        <h1 className="py-24 text-4xl font-serif font-bold tracking-tight text-gray-900">
+        <h1 className="py-24 text-4xl font-heading font-bold tracking-tight text-gray-900">
           {heading}
         </h1>
         {children}

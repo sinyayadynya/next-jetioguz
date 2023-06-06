@@ -41,7 +41,7 @@ export default function SearchPage({ menus, blocks }: SearchPageProps) {
       />
       <div className="container">
         {isLoading && keys && (
-          <p className="font-serif text-2xl text-text">
+          <p className="font-heading text-2xl text-text">
             {t("searching-for")}: <strong>{keys}</strong>...
           </p>
         )}
@@ -55,7 +55,7 @@ export default function SearchPage({ menus, blocks }: SearchPageProps) {
                 <Link
                   href={result.path.alias}
                   passHref
-                  className="font-serif text-2xl underline text-green-700">
+                  className="font-heading text-2xl underline text-green-700">
 
                   <Highlighter
                     textToHighlight={result.title}
@@ -75,7 +75,7 @@ export default function SearchPage({ menus, blocks }: SearchPageProps) {
           </div>
         ) : null}
         {!isLoading && !results?.length ? (
-          <p className="font-serif text-2xl text-text">
+          <p className="font-heading text-2xl text-text">
             {t("your-search-yielded-no-results")}
           </p>
         ) : null}

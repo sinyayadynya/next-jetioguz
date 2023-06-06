@@ -26,7 +26,7 @@ export function MenuMain({ items, ...props }: MenuMainProps) {
                 href={item.url}
                 passHref
                 className={classNames(
-                  "text-xl border-b-[3px] flex border-b-transparent font-serif transition-colors hover:text-primary-500",
+                  "text-xl border-b-[3px] flex border-b-transparent font-heading transition-colors hover:text-primary-500",
                   {
                     "border-b-primary-500": isActive,
                   }

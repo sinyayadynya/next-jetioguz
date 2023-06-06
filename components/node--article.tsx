@@ -41,7 +41,7 @@ export function NodeArticle({ node, additionalContent }: NodeArticleProps) {
                     <p className="text-base font-semibold leading-7 text-primary-600">
                         Blog
                     </p>
-                    <h1 className="mt-2 text-3xl font-serif font-bold tracking-tight text-gray-900 sm:text-4xl">
+                    <h1 className="mt-2 text-3xl font-heading font-bold tracking-tight text-gray-900 sm:text-4xl">
                         {node.title}
                     </h1>
                     <div className="flex items-center mt-2 space-x-2 text-sm">
@@ -72,12 +72,10 @@ export function NodeArticle({ node, additionalContent }: NodeArticleProps) {
                         <figure className="my-8">
                             <Image
                                 src={absoluteURL(
-                                    node.field_media_image.field_media_image.uri
-                                        .url
+                                    node.field_media_image.field_media_image.uri.url
                                 )}
                                 alt={
-                                    node.field_media_image.field_media_image
-                                        .resourceIdObjMeta.alt
+                                    node.field_media_image.field_media_image.resourceIdObjMeta.alt
                                 }
                                 width={785}
                                 height={525}
@@ -103,7 +101,7 @@ export function NodeArticle({ node, additionalContent }: NodeArticleProps) {
                 <section className="bg-white pt-24 sm:pt-32">
                     <div className="mx-auto max-w-7xl px-6 lg:px-8">
                         <div className="mx-auto max-w-2xl text-center">
-                            <h2 className="font-serif text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                            <h2 className="font-heading text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                                 {t('more-featured-articles')}
                             </h2>
                             <p className="mt-2 text-lg leading-8 text-gray-600">

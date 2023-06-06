@@ -86,7 +86,7 @@ export default function SportLeisurePage({
             <div className="bg-white">
                 <div className="mx-auto max-w-2xl px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
                     <div className="mx-auto max-w-3xl text-center">
-                        <h2 className="text-3xl font-serif font-bold tracking-tight text-gray-900 sm:text-4xl">
+                        <h2 className="text-3xl font-heading font-bold tracking-tight text-gray-900 sm:text-4xl">
                             Things to do
                         </h2>
                         <p className="mt-4 text-gray-500">
@@ -150,7 +150,7 @@ export default function SportLeisurePage({
                     </div>
                     <div className="relative bg-gray-900 bg-opacity-75 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
                         <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
-                        <h2 className="text-3xl font-serif font-bold tracking-tight text-white sm:text-4xl">
+                        <h2 className="text-3xl font-heading font-bold tracking-tight text-white sm:text-4xl">
                             <span className="block sm:inline">Boat </span>
                             <span className="block sm:inline">Kyzil Suu</span>
                         </h2>
@@ -178,7 +178,7 @@ export default function SportLeisurePage({
                     <h2 id="features-heading" className="font-medium text-gray-500">
                         Offers
                     </h2>
-                    <p className="mt-2 text-3xl font-serif font-bold tracking-tight text-gray-900 sm:text-4xl">Nomadic Lifestyle</p>
+                    <p className="mt-2 text-3xl font-heading font-bold tracking-tight text-gray-900 sm:text-4xl">Nomadic Lifestyle</p>
                     <p className="mt-4 text-gray-500">
                         Focus allows you to plan 10 daily tasks, while also thinking ahead about what's next. Forget distracting
                         digital apps and embrace these small, sturdy pieces of paper.

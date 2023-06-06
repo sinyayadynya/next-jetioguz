@@ -49,7 +49,7 @@ export function BlockPromoOverlappingImages({
                     <div className="h-48 w-full bg-white" />
                 </div>
                 <div className="relative pt-48 pb-32">
-                    <h1 className="text-4xl font-serif font-semibold tracking-tight text-white sm:text-5xl md:text-6xl">
+                    <h1 className="text-4xl font-heading font-semibold tracking-tight text-white sm:text-5xl md:text-6xl">
                         {block.field_title}
                     </h1>
                     <p className="mt-6 text-lg leading-8 text-gray-100">

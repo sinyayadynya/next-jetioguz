@@ -33,7 +33,7 @@ export function BlockPromoFadingTestimonials({
                 <div className="mx-auto max-w-2xl lg:max-w-none">
                     <h2
                         id="sale-heading"
-                        className="font-serif text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl"
+                        className="font-heading text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl"
                     >
                         {block.field_heading}
                     </h2>
@@ -65,7 +65,7 @@ export function BlockPromoFadingTestimonials({
                 <div className="mx-auto max-w-2xl lg:max-w-none">
                     <h2
                         id="testimonial-heading"
-                        className="font-serif text-2xl font-bold tracking-tight text-gray-900"
+                        className="font-heading text-2xl font-bold tracking-tight text-gray-900"
                     >
                         What are travelers saying?
                     </h2>

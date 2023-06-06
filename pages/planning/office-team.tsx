@@ -144,7 +144,7 @@ export default function OfficeTeamPage({ menus, blocks }: OfficeTeamPageProps) {
                             <div className="mx-auto max-w-7xl px-6 pb-32 pt-36 sm:pt-60 lg:px-8 lg:pt-32">
                                 <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
                                     <div className="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
-                                        <h1 className="text-4xl font-serif font-bold tracking-tight text-gray-900 sm:text-6xl">
+                                        <h1 className="text-4xl font-heading font-bold tracking-tight text-gray-900 sm:text-6xl">
                                             Building futures through tourism
                                         </h1>
                                         <p className="relative mt-6 text-lg leading-8 text-gray-600 sm:max-w-md lg:max-w-none">
@@ -215,7 +215,7 @@ export default function OfficeTeamPage({ menus, blocks }: OfficeTeamPageProps) {
                     {/* Content section */}
                     <div className="mx-auto -mt-12 max-w-7xl px-6 sm:mt-0 lg:px-8 xl:-mt-8">
                         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
-                            <h2 className="text-3xl font-serif font-bold tracking-tight text-gray-900 sm:text-4xl">
+                            <h2 className="text-3xl font-heading font-bold tracking-tight text-gray-900 sm:text-4xl">
                                 Our mission
                             </h2>
                             <div className="mt-6 flex flex-col gap-x-8 gap-y-20 lg:flex-row">
@@ -294,7 +294,7 @@ export default function OfficeTeamPage({ menus, blocks }: OfficeTeamPageProps) {
                     {/* Values section */}
                     <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
                         <div className="mx-auto max-w-2xl lg:mx-0">
-                            <h2 className="text-3xl font-serif font-bold tracking-tight text-gray-900 sm:text-4xl">
+                            <h2 className="text-3xl font-heading font-bold tracking-tight text-gray-900 sm:text-4xl">
                                 Our values
                             </h2>
                             <p className="mt-6 text-lg leading-8 text-gray-600">
@@ -402,7 +402,7 @@ export default function OfficeTeamPage({ menus, blocks }: OfficeTeamPageProps) {
                     {/* Team section */}
                     <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-48 lg:px-8">
                         <div className="mx-auto max-w-2xl lg:mx-0">
-                            <h2 className="text-3xl font-serif font-bold tracking-tight text-gray-900 sm:text-4xl">
+                            <h2 className="text-3xl font-heading font-bold tracking-tight text-gray-900 sm:text-4xl">
                                 Our team
                             </h2>
                             <p className="mt-6 text-lg leading-8 text-gray-600">
@@ -437,7 +437,7 @@ export default function OfficeTeamPage({ menus, blocks }: OfficeTeamPageProps) {
                     {/* Blog section */}
                     <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
                         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
-                            <h2 className="text-3xl font-serif font-bold tracking-tight text-gray-900 sm:text-4xl">
+                            <h2 className="text-3xl font-heading font-bold tracking-tight text-gray-900 sm:text-4xl">
                                 From the blog
                             </h2>
                             <p className="mt-2 text-lg leading-8 text-gray-600">
