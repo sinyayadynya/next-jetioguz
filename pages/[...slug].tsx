@@ -109,14 +109,14 @@ export default function NodePage({
                 node={entity as DrupalNode}
             />
         )} */}
-      {entity.type === "taxonomy_term--categories" && (
+      {/* {entity.type === "taxonomy_term--categories" && (
         <TaxonomyTermContentCategory
           term={entity as DrupalTaxonomyTerm}
           additionalContent={
             additionalContent as TaxonomyTermContentCategoryProps["additionalContent"]
           }
         />
-      )}
+      )} */}
     </Layout>
   )
 }
@@ -234,65 +234,54 @@ export async function getStaticProps(
       })
   }
 
-  if (entity.type === "taxonomy_term--place_types") {
-    // Fetch the term content.
-    additionalContent["termContent"] =
-      await drupal.getResourceCollectionFromContext("node--place", context, {
-        params: getParams("node--place--card")
-          .addSort("created", "DESC")
-          .addFilter("field_content_category.id", entity.id, "IN")
-          .getQueryObject(),
-      })
-  }
+//   if (entity.type === "taxonomy_term--place_types") {
+//     // Fetch the term content.
+//     additionalContent["termContent"] =
+//       await drupal.getResourceCollectionFromContext("node--place", context, {
+//         params: getParams("node--place--card")
+//           .addSort("created", "DESC")
+//           .addFilter("field_content_category.id", entity.id, "IN")
+//           .getQueryObject(),
+//       })
+//   }
 
-  if (entity.type === "taxonomy_term--place_types") {
-    // Fetch the term content.
-    additionalContent["termContent"] =
-      await drupal.getResourceCollectionFromContext("node--place", context, {
-        params: getParams("node--place--card")
-          .addSort("created", "DESC")
-          .addFilter("field_area.id", entity.id, "IN")
-          .getQueryObject(),
-      })
-  }
+//   if (entity.type === "taxonomy_term--dmo_places") {
+//     // Fetch the term content.
+//     additionalContent["termContent"] =
+//       await drupal.getResourceCollectionFromContext("node--place", context, {
+//         params: getParams("node--place--card")
+//           .addSort("created", "DESC")
+//           .addFilter("field_area.id", entity.id, "IN")
+//           .getQueryObject(),
+//       })
+//   }
 
-  if (entity.type === "taxonomy_term--dmo_places") {
-    // Fetch the term content.
-    additionalContent["termContent"] =
-      await drupal.getResourceCollectionFromContext("node--place", context, {
-        params: getParams("node--place--card")
-          .addSort("created", "DESC")
-          .addFilter("field_area.id", entity.id, "IN")
-          .getQueryObject(),
-      })
-  }
-
-  if (entity.type === "taxonomy_term--countries") {
-    // Fetch the term content.
-    // Tags can show both places and articles.
-    additionalContent["termContent"] = [
-      ...(await drupal.getResourceCollectionFromContext(
-        "node--place",
-        context,
-        {
-          params: getParams("node--place--card")
-            .addSort("created", "DESC")
-            .addFilter("field_countries.id", entity.id, "IN")
-            .getQueryObject(),
-        }
-      )),
-      ...(await drupal.getResourceCollectionFromContext(
-        "node--article",
-        context,
-        {
-          params: getParams("node--article--card")
-            .addSort("created", "DESC")
-            .addFilter("field_countries.id", entity.id, "IN")
-            .getQueryObject(),
-        }
-      )),
-    ]
-  }
+//   if (entity.type === "taxonomy_term--countries") {
+//     // Fetch the term content.
+//     // Tags can show both places and articles.
+//     additionalContent["termContent"] = [
+//       ...(await drupal.getResourceCollectionFromContext(
+//         "node--place",
+//         context,
+//         {
+//           params: getParams("node--place--card")
+//             .addSort("created", "DESC")
+//             .addFilter("field_countries.id", entity.id, "IN")
+//             .getQueryObject(),
+//         }
+//       )),
+//       ...(await drupal.getResourceCollectionFromContext(
+//         "node--article",
+//         context,
+//         {
+//           params: getParams("node--article--card")
+//             .addSort("created", "DESC")
+//             .addFilter("field_countries.id", entity.id, "IN")
+//             .getQueryObject(),
+//         }
+//       )),
+//     ]
+//   }
 
   return {
     props: {
