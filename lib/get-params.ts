@@ -126,6 +126,10 @@ export function getParams(type: string): DrupalJsonApiParams {
                 'field_heading',
                 'field_tagline',
             ])
+            .addFields('paragraph--calendar_section', [
+                'field_heading',
+                'field_tagline',
+            ])
             .addFields('media--image', ['field_media_image', 'uri']);
     }
 

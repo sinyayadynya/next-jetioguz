@@ -7,6 +7,7 @@ import { ParagraphPromoBackgroundImage } from 'components/paragraph--promo_secti
 import { ParagraphPromoFullWidthTiles } from 'components/paragraph--promo_section_full_width_tiles';
 import { ParagraphProductFeaturesAlternating } from 'components/paragraph--product_features_alternating';
 import { ParagraphProductFeaturesSquareImages } from 'components/paragraph--product_features_square_images';
+import { ParagraphCalendarSection } from 'components/paragraph--calendar_section';
 
 const paragraphTypes = {
     'paragraph--blog_section': ParagraphBlogSection,
@@ -17,7 +18,7 @@ const paragraphTypes = {
     'paragraph--promo_section_full_width_tiles': ParagraphPromoFullWidthTiles,
     'paragraph--product_features_alternating': ParagraphProductFeaturesAlternating,
     'paragraph--product_features_square_images': ParagraphProductFeaturesSquareImages,
-    // Add other paragraph types as needed
+    'paragraph--calendar_section': ParagraphCalendarSection,
 };
 
 export interface ParagraphProps {
