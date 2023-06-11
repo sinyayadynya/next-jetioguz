@@ -410,32 +410,14 @@ export function getParams(type: string): DrupalJsonApiParams {
 
     if (type === 'block_content--promo_block_image_tiles') {
         return apiParams
-            .addInclude(['field_media_image_1.field_media_image'])
-            .addInclude(['field_media_image_2.field_media_image'])
-            .addInclude(['field_media_image_3.field_media_image'])
-            .addInclude(['field_media_image_4.field_media_image'])
-            .addInclude(['field_media_image_5.field_media_image'])
-            .addInclude(['field_media_image_6.field_media_image'])
-            .addInclude(['field_media_image_7.field_media_image'])
+            .addInclude(['field_media_images.field_media_image'])
             .addFields('block_content--promo_block_image_tiles', [
                 'field_heading',
                 'field_tagline',
                 'field_cta_button',
-                'field_media_image_1',
-                'field_media_image_2',
-                'field_media_image_3',
-                'field_media_image_4',
-                'field_media_image_5',
-                'field_media_image_6',
-                'field_media_image_7',
+                'field_media_images',
             ])
-            .addFields('media--image_1', ['field_media_image'])
-            .addFields('media--image_2', ['field_media_image'])
-            .addFields('media--image_3', ['field_media_image'])
-            .addFields('media--image_4', ['field_media_image'])
-            .addFields('media--image_5', ['field_media_image'])
-            .addFields('media--image_6', ['field_media_image'])
-            .addFields('media--image_7', ['field_media_image'])
+            .addFields('field_media_images', ['field_media_image'])
             .addFields('file--file', ['uri', 'resourceIdObjMeta']);
     }
 

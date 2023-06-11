@@ -1,6 +1,7 @@
 import { DrupalBlock } from 'next-drupal';
 import Link from 'next/link';
-import { MediaImage } from './media--image';
+import Image from 'next/image';
+import { absoluteURL } from 'lib/utils';
 
 interface BlockPromoImageTilesProps {
     block: DrupalBlock;
@@ -8,6 +9,7 @@ interface BlockPromoImageTilesProps {
 
 export function BlockPromoImageTiles({ block }: BlockPromoImageTilesProps) {
     return (
+
         <div className="relative overflow-hidden bg-white">
             <div className="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
                 <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
@@ -21,84 +23,129 @@ export function BlockPromoImageTiles({ block }: BlockPromoImageTilesProps) {
                     </div>
                     <div>
                         <div className="mt-10">
+
                             {/* Decorative image grid */}
                             <div
                                 aria-hidden="true"
                                 className="pointer-events-none lg:absolute lg:inset-y-0 lg:mx-auto lg:w-full lg:max-w-7xl"
                             >
-                                <div className="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
-                                    <div className="flex items-center space-x-6 lg:space-x-8">
-                                        <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                                            <div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
-                                                <MediaImage
-                                                    media={block.field_media_image_1}
-                                                    height={512}
-                                                    width={352}
-                                                    priority
-                                                    className="h-full w-full object-cover object-center"
-                                                />
+                                {/* {block.field_media_images && ( */}
+                                    <div className="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
+                                        <div className="flex items-center space-x-6 lg:space-x-8">
+                                            <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                                                <div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
+                                                    {block.field_media_images[0]?.field_media_image && (
+                                                        <Image
+                                                            src={absoluteURL(
+                                                                block.field_media_images[0].field_media_image.uri.url
+                                                            )}
+                                                            alt={
+                                                                block.field_media_images[0].alt || block.title
+                                                            }
+                                                            width={512}
+                                                            height={352}
+                                                            className="h-full w-full object-cover object-center"
+                                                        />
+                                                    )}
+                                                </div>
+                                                <div className="h-64 w-44 overflow-hidden rounded-lg">
+                                                    {block.field_media_images[1]?.field_media_image && (
+                                                        <Image
+                                                            src={absoluteURL(
+                                                                block.field_media_images[1].field_media_image.uri.url
+                                                            )}
+                                                            alt={
+                                                                block.field_media_images[1].alt || block.title
+                                                            }
+                                                            width={512}
+                                                            height={352}
+                                                            className="h-full w-full object-cover object-center"
+                                                        />
+                                                    )}
+                                                </div>
                                             </div>
-                                            <div className="h-64 w-44 overflow-hidden rounded-lg">
-                                                <MediaImage
-                                                    media={block.field_media_image_2}
-                                                    height={512}
-                                                    width={352}
-                                                    priority
-                                                    className="h-full w-full object-cover object-center"
-                                                />
+                                            <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                                                <div className="h-64 w-44 overflow-hidden rounded-lg">
+                                                    {block.field_media_images[2]?.field_media_image && (
+                                                        <Image
+                                                            src={absoluteURL(
+                                                                block.field_media_images[2].field_media_image.uri.url
+                                                            )}
+                                                            alt={
+                                                                block.field_media_images[2].alt || block.title
+                                                            }
+                                                            width={512}
+                                                            height={352}
+                                                            className="h-full w-full object-cover object-center"
+                                                        />
+                                                    )}
+                                                </div>
+                                                <div className="h-64 w-44 overflow-hidden rounded-lg">
+                                                    {block.field_media_images[3]?.field_media_image && (
+                                                        <Image
+                                                            src={absoluteURL(
+                                                                block.field_media_images[3].field_media_image.uri.url
+                                                            )}
+                                                            alt={
+                                                                block.field_media_images[3].alt || block.title
+                                                            }
+                                                            width={512}
+                                                            height={352}
+                                                            className="h-full w-full object-cover object-center"
+                                                        />
+                                                    )}
+                                                </div>
+                                                <div className="h-64 w-44 overflow-hidden rounded-lg">
+                                                    {block.field_media_images[4]?.field_media_image && (
+                                                        <Image
+                                                            src={absoluteURL(
+                                                                block.field_media_images[4].field_media_image.uri.url
+                                                            )}
+                                                            alt={
+                                                                block.field_media_images[4].alt || block.title
+                                                            }
+                                                            width={512}
+                                                            height={352}
+                                                            className="h-full w-full object-cover object-center"
+                                                        />
+                                                    )}
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                                            <div className="h-64 w-44 overflow-hidden rounded-lg">
-                                                <MediaImage
-                                                    media={block.field_media_image_3}
-                                                    height={512}
-                                                    width={352}
-                                                    priority
-                                                    className="h-full w-full object-cover object-center"
-                                                />
-                                            </div>
-                                            <div className="h-64 w-44 overflow-hidden rounded-lg">
-                                                <MediaImage
-                                                    media={block.field_media_image_4}
-                                                    height={512}
-                                                    width={352}
-                                                    priority
-                                                    className="h-full w-full object-cover object-center"
-                                                />
-                                            </div>
-                                            <div className="h-64 w-44 overflow-hidden rounded-lg">
-                                                <MediaImage
-                                                    media={block.field_media_image_5}
-                                                    height={512}
-                                                    width={352}
-                                                    priority
-                                                    className="h-full w-full object-cover object-center"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                                            <div className="h-64 w-44 overflow-hidden rounded-lg">
-                                                <MediaImage
-                                                    media={block.field_media_image_6}
-                                                    height={512}
-                                                    width={352}
-                                                    priority
-                                                    className="h-full w-full object-cover object-center"
-                                                />
-                                            </div>
-                                            <div className="h-64 w-44 overflow-hidden rounded-lg">
-                                                <MediaImage
-                                                    media={block.field_media_image_7}
-                                                    height={512}
-                                                    width={352}
-                                                    priority
-                                                    className="h-full w-full object-cover object-center"
-                                                />
+                                            <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                                                <div className="h-64 w-44 overflow-hidden rounded-lg">
+                                                    {block.field_media_images[5]?.field_media_image && (
+                                                        <Image
+                                                            src={absoluteURL(
+                                                                block.field_media_images[5].field_media_image.uri.url
+                                                            )}
+                                                            alt={
+                                                                block.field_media_images[5].alt || block.title
+                                                            }
+                                                            width={512}
+                                                            height={352}
+                                                            className="h-full w-full object-cover object-center"
+                                                        />
+                                                    )}
+                                                </div>
+                                                <div className="h-64 w-44 overflow-hidden rounded-lg">
+                                                    {block.field_media_images[6]?.field_media_image && (
+                                                        <Image
+                                                            src={absoluteURL(
+                                                                block.field_media_images[6].field_media_image.uri.url
+                                                            )}
+                                                            alt={
+                                                                block.field_media_images[6].alt || block.title
+                                                            }
+                                                            width={512}
+                                                            height={352}
+                                                            className="h-full w-full object-cover object-center"
+                                                        />
+                                                    )}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                {/* )} */}
                             </div>
 
                             {block.field_cta_button && (
