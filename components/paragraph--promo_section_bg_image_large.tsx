@@ -24,7 +24,7 @@ export function ParagraphPromoBgImageLargeContent({ paragraphType }: ParagraphPr
                                 height={1216}
                                 width={1216}
                                 priority
-                                className="object-cover"
+                                className="h-full w-full object-cover object-center"
                             />
                         )}
                     </div>
