@@ -33,29 +33,6 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 
-const thingsToDo = [
-  { name: 'Sport & Leisure', description: 'Get active in Jeti Oguz’s great outdoors', href: '/things-to-do/sport-leisure', icon: TrophyIcon },
-  { name: 'Culture & Museum', description: 'Explore Kyrgyzstan’s rich history and heritage', href: '/things-to-do/culture-museum', icon: BuildingLibraryIcon },
-  { name: 'Events', description: 'Stay up to date on Jeti Oguz’s latest happenings', href: '/things-to-do/events', icon: CalendarDaysIcon },
-  { name: 'Food & Drink', description: 'Savor the flavors of Jeti Oguz’s local cuisine', href: '/things-to-do/food-drink', icon: CakeIcon },
-  { name: 'Transportation', description: 'Getting around Jeti Oguz made easy', href: '/things-to-do/transportation', icon: TruckIcon },
-]
-const destinations = [
-    { name: 'Villages', description: 'Experience Kyrgyz hospitality in Jeti Oguz’s charming villages', href: '/destinations/villages', icon: HomeIcon },
-    { name: 'Nature sites', description: 'Discover Jeti Oguz’s breathtaking natural wonders', href: '/destinations/nature-sites', icon: GlobeAsiaAustraliaIcon },
-    { name: 'Lakes', description: 'Take in the serene beauty of Jeti Oguz’s stunning lakes', href: '/destinations/lakes', icon: SparklesIcon },
-    { name: 'Beaches', description: 'Relax and recharge on Issyk-Kul’s beautiful beaches', href: '/destinations/beaches', icon: SunIcon },
-    { name: 'Wellness', description: 'Rejuvenate mind and body in Jeti Oguz’s tranquil sanatoriums', href: '/destinations/wellness', icon: FaceSmileIcon },
-]
-const planning = [
-    { name: 'How to get there', description: 'Getting to Jeti Oguz made easy - plan your trip now', href: '/planning/how-to-get-there', icon: MapIcon },
-    { name: 'Contact', description: 'Get in touch with our friendly team for all your Jeti Oguz inquiries', href: '/planning/contact', icon: ChatBubbleLeftIcon },
-    { name: 'Office & Team', description: 'Meet the people behind your Jeti Oguz adventure', href: '/planning/office-team', icon: UserGroupIcon },
-]
-const callsToAction = [
-  { name: 'Watch video', href: '/videos', icon: PlayCircleIcon },
-  { name: 'Contact us', href: '/planning/contact', icon: PhoneIcon },
-]
 
 // function classNames(...classes) {
 //   return classes.filter(Boolean).join(' ')
@@ -69,8 +46,36 @@ export interface HeaderProps {
 
 // export function Header({ menus }: HeaderProps) {
 export function Header() {
-    const { t } = useTranslation("common")
+    const { t, i18n } = useTranslation();
+    const lang = i18n.language;
+    const prefix = lang !== 'en' ? `/${lang}` : '';
     // const [showMenu, setShowMenu] = React.useState<Boolean>(false)
+
+    const navigation = {
+    headerThingsToDo: [
+        { name: t('sport-leisure'), description: t('sport-leisure-description'), href: `${prefix}/things-to-do/sport-leisure`, icon: TrophyIcon },
+        { name: t('culture-museum'), description: t('culture-museum-description'), href: `${prefix}/things-to-do/culture-museum`, icon: BuildingLibraryIcon },
+        { name: t('events'), description: t('events-description'), href: `${prefix}/things-to-do/events`, icon: CalendarDaysIcon },
+        { name: t('food-drink'), description: t('food-drink-description'), href: `${prefix}/things-to-do/food-drink`, icon: CakeIcon },
+        { name: t('transportation'), description: t('transportation-description'), href: `${prefix}/things-to-do/transportation`, icon: TruckIcon },
+      ],
+      headerDestinations: [
+        { name: t('villages'), description: t('villages-description'), href: `${prefix}/destinations/villages`, icon: HomeIcon },
+        { name: t('nature-sites'), description: t('nature-sites-description'), href: `${prefix}/destinations/nature-sites`, icon: GlobeAsiaAustraliaIcon },
+        { name: t('lakes'), description: t('lakes-description'), href: `${prefix}/destinations/lakes`, icon: SparklesIcon },
+        { name: t('beaches'), description: t('beaches-description'), href: `${prefix}/destinations/beaches`, icon: SunIcon },
+        { name: t('wellness'), description: t('wellness-description'), href: `${prefix}/destinations/wellness`, icon: FaceSmileIcon },
+      ],
+      headerPlanning: [
+        { name: t('how-to-get-there'), description: t('how-to-get-there-description'), href: `${prefix}/planning/how-to-get-there`, icon: MapIcon },
+        { name: t('contact'), description: t('contact-description'), href: `${prefix}/planning/contact`, icon: ChatBubbleLeftIcon },
+        { name: t('office-team'), description: t('office-team-description'), href: `${prefix}/planning/office-team`, icon: UserGroupIcon },
+      ],
+      headerCallsToAction: [
+        { name: t('watch-video'), href: `${prefix}/videos`, icon: PlayCircleIcon },
+        { name: t('contact-us'), href: `${prefix}/planning/contact`, icon: PhoneIcon },
+      ]
+    }
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -120,7 +125,7 @@ export function Header() {
                       >
                           <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
                               <div className="p-4">
-                                  {thingsToDo.map((item) => (
+                                {navigation.headerThingsToDo.map((item) => (
                                       <div
                                           key={item.name}
                                           className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
@@ -147,7 +152,7 @@ export function Header() {
                                   ))}
                               </div>
                               <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-                                  {callsToAction.map((item) => (
+                                  {navigation.headerCallsToAction.map((item) => (
                                       <a
                                           key={item.name}
                                           href={item.href}
@@ -185,7 +190,7 @@ export function Header() {
                       >
                           <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
                               <div className="p-4">
-                                  {destinations.map((item) => (
+                                {navigation.headerDestinations.map((item) => (
                                       <div
                                           key={item.name}
                                           className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
@@ -212,7 +217,7 @@ export function Header() {
                                   ))}
                               </div>
                               <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-                                  {callsToAction.map((item) => (
+                                  {navigation.headerCallsToAction.map((item) => (
                                       <a
                                           key={item.name}
                                           href={item.href}
@@ -257,7 +262,7 @@ export function Header() {
                       >
                           <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
                               <div className="p-4">
-                                  {planning.map((item) => (
+                                {navigation.headerPlanning.map((item) => (
                                       <div
                                           key={item.name}
                                           className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
@@ -284,7 +289,7 @@ export function Header() {
                                   ))}
                               </div>
                               <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-                                  {callsToAction.map((item) => (
+                                  {navigation.headerCallsToAction.map((item) => (
                                       <a
                                           key={item.name}
                                           href={item.href}
@@ -356,8 +361,8 @@ export function Header() {
                                           </Disclosure.Button>
                                           <Disclosure.Panel className="mt-2 space-y-2">
                                               {[
-                                                  ...thingsToDo,
-                                                  ...callsToAction,
+                                                  ...navigation.headerThingsToDo,
+                                                  ...navigation.headerCallsToAction,
                                               ].map((item) => (
                                                   <Disclosure.Button
                                                       key={item.name}
@@ -388,8 +393,8 @@ export function Header() {
                                           </Disclosure.Button>
                                           <Disclosure.Panel className="mt-2 space-y-2">
                                               {[
-                                                  ...destinations,
-                                                  ...callsToAction,
+                                                  ...navigation.headerDestinations,
+                                                  ...navigation.headerCallsToAction,
                                               ].map((item) => (
                                                   <Disclosure.Button
                                                       key={item.name}
@@ -427,8 +432,8 @@ export function Header() {
                                           </Disclosure.Button>
                                           <Disclosure.Panel className="mt-2 space-y-2">
                                               {[
-                                                  ...planning,
-                                                  ...callsToAction,
+                                                  ...navigation.headerPlanning,
+                                                  ...navigation.headerCallsToAction,
                                               ].map((item) => (
                                                   <Disclosure.Button
                                                       key={item.name}
@@ -459,5 +464,5 @@ export function Header() {
               </Dialog.Panel>
           </Dialog>
       </header>
-  );
+  )
 }
