@@ -21,6 +21,12 @@ const inter = localFont({
     display: 'swap',
 });
 
+const sofia = localFont({
+    src: '../components/fonts/SofiaSans-Bold.woff2',
+    variable: '--font-sofia',
+    display: 'swap',
+})
+
 const hubot = localFont({
     src: '../components/fonts/Hubot-Sans.woff2',
     variable: '--font-hubot',

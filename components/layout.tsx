@@ -9,9 +9,9 @@ import { drupal } from "lib/drupal"
 import { DrupalBlock, JsonApiResource } from "next-drupal"
 import localFont from "next/font/local"
 
-const hubot = localFont({
-    src: './fonts/Hubot-Sans.woff2',
-    variable: '--font-hubot',
+const sofia = localFont({
+    src: './fonts/SofiaSans-Bold.woff2',
+    variable: '--font-sofia',
     display: 'swap',
 })
 
@@ -38,7 +38,7 @@ export function Layout({ meta, children }: LayoutProps) {
   return (
     <>
       <Meta {...meta} />
-      <div className={`${inter.variable} ${hubot.variable}`}>
+      <div className={`${inter.variable} ${sofia.variable}`}>
         <PreviewAlert />
         <Header />
         <main className="flex-1 bg-white font-sans">{children}</main>

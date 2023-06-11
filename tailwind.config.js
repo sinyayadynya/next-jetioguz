@@ -80,7 +80,7 @@ module.exports = {
                 // sans: ['Inter', ...fontFamily.sans],
                 // mono: ['Martian Mono', ...fontFamily.serif],
                 sans: ['var(--font-inter)'],
-                heading: ['var(--font-hubot)'],
+                heading: ['var(--font-sofia)'],
             },
         },
     },
