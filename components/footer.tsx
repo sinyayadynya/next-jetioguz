@@ -18,7 +18,7 @@ const navigation = {
   ],
   destinations: [
     { name: 'Villages', href: '/destinations/villages' },
-    { name: 'Nature sites', href: '/destinations/nature-sites' },
+    { name: 'Nature Sites', href: '/destinations/nature-sites' },
     { name: 'Lakes', href: '/destinations/lakes' },
     { name: 'Beaches', href: '/destinations/beaches' },
     { name: 'Wellness', href: '/destinations/welness' },
