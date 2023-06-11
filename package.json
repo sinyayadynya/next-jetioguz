@@ -1,7 +1,7 @@
 {
   "name": "jeti-oguz-destination",
   "description": "The Destination Jeti Oguz site built as a headless Drupal with Next.js",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "private": true,
   "license": "MIT",
   "scripts": {
