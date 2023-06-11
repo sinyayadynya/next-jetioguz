@@ -14,7 +14,7 @@ export function NodeArticleRow({ node, ...props }: NodeArticleRowProps) {
   const router = useRouter()
 
   async function handleDelete() {
-    if (!window?.confirm(t("are-you-use-you-want-to-delete-this-article"))) {
+    if (!window?.confirm(t("are-you-sure-you-want-to-delete-this-article"))) {
       return
     }
 
