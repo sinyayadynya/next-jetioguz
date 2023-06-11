@@ -78,6 +78,7 @@ export function getParams(type: string): DrupalJsonApiParams {
                 'field_sections.field_media_images',
                 'field_sections.field_media_images.field_media_image',
             ])
+            .addFilter('status', '1')
             .addFields('node--activities', [
                 'title',
                 'status',
@@ -89,21 +90,21 @@ export function getParams(type: string): DrupalJsonApiParams {
                 'field_media_image',
             ])
             .addFields('paragraph--promo_section_bg_image_large', [
-                'field_heading',
+                'field_headline',
                 'field_tagline',
                 'field_link',
                 'field_media_image',
                 'field_media_image.field_media_image',
             ])
             .addFields('paragraph--promo_section_background_image', [
-                'field_heading',
+                'field_headline',
                 'field_tagline',
                 'field_link',
                 'field_media_image',
                 'field_media_image.field_media_image',
             ])
             .addFields('paragraph--promo_section_full_width_tiles', [
-                'field_heading',
+                'field_headline',
                 'field_tagline',
                 'field_link',
                 'field_media_images',
@@ -112,7 +113,7 @@ export function getParams(type: string): DrupalJsonApiParams {
                 'field_media_images.field_media_image.resourceIdObjMeta',
             ])
             .addFields('paragraph--product_features_alternating', [
-                'field_heading',
+                'field_headline',
                 'field_tagline',
                 'field_features',
             ])
@@ -123,11 +124,11 @@ export function getParams(type: string): DrupalJsonApiParams {
                 'field_media_image.field_media_image',
             ])
             .addFields('paragraph--product_features_square_images', [
-                'field_heading',
+                'field_headline',
                 'field_tagline',
             ])
             .addFields('paragraph--calendar_section', [
-                'field_heading',
+                'field_headline',
                 'field_tagline',
             ])
             .addFields('media--image', ['field_media_image', 'uri']);
@@ -204,6 +205,77 @@ export function getParams(type: string): DrupalJsonApiParams {
                 'description',
                 'resourceIdObjMeta',
             ]);
+    }
+
+    if (type === 'node--planning') {
+        return apiParams
+            .addInclude([
+                'field_sections.field_media_image',
+                'field_sections.field_media_image.field_media_image',
+                'field_sections.field_features',
+                'field_sections.field_stats',
+                // 'field_sections.field_features.field_media_image',
+                // 'field_sections.field_features.field_media_image.field_media_image',
+                // 'field_sections.field_media_images',
+                // 'field_sections.field_media_images.field_media_image',
+            ])
+            .addFilter('status', '1')
+            .addFields('node--planning', [
+                'title',
+                'status',
+                'path',
+                'field_sections',
+            ])
+            .addFields('paragraph--promo_section_full_width_tiles', [
+                'field_headline',
+                'field_tagline',
+                'field_cta_button',
+            ])
+            .addFields('paragraph--feature_section_simple_three_col', [
+                'field_label',
+                'field_headline',
+                'field_tagline',
+                'field_features'
+            ])
+            .addFields('paragraph--hero_image_tiles', [
+                'field_headline',
+                'field_tagline',
+                'field_cta_button',
+                'field_cta_link',
+            ])
+            .addFields('paragraph--stats_section_description', [
+                'field_headline',
+                'field_tagline',
+                'field_text_formatted',
+                'field_stats',
+            ])
+            .addFields('paragraph--image_section', [
+                'field_media_image',
+            ])
+            .addFields('paragraph--feature_section_simple', [
+                'field_headline',
+                'field_tagline',
+                'field_features',
+            ])
+            .addFields('paragraph--logo_clouds_simple_heading', [
+                'field_heading',
+            ])
+            .addFields('paragraph--team_section_grid_round_images', [
+                'field_headline',
+                'field_tagline',
+            ])
+            .addFields('paragraph--hero_offset_image', [
+                'field_headline',
+                'field_tagline',
+                'field_cta_button',
+                'field_cta_link',
+                'field_media_image',
+            ])
+            // .addFields('paragraph--contact_section_side_side_grid', [
+            //     'field_headline',
+            //     'field_tagline',
+            // ])
+            .addFields('media--image', ['field_media_image', 'uri']);
     }
 
     if (type === 'product--accommodation') {

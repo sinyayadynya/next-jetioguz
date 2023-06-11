@@ -8,6 +8,16 @@ import { ParagraphPromoFullWidthTiles } from 'components/paragraph--promo_sectio
 import { ParagraphProductFeaturesAlternating } from 'components/paragraph--product_features_alternating';
 import { ParagraphProductFeaturesSquareImages } from 'components/paragraph--product_features_square_images';
 import { ParagraphCalendarSection } from 'components/paragraph--calendar_section';
+import { ParagraphPromoOffersSplitImage } from 'components/paragraph--promo_section_offers_split_image';
+import { ParagraphHeroImageTiles } from 'components/paragraph--hero_image_tiles';
+import { ParagraphImageSection } from 'components/paragraph--image_section';
+import { ParagraphHeroOffsetImage } from 'components/paragraph--hero_offset_image';
+import { ParagraphFeatureSimpleThreeCol } from  'components/paragraph--feature_section_simple_three_col'
+import { ParagraphStatsDescription } from 'components/paragraph--stats_section_description'
+import { ParagraphFeatureSimple } from 'components/paragraph--feature_section_simple'
+import { ParagraphLogoCloudSimpleHeading } from 'components/paragraph--logo_clouds_simple_heading'
+import { ParagraphTeamGridLargeRoundImages } from 'components/paragraph--team_section_grid_round_images'
+import { ParagraphContactSideBySideGrid } from 'components/paragraph--contact_section_side_side_grid'
 
 const paragraphTypes = {
     'paragraph--blog_section': ParagraphBlogSection,
@@ -19,6 +29,16 @@ const paragraphTypes = {
     'paragraph--product_features_alternating': ParagraphProductFeaturesAlternating,
     'paragraph--product_features_square_images': ParagraphProductFeaturesSquareImages,
     'paragraph--calendar_section': ParagraphCalendarSection,
+    'paragraph--promo_section_offers_split_image': ParagraphPromoOffersSplitImage,
+    'paragraph--hero_image_tiles': ParagraphHeroImageTiles,
+    'paragraph--image_section': ParagraphImageSection,
+    'paragraph--hero_offset_image': ParagraphHeroOffsetImage,
+    'paragraph--feature_section_simple_three_col': ParagraphFeatureSimpleThreeCol,
+    'paragraph--stats_section_description': ParagraphStatsDescription,
+    'paragraph--feature_section_simple': ParagraphFeatureSimple,
+    'paragraph--logo_clouds_simple_heading': ParagraphLogoCloudSimpleHeading,
+    'paragraph--team_section_grid_round_images': ParagraphTeamGridLargeRoundImages,
+    'paragraph--contact_section_side_side_grid': ParagraphContactSideBySideGrid,
 };
 
 export interface ParagraphProps {

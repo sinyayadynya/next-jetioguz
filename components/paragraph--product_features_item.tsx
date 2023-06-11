@@ -39,16 +39,13 @@ export function ParagraphProductFeaturesItem({
                         'flex-auto lg:col-span-7 lg:row-start-1 xl:col-span-8'
                     )}
                 >
-                                <div className="aspect-h-2 aspect-w-5 overflow-hidden rounded-lg bg-gray-100">
+                <div className="aspect-h-2 aspect-w-5 overflow-hidden rounded-lg bg-gray-100">
 
                     {paragraphType?.field_media_image && (
                         <MediaImage
                             media={paragraphType.field_media_image}
-                            height="1216"
-                            width="1216"
-                            // priority
-                            layout="fill"
-                            // objectFit="cover"
+                            height={1216}
+                            width={1216}
                             className="object-cover object-center"
                         />
                     )}

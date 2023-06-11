@@ -19,13 +19,13 @@ interface ImageCardProps {
     if (!image) return null;
 
     return (
-      <div className="flex-shrink-0 [&>img]:h-64 [&>img]:w-64 [&>img]:rounded-lg [&>img]:object-cover [&>img]:md:h-72 [&>img]:md:w-72">
+      <div className="flex-shrink-0">
         <Image
           src={absoluteURL(image.uri.url)}
           alt={alt}
           width={688}
           height={930}
-          objectFit="cover"
+          className='h-64 w-64 rounded-lg object-cover md:h-72 md:w-72'
         />
       </div>
     );
@@ -46,7 +46,7 @@ export function ParagraphPromoFullWidthTiles({
                                     id="promo-heading"
                                     className="text-4xl font-heading font-bold tracking-tight text-white md:text-5xl"
                                 >
-                                    {paragraphType.field_heading}
+                                    {paragraphType.field_headline}
                                     <br />
                                     {paragraphType.field_tagline}
                                 </h2>

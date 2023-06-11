@@ -16,7 +16,7 @@ export function ParagraphImageFullWidth({ paragraphType }: ParagraphProps) {
 
   return (
     <Section>
-      <div key={paragraphType.id} className="my-4 [&>div>span>img]:aspect-video [&>div>span>img]:rounded-xl [&>div>span>img]:bg-gray-50">
+      <div key={paragraphType.id} className="my-4">
         {/* <Image
           src={absoluteURL(imageUrl)}
           alt={
@@ -26,17 +26,15 @@ export function ParagraphImageFullWidth({ paragraphType }: ParagraphProps) {
           width={785}
           height={525}
           layout="responsive"
-          objectFit="cover"
           className="aspect-video rounded-xl bg-gray-50 object-cover"
         /> */}
         <MediaImage
-                media={paragraphType.field_media_image}
-                width={785}
-                height={525}
-                layout="responsive"
-                objectFit="cover"
-                // className="aspect-video rounded-xl bg-gray-50 object-cover"
-                />
+            media={paragraphType.field_media_image}
+            width={785}
+            height={525}
+            // layout="responsive"
+            className="aspect-video rounded-xl bg-gray-50 object-cover"
+            />
       </div>
     </Section>
   )

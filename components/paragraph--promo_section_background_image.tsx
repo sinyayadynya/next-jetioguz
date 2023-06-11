@@ -17,17 +17,16 @@ export function ParagraphPromoBackgroundImage({
                     <div className="absolute inset-0">
                         <MediaImage
                             media={paragraphType.field_media_image}
-                            height="1216"
-                            width="1216"
+                            height={1216}
+                            width={1216}
                             priority
-                            layout="fill"
-                            objectFit="cover"
+                            className="object-cover"
                         />
                     </div>
                     <div className="relative bg-gray-900 bg-opacity-75 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
                         <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
                             <h2 className="text-3xl font-heading font-bold tracking-tight text-white sm:text-4xl">
-                                {paragraphType.field_heading}
+                                {paragraphType.field_headline}
                             </h2>
                             <p className="mt-3 text-xl text-white">
                                 {paragraphType.field_tagline}

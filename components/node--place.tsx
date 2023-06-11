@@ -118,8 +118,7 @@ export function NodePlace({ node, ...props }: NodePlaceProps) {
                                             media={node.field_media_image}
                                             width={2432}
                                             height={1442}
-                                            objectFit="cover"
-                                            className="ounded-md"
+                                            className="rounded-md object-cover"
                                         />
                                     </div>
                                 </div>
@@ -159,7 +158,6 @@ export function NodePlace({ node, ...props }: NodePlaceProps) {
                                                 }
                                                 width={1152}
                                                 height={842}
-                                                objectFit="cover"
                                                 className="aspect-[7/5] w-[37rem] max-w-none rounded-2xl bg-gray-50 object-cover"
                                             />
                                         )}
@@ -176,7 +174,6 @@ export function NodePlace({ node, ...props }: NodePlaceProps) {
                                                     }
                                                     width={768}
                                                     height={604}
-                                                    objectFit="cover"
                                                     className="aspect-[4/3] w-[24rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover"
                                                 />
                                             )}
@@ -192,7 +189,6 @@ export function NodePlace({ node, ...props }: NodePlaceProps) {
                                                     }
                                                     width={1152}
                                                     height={842}
-                                                    objectFit="cover"
                                                     className="aspect-[7/5] w-[37rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover"
                                                 />
                                             )}
@@ -208,7 +204,6 @@ export function NodePlace({ node, ...props }: NodePlaceProps) {
                                                     }
                                                     width={768}
                                                     height={604}
-                                                    objectFit="cover"
                                                     className="aspect-[4/3] w-[24rem] max-w-none rounded-2xl bg-gray-50 object-cover"
                                                 />
                                             )}

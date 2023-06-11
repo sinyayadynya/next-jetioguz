@@ -19,7 +19,7 @@ export function ParagraphProductFeaturesAlternating({
                 <div className="mx-auto max-w-2xl px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
                     <div className="mx-auto max-w-3xl text-center">
                         <h2 className="text-3xl font-heading font-bold tracking-tight text-gray-900 sm:text-4xl">
-                            {paragraphType.field_heading}
+                            {paragraphType.field_headline}
                         </h2>
                         <p className="mt-4 text-gray-500">
                             {paragraphType.field_tagline}
@@ -29,11 +29,10 @@ export function ParagraphProductFeaturesAlternating({
                     <div className="mt-16 space-y-16">
                         {paragraphType.field_features.map((feature, featureIdx) => (
                             <div
-                                key={feature.field_heading}
+                                key={feature.id}
                                 className="flex flex-col-reverse lg:grid lg:grid-cols-12 lg:items-center lg:gap-x-8"
                             >
-                                    <ParagraphProductFeaturesItem paragraphType={feature} featureIdx={featureIdx} />
-
+                                <ParagraphProductFeaturesItem paragraphType={feature} featureIdx={featureIdx} />
                             </div>
                         ))}
                     </div>

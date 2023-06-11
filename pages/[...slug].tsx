@@ -15,6 +15,7 @@ import { Layout, LayoutProps } from "components/layout"
 import { NodeArticle, NodeArticleProps } from "components/node--article"
 import { NodeActivities } from "components/node--activities"
 import { NodePlace } from "components/node--place"
+import { NodePlanning } from "components/node--planning"
 import { ProductAccommodation } from "components/product--accommodation"
 import {
   TaxonomyTermContentCategory,
@@ -34,6 +35,7 @@ const ENTITY_TYPES = [
   "node--article",
   "node--activities",
   "node--place",
+  "node--planning",
   "product--accommodation",
   "taxonomy_term--categories",
   "taxonomy_term--countries",
@@ -91,6 +93,9 @@ export default function NodePage({
       )}
       {entity.type === "node--place" && (
         <NodePlace node={entity as DrupalNode} />
+      )}
+      {entity.type === "node--planning" && (
+        <NodePlanning node={entity as DrupalNode} />
       )}
       {entity.type === "product--accommodation" && (
         <ProductAccommodation

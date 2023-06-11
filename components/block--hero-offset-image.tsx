@@ -48,14 +48,10 @@ export function BlockHeroOffsetImage({ block }: BlockHeroOffsetImageProps) {
                         </div>
                     </div>
                     <div className='mt-10 w-full max-w-lg sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 xl:mt-36'>
-
                         <MediaImage
                             media={block.field_media_image}
-                            height="600"
-                            width="500"
                             priority
-                            objectFit="cover"
-                            className="[&>*]:aspect-[6/5] [&>*]:w-full [&>*]:max-w-lg [&>*]:rounded-2xl [&>*]:lg:max-w-none"
+                            className="aspect-[6/5] w-full max-w-lg rounded-2xl lg:max-w-none"
                         />
                     </div>
 

@@ -1,44 +1,30 @@
-import Image, { ImageProps } from "next/legacy/image"
-
+import Image from "next/image"
 import { absoluteURL } from "lib/utils"
 import { MediaProps } from "components/media"
 
-interface MediaImageProps extends MediaProps, Partial<ImageProps> {}
+interface MediaImageProps extends MediaProps {
+    className?: string;
+    height?: number;
+    width?: number;
+    priority?: boolean;
+}
 
-export function MediaImage({
-  media,
-  layout = "responsive",
-  objectFit,
-  width,
-  height,
-  priority,
-  ...props
-}: MediaImageProps) {
-  const image = media?.field_media_image
+export function MediaImage({ media, className, height, width, priority }: MediaImageProps) {
+    const image = media?.field_media_image
 
-  if (!image?.uri) {
-    return null
-  }
+    if (!image?.uri) {
+      return null
+    }
 
-  const sizeProps =
-    layout === "fill"
-      ? null
-      : {
-          width: width || image.resourceIdObjMeta.width,
-          height: height || image.resourceIdObjMeta.height,
-        }
-
-  return (
-    <div className="media__content image__wrapper" {...props}>
-      <Image
-        src={absoluteURL(image.uri.url)}
-        layout={layout}
-        objectFit={objectFit}
-        alt={image.resourceIdObjMeta.alt || "Image"}
-        title={image.resourceIdObjMeta.title}
-        priority={priority}
-        {...sizeProps}
-      />
-    </div>
-  )
+    return (
+        <Image
+            src={absoluteURL(image.uri.url)}
+            alt={image.resourceIdObjMeta.alt || "Image"}
+            title={image.resourceIdObjMeta.title}
+            width={width || image.resourceIdObjMeta.width}
+            height={height || image.resourceIdObjMeta.height}
+            className={className}
+            priority={priority}
+        />
+    )
 }

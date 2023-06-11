@@ -19,8 +19,6 @@ export function ProductAccommodationCard({ node }: NodePageProps) {
                 media={node.field_media_image}
                 width={576}
                 height={800}
-                layout="responsive"
-                objectFit="cover"
                 className="h-full w-full object-cover object-center"
             />
         </div>

@@ -101,7 +101,7 @@ export default function IndexPage({
                                       key={node.id}
                                   />
                               ))
-                            : null}
+                        : null}
                     </div>
                 </div>
             </section>
@@ -196,21 +196,18 @@ export async function getStaticProps(
     // );
 
     const [incentives] =
-    await drupal.getResourceCollectionFromContext<DrupalBlock[]>(
-        'block_content--incentives_block',
-        context,
-        {
-            params: getParams(
-                'block_content--incentives_block'
-            )
-                .addFilter('info', 'Jeti Oguz incentive 4-column with illustrations')
-                .addPageLimit(1)
-                .getQueryObject(),
-        }
-    );
-
-console.log(incentives); // Log the fetched incentives block
-
+        await drupal.getResourceCollectionFromContext<DrupalBlock[]>(
+            'block_content--incentives_block',
+            context,
+            {
+                params: getParams(
+                    'block_content--incentives_block'
+                )
+                    .addFilter('info', 'Jeti Oguz incentive 4-column with illustrations')
+                    .addPageLimit(1)
+                    .getQueryObject(),
+            }
+        );
 
     return {
         props: {

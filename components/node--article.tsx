@@ -80,7 +80,6 @@ export function NodeArticle({ node, additionalContent }: NodeArticleProps) {
                                 width={785}
                                 height={525}
                                 layout="responsive"
-                                objectFit="cover"
                                 className="aspect-video rounded-xl bg-gray-50 object-cover"
                             />
                         </figure>

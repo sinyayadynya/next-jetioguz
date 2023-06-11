@@ -24,7 +24,7 @@ const navigation = {
     { name: 'Wellness', href: '/destinations/welness' },
   ],
   planning: [
-    { name: 'How to go there', href: '/planning/how-to-go-there' },
+    { name: 'How to get there', href: '/planning/how-to-get-there' },
     { name: 'Contact', href: '/planning/contact' },
     { name: 'Office & Team', href: '/planning/office-team' },
     { name: 'Tours', href: '/booking/tours' },

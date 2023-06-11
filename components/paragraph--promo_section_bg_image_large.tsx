@@ -21,11 +21,10 @@ export function ParagraphPromoBgImageLargeContent({ paragraphType }: ParagraphPr
                         {paragraphType?.field_media_image && (
                             <MediaImage
                                 media={paragraphType.field_media_image}
-                                height="1216"
-                                width="1216"
+                                height={1216}
+                                width={1216}
                                 priority
-                                layout="fill"
-                                objectFit="cover"
+                                className="object-cover"
                             />
                         )}
                     </div>
@@ -36,7 +35,7 @@ export function ParagraphPromoBgImageLargeContent({ paragraphType }: ParagraphPr
 
                     <div className="relative mx-auto flex max-w-3xl flex-col items-center px-6 py-32 text-center sm:py-64 lg:px-0">
                         <h1 className="text-4xl font-heading font-bold tracking-tight text-white lg:text-6xl">
-                            {paragraphType.field_heading}
+                            {paragraphType.field_headline}
                         </h1>
                         <p className="mt-4 text-xl text-white">
                             {paragraphType.field_tagline}

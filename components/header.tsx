@@ -48,7 +48,7 @@ const destinations = [
     { name: 'Wellness', description: 'Rejuvenate mind and body in Jeti Oguz’s tranquil sanatoriums', href: '/destinations/wellness', icon: FaceSmileIcon },
 ]
 const planning = [
-    { name: 'How to go there', description: 'Getting to Jeti Oguz made easy - plan your trip now', href: '/planning/how-to-go-there', icon: MapIcon },
+    { name: 'How to get there', description: 'Getting to Jeti Oguz made easy - plan your trip now', href: '/planning/how-to-get-there', icon: MapIcon },
     { name: 'Contact', description: 'Get in touch with our friendly team for all your Jeti Oguz inquiries', href: '/planning/contact', icon: ChatBubbleLeftIcon },
     { name: 'Office & Team', description: 'Meet the people behind your Jeti Oguz adventure', href: '/planning/office-team', icon: UserGroupIcon },
 ]

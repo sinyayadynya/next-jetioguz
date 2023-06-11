@@ -32,21 +32,19 @@ export function BlockPromoImageTiles({ block }: BlockPromoImageTilesProps) {
                                             <div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
                                                 <MediaImage
                                                     media={block.field_media_image_1}
-                                                    height="512"
-                                                    width="352"
+                                                    height={512}
+                                                    width={352}
                                                     priority
-                                                    objectFit="cover"
-                                                    // className="[&>*]:h-full [&>*]:w-full [&>*]:object-cover [&>*]:object-center"
+                                                    className="h-full w-full object-cover object-center"
                                                 />
                                             </div>
                                             <div className="h-64 w-44 overflow-hidden rounded-lg">
                                                 <MediaImage
                                                     media={block.field_media_image_2}
-                                                    height="512"
-                                                    width="352"
+                                                    height={512}
+                                                    width={352}
                                                     priority
-                                                    objectFit="cover"
-                                                    // className="[&>*]:h-full [&>*]:w-full [&>*]:object-cover [&>*]:object-center"
+                                                    className="h-full w-full object-cover object-center"
                                                 />
                                             </div>
                                         </div>
@@ -54,31 +52,28 @@ export function BlockPromoImageTiles({ block }: BlockPromoImageTilesProps) {
                                             <div className="h-64 w-44 overflow-hidden rounded-lg">
                                                 <MediaImage
                                                     media={block.field_media_image_3}
-                                                    height="512"
-                                                    width="352"
+                                                    height={512}
+                                                    width={352}
                                                     priority
-                                                    objectFit="cover"
-                                                    // className="[&>*]:h-full [&>*]:w-full [&>*]:object-cover [&>*]:object-center"
+                                                    className="h-full w-full object-cover object-center"
                                                 />
                                             </div>
                                             <div className="h-64 w-44 overflow-hidden rounded-lg">
                                                 <MediaImage
                                                     media={block.field_media_image_4}
-                                                    height="512"
-                                                    width="352"
+                                                    height={512}
+                                                    width={352}
                                                     priority
-                                                    objectFit="cover"
-                                                    // className="[&>*]:h-full [&>*]:w-full [&>*]:object-cover [&>*]:object-center"
+                                                    className="h-full w-full object-cover object-center"
                                                 />
                                             </div>
                                             <div className="h-64 w-44 overflow-hidden rounded-lg">
                                                 <MediaImage
                                                     media={block.field_media_image_5}
-                                                    height="512"
-                                                    width="352"
+                                                    height={512}
+                                                    width={352}
                                                     priority
-                                                    objectFit="cover"
-                                                    // className="[&>*]:h-full [&>*]:w-full [&>*]:object-cover [&>*]:object-center"
+                                                    className="h-full w-full object-cover object-center"
                                                 />
                                             </div>
                                         </div>
@@ -86,21 +81,19 @@ export function BlockPromoImageTiles({ block }: BlockPromoImageTilesProps) {
                                             <div className="h-64 w-44 overflow-hidden rounded-lg">
                                                 <MediaImage
                                                     media={block.field_media_image_6}
-                                                    height="512"
-                                                    width="352"
+                                                    height={512}
+                                                    width={352}
                                                     priority
-                                                    objectFit="cover"
-                                                    // className="[&>*]:h-full [&>*]:w-full [&>*]:object-cover [&>*]:object-center"
+                                                    className="h-full w-full object-cover object-center"
                                                 />
                                             </div>
                                             <div className="h-64 w-44 overflow-hidden rounded-lg">
                                                 <MediaImage
                                                     media={block.field_media_image_7}
-                                                    height="512"
-                                                    width="352"
+                                                    height={512}
+                                                    width={352}
                                                     priority
-                                                    objectFit="cover"
-                                                    // className="[&>*]:h-full [&>*]:w-full [&>*]:object-cover [&>*]:object-center"
+                                                    className="h-full w-full object-cover object-center"
                                                 />
                                             </div>
                                         </div>
