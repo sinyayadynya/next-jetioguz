@@ -210,13 +210,13 @@ export function Header() {
                                                 />
                                             </div>
                                             <div className="flex-auto">
-                                                <a
+                                                <Link
                                                     href={item.href}
                                                     className="block font-semibold text-gray-900"
                                                 >
                                                     {item.name}
                                                     <span className="absolute inset-0" />
-                                                </a>
+                                                </Link>
                                                 <p className="mt-1 text-gray-600">
                                                     {item.description}
                                                 </p>
@@ -227,7 +227,7 @@ export function Header() {
                                 <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
                                     {navigation.headerCallsToAction.map(
                                         (item) => (
-                                            <a
+                                            <Link
                                                 key={item.name}
                                                 href={item.href}
                                                 className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
@@ -237,7 +237,7 @@ export function Header() {
                                                     aria-hidden="true"
                                                 />
                                                 {item.name}
-                                            </a>
+                                            </Link>
                                         )
                                     )}
                                 </div>
@@ -278,13 +278,13 @@ export function Header() {
                                                     />
                                                 </div>
                                                 <div className="flex-auto">
-                                                    <a
+                                                    <Link
                                                         href={item.href}
                                                         className="block font-semibold text-gray-900"
                                                     >
                                                         {item.name}
                                                         <span className="absolute inset-0" />
-                                                    </a>
+                                                    </Link>
                                                     <p className="mt-1 text-gray-600">
                                                         {item.description}
                                                     </p>
@@ -296,7 +296,7 @@ export function Header() {
                                 <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
                                     {navigation.headerCallsToAction.map(
                                         (item) => (
-                                            <a
+                                            <Link
                                                 key={item.name}
                                                 href={item.href}
                                                 className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
@@ -306,7 +306,7 @@ export function Header() {
                                                     aria-hidden="true"
                                                 />
                                                 {item.name}
-                                            </a>
+                                            </Link>
                                         )
                                     )}
                                 </div>
@@ -314,12 +314,12 @@ export function Header() {
                         </Transition>
                     </Popover>
 
-                    <a
+                    <Link
                         href={`${prefix}/accommodation`}
                         className="text-sm font-semibold leading-6 text-gray-900"
                     >
                         {t('accommodation')}
-                    </a>
+                    </Link>
 
                     <Popover className="relative">
                         <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 focus:outline-none">
@@ -353,13 +353,13 @@ export function Header() {
                                                 />
                                             </div>
                                             <div className="flex-auto">
-                                                <a
+                                                <Link
                                                     href={item.href}
                                                     className="block font-semibold text-gray-900"
                                                 >
                                                     {item.name}
                                                     <span className="absolute inset-0" />
-                                                </a>
+                                                </Link>
                                                 <p className="mt-1 text-gray-600">
                                                     {item.description}
                                                 </p>
@@ -370,7 +370,7 @@ export function Header() {
                                 <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
                                     {navigation.headerCallsToAction.map(
                                         (item) => (
-                                            <a
+                                            <Link
                                                 key={item.name}
                                                 href={item.href}
                                                 className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
@@ -380,7 +380,7 @@ export function Header() {
                                                     aria-hidden="true"
                                                 />
                                                 {item.name}
-                                            </a>
+                                            </Link>
                                         )
                                     )}
                                 </div>
@@ -388,12 +388,12 @@ export function Header() {
                         </Transition>
                     </Popover>
 
-                    <a
+                    {/* <Link
                         href={`${prefix}/booking`}
                         className="text-sm font-semibold leading-6 text-gray-900"
                     >
                         {t('booking')}
-                    </a>
+                    </Link> */}
                 </Popover.Group>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
                     <LocaleSwitcher />
@@ -493,12 +493,12 @@ export function Header() {
                                     )}
                                 </Disclosure>
 
-                                <a
+                                <Link
                                     href={`${prefix}/accommodation`}
                                     className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                 >
                                     {t('accommodation')}
-                                </a>
+                                </Link>
 
                                 <Disclosure as="div" className="-mx-3">
                                     {({ open }) => (
@@ -534,12 +534,12 @@ export function Header() {
                                     )}
                                 </Disclosure>
 
-                                <a
+                                {/* <Link
                                     href={`${prefix}/booking`}
                                     className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                 >
                                     {t('booking')}
-                                </a>
+                                </Link> */}
                             </div>
                             <div className="py-6">
                                 <LocaleSwitcher />
