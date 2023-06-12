@@ -1,8 +1,8 @@
-const { i18n } = require("./next-i18next.config")
+const { i18n } = require('./next-i18next.config');
 
 module.exports = {
-  i18n,
-  images: {
-    domains: [process.env.NEXT_IMAGE_DOMAIN],
-  },
-}
+    i18n,
+    images: {
+        domains: ['source.unsplash.com', process.env.NEXT_IMAGE_DOMAIN],
+    },
+};
