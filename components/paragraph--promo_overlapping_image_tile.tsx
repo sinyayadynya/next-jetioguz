@@ -19,8 +19,8 @@ export function ParagraphPromoOverlappingImageTile({
                     <div className="absolute inset-0 overflow-hidden group-hover:opacity-75">
                         <MediaImage
                             media={paragraph.field_media_image}
-                            height={1216}
-                            width={1216}
+                            height={384}
+                            width={480}
                             priority
                             className="h-full w-full object-cover object-center"
                         />
