@@ -1,4 +1,3 @@
-// ./components/media--image.tsx
 import Image from "next/image"
 import { absoluteURL } from "lib/utils"
 import { MediaProps } from "components/media"
@@ -17,13 +16,8 @@ export function MediaImage({ media, className, height, width, priority }: MediaI
       return null
     }
 
-    const myLoader = ({ src, width, quality }) => {
-        return `${src}?w=${width}&q=${quality || 75}`
-    }
-
     return (
         <Image
-            loader={myLoader}
             src={absoluteURL(image.uri.url)}
             alt={image.resourceIdObjMeta.alt || "Image"}
             title={image.resourceIdObjMeta.title}
