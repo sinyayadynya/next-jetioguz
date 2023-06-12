@@ -16,7 +16,7 @@ import { NodeArticle, NodeArticleProps } from "components/node--article"
 import { NodeActivities } from "components/node--activities"
 import { NodePlace } from "components/node--place"
 import { NodePlanning } from "components/node--planning"
-import { ProductAccommodation } from "components/product--accommodation"
+import ProductAccommodation from "components/product--accommodation"
 import {
   TaxonomyTermContentCategory,
   TaxonomyTermContentCategoryProps,
