@@ -17,8 +17,8 @@ export function BlockPromoFadingTestimonials({
                 <div className="absolute inset-0 mx-auto max-w-7xl overflow-hidden xl:px-8">
                     <MediaImage
                         media={block.field_media_image}
-                        priority
-                        className="[&>*]:h-full [&>*]:w-full [&>*]:object-cover [&>*]:object-center"
+                        fill
+                        className="h-full w-full object-cover object-center"
                     />
                 </div>
                 <div className="absolute inset-0 bg-white bg-opacity-75" />

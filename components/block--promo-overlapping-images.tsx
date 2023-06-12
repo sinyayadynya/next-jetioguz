@@ -22,6 +22,7 @@ export function BlockPromoOverlappingImages({
                         <MediaImage
                             media={block.field_media_image}
                             priority
+                            fill
                             className="h-full w-full object-cover object-center"
                         />
                     </div>
@@ -41,6 +42,7 @@ export function BlockPromoOverlappingImages({
                             <MediaImage
                                 media={block.field_media_image}
                                 priority
+                                fill
                                 className="h-full w-full object-cover object-center"
                             />
                         </div>

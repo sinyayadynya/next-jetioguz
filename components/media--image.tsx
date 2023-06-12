@@ -7,9 +7,10 @@ interface MediaImageProps extends MediaProps {
     height?: number;
     width?: number;
     priority?: boolean;
+    fill?: boolean;
 }
 
-export function MediaImage({ media, className, height, width, priority }: MediaImageProps) {
+export function MediaImage({ media, className, height, width, priority, fill }: MediaImageProps) {
     const image = media?.field_media_image
 
     if (!image?.uri) {
@@ -21,10 +22,10 @@ export function MediaImage({ media, className, height, width, priority }: MediaI
             src={absoluteURL(image.uri.url)}
             alt={image.resourceIdObjMeta.alt || "Image"}
             title={image.resourceIdObjMeta.title}
-            width={width || image.resourceIdObjMeta.width}
-            height={height || image.resourceIdObjMeta.height}
             className={className}
             priority={priority}
+            fill={fill}
+            {...(!fill && { width: width || image.resourceIdObjMeta.width, height: height || image.resourceIdObjMeta.height })}
         />
     )
 }
