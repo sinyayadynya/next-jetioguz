@@ -10,7 +10,7 @@ interface NodePageProps {
 
 export function ProductAccommodationCard({ node }: NodePageProps) {
   const { t } = useTranslation()
-
+  console.log('Node:', node);
   return (
     <div className="group relative">
         <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
@@ -25,10 +25,12 @@ export function ProductAccommodationCard({ node }: NodePageProps) {
                 {node.title}
             </Link>
         </h4>
-        <p className="mt-1 text-sm text-gray-500">{node.field_accommodation_type.name}</p>
-        {/* <p className="mt-1 text-sm font-medium text-gray-900">
-            {node.field_dmo_area.name}
-        </p> */}
+        <p className="mt-1 text-sm text-gray-500">
+            {node.field_accommodation_type.name}
+        </p>
+        <p className="mt-1 text-sm font-medium text-gray-900">
+            {node.field_dmo_area?.name}
+        </p>
     </div>
   )
 }
