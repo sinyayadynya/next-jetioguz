@@ -17,8 +17,6 @@ export function ProductAccommodationCard({ node }: NodePageProps) {
         <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
             <MediaImage
                 media={node.field_media_image}
-                width={576}
-                height={800}
                 className="h-full w-full object-cover object-center"
             />
         </div>
