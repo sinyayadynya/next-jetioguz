@@ -1,11 +1,14 @@
 import { useRouter } from 'next/router'
+import dynamic from 'next/dynamic'
 import { DrupalNode } from "next-drupal"
 
 import { useTranslation } from "next-i18next";
 import { DrupalParagraph } from 'next-drupal';
 import { Paragraph } from "./paragraph";
-import ContactForm from 'components/webform--contact'
+// import ContactForm from 'components/webform--contact'
 
+// const Paragraph = dynamic(() => import('../components/paragraph'))
+const ContactForm = dynamic(() => import('../components/webform--contact'), { ssr: false })
 
 export interface NodePlanningProps {
     node: DrupalNode;

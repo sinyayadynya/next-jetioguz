@@ -79,7 +79,7 @@ export default function ContactForm() {
                             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                                 <div>
                                     <label
-                                        htmlFor="first-name"
+                                        htmlFor="firstname"
                                         className="block text-sm font-semibold leading-6 text-gray-900"
                                     >
                                         First name
@@ -101,7 +101,7 @@ export default function ContactForm() {
                                 </div>
                                 <div>
                                     <label
-                                        htmlFor="last-name"
+                                        htmlFor="lastname"
                                         className="block text-sm font-semibold leading-6 text-gray-900"
                                     >
                                         Last name
