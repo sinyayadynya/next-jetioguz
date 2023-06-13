@@ -17,9 +17,6 @@ export function ParagraphPromoBackgroundImage({
                     <div className="absolute inset-0">
                         <MediaImage
                             media={paragraphType.field_media_image}
-                            height={1216}
-                            width={1216}
-                            priority
                             className="object-cover"
                         />
                     </div>

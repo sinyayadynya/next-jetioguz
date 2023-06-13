@@ -116,8 +116,8 @@ export function NodePlace({ node, ...props }: NodePlaceProps) {
                                     <div className="w-[76rem] rounded-md shadow-2xl overflow-hidden ring-1 ring-gray-900/10">
                                         <MediaImage
                                             media={node.field_media_image}
-                                            priority
-                                            className="w-[76rem] max-h-[48rem] rounded-md object-cover"
+                                            // priority
+                                            className="w-[76rem] sm:max-h-[48rem] rounded-md object-cover"
                                         />
                                     </div>
                                 </div>

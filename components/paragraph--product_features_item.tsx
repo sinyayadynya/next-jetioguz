@@ -44,8 +44,6 @@ export function ParagraphProductFeaturesItem({
                     {paragraphType?.field_media_image && (
                         <MediaImage
                             media={paragraphType.field_media_image}
-                            height={1216}
-                            width={1216}
                             className="object-cover object-center"
                         />
                     )}
