@@ -42,8 +42,9 @@ export function BlockPromoImageTiles({ block }: BlockPromoImageTilesProps) {
                                                             alt={
                                                                 block.field_media_images[0].alt || block.title
                                                             }
-                                                            width={512}
-                                                            height={352}
+                                                            width={176}
+                                                            height={256}
+                                                            priority
                                                             className="h-full w-full object-cover object-center"
                                                         />
                                                     )}
@@ -57,8 +58,9 @@ export function BlockPromoImageTiles({ block }: BlockPromoImageTilesProps) {
                                                             alt={
                                                                 block.field_media_images[1].alt || block.title
                                                             }
-                                                            width={512}
-                                                            height={352}
+                                                            width={176}
+                                                            height={256}
+                                                            priority
                                                             className="h-full w-full object-cover object-center"
                                                         />
                                                     )}
@@ -74,8 +76,9 @@ export function BlockPromoImageTiles({ block }: BlockPromoImageTilesProps) {
                                                             alt={
                                                                 block.field_media_images[2].alt || block.title
                                                             }
-                                                            width={512}
-                                                            height={352}
+                                                            width={176}
+                                                            height={256}
+                                                            priority
                                                             className="h-full w-full object-cover object-center"
                                                         />
                                                     )}
@@ -89,8 +92,9 @@ export function BlockPromoImageTiles({ block }: BlockPromoImageTilesProps) {
                                                             alt={
                                                                 block.field_media_images[3].alt || block.title
                                                             }
-                                                            width={512}
-                                                            height={352}
+                                                            width={176}
+                                                            height={256}
+                                                            priority
                                                             className="h-full w-full object-cover object-center"
                                                         />
                                                     )}
@@ -104,8 +108,9 @@ export function BlockPromoImageTiles({ block }: BlockPromoImageTilesProps) {
                                                             alt={
                                                                 block.field_media_images[4].alt || block.title
                                                             }
-                                                            width={512}
-                                                            height={352}
+                                                            width={176}
+                                                            height={256}
+                                                            priority
                                                             className="h-full w-full object-cover object-center"
                                                         />
                                                     )}
@@ -121,8 +126,9 @@ export function BlockPromoImageTiles({ block }: BlockPromoImageTilesProps) {
                                                             alt={
                                                                 block.field_media_images[5].alt || block.title
                                                             }
-                                                            width={512}
-                                                            height={352}
+                                                            width={176}
+                                                            height={256}
+                                                            priority
                                                             className="h-full w-full object-cover object-center"
                                                         />
                                                     )}
@@ -136,8 +142,9 @@ export function BlockPromoImageTiles({ block }: BlockPromoImageTilesProps) {
                                                             alt={
                                                                 block.field_media_images[6].alt || block.title
                                                             }
-                                                            width={512}
-                                                            height={352}
+                                                            width={176}
+                                                            height={256}
+                                                            priority
                                                             className="h-full w-full object-cover object-center"
                                                         />
                                                     )}
