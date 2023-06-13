@@ -27,7 +27,7 @@ export function getParams(type: string): DrupalJsonApiParams {
                 'path',
                 'field_media_image',
                 'created',
-                'intro',
+                'body',
             ])
             .addFields('media--image', ['field_media_image'])
             .addFields('file--file', ['uri', 'resourceIdObjMeta']);
