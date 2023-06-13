@@ -6,6 +6,7 @@ import {
 } from "next"
 import Head from "next/head"
 import { DrupalNode, DrupalTaxonomyTerm, DrupalView, JsonApiResource } from "next-drupal"
+import { htmlToText } from 'html-to-text';
 
 import { PageProps } from "types"
 import { drupal } from "lib/drupal"
@@ -42,6 +43,21 @@ const ENTITY_TYPES = [
   "taxonomy_term--dmo_places",
 ]
 
+function limitToFullSentences(text, limit) {
+    const sentences = text.match(/[^\.!\?]+[\.!\?]+/g) || []; // split into sentences
+    let result = '';
+
+    for (let i = 0; i < sentences.length; i++) {
+      if ((result + sentences[i]).length <= limit) {
+        result += sentences[i];
+      } else {
+        break;
+      }
+    }
+
+    return result;
+  }
+
 interface NodePageProps extends LayoutProps, PageProps {
     entity: DrupalNode | DrupalTaxonomyTerm;
     views?: Array<DrupalView>;
@@ -76,9 +92,7 @@ export default function NodePage({
     <Layout
     //   menus={menus}
     //   blocks={blocks}
-      meta={{
-        title: entity.title || entity.name,
-      }}
+    meta={{ title: entity.title || entity.name, body: limitToFullSentences(htmlToText(entity.body?.processed || ''), 160) }}
     >
       {entity.type === "node--article" && (
         <NodeArticle

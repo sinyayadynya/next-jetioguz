@@ -35,9 +35,10 @@ export interface LayoutProps {
 
 
 export function Layout({ meta, children }: LayoutProps) {
-  return (
-    <>
-      <Meta {...meta} />
+    return (
+      <>
+        <Meta {...meta} />
+
       <div className={`${inter.variable} ${sofia.variable}`}>
         <PreviewAlert />
         <Header />
