@@ -80,8 +80,8 @@ export function ParagraphPromoOffersSplitImage({ paragraphType }: ParagraphProps
                          {paragraphType?.field_media_image && (
                             <MediaImage
                                 media={paragraphType.field_media_image}
-                                height={688}
-                                width={930}
+                                fill
+                                priority
                                 className="h-full w-full object-cover object-center"
                             />
                         )}
