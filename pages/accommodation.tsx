@@ -54,7 +54,7 @@ export default function PlacesPage({
 export async function getStaticProps(
   context: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<PlacePageProps>> {
-  // Fetch all published places sorted by date.
+  // Fetch all published accommodations sorted by date.
   const accommodations = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
     "product--accommodation",
     context,

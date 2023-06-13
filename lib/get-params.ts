@@ -282,6 +282,7 @@ export function getParams(type: string): DrupalJsonApiParams {
         return apiParams
             .addInclude([
                 'field_media_image.field_media_image',
+                'field_media_images.field_media_image',
                 'field_accommodation_type',
                 'field_dmo_area',
             ])
@@ -302,6 +303,7 @@ export function getParams(type: string): DrupalJsonApiParams {
             .addInclude([
                 'field_media_image.field_media_image',
                 'field_accommodation_type',
+                'field_dmo_area.name',
             ])
             .addFields('product--accommodation', [
                 'title',

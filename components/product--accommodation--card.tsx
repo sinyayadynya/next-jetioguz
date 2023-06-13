@@ -3,7 +3,6 @@ import Link from "next/link"
 
 import { useTranslation } from "next-i18next"
 import { MediaImage } from "components/media--image"
-import { FormattedText } from "./formatted-text"
 
 interface NodePageProps {
   node: DrupalNode
@@ -20,12 +19,12 @@ export function ProductAccommodationCard({ node }: NodePageProps) {
                 className="h-full w-full object-cover object-center"
             />
         </div>
-        <h3 className="mt-4 text-sm text-gray-700">
+        <h4 className="mt-4 text-sm text-gray-700">
             <Link href={node.path.alias} passHref>
                 <span className="absolute inset-0"></span>
                 {node.title}
             </Link>
-        </h3>
+        </h4>
         <p className="mt-1 text-sm text-gray-500">{node.field_accommodation_type.name}</p>
         {/* <p className="mt-1 text-sm font-medium text-gray-900">
             {node.field_dmo_area.name}
