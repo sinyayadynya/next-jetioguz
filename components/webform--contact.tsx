@@ -52,9 +52,10 @@ export default function ContactForm() {
                 setAgreed(false);
             }
 
-            // Handle error.
+        // Handle error.
         } catch (error) {
-            console.error(error);
+            // console.error(error);
+            alert('An error occurred, please try again later.');
         }
     }
 

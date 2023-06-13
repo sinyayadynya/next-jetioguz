@@ -56,9 +56,10 @@ export default function AccommodationForm() {
                 setPhone('');
             }
 
-            // Handle error.
+        // Handle error.
         } catch (error) {
-            console.error(error);
+            // console.error(error);
+            alert('An error occurred, please try again later.');
         }
     }
 
