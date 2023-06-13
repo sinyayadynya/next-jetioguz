@@ -102,6 +102,7 @@ export function ParagraphHeroImageTiles({ paragraphType }: ParagraphProps) {
                                             width={176}
                                             height={264}
                                             alt=""
+                                            priority
                                             className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
                                         />
                                         <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
@@ -114,6 +115,7 @@ export function ParagraphHeroImageTiles({ paragraphType }: ParagraphProps) {
                                             width={176}
                                             height={264}
                                             alt=""
+                                            priority
                                             className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
                                         />
                                         <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
@@ -124,6 +126,7 @@ export function ParagraphHeroImageTiles({ paragraphType }: ParagraphProps) {
                                             width={176}
                                             height={264}
                                             alt=""
+                                            priority
                                             className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
                                         />
                                         <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
@@ -136,6 +139,7 @@ export function ParagraphHeroImageTiles({ paragraphType }: ParagraphProps) {
                                             width={176}
                                             height={264}
                                             alt=""
+                                            priority
                                             className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
                                         />
                                         <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
@@ -146,6 +150,7 @@ export function ParagraphHeroImageTiles({ paragraphType }: ParagraphProps) {
                                             width={176}
                                             height={264}
                                             alt=""
+                                            priority
                                             className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
                                         />
                                         <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
