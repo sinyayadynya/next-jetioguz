@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import Image from 'next/image';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
 import { formatDistance } from 'date-fns';
 import { getChannelInfo, getAllPlaylistItems } from 'lib/youtube';
