@@ -17,7 +17,6 @@ export function NodePlaceCard({ node, ...props }: NodePlaceCardProps) {
                 <div className="aspect-h-2 aspect-w-3 w-full overflow-hidden rounded-lg group-hover:opacity-75">
                     <MediaImage
                         media={node.field_media_image}
-                        alt={node.title}
                         className="h-full w-full object-cover object-center"
                     />
                 </div>
