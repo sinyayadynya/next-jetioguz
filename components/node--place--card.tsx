@@ -5,14 +5,14 @@ import { MediaImage } from 'components/media--image';
 
 interface NodePlaceCardProps {
     node: DrupalNode;
+    className?: string;
 }
 
-export function NodePlaceCard({ node, ...props }: NodePlaceCardProps) {
+export function NodePlaceCard({ node, className, ...props }: NodePlaceCardProps) {
     const { t } = useTranslation();
-    console.log(node);
 
     return (
-        <div {...props}>
+        <div className={className} {...props}>
             <div className="group relative">
                 <div className="aspect-h-2 aspect-w-3 w-full overflow-hidden rounded-lg group-hover:opacity-75">
                     <MediaImage
