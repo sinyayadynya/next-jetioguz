@@ -1,13 +1,13 @@
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import classNames from 'classnames';
 import { formatDistance } from 'date-fns';
-import { getChannelInfo, getAllPlaylistItems } from 'lib/youtube';
 import linkifyHtml from 'linkify-html';
+import { getChannelInfo, getAllPlaylistItems } from 'lib/youtube';
 
 import { Layout, LayoutProps } from 'components/layout';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 
 import {
