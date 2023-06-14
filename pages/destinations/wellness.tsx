@@ -6,7 +6,7 @@ import { drupal } from "lib/drupal"
 import { getGlobalElements } from "lib/get-global-elements"
 import { getParams } from "lib/get-params"
 import { Layout, LayoutProps } from "components/layout"
-import { NodePlaceCard } from "components/node--place--card"
+import { NodePlaceTeaser } from "components/node--place--teaser"
 import { BlockPromoImageTiles } from "components/block--promo-image-tiles"
 
 interface PlacePageProps extends LayoutProps {
@@ -48,7 +48,7 @@ export default function PlacesPage({
                 <div className="mt-16 grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:gap-x-8">
 
                     {places.map((place) => (
-                        <NodePlaceCard key={place.id} node={place} />
+                        <NodePlaceTeaser key={place.id} node={place} />
                     ))}
 
                 </div>
@@ -67,7 +67,7 @@ export async function getStaticProps(
       "node--place",
       context,
       {
-        params: getParams("node--place--card")
+        params: getParams("node--place--teaser")
           .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
           .addFilter('field_place_type.meta.drupal_internal__target_id', '4266')
           .addSort("created", "DESC")
