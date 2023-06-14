@@ -309,6 +309,7 @@ export async function getStaticProps(
     >('product--accommodation', context, {
         params: getParams('product--accommodation')
             .addFilter('stores.meta.drupal_internal__target_id', '3')
+            .addFilter('field_accommodation_type.meta.drupal_internal__target_id', '4')
             // .addSort("created", "DESC")
             .getQueryObject(),
     });
