@@ -6,8 +6,7 @@ import { drupal } from "lib/drupal"
 import { getGlobalElements } from "lib/get-global-elements"
 import { getParams } from "lib/get-params"
 import { Layout, LayoutProps } from "components/layout"
-import { NodePlaceTeaser } from "components/node--place--teaser"
-import { PageHeader } from "components/page-header"
+import { NodePlaceCard } from "components/node--place--card"
 import { BlockPromoImageTiles } from "components/block--promo-image-tiles"
 
 interface PlacePageProps extends LayoutProps {
@@ -28,7 +27,7 @@ export default function PlacesPage({
     //   menus={menus}
     //   blocks={blocks}
       meta={{
-        title: t("places"),
+        title: t("beaches"),
       }}
     >
       <BlockPromoImageTiles block={promoImageTiles} />
@@ -49,7 +48,7 @@ export default function PlacesPage({
                 <div className="mt-16 grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:gap-x-8">
 
                     {places.map((place) => (
-                        <NodePlaceTeaser key={place.id} node={place} />
+                        <NodePlaceCard key={place.id} node={place} />
                     ))}
 
                 </div>

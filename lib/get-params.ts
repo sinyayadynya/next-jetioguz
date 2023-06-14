@@ -146,6 +146,7 @@ export function getParams(type: string): DrupalJsonApiParams {
                 'title',
                 'path',
                 'field_dmo_area',
+                'field_place_altitude',
                 'field_media_image',
             ])
             .addFields('taxonomy_term--dmo_area', ['name', 'path'])
@@ -167,6 +168,7 @@ export function getParams(type: string): DrupalJsonApiParams {
                 'path',
                 'field_place_type',
                 'field_dmo_area',
+                'field_place_altitude',
                 'field_media_image',
             ])
             .addFields('taxonomy_term--place_types', ['name', 'path'])

@@ -1,7 +1,6 @@
 import Link from "next/link"
 import { DrupalNode } from "next-drupal"
 import { useTranslation } from "next-i18next"
-import { FormattedText } from 'components/formatted-text';
 import { MediaImage } from "components/media--image";
 
 interface NodePlaceTeaserProps {
@@ -15,22 +14,28 @@ export function NodePlaceTeaser({ node, ...props }: NodePlaceTeaserProps) {
         <div
             {...props}
         >
-            <Link href={node.path.alias} passHref>
-                <div className="aspect-h-2 aspect-w-3 w-full overflow-hidden rounded-lg">
+            <div className="group relative">
+                <div className="aspect-h-2 aspect-w-3 w-full overflow-hidden rounded-lg group-hover:opacity-75">
                     <MediaImage
                         media={node.field_media_image}
-                        width={335} height={225}
-                        className="h-full w-full object-cover object-center" />
+                        className="h-full w-full object-cover object-center"
+                    />
                 </div>
-                <h3 className="mt-8 font-heading text-2xl text-gray-900">
-                    {node.title}
-                </h3>
-                {node.body && (
-                    <div className="mt-2 text-base text-gray-500 line-clamp-3">
-                        <FormattedText text={node.body.processed} />
-                    </div>
-                )}
-            </Link>
+
+                <div className="mt-4 flex justify-between">
+                <div>
+                  <h3 className="font-semibold text-gray-900">
+                    <Link href={node.path.alias} passHref>
+                      <span aria-hidden="true" className="absolute inset-0" />
+                        {node.title}
+                    </Link>
+                  </h3>
+                  <p className="mt-1 text-sm text-gray-500">{node.field_dmo_area?.name}</p>
+                </div>
+                <p className="text-sm font-medium text-gray-900">{node.field_place_altitude}</p>
+              </div>
+
+            </div>
         </div>
     );
 }
