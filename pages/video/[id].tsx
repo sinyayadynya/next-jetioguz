@@ -1,13 +1,14 @@
 import { useRef, useState } from 'react';
-import { DrupalBlock, DrupalNode } from 'next-drupal';
 import Image from 'next/image';
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 import { formatDistance } from 'date-fns';
 import { getChannelInfo, getAllPlaylistItems } from 'lib/youtube';
 import linkifyHtml from 'linkify-html';
 
 import { Layout, LayoutProps } from 'components/layout';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
 
 import {
     Bars3BottomLeftIcon,
@@ -392,7 +393,7 @@ export default function Channel({ title, videos }) {
     );
 }
 
-export async function getServerSideProps({ query }) {
+export async function getServerSideProps({ query, locale }) {
     const { id } = query;
     const info = await getChannelInfo(id);
     const playlistId = info?.items[0].contentDetails.relatedPlaylists.uploads;
@@ -403,6 +404,7 @@ export async function getServerSideProps({ query }) {
         props: {
             title,
             videos,
+            ...(await serverSideTranslations(locale, ['common']))
         },
     };
 }
