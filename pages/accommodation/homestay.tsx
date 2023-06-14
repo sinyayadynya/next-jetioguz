@@ -32,10 +32,10 @@ const sortOptions = [
     { name: 'Price: High to Low', href: '#', current: false },
 ];
 const subCategories = [
-    { name: 'Yurts', href: '/accommodation/yurt' },
-    { name: 'Hotels', href: '/accommodation/hotel' },
-    { name: 'Guest Houses', href: '/accommodation/guesthouse' },
-    { name: 'Homestays', href: '/accommodation/homestay' },
+    { name: 'Yurts', href: '/accommodation/yurt#list' },
+    { name: 'Hotels', href: '/accommodation/hotel#list' },
+    { name: 'Guest Houses', href: '/accommodation/guesthouse#list' },
+    { name: 'Homestays', href: '/accommodation/homestay#list' },
 ];
 const filters = [
     {
@@ -105,7 +105,7 @@ PlacePageProps) {
 
             <div>
 
-                <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <main id="list" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-6">
                         <h1 className="text-4xl font-heading font-bold tracking-tight text-gray-900">
                             Find your accommodation
