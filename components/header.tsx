@@ -142,7 +142,7 @@ export function Header() {
         headerCallsToAction: [
             {
                 name: t('watch-video'),
-                href: `${prefix}/videos`,
+                href: `${prefix}/video/UCU26XWXEWGmQLBWUF7e-0tA`,
                 icon: PlayCircleIcon,
             },
             {
