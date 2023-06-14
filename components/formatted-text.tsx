@@ -30,7 +30,7 @@ const options: HTMLReactParserOptions = {
               <Image
                 src={`${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}/${src}`}
                 alt={alt}
-                layout="intrinsic"
+                // layout="intrinsic"
                 className="object-cover"
               />
             </div>

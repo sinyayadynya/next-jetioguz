@@ -19,7 +19,6 @@ export function ParagraphImageSection({ paragraphType }: ParagraphProps) {
             media={paragraphType.field_media_image}
             width={785}
             height={525}
-            // layout="responsive"
             className="aspect-[5/2] w-full object-cover xl:rounded-3xl"
             />
       </div>

@@ -32,7 +32,6 @@ export function ParagraphImageFullWidth({ paragraphType }: ParagraphProps) {
             media={paragraphType.field_media_image}
             width={785}
             height={525}
-            // layout="responsive"
             className="aspect-video rounded-xl bg-gray-50 object-cover"
             />
       </div>

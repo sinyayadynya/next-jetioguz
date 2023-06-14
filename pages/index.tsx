@@ -53,7 +53,7 @@ export default function IndexPage({
                                 {t('destinations')}
                             </h2>
                             <a
-                                href="#"
+                                href="/destinations"
                                 className="hidden text-sm font-semibold text-primary-600 hover:text-primary-500 sm:block"
                             >
                                 Browse all places

@@ -1,19 +1,17 @@
-import Link from "next/link"
-import { DrupalNode } from "next-drupal"
-import { useTranslation } from "next-i18next"
-import { MediaImage } from "components/media--image";
+import Link from 'next/link';
+import { DrupalNode } from 'next-drupal';
+import { useTranslation } from 'next-i18next';
+import { MediaImage } from 'components/media--image';
 
-interface NodePlaceTeaserProps {
-  node: DrupalNode
+interface NodePlaceCardProps {
+    node: DrupalNode;
 }
 
-export function NodePlaceTeaser({ node, ...props }: NodePlaceTeaserProps) {
+export function NodePlaceCard({ node, ...props }: NodePlaceCardProps) {
     const { t } = useTranslation();
 
     return (
-        <div
-            {...props}
-        >
+        <div className={className} {...props}>
             <div className="group relative">
                 <div className="aspect-h-2 aspect-w-3 w-full overflow-hidden rounded-lg group-hover:opacity-75">
                     <MediaImage
@@ -23,18 +21,31 @@ export function NodePlaceTeaser({ node, ...props }: NodePlaceTeaserProps) {
                 </div>
 
                 <div className="mt-4 flex justify-between">
-                <div>
-                  <h3 className="font-semibold text-gray-900">
-                    <Link href={node.path.alias} passHref>
-                      <span aria-hidden="true" className="absolute inset-0" />
-                        {node.title}
-                    </Link>
-                  </h3>
-                  <p className="mt-1 text-sm text-gray-500">{node.field_dmo_area?.name}</p>
-                </div>
-                <p className="text-sm font-medium text-gray-900">{node.field_place_altitude}</p>
-              </div>
+                    <div>
+                        <h3 className="font-semibold text-gray-900">
+                            <Link href={node.path.alias} passHref>
+                                <span
+                                    aria-hidden="true"
+                                    className="absolute inset-0"
+                                />
+                                {node.title}
+                            </Link>
+                        </h3>
 
+                        {node.field_place_altitude && (
+                            <p className="mt-1 text-sm text-gray-500">
+                                <span>{t('altitude')}: </span>
+                                <span className="lowercase">
+                                    {node.field_place_altitude}
+                                    {t('m')}
+                                </span>
+                            </p>
+                        )}
+                    </div>
+                    <p className="text-sm font-medium text-gray-900">
+                        {node.field_dmo_area?.name}
+                    </p>
+                </div>
             </div>
         </div>
     );

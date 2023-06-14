@@ -8,46 +8,32 @@ interface NodePlaceCardProps {
     className?: string;
 }
 
-export function NodePlaceCard({ node, className, ...props }: NodePlaceCardProps) {
+export function NodePlaceCard({ node }: NodePlaceCardProps) {
     const { t } = useTranslation();
 
     return (
-        <div className={className} {...props}>
-            <div className="group relative">
-                <div className="aspect-h-2 aspect-w-3 w-full overflow-hidden rounded-lg group-hover:opacity-75">
-                    <MediaImage
-                        media={node.field_media_image}
-                        className="h-full w-full object-cover object-center"
-                    />
-                </div>
-
-                <div className="mt-4 flex justify-between">
-                    <div>
-                        <h3 className="font-semibold text-gray-900">
-                            <Link href={node.path.alias} passHref>
-                                <span
-                                    aria-hidden="true"
-                                    className="absolute inset-0"
-                                />
-                                {node.title}
-                            </Link>
-                        </h3>
-
-                        {node.field_place_altitude && (
-                            <p className="mt-1 text-sm text-gray-500">
-                                <span>{t('altitude')}: </span>
-                                <span className="lowercase">
-                                    {node.field_place_altitude}
-                                    {t('m')}
-                                </span>
-                            </p>
-                        )}
-                    </div>
-                    <p className="text-sm font-medium text-gray-900">
-                        {node.field_dmo_area?.name}
+        <article className="group aspect-w-2 aspect-h-1 overflow-hidden rounded-lg [&:not(:first)]:sm:aspect-none [&:not(:first)]:sm:relative [&:not(:first)]:sm:h-full first:sm:aspect-h-1 first:sm:aspect-w-1 first:sm:row-span-2">
+            <MediaImage
+                media={node.field_media_image}
+                className="object-cover group-hover:opacity-75"
+            />
+            <div
+                aria-hidden="true"
+                className="bg-gradient-to-b from-transparent to-black opacity-50"
+            />
+            <div className="flex items-end p-6">
+                <div>
+                    <h3 className="font-semibold text-white">
+                        <Link href={node.path.alias} passHref>
+                            <span className="absolute inset-0" />
+                            {node.title}
+                        </Link>
+                    </h3>
+                    <p aria-hidden="true" className="mt-1 text-sm text-white">
+                        {t('view-place')}
                     </p>
                 </div>
             </div>
-        </div>
+        </article>
     );
 }
