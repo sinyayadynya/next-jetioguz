@@ -3,11 +3,11 @@ import { DrupalNode } from 'next-drupal';
 import { useTranslation } from 'next-i18next';
 import { MediaImage } from 'components/media--image';
 
-interface NodePlaceCardProps {
+interface NodePlaceTeaserProps {
     node: DrupalNode;
 }
 
-export function NodePlaceCard({ node, ...props }: NodePlaceCardProps) {
+export function NodePlaceTeaser({ node, ...props }: NodePlaceTeaserProps) {
     const { t } = useTranslation();
 
     return (
