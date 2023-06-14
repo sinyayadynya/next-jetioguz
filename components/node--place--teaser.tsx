@@ -11,7 +11,7 @@ export function NodePlaceCard({ node, ...props }: NodePlaceCardProps) {
     const { t } = useTranslation();
 
     return (
-        <div className={className} {...props}>
+        <div {...props}>
             <div className="group relative">
                 <div className="aspect-h-2 aspect-w-3 w-full overflow-hidden rounded-lg group-hover:opacity-75">
                     <MediaImage
