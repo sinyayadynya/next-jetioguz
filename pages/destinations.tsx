@@ -24,7 +24,7 @@ interface PlacePageProps extends LayoutProps {
 
 const sortOptions = [
     { name: 'Most Popular', href: '#', current: true },
-    { name: 'Best Rating', href: '#', current: false },
+    { name: 'A-Z', href: '#', current: false },
     { name: 'Altitude: Low to High', href: '#', current: false },
     { name: 'Altitude: High to Low', href: '#', current: false },
 ];
@@ -69,18 +69,6 @@ const filters = [
             { value: 'yrdyk', label: 'Yrdyk', checked: false },
         ],
     },
-    // {
-    //     id: 'altitudes',
-    //     name: 'Altitudes',
-    //     options: [
-    //         { value: 'xs', label: 'XS', checked: false },
-    //         { value: 's', label: 'S', checked: false },
-    //         { value: 'm', label: 'M', checked: false },
-    //         { value: 'l', label: 'L', checked: false },
-    //         { value: 'xl', label: 'XL', checked: false },
-    //         { value: '2xl', label: '2XL', checked: false },
-    //     ],
-    // },
 ];
 const activeFilters = [{ value: 'villages', label: 'Villages' }];
 
@@ -253,7 +241,7 @@ PlacePageProps) {
                             <h2 id="filter-heading" className="sr-only">
                                 Filters
                             </h2>
-
+                            {/* Sorting */}
                             <div className="border-b border-gray-200 bg-white pb-4">
                                 <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
                                     <Menu
