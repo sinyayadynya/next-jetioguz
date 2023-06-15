@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from 'next/link';
 import { DrupalNode } from 'next-drupal';
 import { DrupalParagraph } from 'next-drupal';
+import { MediaImage } from 'components/media--image';
 
 import { useTranslation } from 'next-i18next';
 
@@ -10,6 +11,8 @@ import { FormattedText } from 'components/formatted-text';
 import { Breadcrumbs } from 'components/breadcrumbs';
 import { NodeArticleCard } from 'components/node--article--card';
 import { Paragraph } from './paragraph';
+import { CheckCircleIcon, InformationCircleIcon } from '@heroicons/react/20/solid'
+
 
 export interface NodeArticleProps {
     node: DrupalNode;
@@ -70,17 +73,17 @@ export function NodeArticle({ node, additionalContent }: NodeArticleProps) {
 
                     {node.field_media_image && (
                         <figure className="my-8">
-                            <Image
-                                src={absoluteURL(
-                                    node.field_media_image.field_media_image.uri.url
-                                )}
-                                alt={
-                                    node.field_media_image.field_media_image.resourceIdObjMeta.alt
-                                }
+                            <MediaImage
+                                media={node.field_media_image}
                                 width={785}
                                 height={525}
                                 className="aspect-video rounded-xl bg-gray-50 object-cover"
                             />
+
+                            <figcaption className="mt-4 flex gap-x-2 text-sm leading-6 text-gray-500">
+                                <InformationCircleIcon className="mt-0.5 h-5 w-5 flex-none text-gray-300" aria-hidden="true" />
+                                {node.field_media_image.field_media_image.resourceIdObjMeta.alt}
+                            </figcaption>
                         </figure>
                     )}
 

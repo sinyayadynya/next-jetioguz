@@ -21,7 +21,8 @@ export function NodeArticleCard({ nodeArticles, ...props }: NodeArticleCardProps
             <div className="relative w-full">
                 <MediaImage
                     media={nodeArticles.field_media_image}
-                    className="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]" />
+                    className="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
+                />
                 <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
             </div>
             <div className="max-w-xl">
