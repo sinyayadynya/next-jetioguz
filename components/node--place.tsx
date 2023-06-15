@@ -148,15 +148,8 @@ export function NodePlace({ node, ...props }: NodePlaceProps) {
                                 <div className="flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents">
                                     <div className="w-0 flex-auto lg:ml-auto lg:w-auto lg:flex-none lg:self-end">
                                         {node.field_media_images[0]?.field_media_image && (
-                                            <Image
-                                                src={absoluteURL(
-                                                    node.field_media_images[0].field_media_image.uri.url
-                                                )}
-                                                alt={
-                                                    node.field_media_images[0].alt || node.title
-                                                }
-                                                width={1152}
-                                                height={842}
+                                            <MediaImage
+                                                media={node.field_media_images[0]}
                                                 className="aspect-[7/5] w-[37rem] max-w-none rounded-2xl bg-gray-50 object-cover"
                                             />
                                         )}
@@ -164,45 +157,24 @@ export function NodePlace({ node, ...props }: NodePlaceProps) {
                                     <div className="contents lg:col-span-2 lg:col-end-2 lg:ml-auto lg:flex lg:w-[37rem] lg:items-start lg:justify-end lg:gap-x-8">
                                         <div className="order-first flex w-64 flex-none justify-end self-end lg:w-auto">
                                             {node.field_media_images[1]?.field_media_image && (
-                                                <Image
-                                                    src={absoluteURL(
-                                                        node.field_media_images[1].field_media_image.uri.url
-                                                    )}
-                                                    alt={
-                                                        node.field_media_images[1].alt || node.title
-                                                    }
-                                                    width={768}
-                                                    height={604}
+                                                <MediaImage
+                                                    media={node.field_media_images[1]}
                                                     className="aspect-[4/3] w-[24rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover"
                                                 />
                                             )}
                                         </div>
                                         <div className="flex w-96 flex-auto justify-end lg:w-auto lg:flex-none">
                                             {node.field_media_images[2]?.field_media_image && (
-                                                <Image
-                                                    src={absoluteURL(
-                                                        node.field_media_images[2].field_media_image.uri.url
-                                                    )}
-                                                    alt={
-                                                        node.field_media_images[2].alt || node.title
-                                                    }
-                                                    width={1152}
-                                                    height={842}
+                                                <MediaImage
+                                                    media={node.field_media_images[2]}
                                                     className="aspect-[7/5] w-[37rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover"
                                                 />
                                             )}
                                         </div>
                                         <div className="hidden sm:block sm:w-0 sm:flex-auto lg:w-auto lg:flex-none">
                                             {node.field_media_images[3]?.field_media_image && (
-                                                <Image
-                                                    src={absoluteURL(
-                                                        node.field_media_images[3].field_media_image.uri.url
-                                                    )}
-                                                    alt={
-                                                        node.field_media_images[3].alt || node.title
-                                                    }
-                                                    width={768}
-                                                    height={604}
+                                                <MediaImage
+                                                    media={node.field_media_images[3]}
                                                     className="aspect-[4/3] w-[24rem] max-w-none rounded-2xl bg-gray-50 object-cover"
                                                 />
                                             )}
