@@ -287,6 +287,7 @@ export function getParams(type: string): DrupalJsonApiParams {
                 'field_media_images.field_media_image',
                 'field_accommodation_type',
                 'field_dmo_area',
+                'variations',
             ])
             .addFields('product--accommodation', [
                 'title',
