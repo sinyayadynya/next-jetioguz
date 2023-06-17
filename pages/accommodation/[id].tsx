@@ -35,6 +35,8 @@ const Accommodation = ({ product }) => {
                 <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
                     {/* Product details */}
                     <div className="lg:max-w-lg lg:self-end">
+
+                        {/* Breadcrumbs */}
                         <nav aria-label="Breadcrumb">
                             <ol
                                 role="list"
@@ -393,7 +395,7 @@ export async function getServerSideProps(context) {
 
     return {
         props: {
-            product,
+            product: product || null,  // If product is undefined, use null instead
             ...(await serverSideTranslations(locale, ['common'])),
         },
     };
