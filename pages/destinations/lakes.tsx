@@ -41,7 +41,7 @@ export default function PlacesPage({
                         The lakes
                     </h2>
                     <p className="mt-3 max-w-3xl text-lg text-gray-600">
-                        Discover the authentic Kyrgyz culture and warm hospitality in Jeti-Oguz's picturesque villages. Explore the hidden gems of our charming rural communities and experience the unspoiled beauty of rural Kyrgyzstan.
+                        Discover the authentic Kyrgyz culture and warm hospitality in Jeti-Oguz’s picturesque villages. Explore the hidden gems of our charming rural communities and experience the unspoiled beauty of rural Kyrgyzstan.
                     </p>
                 </div>
 

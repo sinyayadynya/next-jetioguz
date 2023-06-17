@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from "next/link"
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
@@ -39,12 +40,12 @@ const Accommodation = ({ product }) => {
                             >
                                 <li>
                                     <div className="flex items-center text-sm">
-                                        <a
+                                        <Link
                                             href="/accommodation"
                                             className="font-medium text-gray-500 hover:text-gray-900"
                                         >
                                             {t('accommodation')}
-                                        </a>
+                                        </Link>
                                         <svg
                                             viewBox="0 0 20 20"
                                             fill="currentColor"
@@ -57,12 +58,12 @@ const Accommodation = ({ product }) => {
                                 </li>
                                 <li>
                                     <div className="flex items-center text-sm">
-                                        <a
+                                        <Link
                                             href="#"
                                             className="font-medium text-gray-500 hover:text-gray-900"
                                         >
                                             {product.type}
-                                        </a>
+                                        </Link>
                                     </div>
                                 </li>
                             </ol>
@@ -263,8 +264,10 @@ const Accommodation = ({ product }) => {
                                 <div className="flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents">
                                     <div className="w-0 flex-auto lg:ml-auto lg:w-auto lg:flex-none lg:self-end">
                                         {product.images1 && (
-                                            <img
+                                            <Image
                                                 src={product.images1}
+                                                alt={product.name}
+                                                fill
                                                 className="aspect-[7/5] w-[37rem] max-w-none rounded-2xl bg-gray-50 object-cover"
                                             />
                                         )}
@@ -272,24 +275,30 @@ const Accommodation = ({ product }) => {
                                     <div className="contents lg:col-span-2 lg:col-end-2 lg:ml-auto lg:flex lg:w-[37rem] lg:items-start lg:justify-end lg:gap-x-8">
                                         <div className="order-first flex w-64 flex-none justify-end self-end lg:w-auto">
                                             {product.images2 && (
-                                                <img
+                                                <Image
                                                     src={product.images2}
+                                                    alt={product.name}
+                                                    fill
                                                     className="aspect-[4/3] w-[24rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover"
                                                 />
                                             )}
                                         </div>
                                         <div className="flex w-96 flex-auto justify-end lg:w-auto lg:flex-none">
                                             {product.images3 && (
-                                                <img
+                                                <Image
                                                     src={product.images3}
+                                                    alt={product.name}
+                                                    fill
                                                     className="aspect-[7/5] w-[37rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover"
                                                 />
                                             )}
                                         </div>
                                         <div className="hidden sm:block sm:w-0 sm:flex-auto lg:w-auto lg:flex-none">
                                             {product.images4 && (
-                                                <img
+                                                <Image
                                                     src={product.images4}
+                                                    alt={product.name}
+                                                    fill
                                                     className="aspect-[4/3] w-[24rem] max-w-none rounded-2xl bg-gray-50 object-cover"
                                                 />
                                             )}

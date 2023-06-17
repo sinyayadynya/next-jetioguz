@@ -25,7 +25,7 @@ export function BlockPromoBgImageLargeContent({ block }: BlockPromoBgImageLargeC
                         Sport & Leisure
                     </h1>
                     <p className="mt-4 text-xl text-white">
-                        Step into the authentic charm and character of Jeti-Oguz's traditional villages and experience the unspoiled beauty of rural Kyrgyzstan.
+                        Step into the authentic charm and character of Jeti-Oguz’s traditional villages and experience the unspoiled beauty of rural Kyrgyzstan.
                     </p>
                     <a
                         href="#"

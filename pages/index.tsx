@@ -13,6 +13,7 @@ import { BlockPromoFadingTestimonials } from 'components/block--promo-fading-tes
 import { BlockIncentives } from 'components/block--incentives';
 import { NodeArticleCard } from 'components/node--article--card';
 import { NodePlaceCard } from 'components/node--place--card';
+import Link from 'next/link';
 
 interface IndexPageProps extends LayoutProps {
     promoOverlappingImages: DrupalBlock;
@@ -52,13 +53,13 @@ export default function IndexPage({
                             <h2 className="font-heading text-2xl font-bold tracking-tight text-gray-900">
                                 {t('destinations')}
                             </h2>
-                            <a
+                            <Link
                                 href="/destinations"
                                 className="hidden text-sm font-semibold text-primary-600 hover:text-primary-500 sm:block"
                             >
                                 Browse all places
                                 <span aria-hidden="true"> &rarr;</span>
-                            </a>
+                            </Link>
                         </div>
 
                         <div className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:grid-rows-2 sm:gap-x-6 lg:gap-8">

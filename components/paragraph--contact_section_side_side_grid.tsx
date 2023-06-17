@@ -17,7 +17,7 @@ export function ParagraphContactSideBySideGrid({ paragraphType }: ParagraphProps
                                 Get in touch
                             </h2>
                             <p className="mt-4 leading-7 text-gray-600">
-                                You can reach us by email, through our website's contact form or by our social networks.
+                                You can reach us by email, through our website’s contact form or by our social networks.
                             </p>
                         </div>
                         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-2 lg:gap-8">

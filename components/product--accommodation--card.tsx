@@ -10,7 +10,7 @@ interface NodePageProps {
 
 export function ProductAccommodationCard({ node }: NodePageProps) {
   const { t } = useTranslation()
-  console.log('Node:', node);
+
   return (
     <div className="group relative">
         <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">

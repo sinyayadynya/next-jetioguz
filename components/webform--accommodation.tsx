@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from "next-i18next"
 import { Switch } from '@headlessui/react';
 import SuccessMessage from 'components/success-message';
 
@@ -9,6 +10,8 @@ function classNames(...classes) {
 }
 
 export default function AccommodationForm() {
+    const { t } = useTranslation()
+
     const [agreed, setAgreed] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false);
     const [accommodation, setAccommodation] = useState('');

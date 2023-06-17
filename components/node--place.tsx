@@ -9,6 +9,7 @@ import { FormattedText } from 'components/formatted-text';
 import Map from './node--place--map';
 import MapComponent from './node--place--map';
 import { absoluteURL } from 'lib/utils';
+import Link from 'next/link';
 
 interface NodePlaceProps {
     node: DrupalNode;
@@ -60,7 +61,7 @@ export function NodePlace({ node, ...props }: NodePlaceProps) {
                     <div className="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-32 lg:flex lg:px-8 lg:py-40">
                         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0 lg:pt-8">
                             <div className="mt-24 sm:mt-32 lg:mt-16">
-                                <a
+                                <Link
                                     href="/destinations"
                                     className="inline-flex space-x-6"
                                 >
@@ -76,7 +77,7 @@ export function NodePlace({ node, ...props }: NodePlaceProps) {
                                         />
                                     </span>
                                     )}
-                                </a>
+                                </Link>
                             </div>
                             <h1 className="mt-10 text-4xl font-heading font-bold tracking-tight text-gray-900 sm:text-6xl">
                                 {node.title}
