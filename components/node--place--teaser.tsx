@@ -23,13 +23,15 @@ export function NodePlaceTeaser({ node, ...props }: NodePlaceTeaserProps) {
                 <div className="mt-4 flex justify-between">
                     <div>
                         <h3 className="font-semibold text-gray-900">
-                            <Link href={node.path.alias} passHref>
-                                <span
-                                    aria-hidden="true"
-                                    className="absolute inset-0"
-                                />
-                                {node.title}
-                            </Link>
+                        {node.path.alias ? (
+                                <Link href={node.path.alias} passHref>
+                                    {/* ... */}
+                                </Link>
+                                ) : (
+                                <div>
+                                    No place found.
+                                </div>
+                            )}
                         </h3>
 
                         {node.field_place_altitude && (
