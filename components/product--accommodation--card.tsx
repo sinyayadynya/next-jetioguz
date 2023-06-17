@@ -20,7 +20,8 @@ export function ProductAccommodationCard({ node }: NodePageProps) {
             />
         </div>
         <h4 className="mt-4 text-sm text-gray-700">
-            <Link href={node.path.alias} passHref>
+            {/* <Link href={node.path.alias} passHref> // Original link */}
+            <Link href={node.id} passHref>
                 <span className="absolute inset-0"></span>
                 {node.title}
             </Link>

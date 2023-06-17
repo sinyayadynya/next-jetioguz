@@ -10,6 +10,7 @@
     "beaches-description": "Relax and recharge on Issyk-Kul’s beautiful beaches",
     "body": "Body",
     "booking": "Booking",
+    "book-now": "Book now",
     "claim": "Claim",
     "contact": "Contact",
     "contact-description": "Get in touch with our friendly team for all your Jeti Oguz inquiries",
@@ -90,5 +91,13 @@
     "your-email-address": "Your email address",
     "your-message-has-been-sent": "Your message has been sent.",
     "your-name": "Your name",
-    "your-search-yielded-no-results": "Your search yielded no results."
+    "your-search-yielded-no-results": "Your search yielded no results.",
+    "single-room": "Single room",
+    "double-room": "Double room",
+    "triple-room": "Triple room",
+    "shared-room": "Shared room",
+    "single-yurt": "Single yurt",
+    "double-yurt": "Double yurt",
+    "triple-yurt": "Triple yurt",
+    "shared-yurt": "Shared yurt"
 }

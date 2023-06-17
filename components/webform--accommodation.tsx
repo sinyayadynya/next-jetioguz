@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Switch } from '@headlessui/react';
 import SuccessMessage from 'components/success-message';
 
+import { QuestionMarkCircleIcon } from '@heroicons/react/20/solid';
+
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
@@ -18,7 +20,8 @@ export default function AccommodationForm() {
     const [email, setEmail] = useState('');
 
     // Check if the form is valid
-    const isFormValid = accommodation && checkin  && checkout  && pax  && name && email && phone;
+    const isFormValid =
+        accommodation && checkin && checkout && pax && name && email && phone;
 
     async function handleSubmit(event) {
         event.preventDefault();
@@ -48,239 +51,297 @@ export default function AccommodationForm() {
                 setShowSuccess(true);
                 // Reset form
                 setAccommodation('');
-                setCheckin(''),
-                setCheckout(''),
-                setPax(''),
-                setName('');
+                setCheckin(''), setCheckout(''), setPax(''), setName('');
                 setEmail('');
                 setPhone('');
             }
 
-        // Handle error.
+            // Handle error.
         } catch (error) {
             // console.error(error);
             alert('An error occurred, please try again later.');
         }
     }
 
+    const [open, setOpen] = useState(true);
+
     return (
-        <div id="write" className="mx-auto max-w-7xl -mt-16 py-16 px-6 border-t border-gray-100 lg:px-8">
-            <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-3">
-                <div>
-                    <h2 className="text-3xl font-heading font-bold tracking-tight text-gray-900">
-                        Book an accommodation
-                    </h2>
-                    <p className="mt-4 leading-7 text-gray-600">
-                        Your input helps shape a meaningful experience and improve our services. Please share your thoughts.
-                    </p>
-                </div>
-                <div className="grid grid-cols-1 gap-6 lg:col-span-2 lg:gap-8">
-                    <div className="rounded-2xl bg-gray-50 p-10">
-                        <form
-                            onSubmit={handleSubmit}
-                            className="mx-auto mt-4 max-w-xl"
+        <div>
+            <form onSubmit={handleSubmit}>
+                {/* Divider container */}
+                <div className="space-y-6 py-6 sm:space-y-0 sm:divide-y sm:divide-gray-200 sm:py-0">
+                    {/* Accommodation name */}
+                    <div className="space-y-2 px-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:space-y-0 sm:px-6 sm:py-5">
+                        <div>
+                            <label
+                                htmlFor="accommodation"
+                                className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
+                            >
+                                Accommodation name
+                            </label>
+                        </div>
+                        <div className="sm:col-span-2">
+                            <input
+                                type="text"
+                                name="accommodation"
+                                id="accommodation"
+                                value={accommodation}
+                                onChange={(e) =>
+                                    setAccommodation(e.target.value)
+                                }
+                                autoComplete="given-name"
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Project description */}
+                    <div className="space-y-2 px-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:space-y-0 sm:px-6 sm:py-5">
+                        <div>
+                            <label
+                                htmlFor="project-description"
+                                className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
+                            >
+                                Description
+                            </label>
+                        </div>
+                        <div className="sm:col-span-2">
+                            <textarea
+                                id="project-description"
+                                name="project-description"
+                                rows={3}
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                                defaultValue={''}
+                            />
+                        </div>
+                    </div>
+
+                    {/* Check in */}
+                    <div className="space-y-2 px-4 sm:grid sm:grid-cols-3 sm:items-center sm:gap-4 sm:space-y-0 sm:px-6 sm:py-5">
+                        <div>
+                            <label
+                                htmlFor="checkin"
+                                className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
+                            >
+                                Check in
+                            </label>
+                        </div>
+                        <div className="sm:col-span-2">
+                            <input
+                                type="date"
+                                name="checkin"
+                                id="checkin"
+                                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6
+                invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Check out */}
+                    <div className="space-y-2 px-4 sm:grid sm:grid-cols-3 sm:items-center sm:gap-4 sm:space-y-0 sm:px-6 sm:py-5">
+                        <div>
+                            <label
+                                htmlFor="checkout"
+                                className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
+                            >
+                                Check out
+                            </label>
+                        </div>
+                        <div className="sm:col-span-2">
+                            <input
+                                type="date"
+                                name="checkout"
+                                id="checkout"
+                                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6
+            invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Pax */}
+                    <div className="space-y-2 px-4 sm:grid sm:grid-cols-3 sm:items-center sm:gap-4 sm:space-y-0 sm:px-6 sm:py-5">
+                        <div>
+                            <label
+                                htmlFor="pax"
+                                className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
+                            >
+                                Pax
+                            </label>
+                        </div>
+                        <div className="sm:col-span-2">
+                            <input
+                                type="number"
+                                name="pax"
+                                id="pax"
+                                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6
+            invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Name */}
+                    <div className="space-y-2 px-4 sm:grid sm:grid-cols-3 sm:items-center sm:gap-4 sm:space-y-0 sm:px-6 sm:py-5">
+                        <div>
+                            <label
+                                htmlFor="name"
+                                className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
+                            >
+                                Name
+                            </label>
+                        </div>
+                        <div className="sm:col-span-2">
+                            <input
+                                type="text"
+                                name="name"
+                                id="name"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                autoComplete="full-name"
+                                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6
+            invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Mobile */}
+                    <div className="space-y-2 px-4 sm:grid sm:grid-cols-3 sm:items-center sm:gap-4 sm:space-y-0 sm:px-6 sm:py-5">
+                        <div>
+                            <label
+                                htmlFor="phone"
+                                className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
+                            >
+                                Mobile number
+                            </label>
+                        </div>
+                        <div className="sm:col-span-2">
+                            <input
+                                type="text"
+                                name="phone"
+                                id="phone"
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
+                                autoComplete="tel"
+                                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6
+            invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Email */}
+                    <div className="space-y-2 px-4 sm:grid sm:grid-cols-3 sm:items-center sm:gap-4 sm:space-y-0 sm:px-6 sm:py-5">
+                        <div>
+                            <label
+                                htmlFor="email"
+                                className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
+                            >
+                                Email
+                            </label>
+                        </div>
+                        <div className="sm:col-span-2">
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                autoComplete="email"
+                                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6
+            invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Privacy */}
+                    <div className="space-y-2 px-4 sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:space-y-0 sm:px-6 sm:py-5">
+                        <legend className="sr-only">Privacy</legend>
+                        <div
+                            className="text-sm font-medium leading-6 text-gray-900"
+                            aria-hidden="true"
                         >
-                            <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-                                <div>
-                                    <label
-                                        htmlFor="first-name"
-                                        className="block text-sm font-semibold leading-6 text-gray-900"
+                            Privacy
+                        </div>
+                        <div className="space-y-5 sm:col-span-2">
+                            <Switch.Group
+                                as="div"
+                                className="flex gap-x-4 sm:col-span-2"
+                            >
+                                <div className="flex h-6 items-center">
+                                    <Switch
+                                        checked={agreed}
+                                        onChange={setAgreed}
+                                        className={classNames(
+                                            agreed
+                                                ? 'bg-primary-600'
+                                                : 'bg-gray-200',
+                                            'flex w-8 flex-none cursor-pointer rounded-full p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600'
+                                        )}
                                     >
-                                        Accommodation
-                                    </label>
-                                    <div className="mt-2.5">
-                                        <input
-                                            type="text"
-                                            name="accommodation"
-                                            id="accommodation"
-                                            value={accommodation}
-                                            onChange={(e) =>
-                                                setAccommodation(e.target.value)
-                                            }
-                                            autoComplete="given-name"
-                                            className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6
-                                            invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500"
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="sm:col-span-2">
-                                    <label
-                                        htmlFor="checkin"
-                                        className="block text-sm font-semibold leading-6 text-gray-900"
-                                    >
-                                        Check in
-                                    </label>
-                                    <div className="mt-2.5">
-                                        <input
-                                            type="date"
-                                            name="checkin"
-                                            id="checkin"
-                                            className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6
-                                            invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="sm:col-span-2">
-                                    <label
-                                        htmlFor="checkout"
-                                        className="block text-sm font-semibold leading-6 text-gray-900"
-                                    >
-                                        Check out
-                                    </label>
-                                    <div className="mt-2.5">
-                                        <input
-                                            type="date"
-                                            name="checkout"
-                                            id="checkout"
-                                            className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6
-                                            invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="sm:col-span-2">
-                                    <label
-                                        htmlFor="checkout"
-                                        className="block text-sm font-semibold leading-6 text-gray-900"
-                                    >
-                                        Pax
-                                    </label>
-                                    <div className="mt-2.5">
-                                        <input
-                                            type="number"
-                                            name="pax"
-                                            id="pax"
-                                            className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6
-                                            invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500"
-                                        />
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <label
-                                        htmlFor="name"
-                                        className="block text-sm font-semibold leading-6 text-gray-900"
-                                    >
-                                        Name
-                                    </label>
-                                    <div className="mt-2.5">
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            id="name"
-                                            value={name}
-                                            onChange={(e) =>
-                                                setName(e.target.value)
-                                            }
-                                            autoComplete="family-name"
-                                            className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6
-                                            invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="sm:col-span-2">
-                                    <label
-                                        htmlFor="phone"
-                                        className="block text-sm font-semibold leading-6 text-gray-900"
-                                    >
-                                        Phone number
-                                    </label>
-                                    <div className="mt-2.5">
-                                        <input
-                                            type="text"
-                                            name="phone"
-                                            id="phone"
-                                            value={phone}
-                                            onChange={(e) =>
-                                                setPhone(e.target.value)
-                                            }
-                                            autoComplete="tel"
-                                            className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6
-                                            invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="sm:col-span-2">
-                                    <label
-                                        htmlFor="email"
-                                        className="block text-sm font-semibold leading-6 text-gray-900"
-                                    >
-                                        Email
-                                    </label>
-                                    <div className="mt-2.5">
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            id="email"
-                                            value={email}
-                                            onChange={(e) =>
-                                                setEmail(e.target.value)
-                                            }
-                                            autoComplete="email"
-                                            className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6
-                                            invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500"
-                                        />
-                                    </div>
-                                </div>
-
-                                <Switch.Group
-                                    as="div"
-                                    className="flex gap-x-4 sm:col-span-2"
-                                >
-                                    <div className="flex h-6 items-center">
-                                        <Switch
-                                            checked={agreed}
-                                            onChange={setAgreed}
+                                        <span className="sr-only">
+                                            Agree to policies
+                                        </span>
+                                        <span
+                                            aria-hidden="true"
                                             className={classNames(
                                                 agreed
-                                                    ? 'bg-primary-600'
-                                                    : 'bg-gray-200',
-                                                'flex w-8 flex-none cursor-pointer rounded-full p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600'
+                                                    ? 'translate-x-3.5'
+                                                    : 'translate-x-0',
+                                                'h-4 w-4 transform rounded-full bg-white shadow-sm ring-1 ring-gray-900/5 transition duration-200 ease-in-out'
                                             )}
-                                        >
-                                            <span className="sr-only">
-                                                Agree to policies
-                                            </span>
-                                            <span
-                                                aria-hidden="true"
-                                                className={classNames(
-                                                    agreed
-                                                        ? 'translate-x-3.5'
-                                                        : 'translate-x-0',
-                                                    'h-4 w-4 transform rounded-full bg-white shadow-sm ring-1 ring-gray-900/5 transition duration-200 ease-in-out'
-                                                )}
-                                            />
-                                        </Switch>
-                                    </div>
-                                    <Switch.Label className="text-sm leading-6 text-gray-600">
-                                        By selecting this, you agree to our{' '}
-                                        <a
-                                            href="#"
-                                            className="font-semibold text-primary-600"
-                                        >
-                                            privacy&nbsp;policy
-                                        </a>
-                                        .
-                                    </Switch.Label>
-                                </Switch.Group>
+                                        />
+                                    </Switch>
+                                </div>
+                                <Switch.Label className="text-sm leading-6 text-gray-600">
+                                    By selecting this, you agree to our{' '}
+                                    <a
+                                        href="#"
+                                        className="font-semibold text-primary-600"
+                                    >
+                                        privacy&nbsp;policy
+                                    </a>
+                                    .
+                                </Switch.Label>
+                            </Switch.Group>
+                            <hr className="border-gray-200" />
+                            <div className="flex flex-col items-start space-y-4 sm:flex-row sm:items-center sm:justify-between sm:space-y-0">
+                                <div>
+                                    <a
+                                        href="#"
+                                        className="group flex items-center space-x-2.5 text-sm text-gray-500 hover:text-gray-900"
+                                    >
+                                        <QuestionMarkCircleIcon
+                                            className="h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                                            aria-hidden="true"
+                                        />
+                                        <span>Learn more about booking accommodation</span>
+                                    </a>
+                                </div>
                             </div>
-                            <div className="mt-10">
-                                <button
-                                    type="submit"
-                                    disabled={!isFormValid}
-                                    className="block w-full rounded-md bg-primary-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white enabled:shadow-sm enabled:hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 disabled:opacity-50 disabled:cursor-not-allowed"
-                                >
-                                    Book now
-                                </button>
-                            </div>
-                        </form>
-                        <SuccessMessage
-                            open={showSuccess}
-                            setOpen={setShowSuccess}
-                        />
+                        </div>
                     </div>
                 </div>
-            </div>
+
+                {/* Action buttons */}
+                <div className="flex-shrink-0 border-t border-gray-200 px-4 py-5 sm:px-6">
+                    <div className="flex justify-end space-x-3">
+                        <button
+                            type="button"
+                            className="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                            onClick={() => setOpen(false)}
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            type="submit"
+                            disabled={!isFormValid}
+                            className="inline-flex justify-center rounded-md bg-primary-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            Book now
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <SuccessMessage open={showSuccess} setOpen={setShowSuccess} />
         </div>
     );
 }
