@@ -9,7 +9,6 @@ import { getChannelInfo, getAllPlaylistItems } from 'lib/youtube';
 
 import { Layout, LayoutProps } from 'components/layout';
 
-
 import {
     Bars3BottomLeftIcon,
     CogIcon,
@@ -70,7 +69,7 @@ export default function Channel({ title, videos }) {
                     <div>
                         <div className="mx-auto max-w-7xl px-4 pt-8 pb-4 sm:px-6 lg:px-8">
                             <h1 className="flex-1 text-2xl font-heading font-bold text-gray-900">
-                                Videos
+                                {t('videos')}
                                 <span className="sr-only">{title}</span>
                             </h1>
                         </div>
