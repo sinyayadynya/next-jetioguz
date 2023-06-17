@@ -61,6 +61,7 @@ export default function PlacesPage({
 export async function getStaticProps(
     context: GetStaticPropsContext
   ): Promise<GetStaticPropsResult<PlacePageProps>> {
+
     // Fetch all published places sorted by date.
     const places = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
       "node--place",
@@ -73,6 +74,8 @@ export async function getStaticProps(
           .getQueryObject(),
       }
     )
+
+    console.log('Node paths:', places.map((place) => place.path));
 
     let [promoImageTiles] = await drupal.getResourceCollectionFromContext<DrupalBlock[]>(
       "block_content--promo_block_image_tiles",
