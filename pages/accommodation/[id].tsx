@@ -9,11 +9,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
-import {
-    LinkIcon,
-    PlusIcon,
-    QuestionMarkCircleIcon,
-} from '@heroicons/react/20/solid';
 
 const AccommodationForm = dynamic(
     () => import('components/webform--accommodation'),
