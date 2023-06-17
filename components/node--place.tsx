@@ -97,7 +97,7 @@ export function NodePlace({ node, ...props }: NodePlaceProps) {
                             <p className="mt-6 text-lg leading-8 text-gray-600">
                                 Are you ready to immerse yourself in the
                                 breathtaking natural beauty of Jeti Oguz?
-                                Explore the stunning landscapes of the region's
+                                Explore the stunning landscapes of the region’s
                                 most incredible nature sites, from serene lakes
                                 and rivers to towering mountains and lush
                                 valleys.
