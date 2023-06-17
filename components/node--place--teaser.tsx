@@ -31,26 +31,6 @@ export function NodePlaceTeaser({ node, ...props }: NodePlaceTeaserProps) {
                                 />
                                 {node.title}
                             </Link>
-
-
-                            {/* {node.path.alias ? (
-                                <Link href={node.path.alias} passHref>
-                                    <span
-                                        aria-hidden="true"
-                                        className="absolute inset-0"
-                                    />
-                                    {node.title}
-                                </Link>
-                                ) : (
-                                <div>
-                                    <span
-                                        aria-hidden="true"
-                                        className="absolute inset-0"
-                                    />
-                                    {node.title}
-                                </div>
-                            )} */}
-
                         </h3>
 
                         {node.field_place_altitude && (
