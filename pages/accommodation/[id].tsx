@@ -23,7 +23,7 @@ const Accommodation = ({ product }) => {
     return (
         <Layout
             meta={{
-                title: t('office-team'),
+                title: product.name,
             }}
         >
             <div className="bg-white pb-24 lg:32">
