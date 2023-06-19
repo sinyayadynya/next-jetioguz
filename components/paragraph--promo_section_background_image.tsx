@@ -17,7 +17,7 @@ export function ParagraphPromoBackgroundImage({
                     <div className="absolute inset-0">
                         <MediaImage
                             media={paragraphType.field_media_image}
-                            className="object-cover"
+                            className="h-full w-full object-cover object-center"
                         />
                     </div>
                     <div className="relative bg-gray-900 bg-opacity-75 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
