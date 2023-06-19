@@ -397,6 +397,7 @@ const Accommodation = ({ product }) => {
 export async function getServerSideProps(context) {
     const { id } = context.params;
     const { locale } = context;
+    const serverTranslations = await serverSideTranslations(locale, ['common']);
 
     const url = `${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}/${locale}/api/dmo-accommodation/jetioguz/${id}`;
 
@@ -409,6 +410,7 @@ export async function getServerSideProps(context) {
 
     return {
         props: {
+            ...(serverTranslations),
             ...globalElements,
             product: product || null,
         },
