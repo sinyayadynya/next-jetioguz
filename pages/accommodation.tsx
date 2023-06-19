@@ -1,6 +1,7 @@
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next';
 import { DrupalBlock, DrupalNode } from 'next-drupal';
 import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { drupal } from 'lib/drupal';
 import { getGlobalElements } from 'lib/get-global-elements';
@@ -327,6 +328,7 @@ export async function getStaticProps(
             ...(await getGlobalElements(context)),
             heroOffsetImage,
             accommodations,
+            ...(await serverSideTranslations(locale, ['common'])),
         },
     };
 }
