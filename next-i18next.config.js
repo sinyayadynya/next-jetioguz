@@ -7,4 +7,5 @@ module.exports = {
         defaultLocale: config.defaultLocale,
         locales: Object.keys(config.locales),
     },
+    ns: ['common'],
 };
