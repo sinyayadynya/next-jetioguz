@@ -301,33 +301,21 @@ PlacePageProps) {
     );
 }
 
-export async function getStaticProps(
-    context: GetStaticPropsContext
-): Promise<GetStaticPropsResult<PlacePageProps>> {
-    // Fetch all published accommodations sorted by date.
-    const accommodations = await drupal.getResourceCollectionFromContext<
-        DrupalNode[]
-    >('product--accommodation', context, {
-        params: getParams('product--accommodation')
-            .addFilter('stores.meta.drupal_internal__target_id', '3')
-            // .addSort("created", "DESC")
-            .getQueryObject(),
-    });
+export async function getServerSideProps(context) {
+    const { id } = context.params;
+    const locale = context.req.locale;
 
-    const [heroOffsetImage] = await drupal.getResourceCollectionFromContext<
-        DrupalBlock[]
-    >('block_content--hero_block_offset_image', context, {
-        params: getParams('block_content--hero_block_offset_image')
-            .addFilter('info', 'Jeti Oguz Accommodation')
-            .addPageLimit(1)
-            .getQueryObject(),
-    });
+    const url = `https://nomadsland.travel/${locale}/api/dmo-accommodation/jetioguz/${id}`;
+
+    const res = await fetch(url);
+    const productData = await res.json();
+
+    // In your case, the API returns an array with a single object, so you just take the first element.
+    const product = productData[0];
 
     return {
         props: {
-            ...(await getGlobalElements(context)),
-            heroOffsetImage,
-            accommodations,
+            product: product || null,  // If product is undefined, use null instead
             ...(await serverSideTranslations(locale, ['common'])),
         },
     };
