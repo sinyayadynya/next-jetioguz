@@ -10,21 +10,7 @@ import { getChannelInfo, getAllPlaylistItems } from 'lib/youtube';
 import { Layout, LayoutProps } from 'components/layout';
 
 import {
-    Bars3BottomLeftIcon,
-    CogIcon,
-    HeartIcon,
-    HomeIcon,
-    PhotoIcon,
-    RectangleStackIcon,
-    Squares2X2Icon as Squares2X2IconOutline,
-    UserGroupIcon,
-    XMarkIcon,
-} from '@heroicons/react/24/outline';
-import {
     Bars4Icon,
-    MagnifyingGlassIcon,
-    PencilIcon,
-    PlusIcon,
     Squares2X2Icon as Squares2X2IconMini,
 } from '@heroicons/react/20/solid';
 
