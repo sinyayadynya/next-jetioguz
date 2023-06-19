@@ -67,7 +67,7 @@ export function BlockPromoFadingTestimonials({
                         id="testimonial-heading"
                         className="font-heading text-2xl font-bold tracking-tight text-gray-900"
                     >
-                        What are travelers saying?
+                        {block.field_label}
                     </h2>
 
                     <div className="mt-16 space-y-16 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:space-y-0">

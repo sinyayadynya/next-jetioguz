@@ -403,6 +403,7 @@ export function getParams(type: string): DrupalJsonApiParams {
                 'field_tagline',
                 'field_cta_button',
                 'field_media_image',
+                'field_label',
                 'field_promo_testimonials',
             ])
             .addFields('media--image', ['field_media_image'])
