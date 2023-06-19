@@ -21,8 +21,6 @@ export function ParagraphPromoBgImageLargeContent({ paragraphType }: ParagraphPr
                         {paragraphType?.field_media_image && (
                             <MediaImage
                                 media={paragraphType.field_media_image}
-                                fill
-                                priority
                                 className="h-full w-full object-cover object-center"
                             />
                         )}

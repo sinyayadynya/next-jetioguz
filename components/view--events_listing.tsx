@@ -18,7 +18,8 @@ export function ViewEventsListing({ events, ...props }) {
                     <Image
                         src={event.image}
                         alt={event.name}
-                        fill
+                        width={56}
+                        height={56}
                         className="h-14 w-14 flex-none rounded-full object-cover"
                     />
                     <div className="flex-auto">

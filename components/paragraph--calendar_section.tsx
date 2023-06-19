@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Section } from 'components/section';
 import { DrupalParagraph } from 'next-drupal';
+import { useTranslation } from 'next-i18next';
 
 import { ViewEventsListing } from 'components/view--events_listing';
 
@@ -24,6 +25,8 @@ interface ParagraphProps {
 }
 
 export function ParagraphCalendarSection({ paragraphType }: ParagraphProps) {
+    const { t } = useTranslation();
+
     const [view, setView] = useState<View | null>(null);
 
     useEffect(() => {
@@ -93,7 +96,7 @@ export function ParagraphCalendarSection({ paragraphType }: ParagraphProps) {
 
                     <div className='mt-16'>
                         <h2 className="text-base font-semibold leading-6 text-gray-900">
-                            Upcoming events
+                            {t('upcoming-events')}
                         </h2>
                         <div className="lg:grid lg:grid-cols-12 lg:gap-x-16">
                             <ol className="mt-4 divide-y divide-gray-100 text-sm leading-6 lg:col-span-7 xl:col-span-8">
