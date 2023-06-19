@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { Layout, LayoutProps } from 'components/layout';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { getGlobalElements } from '../../lib/get-global-elements';
 
 import { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
@@ -402,13 +403,14 @@ export async function getServerSideProps(context) {
     const res = await fetch(url);
     const productData = await res.json();
 
-    // In your case, the API returns an array with a single object, so you just take the first element.
     const product = productData[0];
+
+    const globalElements = await getGlobalElements(context);
 
     return {
         props: {
-            product: product || null,  // If product is undefined, use null instead
-            ...(await serverSideTranslations(locale, ['common'])),
+            ...globalElements,
+            product: product || null,
         },
     };
 }
