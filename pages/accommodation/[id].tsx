@@ -17,7 +17,9 @@ const AccommodationForm = dynamic(
 );
 
 const Accommodation = ({ product }) => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+    const lang = i18n.language;
+    const prefix = lang !== 'en' ? `/${lang}` : '';
 
     const [open, setOpen] = useState(false);
 
@@ -394,9 +396,10 @@ const Accommodation = ({ product }) => {
 export async function getServerSideProps(context) {
     const { id } = context.params;
     const { locale } = context;
-    const res = await fetch(
-        `https://nomadsland.travel/api/dmo-accommodation/jetioguz/${id}`
-    );
+
+    const url = `https://nomadsland.travel/${locale}/api/dmo-accommodation/jetioguz/${id}`;
+
+    const res = await fetch(url);
     const productData = await res.json();
 
     // In your case, the API returns an array with a single object, so you just take the first element.
