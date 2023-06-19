@@ -9,7 +9,8 @@ export function ViewEventsListing({ events, ...props }) {
     if (!events) return null;
 
     return (
-        <Section {...props}>
+            <ol {...props} className="mt-4 divide-y divide-gray-100 text-sm leading-6 lg:col-span-7 xl:col-span-8">
+
             {events.map((event) => (
                 <li
                     key={event.id}
@@ -55,6 +56,6 @@ export function ViewEventsListing({ events, ...props }) {
                     </div>
                 </li>
             ))}
-        </Section>
+        </ol>
     );
 }

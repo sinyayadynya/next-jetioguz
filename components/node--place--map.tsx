@@ -24,13 +24,14 @@ const MapComponent = dynamic(() => import('leaflet').then((L) => {
 
             useEffect(() => {
                 const newIcon = new L.Icon({
-                    iconUrl: 'https://nomadsland.travel/modules/contrib/leaflet/js/leaflet/dist/images/marker-icon-2x.png',
+                    iconUrl: `${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}/modules/contrib/leaflet/js/leaflet/dist/images/marker-icon-2x.png`,
                     iconSize: [25, 40],
                     iconAnchor: [12, 40],
                 });
                 setMarkerIcon(newIcon);
                 setPosition({ latitude, longitude });
-            }, []);
+            }, [latitude, longitude]);
+
             return (
                 markerIcon && <MapContainer center={[position.latitude, position.longitude]} zoom={13} className={className}>
                     <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />

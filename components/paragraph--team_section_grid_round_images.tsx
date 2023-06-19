@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { DrupalParagraph } from 'next-drupal';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 interface TeamMember {
     id: string;
@@ -19,17 +20,17 @@ export interface ParagraphProps {
 export function ParagraphTeamGridLargeRoundImages({
     paragraphType,
 }: ParagraphProps) {
+    const router = useRouter();
+    const { locale } = router;
     const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
 
     useEffect(() => {
         const fetchTeamMembers = async () => {
             try {
                 const response = await fetch(
-                    'https://nomadsland.travel/api/dmo-team/jetioguz'
+                    `${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}/${locale}/api/dmo-team/jetioguz`
                 );
-                if (!response.ok) {
-                    throw new Error('Error fetching team members');
-                }
+                // other code
                 const data: TeamMember[] = await response.json();
                 console.log(data); // Debug log 1: log the raw data
                 setTeamMembers(data);
@@ -39,7 +40,7 @@ export function ParagraphTeamGridLargeRoundImages({
         };
 
         fetchTeamMembers();
-    }, []);
+    }, [locale]);
 
     return (
         <div className="bg-white py-32">
@@ -62,7 +63,7 @@ export function ParagraphTeamGridLargeRoundImages({
                             <li key={person.id}>
                                 <Image
                                     className="mx-auto rounded-full"
-                                    src={`https://nomadsland.travel${person.image}`}
+                                    src={`${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}${person.image}`}
                                     alt=""
                                     width={224}
                                     height={224}

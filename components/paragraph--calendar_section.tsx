@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 import { Section } from 'components/section';
 import { DrupalParagraph } from 'next-drupal';
 import { useTranslation } from 'next-i18next';
@@ -26,12 +27,13 @@ interface ParagraphProps {
 
 export function ParagraphCalendarSection({ paragraphType }: ParagraphProps) {
     const { t } = useTranslation();
-
+    const router = useRouter();
+    const { locale } = router;
     const [view, setView] = useState<View | null>(null);
 
     useEffect(() => {
         axios
-            .get("https://nomadsland.travel/api/dmo-events/jetioguz", {
+            .get(`${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}/${locale}/api/dmo-events/jetioguz`, {
                 headers: {
                     Accept: "application/json",
                 },
@@ -63,7 +65,7 @@ export function ParagraphCalendarSection({ paragraphType }: ParagraphProps) {
                         ...event,
                         name: decodedName,
                         date: formattedDate,
-                        image: 'https://nomadsland.travel' + event.image,
+                        image: `${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}` + event.image,
                     };
                 });
 
@@ -75,7 +77,7 @@ export function ParagraphCalendarSection({ paragraphType }: ParagraphProps) {
             .catch((error) => {
                 console.error("Error fetching API data: ", error);
             });
-    }, []);
+    }, [locale]);
 
     if (!view) {
         return <p>Loading...</p>;
@@ -99,9 +101,7 @@ export function ParagraphCalendarSection({ paragraphType }: ParagraphProps) {
                             {t('upcoming-events')}
                         </h2>
                         <div className="lg:grid lg:grid-cols-12 lg:gap-x-16">
-                            <ol className="mt-4 divide-y divide-gray-100 text-sm leading-6 lg:col-span-7 xl:col-span-8">
-                                <ViewEventsListing events={view?.events} />
-                            </ol>
+                            <ViewEventsListing events={view?.events} />
                         </div>
                     </div>
 
