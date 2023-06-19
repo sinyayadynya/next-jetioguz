@@ -397,7 +397,7 @@ export async function getServerSideProps(context) {
     const { id } = context.params;
     const { locale } = context;
 
-    const url = `https://nomadsland.travel/${locale}/api/dmo-accommodation/jetioguz/${id}`;
+    const url = `${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}/${locale}/api/dmo-accommodation/jetioguz/${id}`;
 
     const res = await fetch(url);
     const productData = await res.json();
