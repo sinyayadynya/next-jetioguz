@@ -248,19 +248,17 @@ const Accommodation = ({ product }) => {
                                 <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                                     {product.type}
                                 </h2>
-                                <p className="mt-6 text-xl leading-8 text-gray-600">
-                                    Quasi est quaerat. Sit molestiae et.
-                                    Provident ad dolorem occaecati eos iste.
-                                    Soluta rerum quidem minus ut molestiae velit
-                                    error quod. Excepturi quidem expedita
-                                    molestias quas.
+                                <p
+                                    dangerouslySetInnerHTML={{
+                                        __html: product.type_intro,
+                                    }}
+                                    className="mt-6 text-xl leading-8 text-gray-600">
                                 </p>
-                                <p className="mt-6 text-base leading-7 text-gray-600">
-                                    Anim aute id magna aliqua ad ad non deserunt
-                                    sunt. Qui irure qui lorem cupidatat commodo.
-                                    Elit sunt amet fugiat veniam occaecat
-                                    fugiat. Quasi aperiam sit non sit neque
-                                    reprehenderit.
+                                <p
+                                    dangerouslySetInnerHTML={{
+                                        __html: product.type_description,
+                                    }}
+                                    className="mt-6 text-base leading-7 text-gray-600">
                                 </p>
                             </div>
 
