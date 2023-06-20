@@ -39,14 +39,10 @@ PlacePageProps) {
                                 id="details-heading"
                                 className="text-3xl font-heading font-bold tracking-tight text-gray-900 sm:text-4xl"
                             >
-                                The villages
+                                {t('villages-label')}
                             </h2>
                             <p className="mt-3 max-w-3xl text-lg text-gray-600">
-                                Discover the authentic Kyrgyz culture and warm
-                                hospitality in Jeti-Oguz’s picturesque villages.
-                                Explore the hidden gems of our charming rural
-                                communities and experience the unspoiled beauty
-                                of rural Kyrgyzstan.
+                                {t('villages-intro')}
                             </p>
                         </div>
 
