@@ -95,12 +95,7 @@ export function NodePlace({ node, ...props }: NodePlaceProps) {
                             </div>
 
                             <p className="mt-6 text-lg leading-8 text-gray-600">
-                                Are you ready to immerse yourself in the
-                                breathtaking natural beauty of Jeti Oguz?
-                                Explore the stunning landscapes of the region’s
-                                most incredible nature sites, from serene lakes
-                                and rivers to towering mountains and lush
-                                valleys.
+                                {node.field_place_type.field_description_jetioguz}
                             </p>
                             {/* <div className="mt-10 flex items-center gap-x-6">
                                 <a href="#" className="rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600">

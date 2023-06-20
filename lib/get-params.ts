@@ -200,7 +200,7 @@ export function getParams(type: string): DrupalJsonApiParams {
             ])
             .addFields('media--image', ['field_media_image'])
             .addFields('file--file', ['uri', 'resourceIdObjMeta'])
-            .addFields('taxonomy_term--place_types', ['name', 'path'])
+            .addFields('taxonomy_term--place_types', ['name', 'path', 'field_description_jetioguz'])
             .addFields('taxonomy_term--dmo_area', ['name', 'path'])
             .addFields('taxonomy_term--media_authors', [
                 'name',
