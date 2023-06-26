@@ -6,6 +6,10 @@ interface ParagraphPromoOverlappingImageTileProps {
     paragraph: DrupalParagraph;
 }
 
+function transformInternalLink(link) {
+    return link.replace('internal:/', '');
+}
+
 export function ParagraphPromoOverlappingImageTile({
     paragraph,
 }: ParagraphPromoOverlappingImageTileProps) {
@@ -31,7 +35,7 @@ export function ParagraphPromoOverlappingImageTile({
                             {paragraph.field_text_cta}
                         </p>
                         <h3 className="mt-1 font-semibold text-white">
-                            <Link href={paragraph.field_link.uri}>
+                            <Link href={transformInternalLink(paragraph.field_link.uri)}>
                                 <span className="absolute inset-0" />
                                 {paragraph.field_text_title}
                             </Link>
