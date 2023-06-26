@@ -6,6 +6,10 @@ interface ParagraphFeatureItemSmallIconProps {
     paragraph: DrupalParagraph;
 }
 
+function transformInternalLink(link) {
+    return link.replace('internal:/', '');
+}
+
 export function ParagraphFeatureItemSmallIcon({
     paragraph,
 }: ParagraphFeatureItemSmallIconProps) {
@@ -27,7 +31,7 @@ export function ParagraphFeatureItemSmallIcon({
                     {paragraph.field_feature_item_text_plain}
                 </p>
                 <p className="mt-6">
-                    <Link href={paragraph.field_link.uri} className="text-sm font-semibold leading-6 text-primary-600">
+                    <Link href={transformInternalLink(paragraph.field_link.uri)} className="text-sm font-semibold leading-6 text-primary-600">
                         {paragraph.field_link.title}{' '}
                         <span aria-hidden="true">→</span>
                     </Link>
