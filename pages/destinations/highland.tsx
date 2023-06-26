@@ -503,10 +503,18 @@ PlacePageProps) {
 export async function getStaticProps(
     context: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<PlacePageProps>> {
+    const { locale } = context;
+
+    // Use a clone of the context to add the locale
+    const contextWithLocale = {
+      ...context,
+      locale,
+    };
+
     // Fetch all published places sorted by date.
     const places = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
         'node--place',
-        context,
+        contextWithLocale,
         {
             params: getParams('node--place')
                 .addFilter(
@@ -518,12 +526,13 @@ export async function getStaticProps(
         }
     );
 
-    const featureItemSmallIcon = await drupal.getResource<DrupalParagraph>(
-        'paragraph--feature_item_small_icon',
-        '0c9ddb1d-ec0f-4115-ba3a-1bd4b3be3d44',
-    );
+    const featureItemSmallIconId = '0c9ddb1d-ec0f-4115-ba3a-1bd4b3be3d44';
+    const drupalBaseUrl = process.env.NEXT_PUBLIC_DRUPAL_BASE_URL;
 
-    const field_feature_item_text_plain = featureItemSmallIcon.field_feature_item_text_plain;
+    const response = await fetch(`${drupalBaseUrl}/${locale}/jsonapi/paragraph/feature_item_small_icon/${featureItemSmallIconId}`);
+    const data = await response.json();
+
+    const field_feature_item_text_plain = data.data.attributes.field_feature_item_text_plain;
 
     //   const [banner] = await drupal.getResourceCollectionFromContext<DrupalBlock[]>(
     //     "block_content--banner_block",

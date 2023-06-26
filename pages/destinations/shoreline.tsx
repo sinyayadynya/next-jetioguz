@@ -499,31 +499,40 @@ PlacePageProps) {
     );
 }
 
-
 export async function getStaticProps(
     context: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<PlacePageProps>> {
+    const { locale } = context;
+
+    // Use a clone of the context to add the locale
+    const contextWithLocale = {
+      ...context,
+      locale,
+    };
+
     // Fetch all published places sorted by date.
     const places = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
         'node--place',
-        context,
+        contextWithLocale,
         {
             params: getParams('node--place')
                 .addFilter(
                     'field_site.meta.drupal_internal__target_id',
                     'jetioguz'
                 )
-                .addFilter('field_dmo.field_dmo_area.meta.drupal_internal__target_id', '4541') // updated filter
+                .addFilter('field_dmo.field_dmo_area.meta.drupal_internal__target_id', '4541')
                 .getQueryObject(),
         }
     );
 
-    const featureItemSmallIcon = await drupal.getResource<DrupalParagraph>(
-        'paragraph--feature_item_small_icon',
-        '1ff39fc3-84f2-4c04-98e3-059ef82cefa9',
-    );
+    const featureItemSmallIconId = '1ff39fc3-84f2-4c04-98e3-059ef82cefa9';
+    const drupalBaseUrl = process.env.NEXT_PUBLIC_DRUPAL_BASE_URL;
 
-    const field_feature_item_text_plain = featureItemSmallIcon.field_feature_item_text_plain;
+    const response = await fetch(`${drupalBaseUrl}/${locale}/jsonapi/paragraph/feature_item_small_icon/${featureItemSmallIconId}`);
+    const data = await response.json();
+
+    const field_feature_item_text_plain = data.data.attributes.field_feature_item_text_plain;
+
 
     //   const [banner] = await drupal.getResourceCollectionFromContext<DrupalBlock[]>(
     //     "block_content--banner_block",
