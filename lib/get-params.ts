@@ -273,6 +273,12 @@ export function getParams(type: string): DrupalJsonApiParams {
                 'field_cta_link',
                 'field_media_image',
             ])
+            .addFields('paragraph--text_section_three_col_intro', [
+                'field_headline',
+                'field_tagline',
+                'field_text_formatted',
+                'field_anchor',
+            ])
             // .addFields('paragraph--contact_section_side_side_grid', [
             //     'field_headline',
             //     'field_tagline',

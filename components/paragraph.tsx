@@ -18,6 +18,8 @@ import { ParagraphFeatureSimple } from 'components/paragraph--feature_section_si
 import { ParagraphLogoCloudSimpleHeading } from 'components/paragraph--logo_clouds_simple_heading'
 import { ParagraphTeamGridLargeRoundImages } from 'components/paragraph--team_section_grid_round_images'
 import { ParagraphContactSideBySideGrid } from 'components/paragraph--contact_section_side_side_grid'
+import { ParagraphTextThreeColIntro } from 'components/paragraph--text_section_three_col_intro'
+
 
 const paragraphTypes = {
     'paragraph--blog_section': ParagraphBlogSection,
@@ -39,6 +41,7 @@ const paragraphTypes = {
     'paragraph--logo_clouds_simple_heading': ParagraphLogoCloudSimpleHeading,
     'paragraph--team_section_grid_round_images': ParagraphTeamGridLargeRoundImages,
     'paragraph--contact_section_side_side_grid': ParagraphContactSideBySideGrid,
+    'paragraph--text_section_three_col_intro': ParagraphTextThreeColIntro,
 };
 
 export interface ParagraphProps {
