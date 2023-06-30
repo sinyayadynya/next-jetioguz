@@ -104,7 +104,7 @@ export function NodeArticle({ node, additionalContent }: NodeArticleProps) {
                 <section className="bg-white pt-24 sm:pt-32">
                     <div className="mx-auto max-w-7xl px-6 lg:px-8">
                         <div className="mx-auto max-w-2xl text-center">
-                            <h2 className="font-heading text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                            <h2 className="text-3xl font-heading font-bold tracking-tight text-gray-900 sm:text-4xl">
                                 {t('more-featured-articles')}
                             </h2>
                             <p className="mt-2 text-lg leading-8 text-gray-600">

@@ -55,7 +55,7 @@ export default function ProductAccommodation({
                     </nav>
 
                     <div className="mt-4">
-                        <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                        <h1 className="text-3xl font-heading font-bold tracking-tight text-gray-900 sm:text-4xl">
                             {product.title}
                         </h1>
                     </div>
