@@ -21,6 +21,7 @@ const Accommodation = ({ product }) => {
     const { t, i18n } = useTranslation();
     const lang = i18n.language;
     const prefix = lang !== 'en' ? `/${lang}` : '';
+    let productTypePath = product.type.toLowerCase().startsWith('hotel') ? 'hotel' : product.type.toLowerCase().replace(/ /g, "");
 
     const [open, setOpen] = useState(false);
 
@@ -62,7 +63,7 @@ const Accommodation = ({ product }) => {
                                 <li>
                                     <div className="flex items-center text-sm">
                                         <Link
-                                            href="#"
+                                            href={`/accommodation/${productTypePath}#list`}
                                             className="font-medium text-gray-500 hover:text-gray-900"
                                         >
                                             {product.type}
