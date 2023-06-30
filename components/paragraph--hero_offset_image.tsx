@@ -72,16 +72,21 @@ export function ParagraphHeroOffsetImage({ paragraphType }: ParagraphProps) {
                         </p>
                         <div className="mt-10 flex items-center gap-x-6">
                             {paragraphType.field_cta_button && (
-                                <Link
-                                    href={paragraphType.field_cta_button.uri.replace(
-                                        'internal:',
-                                        ''
-                                    )}
-                                    passHref
-                                    className="rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
-                                >
-                                    {paragraphType.field_cta_button.title}
-                                </Link>
+                                (() => {
+                                    const href = paragraphType.field_cta_button.uri.replace('internal:', '');
+                                    const [pathname, hash] = href.split('#');
+
+                                    return (
+                                        <Link
+                                            href={pathname}
+                                            as={hash ? `${pathname}#${hash}` : pathname}
+                                            passHref
+                                            className="rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
+                                        >
+                                            {paragraphType.field_cta_button.title}
+                                        </Link>
+                                    );
+                                })()
                             )}
 
                             {paragraphType.field_cta_link && (
