@@ -7,9 +7,9 @@ export interface ParagraphProps {
 }
 
 const offers = [
-    { name: 'How to get there', description: 'From Bishkek', href: '#' },
-    { name: "How to get there", description: 'From Cholpon-Ata', href: '#' },
-    { name: 'How to get there', description: 'From Almaty', href: '#' },
+    { name: 'How to get there', description: 'From Bishkek', href: '#from-bishkek' },
+    { name: "How to get there", description: 'From Cholpon-Ata', href: '#from-cholpon-ata' },
+    { name: 'How to get there', description: 'From Almaty', href: '#from-almaty' },
 ]
 
 export function ParagraphPromoOffersSplitImage({ paragraphType }: ParagraphProps) {
