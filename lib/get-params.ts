@@ -216,6 +216,7 @@ export function getParams(type: string): DrupalJsonApiParams {
                 'field_sections.field_media_image.field_media_image',
                 'field_sections.field_features',
                 'field_sections.field_stats',
+                'field_sections.field_grid_items',
                 // 'field_sections.field_features.field_media_image',
                 // 'field_sections.field_features.field_media_image.field_media_image',
                 // 'field_sections.field_media_images',
@@ -279,11 +280,25 @@ export function getParams(type: string): DrupalJsonApiParams {
                 'field_text_formatted',
                 'field_anchor',
             ])
-            // .addFields('paragraph--contact_section_side_side_grid', [
-            //     'field_headline',
-            //     'field_tagline',
-            // ])
-            .addFields('media--image', ['field_media_image', 'uri']);
+            .addFields('paragraph--contact_section_side_side_grid', [
+                'field_headline',
+                'field_tagline',
+                'field_grid_items',
+                'field_label',
+                'field_email',
+                'field_phone',
+            ])
+            .addFields('media--image', ['field_media_image', 'uri'])
+            .addFields('paragraph--contact_side_side_contact_card', [
+                'field_label',
+                'field_email',
+                'field_phone',
+            ])
+            .addFields('paragraph--contact_side_side_location_card', [
+                'field_label',
+                'field_address',
+                'field_geofield',
+            ])
     }
 
     if (type === 'product--accommodation') {

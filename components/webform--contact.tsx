@@ -63,7 +63,7 @@ export default function ContactForm() {
     }
 
     return (
-        <div id="write" className="mx-auto max-w-7xl -mt-16 py-16 px-6 border-t border-gray-100 lg:px-8">
+        <div id="write" className="mx-auto max-w-7xl mb-16 py-16 px-6 border-t border-gray-100 lg:px-8">
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-3">
                 <div>
                     <h2 className="text-3xl font-heading font-bold tracking-tight text-gray-900">
@@ -202,8 +202,8 @@ export default function ContactForm() {
                                             }
                                             className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6
                                             invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500"
-                                            defaultValue={''}
                                         />
+
                                     </div>
                                 </div>
                                 <Switch.Group
