@@ -73,7 +73,7 @@ const Accommodation = ({ product }) => {
                         </nav>
 
                         <div className="mt-4">
-                            <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                            <h1 className="text-3xl font-heading font-bold tracking-tight text-gray-900 sm:text-4xl">
                                 {product.name}
                             </h1>
                         </div>
@@ -245,7 +245,7 @@ const Accommodation = ({ product }) => {
                     <div className="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
                         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:min-w-full lg:max-w-none lg:flex-none lg:gap-y-8">
                             <div className="lg:col-end-1 lg:w-full lg:max-w-lg lg:pb-8">
-                                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                                <h2 className="text-3xl font-heading font-bold tracking-tight text-gray-900 sm:text-4xl">
                                     {product.type}
                                 </h2>
                                 <p
@@ -377,7 +377,8 @@ const Accommodation = ({ product }) => {
                                                     </div>
                                                 </div>
 
-                                                <AccommodationForm />
+                                                <AccommodationForm productName={product.name} />
+
                                             </div>
                                         </div>
                                     </Dialog.Panel>

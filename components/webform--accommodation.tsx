@@ -9,12 +9,12 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
 
-export default function AccommodationForm() {
+export default function AccommodationForm({ productName = '' }) {
     const { t } = useTranslation()
 
     const [agreed, setAgreed] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false);
-    const [accommodation, setAccommodation] = useState('');
+    const [accommodation, setAccommodation] = useState(productName);
     const [checkin, setCheckin] = useState('');
     const [checkout, setCheckout] = useState('');
     const [pax, setPax] = useState('');
