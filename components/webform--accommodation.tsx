@@ -9,7 +9,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
 
-export default function AccommodationForm({ productName = '' }) {
+export default function AccommodationForm({ productName = '', handleClose }) {
     const { t } = useTranslation()
 
     const [agreed, setAgreed] = useState(false);
@@ -308,10 +308,11 @@ export default function AccommodationForm({ productName = '' }) {
                         <button
                             type="button"
                             className="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                            onClick={() => setOpen(false)}
+                            onClick={handleClose}
                         >
                             Cancel
                         </button>
+
                         <button
                             type="submit"
                             disabled={!isFormValid}
@@ -324,6 +325,7 @@ export default function AccommodationForm({ productName = '' }) {
             </form>
 
             <SuccessMessage open={showSuccess} setOpen={setShowSuccess} />
+
         </div>
     );
 }

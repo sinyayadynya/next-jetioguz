@@ -378,7 +378,7 @@ const Accommodation = ({ product }) => {
                                                     </div>
                                                 </div>
 
-                                                <AccommodationForm productName={product.name} />
+                                                <AccommodationForm productName={product.name} handleClose={() => setOpen(false)} />
 
                                             </div>
                                         </div>
