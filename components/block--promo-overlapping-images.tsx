@@ -54,8 +54,8 @@ export function BlockPromoOverlappingImages({
                     <h1 className="text-4xl font-heading font-semibold tracking-tight text-white sm:text-5xl md:text-6xl">
                         {block.field_title}
                     </h1>
-                    <p className="mt-6 text-lg leading-8 text-gray-100">
-                        {block.field_tagline}
+                    <p className="mt-6 text-lg leading-8 text-gray-100"
+                        dangerouslySetInnerHTML={{ __html: block.field_tagline.replace(/\u2028/g, "<br>") }}>
                     </p>
                     <div className="mt-10 flex items-center justify-center gap-x-6">
                         {block.field_cta_button && (
