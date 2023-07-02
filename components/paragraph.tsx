@@ -19,6 +19,7 @@ import { ParagraphLogoCloudSimpleHeading } from 'components/paragraph--logo_clou
 import { ParagraphTeamGridLargeRoundImages } from 'components/paragraph--team_section_grid_round_images'
 import { ParagraphContactSideBySideGrid } from 'components/paragraph--contact_section_side_side_grid'
 import { ParagraphTextThreeColIntro } from 'components/paragraph--text_section_three_col_intro'
+import { ParagraphMapFeatures } from 'components/paragraph--feature_section_map'
 
 
 const paragraphTypes = {
@@ -42,6 +43,7 @@ const paragraphTypes = {
     'paragraph--team_section_grid_round_images': ParagraphTeamGridLargeRoundImages,
     'paragraph--contact_section_side_side_grid': ParagraphContactSideBySideGrid,
     'paragraph--text_section_three_col_intro': ParagraphTextThreeColIntro,
+    'paragraph--feature_section_map': ParagraphMapFeatures,
 };
 
 export interface ParagraphProps {
