@@ -115,15 +115,54 @@ const Offer = ({ product }) => {
                     {/* Options */}
                     <div className="mt-4 lg:row-span-3 lg:mt-0">
                         <h2 className="sr-only">Product information</h2>
-                        {/* <p className="text-3xl tracking-tight text-gray-900">{product.price}</p> */}
+                        <p className="text-3xl tracking-tight text-gray-900">From {product.pax10}</p>
+
+                        <div className='lg:mt-4'>
+                            <h3 className="text-sm font-medium text-gray-900">
+                                Price per person
+                            </h3>
+                            <div className='text-sm text-gray-600'>
+                                1 Pax: {product.pax1}<br />
+                                2 Pax: {product.pax2}<br />
+                                3-4 Pax: {product.pax3}<br />
+                                5-9 Pax: {product.pax5}<br />
+                                10+ Pax: {product.pax10}
+                            </div>
+                        </div>
+
+                        <div className='lg:mt-4'>
+                            <h3 className="text-sm font-medium text-gray-900">
+                                Duration
+                            </h3>
+                            <div className='text-sm text-gray-600'>
+                                {product.duration}
+                            </div>
+                        </div>
+
+                        <div className='lg:mt-4'>
+                            <h3 className="text-sm font-medium text-gray-900">
+                                Minimum group size
+                            </h3>
+                            <div className='text-sm text-gray-600'>
+                                {product.min}
+                            </div>
+                        </div>
 
                         <button
                             type="submit"
                             onClick={() => setOpen(true)}
-                            className="flex w-full items-center justify-center rounded-md border border-transparent bg-primary-600 px-8 py-3 text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+                            className="flex w-full items-center justify-center rounded-md border border-transparent bg-primary-600 px-8 py-3 text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-gray-50 lg:mt-12"
                         >
                             {t('book-now')}
                         </button>
+
+
+                        <div className='lg:mt-12'>
+                            <div className='bg-gray-100 border border-gray-300 rounded-lg py-4 px-4'>
+                                <div dangerouslySetInnerHTML={{ __html: product.info }} className="text-sm text-gray-600"></div>
+                            </div>
+                        </div>
+
                     </div>
 
                     <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
@@ -146,18 +185,50 @@ const Offer = ({ product }) => {
                         </div>
 
                         <section
-                            aria-labelledby="shipping-heading"
+                            aria-labelledby="program-heading"
                             className="mt-10"
                         >
                             <h2
-                                id="shipping-heading"
+                                id="program-heading"
                                 className="text-sm font-medium text-gray-900"
                             >
                                 Program
                             </h2>
 
                             <div className="mt-4 space-y-6">
-                                {/* <p className="text-sm text-gray-600">{product.details}</p> */}
+                                <div dangerouslySetInnerHTML={{ __html: product.details }} className="text-sm text-gray-600 [&>p]:mt-4"></div>
+                            </div>
+                        </section>
+
+                        <section
+                            aria-labelledby="included-heading"
+                            className="mt-10"
+                        >
+                            <h3
+                                id="included-heading"
+                                className="text-sm font-medium text-gray-900"
+                            >
+                                Included
+                            </h3>
+
+                            <div className="mt-4 space-y-6">
+                                <div dangerouslySetInnerHTML={{ __html: product.included }} className="text-sm text-gray-600 [&>p]:mt-4"></div>
+                            </div>
+                        </section>
+
+                        <section
+                            aria-labelledby="not_included-heading"
+                            className="mt-10"
+                        >
+                            <h3
+                                id="not_included-heading"
+                                className="text-sm font-medium text-gray-900"
+                            >
+                                Not included
+                            </h3>
+
+                            <div className="mt-4 space-y-6">
+                                <div dangerouslySetInnerHTML={{ __html: product.not_included }} className="text-sm text-gray-600 [&>p]:mt-4"></div>
                             </div>
                         </section>
                     </div>

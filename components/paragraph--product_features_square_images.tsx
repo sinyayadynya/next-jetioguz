@@ -6,11 +6,14 @@ import { DrupalParagraph } from 'next-drupal';
 import { ViewOffersListing } from 'components/view--offers_listing';
 
 interface Offer {
+    id: string;
     name: string;
     area: string;
     image: string;
     type: string;
-    url: string;
+    duration: string;
+    path: string;
+    from: string;
 }
 
 interface View {
@@ -22,32 +25,51 @@ interface ParagraphProps {
     paragraphType: DrupalParagraph;
 }
 
-export function ParagraphProductFeaturesSquareImages({ paragraphType }: ParagraphProps) {
+export function ParagraphProductFeaturesSquareImages({
+    paragraphType,
+}: ParagraphProps) {
     const [view, setView] = useState<View | null>(null);
 
     useEffect(() => {
         axios
-            .get("https://nomadsland.travel/en/api/dmo-offers/jetioguz/square-images")
+            .get(
+                `${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}/en/api/dmo-offers/jetioguz/square-images`
+            )
             .then((response) => {
                 const offers = response.data.map((offer) => {
                     const parser = new DOMParser();
-                    const decodedType = parser.parseFromString(`<!doctype html><body>${offer.type}`, 'text/html').body.textContent;
+                    const decodedType = parser.parseFromString(
+                        `<!doctype html><body>${offer.type}`,
+                        'text/html'
+                    ).body.textContent;
 
-                    return {
+                    const imageElement = new DOMParser()
+                        .parseFromString(offer.image.trim(), 'text/html')
+                        .querySelector('img');
+                    const image = `${
+                        process.env.NEXT_PUBLIC_DRUPAL_BASE_URL
+                    }${offer.image}`;
+
+
+                    const processedOffer = {
                         ...offer,
-                        image: 'https://nomadsland.travel' + new DOMParser().parseFromString(offer.image, "text/html").querySelector("img").getAttribute('src'),
-                        type: decodedType
+                        image: image,
+                        type: decodedType,
+                        from: offer.from,
+                        duration: offer.duration,
                     };
-                });
 
+                    return processedOffer;
+                });
 
                 setView({
-                    name: "dmo_offers",
-                    offers: offers
+                    name: 'dmo_offers',
+                    offers: offers,
                 });
             })
+
             .catch((error) => {
-                console.error("Error fetching API data: ", error);
+                console.error('Error fetching API data: ', error);
             });
     }, []);
 
@@ -74,11 +96,7 @@ export function ParagraphProductFeaturesSquareImages({ paragraphType }: Paragrap
                         </p>
                     </div>
 
-                    <div className="mt-11 grid grid-cols-1 items-start gap-x-6 gap-y-16 sm:mt-16 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-8">
-                        <div className="flex flex-col-reverse">
-                            <ViewOffersListing offers={view.offers} />
-                        </div>
-                    </div>
+                    <ViewOffersListing offers={view.offers} />
 
                 </div>
             </div>
