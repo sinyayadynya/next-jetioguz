@@ -19,21 +19,21 @@ const features = [
     {
         name: 'Locate Kyrgyzstan in the World',
         description:
-            'For every friend you invite to Pocket, you get insider notifications 5 seconds sooner. And it’s 10 seconds if you invite an insider.',
+            '',
         icon: DeviceWorldIcon,
         screen: WorldScreen,
     },
     {
         name: 'Locate Kyrgyzstan in Central Asia',
         description:
-            'Get a push notification every time we find out something that’s going to lower the share price on your holdings so you can sell before the information hits the public markets.',
+            '',
         icon: DeviceAsiaIcon,
         screen: CentralAsiaScreen,
     },
     {
         name: 'Locate Jeti Oguz in Kyrgyzstan',
         description:
-            'We hide your stock purchases behind thousands of anonymous trading accounts, so suspicious activity can never be traced back to you.',
+            '',
         icon: DeviceKyrgyzstanIcon,
         screen: KyrgyzstanScreen,
     },
@@ -160,7 +160,7 @@ function WorldScreen({ custom, animated = false }) {
             <MotionAppScreenBody
                 {...(animated ? { ...bodyAnimation, custom } : {})}
             >
-                <div className="">
+                <div className="-mt-4">
                     <Image
                         src="/images/MapWorld.webp"
                         alt="World Map"
@@ -204,7 +204,7 @@ function KyrgyzstanScreen({ custom, animated = false }) {
             <MotionAppScreenBody
                 {...(animated ? { ...bodyAnimation, custom } : {})}
             >
-                <div className="">
+                <div className="-mt-4">
                     <Image
                         src="/images/MapKyrgyzstan.webp"
                         alt="Kyrgyzstan Map"
@@ -403,7 +403,7 @@ export function ParagraphMapFeatures({ paragraphType }: ParagraphProps) {
         <section
             id="features"
             aria-label="Map"
-            className="bg-gray-900 pt-20 sm:pt-32"
+            className="bg-gray-900 pt-20 sm:pt-32 pb-16"
         >
             <Container>
                 <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
