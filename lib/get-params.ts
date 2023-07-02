@@ -104,6 +104,7 @@ export function getParams(type: string): DrupalJsonApiParams {
                 'field_media_image.field_media_image',
             ])
             .addFields('paragraph--promo_section_full_width_tiles', [
+                'field_label',
                 'field_headline',
                 'field_tagline',
                 'field_link',
