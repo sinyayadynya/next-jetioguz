@@ -158,7 +158,7 @@ export function NodePlace({ node, ...props }: NodePlaceProps) {
 
 
                                         {node.field_place_usp && (
-                                            <div className='hidden lg:col-start-2 lg:w-full lg:max-w-lg lg:pb-8 lg:mb-24'>
+                                            <div className='hidden lg:flex lg:col-start-2 lg:w-full lg:max-w-lg lg:pb-8 lg:mb-24'>
                                                 <div className="border-l border-primary-600 pl-8">
                                                     <blockquote className="text-xl font-semibold leading-8 tracking-tight text-gray-900">
                                                         <p>
