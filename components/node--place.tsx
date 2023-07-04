@@ -131,6 +131,17 @@ export function NodePlace({ node, ...props }: NodePlaceProps) {
                                 <h2 className="hidden text-3xl font-heading font-bold tracking-tight text-gray-900 sm:text-4xl">
                                     About
                                 </h2>
+                                {node.field_place_usp && (
+                                    <div className='w-full py-8 lg:hidden'>
+                                        <div className="border-l border-primary-600 pl-8">
+                                            <blockquote className="text-xl font-semibold leading-8 tracking-tight text-gray-900">
+                                                <p>
+                                                    “{node.field_place_usp}”
+                                                </p>
+                                            </blockquote>
+                                        </div>
+                                    </div>
+                                )}
                                 {node.body && (
                                     <div className="prose [&>p]:mt-6 [&>*:first-child]:prose-xl [&>*:not(:first-child)]:prose [&>p]:leading-8 [&>p]:text-gray-600">
                                         <FormattedText
@@ -140,9 +151,25 @@ export function NodePlace({ node, ...props }: NodePlaceProps) {
                                 )}
                             </div>
 
+
                             {node.field_media_images && (
                                 <div className="flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents">
                                     <div className="w-0 flex-auto lg:ml-auto lg:w-auto lg:flex-none lg:self-end">
+
+
+                                        {node.field_place_usp && (
+                                            <div className='hidden lg:col-start-2 lg:w-full lg:max-w-lg lg:pb-8 lg:mb-24'>
+                                                <div className="border-l border-primary-600 pl-8">
+                                                    <blockquote className="text-xl font-semibold leading-8 tracking-tight text-gray-900">
+                                                        <p>
+                                                            “{node.field_place_usp}”
+                                                        </p>
+                                                    </blockquote>
+                                                </div>
+                                            </div>
+                                        )}
+
+
                                         {node.field_media_images[0]?.field_media_image && (
                                             <MediaImage
                                                 media={node.field_media_images[0]}

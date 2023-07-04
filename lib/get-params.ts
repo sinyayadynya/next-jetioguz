@@ -192,6 +192,7 @@ export function getParams(type: string): DrupalJsonApiParams {
                 'status',
                 'path',
                 'body',
+                'field_place_usp',
                 'field_place_type',
                 'field_dmo_area',
                 'field_place_altitude',
