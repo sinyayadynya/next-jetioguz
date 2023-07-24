@@ -95,7 +95,7 @@ export function Footer() {
 
                         </Link>
                         <p className="text-sm leading-6 text-gray-600">
-                        The Land of Seven Wonders.
+                            {t('slogan')}
                         </p>
                         <div className="flex space-x-6">
                         {navigation.footerSocial.map((item) => (
