@@ -123,7 +123,7 @@ export default function ContactForm() {
                                         )}
                                     </div>
                                     {submitted && !message && ( // Only render the icon if the form has been submitted and the field's value is empty
-                                        <p className="mt-2 text-sm text-red-600" id="email-error">
+                                        <p className="mt-2 text-sm text-red-600" id="firstname-error">
                                             Not a valid first name.
                                         </p>
                                     )}
@@ -147,7 +147,7 @@ export default function ContactForm() {
                                         )}
                                     </div>
                                     {submitted && !lastname && ( // Only render the icon if the form has been submitted and the field's value is empty
-                                        <p className="mt-2 text-sm text-red-600" id="email-error">
+                                        <p className="mt-2 text-sm text-red-600" id="lastname-error">
                                             Not a valid last name.
                                         </p>
                                     )}
@@ -171,7 +171,7 @@ export default function ContactForm() {
                                         )}
                                     </div>
                                     {submitted && !phone && ( // Only render the icon if the form has been submitted and the field's value is empty
-                                        <p className="mt-2 text-sm text-red-600" id="email-error">
+                                        <p className="mt-2 text-sm text-red-600" id="phone-error">
                                             Not a valid phone number.
                                         </p>
                                     )}
@@ -224,7 +224,7 @@ export default function ContactForm() {
                                         />
                                     </div>
                                     {submitted && !message && ( // Only render the icon if the form has been submitted and the field's value is empty
-                                        <p className="mt-2 text-sm text-red-600" id="email-error">
+                                        <p className="mt-2 text-sm text-red-600" id="message-error">
                                             Not a valid message.
                                         </p>
                                     )}
@@ -256,7 +256,7 @@ export default function ContactForm() {
                                 </Switch.Group>
                             </div>
                             {submitted && !agreed && ( // Only render the icon if the form has been submitted and the field's value is empty
-                                <p className="mt-2 text-sm text-red-600" id="email-error">
+                                <p className="mt-2 text-sm text-red-600" id="agreed-error">
                                     Please agree to our privacy policy.
                                 </p>
                             )}
@@ -269,7 +269,9 @@ export default function ContactForm() {
                                 </button>
                             </div>
                         </form>
+
                         <SuccessMessage open={showSuccess} setOpen={setShowSuccess} />
+
                     </div>
                 </div>
             </div>

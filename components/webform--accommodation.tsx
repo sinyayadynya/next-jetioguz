@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from "next-i18next"
 import { Switch } from '@headlessui/react';
 import SuccessMessage from 'components/success-message';
-
-import { QuestionMarkCircleIcon } from '@heroicons/react/20/solid';
+import { QuestionMarkCircleIcon, ExclamationCircleIcon } from '@heroicons/react/20/solid';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
@@ -15,19 +14,27 @@ export default function AccommodationForm({ productName = '', handleClose }) {
     const [agreed, setAgreed] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false);
     const [accommodation, setAccommodation] = useState(productName);
-    const [checkin, setCheckin] = useState('');
-    const [checkout, setCheckout] = useState('');
+    const [arrival, setCheckin] = useState('');
+    const [departure, setCheckout] = useState('');
     const [pax, setPax] = useState('');
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
+    const [submitted, setSubmitted] = useState(false); // New state variable
 
     // Check if the form is valid
     const isFormValid =
-        accommodation && checkin && checkout && pax && name && email && phone;
+        accommodation && arrival && departure && pax && name && email && phone && agreed;
 
     async function handleSubmit(event) {
         event.preventDefault();
+
+        setSubmitted(true); // Set submitted to true when the form is submitted
+
+        // If the form is not valid, return early
+        if (!isFormValid) {
+            return;
+        }
 
         try {
             const response = await fetch(
@@ -37,8 +44,8 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                     body: JSON.stringify({
                         webform_id: 'accommodation_rest_jetioguz',
                         accommodation: event.target.accommodation.value,
-                        checkin: event.target.checkin.value,
-                        checkout: event.target.checkout.value,
+                        arrival: event.target.arrival.value,
+                        departure: event.target.departure.value,
                         pax: event.target.pax.value,
                         name: event.target.name.value,
                         email: event.target.email.value,
@@ -57,6 +64,10 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                 setCheckin(''), setCheckout(''), setPax(''), setName('');
                 setEmail('');
                 setPhone('');
+                setAgreed(false);
+
+                // Close the slide-over panel
+                handleClose();
             }
 
             // Handle error.
@@ -67,6 +78,24 @@ export default function AccommodationForm({ productName = '', handleClose }) {
     }
 
     const [open, setOpen] = useState(true);
+
+    // Compute the input class names
+    const inputClass = (value) => {
+        const baseClass = "block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6";
+        const errorClass = "text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-500";
+
+        // Apply the error class only if the form has been submitted and the field's value is empty
+        return submitted && !value ? `${baseClass} ${errorClass}` : baseClass;
+    };
+
+    // Compute the switch class names
+    const switchClass = (value) => {
+        const baseClass = "flex w-8 flex-none cursor-pointer rounded-full p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600";
+        const errorClass = "ring-red-500 bg-red-500";
+
+        // Apply the error class only if the form has been submitted and the switch is not checked
+        return submitted && !value ? `${baseClass} ${errorClass}` : value ? 'bg-primary-600' : 'bg-gray-200';
+    };
 
     return (
         <div>
@@ -89,11 +118,8 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                                 name="accommodation"
                                 id="accommodation"
                                 value={accommodation}
-                                onChange={(e) =>
-                                    setAccommodation(e.target.value)
-                                }
-                                autoComplete="given-name"
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                                readOnly
+                                className={`${inputClass(accommodation)} cursor-not-allowed bg-gray-50 text-gray-500 ring-gray-200`}
                             />
                         </div>
                     </div>
@@ -102,7 +128,7 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                     <div className="space-y-2 px-4 sm:grid sm:grid-cols-3 sm:items-center sm:gap-4 sm:space-y-0 sm:px-6 sm:py-5">
                         <div>
                             <label
-                                htmlFor="checkin"
+                                htmlFor="arrival"
                                 className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
                             >
                                 Check in
@@ -111,19 +137,24 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                         <div className="sm:col-span-2">
                             <input
                                 type="date"
-                                name="checkin"
-                                id="checkin"
-                                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6
-                invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500"
+                                name="arrival"
+                                id="arrival"
+                                onChange={(e) => setCheckin(e.target.value)}
+                                className={inputClass(arrival)}
                             />
                         </div>
+                        {submitted && !arrival && ( // Only render the text if the form has been submitted and the field's value is empty
+                            <p className="mt-2 text-sm text-red-600 sm:col-start-2 sm:col-span-2" id="arrival-error">
+                                Not a valid arrival date.
+                            </p>
+                        )}
                     </div>
 
                     {/* Check out */}
                     <div className="space-y-2 px-4 sm:grid sm:grid-cols-3 sm:items-center sm:gap-4 sm:space-y-0 sm:px-6 sm:py-5">
                         <div>
                             <label
-                                htmlFor="checkout"
+                                htmlFor="departure"
                                 className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
                             >
                                 Check out
@@ -132,12 +163,17 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                         <div className="sm:col-span-2">
                             <input
                                 type="date"
-                                name="checkout"
-                                id="checkout"
-                                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6
-            invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500"
+                                name="departure"
+                                id="departure"
+                                onChange={(e) => setCheckout(e.target.value)}
+                                className={inputClass(departure)}
                             />
                         </div>
+                        {submitted && !departure && ( // Only render the text if the form has been submitted and the field's value is empty
+                            <p className="mt-2 text-sm text-red-600 sm:col-start-2 sm:col-span-2" id="departure-error">
+                                Not a valid departure date.
+                            </p>
+                        )}
                     </div>
 
                     {/* Pax */}
@@ -150,15 +186,25 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                                 Pax
                             </label>
                         </div>
-                        <div className="sm:col-span-2">
+                        <div className="relative sm:col-span-2">
                             <input
                                 type="number"
                                 name="pax"
                                 id="pax"
-                                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6
-            invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500"
+                                onChange={(e) => setPax(e.target.value)}
+                                className={inputClass(pax)}
                             />
+                            {submitted && !pax && ( // Only render the icon if the form has been submitted and the field's value is empty
+                                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                                    <ExclamationCircleIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
+                                </div>
+                            )}
                         </div>
+                        {submitted && !pax && ( // Only render the text if the form has been submitted and the field's value is empty
+                            <p className="mt-2 text-sm text-red-600 sm:col-start-2 sm:col-span-2" id="pax-error">
+                                Not a valid pax number.
+                            </p>
+                        )}
                     </div>
 
                     {/* Name */}
@@ -171,18 +217,27 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                                 Name
                             </label>
                         </div>
-                        <div className="sm:col-span-2">
+                        <div className="relative sm:col-span-2">
                             <input
                                 type="text"
                                 name="name"
                                 id="name"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-                                autoComplete="full-name"
-                                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6
-            invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500"
+                                autoComplete="name"
+                                className={inputClass(name)}
                             />
+                            {submitted && !name && ( // Only render the icon if the form has been submitted and the field's value is empty
+                                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                                    <ExclamationCircleIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
+                                </div>
+                            )}
                         </div>
+                        {submitted && !name && ( // Only render the text if the form has been submitted and the field's value is empty
+                            <p className="mt-2 text-sm text-red-600 sm:col-start-2 sm:col-span-2" id="name-error">
+                                Not a valid name.
+                            </p>
+                        )}
                     </div>
 
                     {/* Mobile */}
@@ -195,7 +250,7 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                                 Mobile number
                             </label>
                         </div>
-                        <div className="sm:col-span-2">
+                        <div className="relative sm:col-span-2">
                             <input
                                 type="text"
                                 name="phone"
@@ -203,10 +258,19 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                                 value={phone}
                                 onChange={(e) => setPhone(e.target.value)}
                                 autoComplete="tel"
-                                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6
-            invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500"
+                                className={inputClass(phone)}
                             />
+                            {submitted && !phone && ( // Only render the icon if the form has been submitted and the field's value is empty
+                                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                                    <ExclamationCircleIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
+                                </div>
+                            )}
                         </div>
+                        {submitted && !phone && ( // Only render the text if the form has been submitted and the field's value is empty
+                            <p className="mt-2 text-sm text-red-600 sm:col-start-2 sm:col-span-2" id="phone-error">
+                                Not a valid phone number.
+                            </p>
+                        )}
                     </div>
 
                     {/* Email */}
@@ -219,7 +283,7 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                                 Email
                             </label>
                         </div>
-                        <div className="sm:col-span-2">
+                        <div className="relative sm:col-span-2">
                             <input
                                 type="email"
                                 name="email"
@@ -227,10 +291,19 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 autoComplete="email"
-                                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6
-            invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500"
+                                className={inputClass(email)}
                             />
+                            {submitted && !email && ( // Only render the icon if the form has been submitted and the field's value is empty
+                                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                                    <ExclamationCircleIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
+                                </div>
+                            )}
                         </div>
+                        {submitted && !email && ( // Only render the text if the form has been submitted and the field's value is empty
+                            <p className="mt-2 text-sm text-red-600 sm:col-start-2 sm:col-span-2" id="email-error">
+                                Not a valid email address.
+                            </p>
+                        )}
                     </div>
 
                     {/* Privacy */}
@@ -243,30 +316,21 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                             Privacy
                         </div>
                         <div className="space-y-5 sm:col-span-2">
-                            <Switch.Group
-                                as="div"
-                                className="flex gap-x-4 sm:col-span-2"
-                            >
+                            <Switch.Group as="div" className="flex gap-x-4 sm:col-span-2">
                                 <div className="flex h-6 items-center">
                                     <Switch
                                         checked={agreed}
                                         onChange={setAgreed}
                                         className={classNames(
-                                            agreed
-                                                ? 'bg-primary-600'
-                                                : 'bg-gray-200',
+                                            switchClass(agreed),
                                             'flex w-8 flex-none cursor-pointer rounded-full p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600'
                                         )}
                                     >
-                                        <span className="sr-only">
-                                            Agree to policies
-                                        </span>
+                                        <span className="sr-only">Agree to policies</span>
                                         <span
                                             aria-hidden="true"
                                             className={classNames(
-                                                agreed
-                                                    ? 'translate-x-3.5'
-                                                    : 'translate-x-0',
+                                                agreed ? 'translate-x-3.5' : 'translate-x-0',
                                                 'h-4 w-4 transform rounded-full bg-white shadow-sm ring-1 ring-gray-900/5 transition duration-200 ease-in-out'
                                             )}
                                         />
@@ -274,15 +338,14 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                                 </div>
                                 <Switch.Label className="text-sm leading-6 text-gray-600">
                                     By selecting this, you agree to our{' '}
-                                    <a
-                                        href="#"
-                                        className="font-semibold text-primary-600"
-                                    >
-                                        privacy&nbsp;policy
-                                    </a>
-                                    .
+                                    <a href="#" className="font-semibold text-primary-600">privacy&nbsp;policy</a>.
                                 </Switch.Label>
                             </Switch.Group>
+                            {submitted && !agreed && ( // Only render the icon if the form has been submitted and the field's value is empty
+                                <p className="mt-2 text-sm text-red-600" id="agreed-error">
+                                    Please agree to our privacy policy.
+                                </p>
+                            )}
                             <hr className="border-gray-200" />
                             <div className="flex flex-col items-start space-y-4 sm:flex-row sm:items-center sm:justify-between sm:space-y-0">
                                 <div>
@@ -315,10 +378,9 @@ export default function AccommodationForm({ productName = '', handleClose }) {
 
                         <button
                             type="submit"
-                            disabled={!isFormValid}
                             className="inline-flex justify-center rounded-md bg-primary-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                            Book now
+                            {t('book-now')}
                         </button>
                     </div>
                 </div>
