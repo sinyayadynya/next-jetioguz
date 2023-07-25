@@ -34,7 +34,7 @@ const LayersControl = dynamic(
     { ssr: false }
   );
 
-const MarkerCluster = dynamic(() => import('../components/MarkerCluster'), { ssr: false });
+const AccommodationLayer = dynamic(() => import('../components/MarkerCluster'), { ssr: false });
 
 export default function MapPage() {
   useEffect(() => {
@@ -61,7 +61,7 @@ export default function MapPage() {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             />
-            <MarkerCluster />
+            <AccommodationLayer />
           </MapContainer>
         )}
       </div>

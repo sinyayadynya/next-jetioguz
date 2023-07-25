@@ -7,7 +7,7 @@ declare module 'leaflet' {
   export function markerClusterGroup(options?: any): any;
 }
 
-export default function MarkerCluster() {
+export default function AccommodationLayer() {
   const map = useMap();
   const [data, setData] = useState([]);
 
