@@ -6,7 +6,6 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 import { useMap } from 'react-leaflet';
-import 'leaflet.markercluster';
 import L from 'leaflet';
 
 // Dynamically import MapContainer, TileLayer, Marker, Popup
@@ -77,6 +76,7 @@ export default function MapPage() {
     useEffect(() => {
         if (typeof window !== 'undefined') {
           const L = require('leaflet');
+          require('leaflet.markercluster');
 
       delete L.Icon.Default.prototype._getIconUrl;
 
