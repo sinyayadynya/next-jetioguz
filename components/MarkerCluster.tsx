@@ -1,3 +1,4 @@
+// ./components/MarkerCluster.tsx
 import { useEffect, useState } from 'react';
 import { useMap } from 'react-leaflet';
 import L from 'leaflet';
@@ -7,15 +8,15 @@ declare module 'leaflet' {
   export function markerClusterGroup(options?: any): any;
 }
 
-export default function AccommodationLayer() {
+export default function MarkerCluster({ endpoint }) {
   const map = useMap();
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}/api/jetioguz/accommodation/map`)
+    fetch(`${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}${endpoint}`)
       .then(response => response.json())
       .then(data => setData(data.features));
-  }, []);
+  }, [endpoint]);
 
   useEffect(() => {
     if (data.length > 0) {
