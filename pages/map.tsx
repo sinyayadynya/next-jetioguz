@@ -31,6 +31,10 @@ const Popup = dynamic(
 );
 
 
+const L = dynamic(() => import('leaflet'), {
+    ssr: false, // This will prevent server-side render
+  });
+
 
 // Import LayersControl and its sub-components
 const LayersControl = dynamic(
