@@ -7,6 +7,7 @@ import 'leaflet.markercluster/dist/MarkerCluster.css';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 import { useMap } from 'react-leaflet';
 import 'leaflet.markercluster';
+import L from 'leaflet';
 
 // Dynamically import MapContainer, TileLayer, Marker, Popup
 const MapContainer = dynamic(
@@ -28,12 +29,6 @@ const Popup = dynamic(
   () => import('react-leaflet').then((mod) => mod.Popup),
   { ssr: false }
 );
-
-
-const L = dynamic(() => import('leaflet'), {
-    ssr: false, // This will prevent server-side render
-  });
-
 
 // Import LayersControl and its sub-components
 const LayersControl = dynamic(
@@ -79,9 +74,9 @@ function MarkerCluster() {
 }
 
 export default function MapPage() {
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const L = require('leaflet');
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+          const L = require('leaflet');
 
       delete L.Icon.Default.prototype._getIconUrl;
 
