@@ -6,7 +6,6 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 import { useMap } from 'react-leaflet';
-import L from 'leaflet';
 
 // Dynamically import MapContainer, TileLayer, Marker, Popup
 const MapContainer = dynamic(
@@ -35,48 +34,12 @@ const LayersControl = dynamic(
     { ssr: false }
   );
 
-  declare module 'leaflet' {
-    export function markerClusterGroup(options?: any): any;
-}
-
-
-
-function MarkerCluster() {
-  const map = useMap();
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}/api/jetioguz/accommodation/map`)
-      .then(response => response.json())
-      .then(data => setData(data.features));
-  }, []);
-
-  useEffect(() => {
-    if (data.length > 0) {
-      const markerClusterGroup = L.markerClusterGroup();
-
-      data.forEach(item => {
-        const marker = L.marker(item.geometry.coordinates.reverse());
-        marker.bindPopup(`${item.properties.name} - ${item.properties.description}`);
-        markerClusterGroup.addLayer(marker);
-      });
-
-      map.addLayer(markerClusterGroup);
-
-      return () => {
-        map.removeLayer(markerClusterGroup);
-      };
-    }
-  }, [data, map]);
-
-  return null;
-}
+const MarkerCluster = dynamic(() => import('../components/MarkerCluster'), { ssr: false });
 
 export default function MapPage() {
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-          const L = require('leaflet');
-          require('leaflet.markercluster');
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const L = require('leaflet');
 
       delete L.Icon.Default.prototype._getIconUrl;
 
