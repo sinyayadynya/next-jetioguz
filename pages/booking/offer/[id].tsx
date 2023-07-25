@@ -313,7 +313,8 @@ const Offer = ({ product }) => {
                                                     </div>
                                                 </div>
 
-                                                <OfferForm productName={product.name} />
+                                                <OfferForm productName={product.name} handleClose={() => setOpen(false)} />
+
                                             </div>
                                         </div>
                                     </Dialog.Panel>

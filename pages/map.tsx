@@ -38,7 +38,9 @@ const LayersControl = dynamic(
     { ssr: false }
   );
 
-const { BaseLayer, Overlay } = LayersControl;
+  declare module 'leaflet' {
+    export function markerClusterGroup(options?: any): any;
+}
 
 
 
