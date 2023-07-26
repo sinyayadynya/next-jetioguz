@@ -15,6 +15,7 @@ import { getParams } from "lib/get-params"
 import { Layout, LayoutProps } from "components/layout"
 import { NodeArticle, NodeArticleProps } from "components/node--article"
 import { NodeActivities } from "components/node--activities"
+import { NodeSimplePage } from "components/node--simplepage"
 import { NodePlace } from "components/node--place"
 import { NodePlanning } from "components/node--planning"
 import ProductAccommodation from "components/product--accommodation"
@@ -35,6 +36,7 @@ const ENTITY_TYPES = [
   "node--page",
   "node--article",
   "node--activities",
+  "node--page",
   "node--place",
   "node--planning",
   "product--accommodation",
@@ -104,6 +106,9 @@ export default function NodePage({
       )}
       {entity.type === "node--activities" && (
         <NodeActivities node={entity as DrupalNode} />
+      )}
+      {entity.type === "node--page" && (
+        <NodeSimplePage node={entity as DrupalNode} />
       )}
       {entity.type === "node--place" && (
         <NodePlace node={entity as DrupalNode} />
@@ -209,7 +214,6 @@ export async function getStaticProps(
 
   // Fetch additional content for pages.
   let additionalContent: PageProps["additionalContent"] = {}
-
 
   if (entity.type === "node--article") {
     // Fetch featured articles.
