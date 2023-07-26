@@ -1,9 +1,13 @@
 // ./components/MapComponent.tsx
 import { useEffect } from 'react';
 import dynamic from 'next/dynamic';
+
 import 'leaflet/dist/leaflet.css';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
+
+const CustomControl = dynamic(() => import('components/CustomControl'), { ssr: false });
+
 
 // Dynamically import MapContainer, TileLayer, Marker, Popup
 const MapContainer = dynamic(
@@ -32,11 +36,11 @@ const LayersControl = dynamic(
     { ssr: false }
   );
 
-  const AccommodationLayer = dynamic(() => import('./MarkerCluster'), { ssr: false });
-  const NatureSiteLayer = dynamic(() => import('./MarkerCluster'), { ssr: false });
-  const CultureSiteLayer = dynamic(() => import('./MarkerCluster'), { ssr: false });
-  const WellnessLayer = dynamic(() => import('./MarkerCluster'), { ssr: false });
-  const VillageLayer = dynamic(() => import('./MarkerCluster'), { ssr: false });
+  const AccommodationLayer = dynamic(() => import('components/MarkerCluster'), { ssr: false });
+  const NatureSiteLayer = dynamic(() => import('components/MarkerCluster'), { ssr: false });
+  const CultureSiteLayer = dynamic(() => import('components/MarkerCluster'), { ssr: false });
+  const WellnessLayer = dynamic(() => import('components/MarkerCluster'), { ssr: false });
+  const VillageLayer = dynamic(() => import('components/MarkerCluster'), { ssr: false });
 
 export default function MapComponent() {
 
@@ -55,34 +59,24 @@ export default function MapComponent() {
   }, []);
 
 
+  const layers = [
+    { name: 'Accommodation', endpoint: "/api/jetioguz/accommodation/map", iconUrl: "/images/accommodation-icon.png", color: "text-sky-600 focus:ring-sky-600" },
+    { name: 'Nature Sites', endpoint: "/api/jetioguz/nature/map", iconUrl: "/images/nature-site-icon.png", color: "text-green-600 focus:ring-green-600" },
+    { name: 'Culture Sites', endpoint: "/en/api/jetioguz/culture/map", iconUrl: "/images/culture-site-icon.png", color: "text-primary-600 focus:ring-primary-600" },
+    { name: 'Wellness', endpoint: "/en/api/jetioguz/wellness/map", iconUrl: "/images/wellness-icon.png", color: "text-blue-600 focus:ring-blue-600" },
+    { name: 'Villages', endpoint: "/en/api/jetioguz/village/map", iconUrl: "/images/village-icon.png", color: "text-red-600 focus:ring-red-600" },
+  ];
+
   return (
     <div style={{ height: 'calc(100vh - 64px)', width: '100%' }} className='mt-16'>
         {typeof window !== 'undefined' && (
-          <MapContainer center={[41.90, 78.06]} zoom={9} style={{ height: '100%', width: '100%' }}>
-          <LayersControl position="topright">
-            <BaseLayer checked name="OpenStreetMap">
-              <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              />
-            </BaseLayer>
-            <Overlay name="Accommodation">
-              <AccommodationLayer endpoint="/api/jetioguz/accommodation/map" iconUrl="/images/accommodation-icon.png" />
-            </Overlay>
-            <Overlay name="Nature Sites">
-              <NatureSiteLayer endpoint="/api/jetioguz/nature/map" iconUrl="/images/nature-site-icon.png" />
-            </Overlay>
-            <Overlay name="Culture Sites">
-              <CultureSiteLayer endpoint="/en/api/jetioguz/culture/map" iconUrl="/images/culture-site-icon.png" />
-            </Overlay>
-            <Overlay name="Wellness">
-              <WellnessLayer endpoint="/en/api/jetioguz/wellness/map" iconUrl="/images/wellness-icon.png" />
-            </Overlay>
-            <Overlay name="Villages">
-              <VillageLayer endpoint="/en/api/jetioguz/village/map" iconUrl="/images/village-icon.png" />
-            </Overlay>
-          </LayersControl>
-        </MapContainer>
+          <MapContainer center={[42.35, 78.06]} zoom={11} style={{ height: '100%', width: '100%' }}>
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            />
+            <CustomControl layers={layers} />
+          </MapContainer>
         )}
       </div>
   )
