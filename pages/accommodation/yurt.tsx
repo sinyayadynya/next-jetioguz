@@ -39,8 +39,8 @@ const subCategories = [
 ];
 const filters = [
     {
-        id: 'color',
-        name: 'Area',
+        id: 'location',
+        name: 'Location',
         options: [
             { value: 'ak-dobo', label: 'Ak-Döbö', checked: false },
             { value: 'ak-shyyrak', label: 'Ak-Shyyrak', checked: false },
@@ -59,25 +59,25 @@ const filters = [
         ],
     },
     {
-        id: 'category',
-        name: 'Location',
+        id: 'area',
+        name: 'Area',
         options: [
             { value: 'lake', label: 'Lake', checked: false },
             { value: 'plateau', label: 'Plateau', checked: false },
             { value: 'mountain', label: 'Mountain', checked: true },
         ],
     },
-    {
-        id: 'size',
-        name: 'Price',
-        options: [
-            { value: '0-20', label: '-$20', checked: false },
-            { value: '20-40', label: '$20-40', checked: false },
-            { value: '40-60', label: '$40-60', checked: false },
-            { value: '60-80', label: '$60-80', checked: false },
-            { value: '80', label: '$80+', checked: false },
-        ],
-    },
+    // {
+    //     id: 'price',
+    //     name: 'Price',
+    //     options: [
+    //         { value: '0-20', label: '-$20', checked: false },
+    //         { value: '20-40', label: '$20-40', checked: false },
+    //         { value: '40-60', label: '$40-60', checked: false },
+    //         { value: '60-80', label: '$60-80', checked: false },
+    //         { value: '80', label: '$80+', checked: false },
+    //     ],
+    // },
 ];
 
 function classNames(...classes) {
