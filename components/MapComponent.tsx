@@ -32,11 +32,11 @@ const LayersControl = dynamic(
     { ssr: false }
   );
 
-const AccommodationLayer = dynamic(() => import('./MarkerCluster'), { ssr: false });
-const NatureSiteLayer = dynamic(() => import('./MarkerCluster'), { ssr: false });
-const CultureSiteLayer = dynamic(() => import('./MarkerCluster'), { ssr: false });
-const WellnessLayer = dynamic(() => import('./MarkerCluster'), { ssr: false });
-const VillageLayer = dynamic(() => import('./MarkerCluster'), { ssr: false });
+  const AccommodationLayer = dynamic(() => import('./MarkerCluster'), { ssr: false });
+  const NatureSiteLayer = dynamic(() => import('./MarkerCluster'), { ssr: false });
+  const CultureSiteLayer = dynamic(() => import('./MarkerCluster'), { ssr: false });
+  const WellnessLayer = dynamic(() => import('./MarkerCluster'), { ssr: false });
+  const VillageLayer = dynamic(() => import('./MarkerCluster'), { ssr: false });
 
 export default function MapComponent() {
 
@@ -58,7 +58,7 @@ export default function MapComponent() {
   return (
     <div style={{ height: 'calc(100vh - 64px)', width: '100%' }} className='mt-16'>
         {typeof window !== 'undefined' && (
-          <MapContainer center={[41.88, 78.06]} zoom={9} style={{ height: '100%', width: '100%' }}>
+          <MapContainer center={[42.35, 78.06]} zoom={11} style={{ height: '100%', width: '100%' }}>
           <LayersControl position="topright">
             <BaseLayer checked name="OpenStreetMap">
               <TileLayer
@@ -67,19 +67,19 @@ export default function MapComponent() {
               />
             </BaseLayer>
             <Overlay name="Accommodation">
-              <AccommodationLayer endpoint="/api/jetioguz/accommodation/map" />
+              <AccommodationLayer endpoint="/api/jetioguz/accommodation/map" iconUrl="/images/accommodation-icon.png" />
             </Overlay>
             <Overlay name="Nature Sites">
-              <NatureSiteLayer endpoint="/api/jetioguz/nature/map" />
+              <NatureSiteLayer endpoint="/api/jetioguz/nature/map" iconUrl="/images/nature-site-icon.png" />
             </Overlay>
             <Overlay name="Culture Sites">
-              <CultureSiteLayer endpoint="/en/api/jetioguz/culture/map" />
+              <CultureSiteLayer endpoint="/en/api/jetioguz/culture/map" iconUrl="/images/culture-site-icon.png" />
             </Overlay>
             <Overlay name="Wellness">
-              <WellnessLayer endpoint="/en/api/jetioguz/wellness/map" />
+              <WellnessLayer endpoint="/en/api/jetioguz/wellness/map" iconUrl="/images/wellness-icon.png" />
             </Overlay>
             <Overlay name="Villages">
-              <VillageLayer endpoint="/en/api/jetioguz/village/map" />
+              <VillageLayer endpoint="/en/api/jetioguz/village/map" iconUrl="/images/village-icon.png" />
             </Overlay>
           </LayersControl>
         </MapContainer>
