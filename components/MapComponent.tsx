@@ -58,7 +58,7 @@ export default function MapComponent() {
   return (
     <div style={{ height: 'calc(100vh - 64px)', width: '100%' }} className='mt-16'>
         {typeof window !== 'undefined' && (
-          <MapContainer center={[42.35, 78.06]} zoom={11} style={{ height: '100%', width: '100%' }}>
+          <MapContainer center={[41.90, 78.06]} zoom={9} style={{ height: '100%', width: '100%' }}>
           <LayersControl position="topright">
             <BaseLayer checked name="OpenStreetMap">
               <TileLayer
