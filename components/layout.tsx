@@ -1,3 +1,5 @@
+// .components/layout.tsx
+
 import { Meta, MetaProps } from "components/meta"
 import { PreviewAlert } from "components/preview-alert"
 import { Header, HeaderProps } from "components/header"
@@ -31,10 +33,12 @@ const inter = localFont({
 export interface LayoutProps {
   meta?: MetaProps
   children?: React.ReactNode
+  heroOffsetImage?: DrupalBlock; // Add this line
+  locale?: string; // Add this line
 }
 
 
-export function Layout({ meta, children }: LayoutProps) {
+export function Layout({ children, meta, heroOffsetImage, locale }: LayoutProps) {
     return (
       <>
         <Meta {...meta} />
