@@ -1,3 +1,5 @@
+// ./lib/get-params.ts
+
 import { DrupalJsonApiParams } from 'drupal-jsonapi-params';
 
 // A helper function to build apiParams for a resource type.
@@ -324,6 +326,7 @@ export function getParams(type: string): DrupalJsonApiParams {
             .addFields('taxonomy_term--dmo_places', ['name', 'path']);
     }
 
+
     if (type === 'product--accommodation--card') {
         return apiParams
             .addInclude([
@@ -462,5 +465,10 @@ export function getParams(type: string): DrupalJsonApiParams {
                 'field_link',
                 'field_feature_icon',
             ]);
+    }
+
+    if (type === 'taxonomy_term--dmo_communities') {
+        return apiParams
+            .addFields('taxonomy_term--dmo_communities', ['name', 'path']);
     }
 }
