@@ -315,7 +315,7 @@ export function Header() {
                     </Popover>
 
                     <Link
-                        href={`${prefix}/accommodation/yurt`}
+                        href={`${prefix}/accommodation`}
                         className="text-sm font-semibold leading-6 text-gray-900"
                     >
                         {t('accommodation')}
@@ -494,7 +494,7 @@ export function Header() {
                                 </Disclosure>
 
                                 <Link
-                                    href={`${prefix}/accommodation/yurt`}
+                                    href={`${prefix}/accommodation`}
                                     className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                 >
                                     {t('accommodation')}
