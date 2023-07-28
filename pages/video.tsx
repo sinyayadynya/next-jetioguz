@@ -1,8 +1,12 @@
 import { getChannelInfo } from 'lib/youtube';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
+
 
 export default function Home({ channelInfos }) {
+    const { t } = useTranslation()
+
     return (
         <div>
             <div className="mx-auto max-w-6xl p-4 lg:p-8">
