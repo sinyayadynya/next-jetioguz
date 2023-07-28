@@ -1,17 +1,15 @@
 // ./pages/map.tsx
 import { useEffect, useState } from 'react';
+import { Layout, LayoutProps } from 'components/layout';
 import { getGlobalElements } from "lib/get-global-elements"
 import { Header, HeaderProps } from "components/header"
 import MapComponent from '../components/MapComponent';
 
 export default function MapPage() {
   return (
-    <div>
-        <div className="absolute top-0 inset-x-0 z-[999]">
-            <Header />
-        </div>
+    <Layout showFooter={false}>
         <MapComponent />
-    </div>
+    </Layout>
   )
 }
 

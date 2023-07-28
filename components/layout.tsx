@@ -1,4 +1,4 @@
-// .components/layout.tsx
+// ./components/layout.tsx
 
 import { Meta, MetaProps } from "components/meta"
 import { PreviewAlert } from "components/preview-alert"
@@ -35,23 +35,24 @@ export interface LayoutProps {
   children?: React.ReactNode
   heroOffsetImage?: DrupalBlock; // Add this line
   locale?: string; // Add this line
+  showFooter?: boolean; // Add this line
 }
 
 
-export function Layout({ children, meta, heroOffsetImage, locale }: LayoutProps) {
+export function Layout({ children, meta, heroOffsetImage, locale, showFooter = true }: LayoutProps) {
     return (
-      <>
-        <Meta {...meta} />
+        <>
+            <Meta {...meta} />
 
-      <div className={`${inter.variable} ${sofia.variable}`}>
-        <PreviewAlert />
-        <Header />
-        <main className="flex-1 bg-white font-sans">{children}</main>
-        <Footer />
-        {/* <Footer incentives={incentives} /> */}
+            <div className={`${inter.variable} ${sofia.variable}`}>
+                <PreviewAlert />
+                <Header />
+                <main className="flex-1 bg-white font-sans">{children}</main>
+                {showFooter && <Footer />} {/* Conditionally render the Footer */}
+                {/* <Footer incentives={incentives} /> */}
 
-      </div>
-      <TailwindIndicator />
-    </>
-  )
+            </div>
+            <TailwindIndicator />
+        </>
+    )
 }
