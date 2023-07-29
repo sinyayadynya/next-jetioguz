@@ -1,5 +1,6 @@
 {
     "accommodation": "Проживание",
+    "accommodations": "Проживание",
     "activities": "Деятельность",
     "altitude": "Высота",
     "an-error-occured-please-try-again": "Произошла ошибка. Пожалуйста, попробуйте еще раз.",
@@ -20,6 +21,7 @@
     "create-article": "Создать статью",
     "culture-museum": "Культура и Музеи",
     "culture-museum-description": "Изучайте богатую историю и культуру Кыргызстана",
+    "culture-sites": "Объекты культуры",
     "delete": "Удалить",
     "destinations": "Направления",
     "difficulty": "Сложность",

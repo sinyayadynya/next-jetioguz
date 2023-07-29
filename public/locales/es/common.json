@@ -1,5 +1,6 @@
 {
     "accommodation": "Alojamiento",
+    "accommodations": "Alojamientos",
     "activities": "Actividades",
     "altitude": "Altitud",
     "an-error-occured-please-try-again": "Ocurrió un error. Inténtalo de nuevo.",
@@ -20,6 +21,7 @@
     "create-article": "Crear artículo",
     "culture-museum": "Cultura y Museo",
     "culture-museum-description": "Explora la rica historia y herencia de Kirguistán",
+    "culture-sites": "Sitios culturales",
     "delete": "Eliminar",
     "destinations": "Destinos",
     "difficulty": "Dificultad",

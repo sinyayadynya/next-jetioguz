@@ -1,5 +1,6 @@
 {
     "accommodation": "Accommodation",
+    "accommodations": "Accommodations",
     "activities": "Activities",
     "altitude": "Altitude",
     "an-error-occured-please-try-again": "An error occured. Please try again.",
@@ -20,6 +21,7 @@
     "create-article": "Create Article",
     "culture-museum": "Culture & Museum",
     "culture-museum-description": "Explore Kyrgyzstan’s rich history and heritage",
+    "culture-sites": "Culture Sites",
     "delete": "Delete",
     "destinations": "Destinations",
     "difficulty": "Difficulty",
