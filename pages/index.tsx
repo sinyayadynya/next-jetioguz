@@ -38,7 +38,7 @@ export default function IndexPage({
 
     return (
         <Layout
-            meta={{ title: t('home') }}
+            meta={{ title: t('welcome') }}
             // menus={menus}
             // blocks={blocks}
         >
