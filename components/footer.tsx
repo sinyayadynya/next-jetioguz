@@ -1,3 +1,5 @@
+// ./components/footer.tsx
+
 import Link from "next/link"
 import { useTranslation } from "next-i18next"
 import siteConfig from "site.config"
