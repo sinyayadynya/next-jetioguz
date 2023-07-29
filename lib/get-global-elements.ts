@@ -1,3 +1,5 @@
+// ./lib/get-global-elements.ts
+
 import { GetServerSidePropsContext, GetStaticPropsContext } from "next"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 import { DrupalBlock, DrupalTaxonomyTerm, JsonApiResource } from "next-drupal"
