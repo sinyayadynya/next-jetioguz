@@ -1,3 +1,5 @@
+// No more in use, see block--incentives.tsx
+
 import { DrupalParagraph } from 'next-drupal';
 import Link from 'next/link';
 

@@ -10,7 +10,6 @@ import { Layout, LayoutProps } from 'components/layout';
 import { BlockPromoOverlappingImages } from 'components/block--promo-overlapping-images';
 import { BlockFeatureSimpleThreeCol } from 'components/block--feature-simple-three-col';
 import { BlockPromoFadingTestimonials } from 'components/block--promo-fading-testimonials';
-import { BlockIncentives } from 'components/block--incentives';
 import { NodeArticleCard } from 'components/node--article--card';
 import { NodePlaceCard } from 'components/node--place--card';
 import Link from 'next/link';
@@ -107,7 +106,6 @@ export default function IndexPage({
                 </div>
             </section>
 
-            <BlockIncentives block={incentives} />
         </Layout>
     );
 }

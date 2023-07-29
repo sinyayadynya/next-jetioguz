@@ -4,6 +4,8 @@ import Link from "next/link"
 import { useTranslation } from "next-i18next"
 import siteConfig from "site.config"
 import { LogoFooter } from "components/logo-footer"
+import { BlockIncentives } from 'components/block--incentives';
+
 
 export function Footer() {
     const { t, i18n } = useTranslation();
@@ -84,6 +86,8 @@ export function Footer() {
 
     return (
         <footer className="font-sans">
+            <BlockIncentives />
+
             <section className="bg-gray-50" aria-labelledby="footer-heading">
                 <h2 id="footer-heading" className="sr-only">
                     Footer
