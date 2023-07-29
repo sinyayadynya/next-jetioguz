@@ -6,6 +6,7 @@ import { appWithTranslation } from "next-i18next"
 import localFont from "next/font/local"
 import NProgress from "nprogress"
 import "nprogress/nprogress.css"
+import ReactGA from 'react-ga';
 
 import "styles/globals.css"
 
@@ -38,6 +39,10 @@ function App({ Component, pageProps: { session, ...pageProps } }) {
   if (!queryClientRef.current) {
     queryClientRef.current = new QueryClient()
   }
+  React.useEffect(() => {
+    ReactGA.initialize('G-3VEY4GXKHM'); // Replace with your tracking ID
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
   return (
     <QueryClientProvider client={queryClientRef.current}>
       <Hydrate state={pageProps.dehydratedState}>
