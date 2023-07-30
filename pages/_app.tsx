@@ -6,6 +6,7 @@ import { appWithTranslation } from "next-i18next"
 import localFont from "next/font/local"
 import NProgress from "nprogress"
 import "nprogress/nprogress.css"
+import { GoogleAnalytics } from "nextjs-google-analytics";
 
 import "styles/globals.css"
 
@@ -48,7 +49,8 @@ function App({ Component, pageProps: { session, ...pageProps } }) {
           --font-hubot: ${hubot.style.fontFamily};
         }
       `}</style>
-          <Component {...pageProps} />
+            <GoogleAnalytics trackPageViews />
+            <Component {...pageProps} />
         </SessionProvider>
       </Hydrate>
     </QueryClientProvider>
