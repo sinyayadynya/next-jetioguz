@@ -20,8 +20,7 @@ export default function Home({ channelInfos }) {
                     <div>
                         <div className="mx-auto max-w-7xl px-4 pt-8 pb-4 sm:px-6 lg:px-8">
                             <h1 className="flex-1 text-2xl font-heading font-bold text-gray-900">
-                                {t('video')}
-                                <span className="sr-only">{t('video')}</span>
+                                {t('videos')}
                             </h1>
                         </div>
 
