@@ -94,10 +94,10 @@ export default function ContactForm() {
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-3">
                 <div>
                     <h2 className="text-3xl font-heading font-bold tracking-tight text-gray-900">
-                        Send us a message
+                        {t('contact-webform-label')}
                     </h2>
                     <p className="mt-4 leading-7 text-gray-600">
-                        Your input helps shape a meaningful experience and improve our services. Please share your thoughts.
+                        {t('contact-webform-description')}
                     </p>
                 </div>
                 <div className="grid grid-cols-1 gap-6 lg:col-span-2 lg:gap-8">
@@ -105,7 +105,9 @@ export default function ContactForm() {
                         <form onSubmit={handleSubmit} className="mx-auto mt-4 max-w-xl">
                             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                                 <div>
-                                    <label htmlFor="firstname" className="block text-sm font-semibold leading-6 text-gray-900">First name</label>
+                                    <label htmlFor="firstname" className="block text-sm font-semibold leading-6 text-gray-900">
+                                        {t('webform-firstname-label')}
+                                    </label>
                                     <div className="relative mt-2.5">
                                         <input
                                             type="text"
@@ -129,7 +131,9 @@ export default function ContactForm() {
                                     )}
                                 </div>
                                 <div>
-                                    <label htmlFor="lastname" className="block text-sm font-semibold leading-6 text-gray-900">Last name</label>
+                                    <label htmlFor="lastname" className="block text-sm font-semibold leading-6 text-gray-900">
+                                        {t('webform-lastname-label')}
+                                    </label>
                                     <div className="relative mt-2.5">
                                         <input
                                             type="text"
@@ -153,7 +157,9 @@ export default function ContactForm() {
                                     )}
                                 </div>
                                 <div className="sm:col-span-2">
-                                    <label htmlFor="phone" className="block text-sm font-semibold leading-6 text-gray-900">Phone number</label>
+                                    <label htmlFor="phone" className="block text-sm font-semibold leading-6 text-gray-900">
+                                        {t('webform-phone-label')}
+                                    </label>
                                     <div className="relative mt-2.5">
                                         <input
                                             type="text"
@@ -177,7 +183,9 @@ export default function ContactForm() {
                                     )}
                                 </div>
                                 <div className="sm:col-span-2">
-                                    <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">Email</label>
+                                    <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
+                                        {t('webform-email-label')}
+                                    </label>
                                     <div className="relative mt-2.5">
                                         <input
                                             type="email"
@@ -201,7 +209,9 @@ export default function ContactForm() {
                                     )}
                                 </div>
                                 <div className="sm:col-span-2">
-                                    <label htmlFor="object" className="block text-sm font-semibold leading-6 text-gray-900">Object</label>
+                                    <label htmlFor="object" className="block text-sm font-semibold leading-6 text-gray-900">
+                                        {t('webform-object-label')}
+                                    </label>
                                     <div className="relative mt-2.5">
                                         <input
                                             type="text"
@@ -212,7 +222,9 @@ export default function ContactForm() {
                                     </div>
                                 </div>
                                 <div className="sm:col-span-2">
-                                    <label htmlFor="message" className="block text-sm font-semibold leading-6 text-gray-900">Message</label>
+                                    <label htmlFor="message" className="block text-sm font-semibold leading-6 text-gray-900">
+                                        {t('webform-message-label')}
+                                    </label>
                                     <div className="mt-2.5">
                                         <textarea
                                             name="message"
@@ -250,8 +262,8 @@ export default function ContactForm() {
                                         </Switch>
                                     </div>
                                     <Switch.Label className="text-sm leading-6 text-gray-600">
-                                        By selecting this, you agree to our{' '}
-                                        <a href="#" className="font-semibold text-primary-600">privacy&nbsp;policy</a>.
+                                        {t('webform-policy-text')}{' '}
+                                        <a href="#" className="font-semibold text-primary-600">{t('webform-policy-link')}</a>.
                                     </Switch.Label>
                                 </Switch.Group>
                             </div>

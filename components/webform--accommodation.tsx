@@ -109,7 +109,7 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                                 htmlFor="accommodation"
                                 className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
                             >
-                                Accommodation name
+                                {t('webform-accommodation-name')}
                             </label>
                         </div>
                         <div className="sm:col-span-2">
@@ -131,7 +131,7 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                                 htmlFor="arrival"
                                 className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
                             >
-                                Check in
+                                {t('webform-checkin-label')}
                             </label>
                         </div>
                         <div className="sm:col-span-2">
@@ -157,7 +157,7 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                                 htmlFor="departure"
                                 className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
                             >
-                                Check out
+                                {t('webform-checkout-label')}
                             </label>
                         </div>
                         <div className="sm:col-span-2">
@@ -183,7 +183,7 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                                 htmlFor="pax"
                                 className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
                             >
-                                Pax
+                                {t('webform-pax-label')}
                             </label>
                         </div>
                         <div className="relative sm:col-span-2">
@@ -214,7 +214,7 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                                 htmlFor="name"
                                 className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
                             >
-                                Name
+                                {t('webform-name-label')}
                             </label>
                         </div>
                         <div className="relative sm:col-span-2">
@@ -247,7 +247,7 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                                 htmlFor="phone"
                                 className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
                             >
-                                Mobile number
+                                {t('webform-phone-label')}
                             </label>
                         </div>
                         <div className="relative sm:col-span-2">
@@ -280,7 +280,7 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                                 htmlFor="email"
                                 className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
                             >
-                                Email
+                                {t('webform-email-label')}
                             </label>
                         </div>
                         <div className="relative sm:col-span-2">
@@ -313,7 +313,7 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                             className="text-sm font-medium leading-6 text-gray-900"
                             aria-hidden="true"
                         >
-                            Privacy
+                            {t('webform-privacy-label')}
                         </div>
                         <div className="space-y-5 sm:col-span-2">
                             <Switch.Group as="div" className="flex gap-x-4 sm:col-span-2">
@@ -337,8 +337,8 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                                     </Switch>
                                 </div>
                                 <Switch.Label className="text-sm leading-6 text-gray-600">
-                                    By selecting this, you agree to our{' '}
-                                    <a href="#" className="font-semibold text-primary-600">privacy&nbsp;policy</a>.
+                                    {t('webform-policy-text')}{' '}
+                                    <a href="#" className="font-semibold text-primary-600">{t('webform-policy-link')}</a>.
                                 </Switch.Label>
                             </Switch.Group>
                             {submitted && !agreed && ( // Only render the icon if the form has been submitted and the field's value is empty
@@ -357,7 +357,7 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                                             className="h-5 w-5 text-gray-400 group-hover:text-gray-500"
                                             aria-hidden="true"
                                         />
-                                        <span>Learn more about booking accommodation</span>
+                                        <span>{t('webform-accommodation-info')}</span>
                                     </a>
                                 </div>
                             </div>
@@ -373,7 +373,7 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                             className="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                             onClick={handleClose}
                         >
-                            Cancel
+                            {t('cancel')}
                         </button>
 
                         <button

@@ -115,11 +115,11 @@ const Offer = ({ product }) => {
                     {/* Options */}
                     <div className="mt-4 lg:row-span-3 lg:mt-0">
                         <h2 className="sr-only">Product information</h2>
-                        <p className="text-3xl tracking-tight text-gray-900">From {product.pax10}</p>
+                        <p className="text-3xl tracking-tight text-gray-900">{t('from')} {product.pax10}</p>
 
                         <div className='lg:mt-4'>
                             <h3 className="text-sm font-medium text-gray-900">
-                                Price per person
+                                {t('price-per-person')}
                             </h3>
                             <div className='text-sm text-gray-600'>
                                 1 Pax: {product.pax1}<br />
@@ -132,7 +132,7 @@ const Offer = ({ product }) => {
 
                         <div className='lg:mt-4'>
                             <h3 className="text-sm font-medium text-gray-900">
-                                Duration
+                                {t('duration')}
                             </h3>
                             <div className='text-sm text-gray-600'>
                                 {product.duration}
@@ -141,7 +141,7 @@ const Offer = ({ product }) => {
 
                         <div className='lg:mt-4'>
                             <h3 className="text-sm font-medium text-gray-900">
-                                Minimum group size
+                                {t('minimum-group-size')}
                             </h3>
                             <div className='text-sm text-gray-600'>
                                 {product.min}
@@ -177,7 +177,7 @@ const Offer = ({ product }) => {
 
                         <div className="mt-10">
                             <h3 className="text-sm font-medium text-gray-900">
-                                Highlights
+                                {t('highlights')}
                             </h3>
                             <div className="mt-4">
                                 <div dangerouslySetInnerHTML={{ __html: product.highlights }} className="[&>ul]:list-disc [&>ul]:space-y-2 [&>ul]:pl-4 [&>ul]:text-sm [&>ul>li]:text-gray-400"></div>
@@ -192,7 +192,7 @@ const Offer = ({ product }) => {
                                 id="program-heading"
                                 className="text-sm font-medium text-gray-900"
                             >
-                                Program
+                                {t('program')}
                             </h2>
 
                             <div className="mt-4 space-y-6">
@@ -208,7 +208,7 @@ const Offer = ({ product }) => {
                                 id="included-heading"
                                 className="text-sm font-medium text-gray-900"
                             >
-                                Included
+                                {t('included')}
                             </h3>
 
                             <div className="mt-4 space-y-6">
@@ -224,7 +224,7 @@ const Offer = ({ product }) => {
                                 id="not_included-heading"
                                 className="text-sm font-medium text-gray-900"
                             >
-                                Not included
+                                {t('not-included')}
                             </h3>
 
                             <div className="mt-4 space-y-6">
@@ -250,7 +250,7 @@ const Offer = ({ product }) => {
                             id="related-products-heading"
                             className="text-xl font-bold tracking-tight text-gray-900"
                         >
-                            Customers also purchased
+                            {t('other-travelers-also-booked')}
                         </h2>
                     </div>
                 </section>
@@ -280,15 +280,10 @@ const Offer = ({ product }) => {
                                                     <div className="flex items-start justify-between space-x-3">
                                                         <div className="space-y-1">
                                                             <Dialog.Title className="text-base font-semibold leading-6 text-gray-900">
-                                                                Book an offer
+                                                                {t('offer-webform-title')}
                                                             </Dialog.Title>
                                                             <p className="text-sm text-gray-500">
-                                                                Get started by
-                                                                filling in the
-                                                                information
-                                                                below to create
-                                                                your new
-                                                                project.
+                                                                {t('offer-webform-description')}
                                                             </p>
                                                         </div>
                                                         <div className="flex h-7 items-center">
@@ -302,7 +297,7 @@ const Offer = ({ product }) => {
                                                                 }
                                                             >
                                                                 <span className="sr-only">
-                                                                    Close panel
+                                                                    {t('close-panel')}
                                                                 </span>
                                                                 <XMarkIcon
                                                                     className="h-6 w-6"
