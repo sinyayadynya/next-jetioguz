@@ -1,6 +1,7 @@
 import { DrupalParagraph } from 'next-drupal';
 import { ParagraphFeatureItem } from './paragraph--feature_item';
 import Image from 'next/image';
+import { useTranslation } from 'next-i18next';
 
 import { Fragment, useEffect, useId, useRef, useState } from 'react';
 import { Tab } from '@headlessui/react';
@@ -14,30 +15,6 @@ import { MapFrame } from 'components/MapFrame';
 
 const MotionAppScreenHeader = motion(AppScreen.Header);
 const MotionAppScreenBody = motion(AppScreen.Body);
-
-const features = [
-    {
-        name: 'Locate Kyrgyzstan in the World',
-        description:
-            '',
-        icon: DeviceWorldIcon,
-        screen: WorldScreen,
-    },
-    {
-        name: 'Locate Kyrgyzstan in Central Asia',
-        description:
-            '',
-        icon: DeviceAsiaIcon,
-        screen: CentralAsiaScreen,
-    },
-    {
-        name: 'Locate Jeti Oguz in Kyrgyzstan',
-        description:
-            '',
-        icon: DeviceKyrgyzstanIcon,
-        screen: KyrgyzstanScreen,
-    },
-];
 
 function DeviceWorldIcon(props) {
     return (
@@ -151,11 +128,13 @@ const bodyAnimation = {
 };
 
 function WorldScreen({ custom, animated = false }) {
+    const { t } = useTranslation();
+
     return (
         <AppScreen className="w-full">
             <MotionAppScreenHeader {...(animated ? headerAnimation : {})}>
-                <AppScreen.Subtitle>Locate Kyrgyzstan</AppScreen.Subtitle>
-                <AppScreen.Title>In the World</AppScreen.Title>
+                <AppScreen.Subtitle>{t('locate-kyrgyzstan')}</AppScreen.Subtitle>
+                <AppScreen.Title>{t('in-the-world')}</AppScreen.Title>
             </MotionAppScreenHeader>
             <MotionAppScreenBody
                 {...(animated ? { ...bodyAnimation, custom } : {})}
@@ -173,11 +152,13 @@ function WorldScreen({ custom, animated = false }) {
 }
 
 function CentralAsiaScreen({ custom, animated = false }) {
+    const { t } = useTranslation();
+
     return (
         <AppScreen className="w-full">
             <MotionAppScreenHeader {...(animated ? headerAnimation : {})}>
-                <AppScreen.Subtitle>Locate Kyrgyzstan</AppScreen.Subtitle>
-                <AppScreen.Title>In Central Asia</AppScreen.Title>
+                <AppScreen.Subtitle>{t('locate-kyrgyzstan')}</AppScreen.Subtitle>
+                <AppScreen.Title>{t('in-central-asia')}</AppScreen.Title>
             </MotionAppScreenHeader>
             <MotionAppScreenBody
                 {...(animated ? { ...bodyAnimation, custom } : {})}
@@ -195,11 +176,13 @@ function CentralAsiaScreen({ custom, animated = false }) {
 }
 
 function KyrgyzstanScreen({ custom, animated = false }) {
+    const { t } = useTranslation();
+
     return (
         <AppScreen className="w-full">
             <MotionAppScreenHeader {...(animated ? headerAnimation : {})}>
-                <AppScreen.Subtitle>Locate Jeti Oguz</AppScreen.Subtitle>
-                <AppScreen.Title>In Kyrgyzstan</AppScreen.Title>
+                <AppScreen.Subtitle>{t('locate-jeti-oguz')}</AppScreen.Subtitle>
+                <AppScreen.Title>{t('in-kyrgyzstan')}</AppScreen.Title>
             </MotionAppScreenHeader>
             <MotionAppScreenBody
                 {...(animated ? { ...bodyAnimation, custom } : {})}
@@ -226,7 +209,7 @@ function usePrevious(value) {
     return ref.current;
 }
 
-function FeaturesDesktop() {
+function FeaturesDesktop({ features }) {
     let [changeCount, setChangeCount] = useState(0);
     let [selectedIndex, setSelectedIndex] = useState(0);
     let prevIndex = usePrevious(selectedIndex);
@@ -306,7 +289,7 @@ function FeaturesDesktop() {
     );
 }
 
-function FeaturesMobile() {
+function FeaturesMobile({ features }) {
     let [activeIndex, setActiveIndex] = useState(0);
     let slideContainerRef = useRef();
     let slideRefs = useRef([]);
@@ -399,6 +382,32 @@ export interface ParagraphProps {
 }
 
 export function ParagraphMapFeatures({ paragraphType }: ParagraphProps) {
+    const { t } = useTranslation();
+
+    const features = [
+        {
+            name: t('locate-kyrgyzstan') + ' ' + t('in-the-world'),
+            description:
+                '',
+            icon: DeviceWorldIcon,
+            screen: WorldScreen,
+        },
+        {
+            name: t('locate-kyrgyzstan') + ' ' + t('in-central-asia'),
+            description:
+                '',
+            icon: DeviceAsiaIcon,
+            screen: CentralAsiaScreen,
+        },
+        {
+            name: t('locate-jeti-oguz') + ' ' + t('in-kyrgyzstan'),
+            description:
+                '',
+            icon: DeviceKyrgyzstanIcon,
+            screen: KyrgyzstanScreen,
+        },
+    ];
+
     return (
         <section
             id="features"
@@ -416,10 +425,10 @@ export function ParagraphMapFeatures({ paragraphType }: ParagraphProps) {
                 </div>
             </Container>
             <div className="mt-16 md:hidden">
-                <FeaturesMobile />
+                <FeaturesMobile features={features} />
             </div>
             <Container className="hidden md:mt-20 md:block">
-                <FeaturesDesktop />
+                <FeaturesDesktop features={features} />
             </Container>
         </section>
     );

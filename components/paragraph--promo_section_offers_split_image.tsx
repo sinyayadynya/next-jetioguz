@@ -1,18 +1,21 @@
 import { DrupalParagraph } from 'next-drupal';
 import Link from 'next/link';
-import { MediaImage } from './media--image';
+import { MediaImage } from 'components/media--image';
+import { useTranslation } from 'next-i18next';
 
 export interface ParagraphProps {
     paragraphType: DrupalParagraph;
 }
 
-const offers = [
-    { name: 'How to get there', description: 'From Bishkek', href: '#from-bishkek' },
-    { name: "How to get there", description: 'From Cholpon-Ata', href: '#from-cholpon-ata' },
-    { name: 'How to get there', description: 'From Almaty', href: '#from-almaty' },
-]
-
 export function ParagraphPromoOffersSplitImage({ paragraphType }: ParagraphProps) {
+    const { t } = useTranslation();
+
+    const offers = [
+        { name: t('how-to-get-there'), description: t('from-bishkek'), href: '#from-bishkek' },
+        { name: t('how-to-get-there'), description: t('from-cholpon-ata'), href: '#from-cholpon-ata' },
+        { name: t('how-to-get-there'), description: t('from-almaty'), href: '#from-almaty' },
+    ]
+
     return (
         <div className="mt-16 bg-white">
             <div className="flex flex-col border-b border-gray-200 lg:border-0">
