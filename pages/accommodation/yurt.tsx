@@ -1,4 +1,4 @@
-// ./pages/accommodation.tsx
+// ./pages/accommodation/yurts.tsx
 
 import { Fragment, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
@@ -7,6 +7,7 @@ import { GetStaticPropsContext, GetStaticPropsResult } from 'next';
 import { DrupalBlock, DrupalNode } from 'next-drupal';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { t } from 'i18next';
 
 import { drupal } from 'lib/drupal';
 import { getGlobalElements } from 'lib/get-global-elements';
@@ -33,13 +34,6 @@ const sortOptions = [
     { name: 'Price: High to Low', href: '#', current: false },
 ];
 
-const subCategories = [
-    { name: 'Yurts', href: '/accommodation/yurt#list' },
-    { name: 'Hotels', href: '/accommodation/hotel#list' },
-    { name: 'Guest Houses', href: '/accommodation/guesthouse#list' },
-    { name: 'Homestays', href: '/accommodation/homestay#list' },
-];
-
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
@@ -57,6 +51,13 @@ export default function AccommodationPage({ heroOffsetImage }) {
     const [selectedAreas, setSelectedAreas] = useState([]);
 
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+
+    const subCategories = [
+        { name: t('yurts'), href: '/accommodation/yurt#list' },
+        { name: t('hotels'), href: '/accommodation/hotel#list' },
+        { name: t('guesthouses'), href: '/accommodation/guesthouse#list' },
+        { name: t('homestays'), href: '/accommodation/homestay#list' },
+    ];
 
     const filters = [
         {

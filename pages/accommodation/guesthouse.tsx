@@ -33,13 +33,6 @@ const sortOptions = [
     { name: 'Price: High to Low', href: '#', current: false },
 ];
 
-const subCategories = [
-    { name: 'Yurts', href: '/accommodation/yurt#list' },
-    { name: 'Hotels', href: '/accommodation/hotel#list' },
-    { name: 'Guest Houses', href: '/accommodation/guesthouse#list' },
-    { name: 'Homestays', href: '/accommodation/homestay#list' },
-];
-
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
@@ -57,6 +50,13 @@ export default function AccommodationPage({ heroOffsetImage }) {
     const [selectedAreas, setSelectedAreas] = useState([]);
 
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+
+    const subCategories = [
+        { name: t('yurts'), href: '/accommodation/yurt#list' },
+        { name: t('hotels'), href: '/accommodation/hotel#list' },
+        { name: t('guesthouses'), href: '/accommodation/guesthouse#list' },
+        { name: t('homestays'), href: '/accommodation/homestay#list' },
+    ];
 
     const filters = [
         {
