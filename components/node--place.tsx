@@ -87,7 +87,7 @@ export function NodePlace({ node, ...props }: NodePlaceProps) {
                             </h1>
 
                             <div className="mt-10 text-sm font-medium leading-6 text-gray-600 flex items-center space-x-4">
-                                {dmoCommunityName}
+                                <div>{dmoCommunityName}</div>
                                 {node.field_place_altitude && (
                                     <div className="flex items-center space-x-2 text-sm leading-6 text-gray-600">
                                         <span>{t('altitude')}:</span>
