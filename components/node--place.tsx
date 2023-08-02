@@ -18,6 +18,9 @@ interface NodePlaceProps {
 export function NodePlace({ node, ...props }: NodePlaceProps) {
     const { t } = useTranslation();
 
+    const dmoAreaName = node.field_dmo?.field_dmo_area?.name;
+    const dmoCommunityName = node.field_dmo?.field_dmo_community?.name;
+
     return (
         <div {...props}>
             <Breadcrumbs
@@ -68,9 +71,9 @@ export function NodePlace({ node, ...props }: NodePlaceProps) {
                                     <span className="rounded-full bg-primary-600/10 px-3 py-1 text-sm font-semibold leading-6 text-primary-600 ring-1 ring-inset ring-primary-600/10">
                                         {node.field_place_type.name}
                                     </span>
-                                    {node.field_dmo_area && (
+                                    {node.field_dmo && (
                                     <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-gray-600">
-                                        <span>{node.field_dmo_area.name}</span>
+                                        <span>{dmoAreaName}</span>
                                         <ChevronRightIcon
                                             className="h-5 w-5 text-gray-400"
                                             aria-hidden="true"
@@ -83,9 +86,10 @@ export function NodePlace({ node, ...props }: NodePlaceProps) {
                                 {node.title}
                             </h1>
 
-                            <div className="mt-10">
+                            <div className="mt-10 text-sm font-medium leading-6 text-gray-600 flex items-center space-x-4">
+                                {dmoCommunityName}
                                 {node.field_place_altitude && (
-                                    <div className="flex items-center space-x-2 text-sm leading-6 text-gray-900">
+                                    <div className="flex items-center space-x-2 text-sm leading-6 text-gray-600">
                                         <span>{t('altitude')}:</span>
                                         <span className="font-semibold lowercase">
                                             {node.field_place_altitude} {t('m')}

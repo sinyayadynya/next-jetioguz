@@ -142,16 +142,22 @@ export function getParams(type: string): DrupalJsonApiParams {
             .addFilter('status', '1')
             .addFilter('field_site.meta.drupal_internal__target_id', 'jetioguz')
             .addInclude([
+                'field_dmo', // Include the new field
+                'field_dmo.field_dmo_area', // Include the area field from the paragraph
+                'field_dmo.field_dmo_community', // Include the community field from the paragraph
                 'field_dmo_area',
                 'field_media_image.field_media_image',
             ])
             .addFields('node--place', [
                 'title',
                 'path',
+                'field_dmo', // Include the new field in the fields for 'node--place'
                 'field_dmo_area',
                 'field_place_altitude',
                 'field_media_image',
             ])
+            .addFields('taxonomy_term--jetioguz_areas', ['name', 'path']) // Include the fields for the area vocabulary
+            .addFields('taxonomy_term--dmo_communities', ['name', 'path']) // Include the fields for the community vocabulary
             .addFields('taxonomy_term--dmo_area', ['name', 'path'])
             .addFields('media--image', ['field_media_image']);
     }
@@ -163,6 +169,9 @@ export function getParams(type: string): DrupalJsonApiParams {
             .addInclude([
                 'field_place_type',
                 'field_dmo_area',
+                'field_dmo', // Include the new field
+                'field_dmo.field_dmo_area', // Include the area field from the paragraph
+                'field_dmo.field_dmo_community', // Include the community field from the paragraph
                 'field_media_image.field_media_image',
             ])
             .addFields('node--place', [
@@ -170,11 +179,14 @@ export function getParams(type: string): DrupalJsonApiParams {
                 'body',
                 'path',
                 'field_place_type',
+                'field_dmo', // Include the new field in the fields for 'node--place'
                 'field_dmo_area',
                 'field_place_altitude',
                 'field_media_image',
             ])
             .addFields('taxonomy_term--place_types', ['name', 'path'])
+            .addFields('taxonomy_term--jetioguz_areas', ['name', 'path']) // Include the fields for the area vocabulary
+            .addFields('taxonomy_term--dmo_communities', ['name', 'path']) // Include the fields for the community vocabulary
             .addFields('taxonomy_term--dmo_area', ['name', 'path'])
             .addFields('media--image', ['field_media_image']);
     }
@@ -188,6 +200,9 @@ export function getParams(type: string): DrupalJsonApiParams {
                 'field_media_images.field_media_author',
                 'field_place_type',
                 'field_dmo_area',
+                'field_dmo', // Include the new field
+                'field_dmo.field_dmo_area', // Include the area field from the paragraph
+                'field_dmo.field_dmo_community', // Include the community field from the paragraph
             ])
             .addFields('node--place', [
                 'title',
@@ -196,6 +211,7 @@ export function getParams(type: string): DrupalJsonApiParams {
                 'body',
                 'field_place_usp',
                 'field_place_type',
+                'field_dmo', // Include the new field in the fields for 'node--place'
                 'field_dmo_area',
                 'field_place_altitude',
                 'field_place_geofield',
@@ -206,6 +222,8 @@ export function getParams(type: string): DrupalJsonApiParams {
             .addFields('file--file', ['uri', 'resourceIdObjMeta'])
             .addFields('taxonomy_term--place_types', ['name', 'path', 'field_description_jetioguz'])
             .addFields('taxonomy_term--dmo_area', ['name', 'path'])
+            .addFields('taxonomy_term--jetioguz_areas', ['name', 'path']) // Include the fields for the area vocabulary
+            .addFields('taxonomy_term--dmo_communities', ['name', 'path']) // Include the fields for the community vocabulary
             .addFields('taxonomy_term--media_authors', [
                 'name',
                 'description',

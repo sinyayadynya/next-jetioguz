@@ -10,6 +10,8 @@ interface NodePlaceTeaserProps {
 export function NodePlaceTeaser({ node, ...props }: NodePlaceTeaserProps) {
     const { t } = useTranslation();
 
+    const dmoAreaName = node.field_dmo?.field_dmo_area?.name;
+
     return (
         <div {...props}>
             <div className="group relative">
@@ -44,7 +46,7 @@ export function NodePlaceTeaser({ node, ...props }: NodePlaceTeaserProps) {
                         )}
                     </div>
                     <p className="text-sm font-medium text-gray-900">
-                        {node.field_dmo_area?.name}
+                        {dmoAreaName}
                     </p>
                 </div>
             </div>
