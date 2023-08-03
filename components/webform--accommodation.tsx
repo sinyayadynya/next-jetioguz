@@ -145,7 +145,7 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                         </div>
                         {submitted && !arrival && ( // Only render the text if the form has been submitted and the field's value is empty
                             <p className="mt-2 text-sm text-red-600 sm:col-start-2 sm:col-span-2" id="arrival-error">
-                                Not a valid arrival date.
+                                {t('please-enter-a-valid-value')}
                             </p>
                         )}
                     </div>
@@ -171,7 +171,7 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                         </div>
                         {submitted && !departure && ( // Only render the text if the form has been submitted and the field's value is empty
                             <p className="mt-2 text-sm text-red-600 sm:col-start-2 sm:col-span-2" id="departure-error">
-                                Not a valid departure date.
+                                {t('please-enter-a-valid-value')}
                             </p>
                         )}
                     </div>
@@ -202,7 +202,7 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                         </div>
                         {submitted && !pax && ( // Only render the text if the form has been submitted and the field's value is empty
                             <p className="mt-2 text-sm text-red-600 sm:col-start-2 sm:col-span-2" id="pax-error">
-                                Not a valid pax number.
+                                {t('please-enter-a-valid-value')}
                             </p>
                         )}
                     </div>
@@ -235,7 +235,7 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                         </div>
                         {submitted && !name && ( // Only render the text if the form has been submitted and the field's value is empty
                             <p className="mt-2 text-sm text-red-600 sm:col-start-2 sm:col-span-2" id="name-error">
-                                Not a valid name.
+                                {t('please-enter-a-valid-value')}
                             </p>
                         )}
                     </div>
@@ -268,7 +268,7 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                         </div>
                         {submitted && !phone && ( // Only render the text if the form has been submitted and the field's value is empty
                             <p className="mt-2 text-sm text-red-600 sm:col-start-2 sm:col-span-2" id="phone-error">
-                                Not a valid phone number.
+                                {t('please-enter-a-valid-value')}
                             </p>
                         )}
                     </div>
@@ -301,7 +301,7 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                         </div>
                         {submitted && !email && ( // Only render the text if the form has been submitted and the field's value is empty
                             <p className="mt-2 text-sm text-red-600 sm:col-start-2 sm:col-span-2" id="email-error">
-                                Not a valid email address.
+                                {t('please-enter-a-valid-value')}
                             </p>
                         )}
                     </div>
@@ -343,7 +343,7 @@ export default function AccommodationForm({ productName = '', handleClose }) {
                             </Switch.Group>
                             {submitted && !agreed && ( // Only render the icon if the form has been submitted and the field's value is empty
                                 <p className="mt-2 text-sm text-red-600" id="agreed-error">
-                                    Please agree to our privacy policy.
+                                    {t('please-agree-to-our-privacy-policy')}
                                 </p>
                             )}
                             <hr className="border-gray-200" />

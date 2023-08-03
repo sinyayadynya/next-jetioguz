@@ -177,5 +177,7 @@
     "price-per-person": "Precio por persona",
     "duration": "Duración",
     "minimum-group-size": "Tamaño mínimo del grupo",
-    "other-travelers-also-booked": "Otros viajeros también reservados"
+    "other-travelers-also-booked": "Otros viajeros también reservados",
+    "please-enter-a-valid-value": "Por favor ingrese una cifra válida",
+    "please-agree-to-our-privacy-policy": "Por favor acepta nuestra política de privacidad"
 }

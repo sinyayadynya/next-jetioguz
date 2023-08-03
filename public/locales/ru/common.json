@@ -171,11 +171,13 @@
     "webform-offer-info": "Узнайте больше о бронировании предложения",
     "highlights": "Основные моменты",
     "program": "Программа",
-    "included": "включено",
+    "included": "Включено",
     "not-included": "Не включена",
     "from": "От",
     "price-per-person": "Цена на человека",
     "duration": "Продолжительность",
     "minimum-group-size": "Минимальный размер группы",
-    "other-travelers-also-booked": "Другие путешественники также забронировали"
+    "other-travelers-also-booked": "Другие путешественники также забронировали",
+    "please-enter-a-valid-value": "Пожалуйста, введите допустимое значение",
+    "please-agree-to-our-privacy-policy": "Пожалуйста, согласитесь с нашей политикой конфиденциальности"
 }
