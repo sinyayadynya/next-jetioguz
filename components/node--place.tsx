@@ -217,11 +217,15 @@ export function NodePlace({ node, ...props }: NodePlaceProps) {
                 {/* Map section */}
                 <div className="mt-32 sm:mt-40 xl:mx-auto xl:max-w-7xl xl:px-8">
                     <div className="aspect-[5/2] w-full object-cover overflow-hidden xl:rounded-3xl">
-                        <Map
-                            latitude={+node.field_place_geofield.lat}
-                            longitude={+node.field_place_geofield.lon}
-                            className="w-full h-full"
-                        />
+                        {node.field_place_geofield?.lat && node.field_place_geofield?.lon ? (
+                            <Map
+                                latitude={+node.field_place_geofield.lat}
+                                longitude={+node.field_place_geofield.lon}
+                                className="w-full h-full"
+                            />
+                        ) : (
+                            <p>{t('Location data is not available')}</p>
+                        )}
                     </div>
                 </div>
             </article>
