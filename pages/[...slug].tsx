@@ -61,8 +61,8 @@ function limitToFullSentences(text, limit) {
 }
 
 function getImageStyleUrl(imageUrl, styleName) {
-    if (!imageUrl) return '/images/meta.jpg'; // Fallback image
-    const baseUrl = 'https://nomadsland.travel'; // Replace with your Drupal site URL
+    if (!imageUrl) return '/images/meta.jpg'; // Fallback image in the public directory
+    const baseUrl = 'https://nomadsland.travel';
     const relativePath = imageUrl.replace('/sites/default/files', '');
     return `${baseUrl}/sites/default/files/styles/${styleName}/public${relativePath}`;
 }
@@ -100,10 +100,11 @@ export default function NodePage({
   const description = limitToFullSentences(htmlToText(entity.body?.processed || ''), 160);
   // Ensure that the field_media_image is correctly fetched
   const mediaImage = entity.field_media_image?.field_media_image;
-  const originalImageUrl = mediaImage ? mediaImage.uri.url : '/images/meta.jpg'; // Fallback to a default image
+  const originalImageUrl = mediaImage ? mediaImage.uri.url : null; // Set to null if not available
   const imageUrl = getImageStyleUrl(originalImageUrl, 'facebook_post'); // Use the 'facebook_post' image style
 
   const url = `https://www.jetioguz.travel/${entity.path?.alias}`;
+
   const productVariations = entity?.variations;
 
   return (
