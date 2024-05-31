@@ -58,7 +58,14 @@ function limitToFullSentences(text, limit) {
     }
 
     return result;
-  }
+}
+
+function getImageStyleUrl(imageUrl, styleName) {
+    if (!imageUrl) return '/images/meta.jpg'; // Fallback image
+    const baseUrl = 'https://nomadsland.travel'; // Replace with your Drupal site URL
+    const relativePath = imageUrl.replace('/sites/default/files', '');
+    return `${baseUrl}/sites/default/files/styles/${styleName}/public${relativePath}`;
+}
 
 interface NodePageProps extends LayoutProps, PageProps {
     entity: DrupalNode | DrupalTaxonomyTerm;
@@ -88,13 +95,31 @@ export default function NodePage({
 //   blocks,
 }: NodePageProps) {
   if (!entity) return null;
+
+  const title = entity.title || entity.name;
+  const description = limitToFullSentences(htmlToText(entity.body?.processed || ''), 160);
+  // Ensure that the field_media_image is correctly fetched
+  const mediaImage = entity.field_media_image?.field_media_image;
+  const originalImageUrl = mediaImage ? mediaImage.uri.url : '/images/meta.jpg'; // Fallback to a default image
+  const imageUrl = getImageStyleUrl(originalImageUrl, 'facebook_post'); // Use the 'facebook_post' image style
+
+  const url = `https://www.jetioguz.travel/${entity.path?.alias}`;
   const productVariations = entity?.variations;
 
   return (
+    <>
+    <Head>
+        <title>{title}</title>
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={imageUrl} />
+        <meta property="og:url" content={url} />
+        <meta property="og:type" content="article" />
+      </Head>
     <Layout
     //   menus={menus}
     //   blocks={blocks}
-    meta={{ title: entity.title || entity.name, body: limitToFullSentences(htmlToText(entity.body?.processed || ''), 160) }}
+    meta={{ title, body: description }}
     >
       {entity.type === "node--article" && (
         <NodeArticle
@@ -142,6 +167,7 @@ export default function NodePage({
         />
       )} */}
     </Layout>
+    </>
   )
 }
 
